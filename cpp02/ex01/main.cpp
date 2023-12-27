@@ -12,7 +12,7 @@ Code, Compile, Run and Debug online from anywhere in world.
 int main( void )
 {
     Fixed a(1);
-    
-    std::cout << a << std::endl;
+
+    //std::cout << a << std::endl;
     return (0);
 }
