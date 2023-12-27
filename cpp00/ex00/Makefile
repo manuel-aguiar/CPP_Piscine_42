@@ -1,4 +1,14 @@
-
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/12/27 11:17:51 by codespace         #+#    #+#              #
+#    Updated: 2023/12/27 11:18:00 by codespace        ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME 		=		megaphone
 
@@ -6,44 +16,26 @@ NAME 		=		megaphone
 COMP		=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 
-
-## FOLDERS
-INC_PATH	=		incs
-SRC_PATH	=		srcs
-OBJ_PATH	=		objs
-
-
 ## ALL FILES
-SRC_FILES	=	megaphone.cpp
 
-
-## PREP
-INCS		=	-I$(INC_PATH)
-SRCS		:=	$(addprefix $(SRC_PATH)/, $(SRC_FILES))
-OBJS		:=	$(patsubst $(SRC_PATH)/%.c,$(OBJ_PATH)/%.o,$(SRCS))
-
+SRCS		=		megaphone.cpp
+OBJS 		=		$(patsubst %.cpp,%.o,$(SRCS))
 
 ## RECIPES
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(COMP) $(FLAGS) $(OBJS) $(INCS) -o $(NAME)
+	$(COMP) $(FLAGS) $(OBJS) -o $(NAME)
 	@echo Program $(NAME) ready!!
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
-	mkdir -p $(dir $@)
-	@echo new folder!
-	$(COMP) $(FLAGS) $(INCS) -c $< -o $@
+$(OBJS): $(SRCS)
+	$(COMP) $(FLAGS) -c $< -o $@
 
 clean:
-	@if [ -d "$(OBJ_PATH)" ]; then \
-        rm -rf $(OBJ_PATH); \
-    fi
+	@rm -f $(OBJS)
 
 fclean: clean
-	@if [ -e "$(NAME)" ]; then \
-        rm $(NAME); \
-    fi
+	@rm -f $(NAME)
 
 re: fclean all
 
