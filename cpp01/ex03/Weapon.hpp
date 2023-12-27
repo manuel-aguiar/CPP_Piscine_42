@@ -9,9 +9,9 @@ class Weapon
 
     public:
         Weapon (const std::string& type);
-        Weapon (const Weapon &copy);
+        Weapon (const Weapon& copy);
         ~Weapon ();
-        Weapon& operator= (const Weapon &copy);
+        Weapon& operator= (const Weapon& assign);
 
         const std::string&      getType() const;
         void                    setType(const std::string& type);
