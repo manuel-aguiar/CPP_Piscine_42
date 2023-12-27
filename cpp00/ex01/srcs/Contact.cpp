@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:45:24 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/27 13:15:23 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/27 13:22:24 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ Contact::~Contact ()
 
 Contact::Contact (const Contact &copy)
 {
+	if (this == &copy)
+        return ;
     this->first = copy.first;
     this->last = copy.last;
     this->nick = copy.nick;
