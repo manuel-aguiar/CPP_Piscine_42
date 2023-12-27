@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:45:27 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/27 12:00:14 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/27 13:07:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,37 +20,37 @@
 
 class Contact
 {
-    public:
+	public:
 
-        Contact ();
-        Contact (const Contact &copy);
-        ~Contact ();
-        Contact &operator= (const Contact &assign);
+		Contact ();
+		Contact (const Contact& copy);
+		~Contact ();
+		Contact &operator= (const Contact& assign);
 
-        const   std::string &getFirst() const;
-        const   std::string &getLast() const;
-        const   std::string &getNick() const;
-        const   std::string &getPhone() const;
-        const   std::string &getSecret() const;
+		const   std::string& getFirst() const;
+		const   std::string& getLast() const;
+		const   std::string& getNick() const;
+		const   std::string& getPhone() const;
+		const   std::string& getSecret() const;
 
-        void    setFirst(const std::string &value);
-        void    setLast(const std::string &value);
-        void    setNick(const std::string &value);
-        void    setPhone(const std::string &value);
-        void    setSecret(const std::string &value);
+		void    setFirst(const std::string& value);
+		void    setLast(const std::string& value);
+		void    setNick(const std::string& value);
+		void    setPhone(const std::string& value);
+		void    setSecret(const std::string& value);
 
-        void    print_summary();
-        void    print_full();
+		void    print_summary();
+		void    print_full();
 
-    private:
+	private:
 
-        void    print_padding(const std::string &member, std::string &buffer);
+		void    print_padding(const std::string& member);
 
-        std::string first;
-        std::string last;
-        std::string nick;
-        std::string phone;
-        std::string secret;
+		std::string first;
+		std::string last;
+		std::string nick;
+		std::string phone;
+		std::string secret;
 };
 
 
