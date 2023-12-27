@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:12:38 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/27 11:41:16 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/27 11:43:19 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <string>
 #include <cctype>
 
-void capitalize_str(std::string &str)
+void capitalize_str(std::string& str)
 {
     std::string::size_type  i;
     std::string::size_type  len;
