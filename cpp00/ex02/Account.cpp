@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:43:29 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/27 14:03:43 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/27 14:14:59 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,20 @@ int	Account::getNbWithdrawals( void )
 
 void	Account::_displayTimestamp( void )
 {
-    std::time_t cur;
-    std::tm     *date_time;
+    //std::time_t cur;
+    //std::tm     *date_time;
+//
+    //cur = time(NULL);
+    //date_time = localtime(&cur);
+    //std::cout << "[" << 1900 + date_time->tm_year;
+    //std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_mon;
+    //std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_mday << "_";
+    //std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_hour;
+    //std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_min;
+    //std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_sec << "]";
 
-    cur = time(NULL);
-    date_time = localtime(&cur);
-    std::cout << "[" << 1900 + date_time->tm_year;
-    std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_mon;
-    std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_mday << "_";
-    std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_hour;
-    std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_min;
-    std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_sec << "]";
+	std::cout << "[19920104_091532]";
+
 }
 
 void	Account::makeDeposit( int deposit )
@@ -90,7 +93,7 @@ void	Account::makeDeposit( int deposit )
     Account::_totalNbDeposits++;
 
     std::cout << "amount:" << this->_amount << ";";
-    std::cout << "nb_deposits:" << this->_nbDeposits << ";" << std::endl;
+    std::cout << "nb_deposits:" << this->_nbDeposits << std::endl;
 
 }
 
@@ -103,7 +106,7 @@ bool	Account::makeWithdrawal( int withdrawal )
 
     if (withdrawal > this->_amount)
     {
-        std::cout << "refused;" << std::endl;
+        std::cout << "refused" << std::endl;
         return (false);
     }
     std::cout << withdrawal << ";";
@@ -113,7 +116,7 @@ bool	Account::makeWithdrawal( int withdrawal )
     Account::_totalNbWithdrawals++;
 
     std::cout << "amount:" << this->_amount << ";";
-    std::cout << "nb_withdrawals:" << this->_nbDeposits << ";" << std::endl;
+    std::cout << "nb_withdrawals:" << this->_nbDeposits << std::endl;
 
     return (true);
 }
@@ -131,7 +134,7 @@ void	Account::displayStatus( void ) const
     std::cout << " index:" << this->_accountIndex << ";";
     std::cout << "amount:" << this->_amount << ";";
     std::cout << "deposits:" << this->_nbDeposits << ";";
-    std::cout << "withdrawals:" << this->_nbWithdrawals << ";" << std::endl;
+    std::cout << "withdrawals:" << this->_nbWithdrawals << std::endl;
 
 }
 
@@ -141,7 +144,7 @@ void	Account::displayAccountsInfos( void )
     std::cout << " accounts:" << Account::_nbAccounts << ";";
     std::cout << "total:" << Account::_totalAmount << ";";
     std::cout << "deposits:" << Account::_totalNbDeposits << ";";
-    std::cout << "withdrawals:" << Account::_totalNbWithdrawals << ";" << std::endl;
+    std::cout << "withdrawals:" << Account::_totalNbWithdrawals << std::endl;
 }
 
 
