@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:43:29 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/27 14:14:59 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/27 14:16:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,19 @@ int	Account::getNbWithdrawals( void )
 
 void	Account::_displayTimestamp( void )
 {
-    //std::time_t cur;
-    //std::tm     *date_time;
-//
-    //cur = time(NULL);
-    //date_time = localtime(&cur);
-    //std::cout << "[" << 1900 + date_time->tm_year;
-    //std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_mon;
-    //std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_mday << "_";
-    //std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_hour;
-    //std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_min;
-    //std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_sec << "]";
+    std::time_t cur;
+    std::tm     *date_time;
 
-	std::cout << "[19920104_091532]";
+	cur = time(NULL);
+    date_time = localtime(&cur);
+    std::cout << "[" << 1900 + date_time->tm_year;
+    std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_mon;
+    std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_mday << "_";
+    std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_hour;
+    std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_min;
+    std::cout << std::setw(2) << std::setfill('0') << 1 + date_time->tm_sec << "]";
 
+	//std::cout << "[19920104_091532]";
 }
 
 void	Account::makeDeposit( int deposit )
