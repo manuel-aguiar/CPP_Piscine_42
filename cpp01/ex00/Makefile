@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:17:51 by codespace         #+#    #+#              #
-#    Updated: 2023/12/27 15:14:38 by codespace        ###   ########.fr        #
+#    Updated: 2023/12/27 15:50:01 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,11 +33,11 @@ INCS		=		-I./
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(COMP) $(FLAGS) $(OBJS) -o $(NAME)
+	@$(COMP) $(FLAGS) $(OBJS) $(INCS) -o $(NAME)
 	@echo Program $(NAME) ready!!
 
 $(OBJS): %.o: %.cpp
-	@$(COMP) $(FLAGS) -c $< -o $@
+	@$(COMP) $(FLAGS) $(INCS) -c $< -o $@
 
 clean:
 	@rm -f $(OBJS)
