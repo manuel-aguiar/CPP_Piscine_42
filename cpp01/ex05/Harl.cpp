@@ -17,7 +17,7 @@ Harl::Harl()
 
 Harl::~Harl()
 {
-    
+
 }
 
 Harl::Harl(const Harl& copy)
@@ -37,21 +37,21 @@ Harl::Harl(const Harl& copy)
     this->num_levels = copy.num_levels;
 }
 
-Harl& Harl:: operator= (const Harl& other)
+Harl& Harl:: operator= (const Harl& assign)
 {
-    if (this == &other)
+    if (this == &assign)
         return (*this);
-    this->funcs[ENU_NOISE] = other.funcs[ENU_NOISE];
-    this->funcs[ENU_DEBUG] = other.funcs[ENU_DEBUG];
-    this->funcs[ENU_INFO] = other.funcs[ENU_INFO];
-    this->funcs[ENU_WARNING] = other.funcs[ENU_WARNING];
-    this->funcs[ENU_ERROR] = other.funcs[ENU_ERROR];
-    this->callers[ENU_NOISE] = other.callers[ENU_NOISE];
-    this->callers[ENU_DEBUG] = other.callers[ENU_DEBUG];
-    this->callers[ENU_INFO] = other.callers[ENU_INFO];
-    this->callers[ENU_WARNING] = other.callers[ENU_WARNING];
-    this->callers[ENU_ERROR] = other.callers[ENU_ERROR];
-    this->num_levels = other.num_levels;
+    this->funcs[ENU_NOISE] = assign.funcs[ENU_NOISE];
+    this->funcs[ENU_DEBUG] = assign.funcs[ENU_DEBUG];
+    this->funcs[ENU_INFO] = assign.funcs[ENU_INFO];
+    this->funcs[ENU_WARNING] = assign.funcs[ENU_WARNING];
+    this->funcs[ENU_ERROR] = assign.funcs[ENU_ERROR];
+    this->callers[ENU_NOISE] = assign.callers[ENU_NOISE];
+    this->callers[ENU_DEBUG] = assign.callers[ENU_DEBUG];
+    this->callers[ENU_INFO] = assign.callers[ENU_INFO];
+    this->callers[ENU_WARNING] = assign.callers[ENU_WARNING];
+    this->callers[ENU_ERROR] = assign.callers[ENU_ERROR];
+    this->num_levels = assign.num_levels;
     return (*this);
 }
 
@@ -59,7 +59,7 @@ void    Harl::complain(std::string level)
 {
     int i;
     int call;
-    
+
     call = 0;
     i = 1;
     while (i < this->num_levels)
