@@ -6,10 +6,11 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:17:51 by codespace         #+#    #+#              #
-#    Updated: 2023/12/27 11:18:00 by codespace        ###   ########.fr        #
+#    Updated: 2023/12/27 11:19:01 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+##	Program Name
 NAME 		=		megaphone
 
 ##	Compiler and flags
