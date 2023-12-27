@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:45:34 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/27 11:45:34 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/27 12:32:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ PhoneBook::PhoneBook ()
     this->functions[ENU_EXIT] = &PhoneBook::exit_phonebook;
     this->functions[ENU_HELP] = &PhoneBook::help_phonebook;
     this->functions[ENU_ERROR] = &PhoneBook::error_phonebook;
-    this->greetings();
 }
 
 PhoneBook::~PhoneBook ()
@@ -30,10 +29,8 @@ PhoneBook::~PhoneBook ()
 
 }
 
-PhoneBook::PhoneBook (const PhoneBook &copy)
+PhoneBook::PhoneBook (const PhoneBook& copy)
 {
-    int i;
-
     if (this == &copy)
         return ;
     this->running = copy.running;
@@ -45,36 +42,26 @@ PhoneBook::PhoneBook (const PhoneBook &copy)
     this->functions[ENU_HELP] = copy.functions[ENU_HELP];
     this->functions[ENU_ERROR] = copy.functions[ENU_ERROR];
 
-    i = 0;
-    while (i < this->contact_count)
-    {
+    for (int i = 0; i < this->contact_count; i++)
         this->list[i] = copy.list[i];
-        i++;
-    }
 }
 
 
-PhoneBook &PhoneBook::operator=(const PhoneBook &copy)
+PhoneBook &PhoneBook::operator=(const PhoneBook& assign)
 {
-    int i;
+    if (this == &assign)
+        return (*this);
+    this->functions[ENU_ADD] = assign.functions[ENU_ADD];
+    this->functions[ENU_SEARCH] = assign.functions[ENU_SEARCH];
+    this->functions[ENU_EXIT] = assign.functions[ENU_EXIT];
+    this->functions[ENU_HELP] = assign.functions[ENU_HELP];
+    this->functions[ENU_ERROR] = assign.functions[ENU_ERROR];
 
-    if (this == &copy)
-        return *this;
-    this->functions[ENU_ADD] = copy.functions[ENU_ADD];
-    this->functions[ENU_SEARCH] = copy.functions[ENU_SEARCH];
-    this->functions[ENU_EXIT] = copy.functions[ENU_EXIT];
-    this->functions[ENU_HELP] = copy.functions[ENU_HELP];
-    this->functions[ENU_ERROR] = copy.functions[ENU_ERROR];
+    this->running = assign.running;
+    this->contacts_max = assign.contacts_max;
 
-    this->running = copy.running;
-    this->contacts_max = copy.contacts_max;
-
-    i = 0;
-    while (i < this->contact_count)
-    {
-        this->list[i] = copy.list[i];
-        i++;
-    }
+    for (int i = 0; i < this->contact_count; i++)
+        this->list[i] = assign.list[i];
     return (*this);
 }
 
@@ -95,6 +82,7 @@ void    PhoneBook::run_phonebook()
 {
     std::string buffer;
 
+	this->greetings();
     while (this->running)
     {
         std::cout << "Tell me: ";
@@ -181,10 +169,8 @@ bool     PhoneBook::my_atoi(std::string &str, int &place_res, int &contact_count
 
 void    PhoneBook::search_contact()
 {
-    std::list<Contact>::iterator    iter;
     std::string                     buffer;
     int                             index;
-
 
     for(index = 0; index < this->contact_count; index++)
     {

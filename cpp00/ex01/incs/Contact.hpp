@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:45:27 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/27 11:45:28 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/27 12:00:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Contact
         Contact ();
         Contact (const Contact &copy);
         ~Contact ();
-        Contact &operator= (const Contact &copy);
+        Contact &operator= (const Contact &assign);
 
         const   std::string &getFirst() const;
         const   std::string &getLast() const;

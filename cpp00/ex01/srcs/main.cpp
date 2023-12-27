@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:45:15 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/27 11:45:17 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/27 12:31:23 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int main(void)
 {
-    PhoneBook pb;
+	PhoneBook first;
+    PhoneBook pb (first);
 
     pb.run_phonebook();
 

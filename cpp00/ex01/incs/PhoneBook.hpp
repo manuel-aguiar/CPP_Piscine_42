@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:45:38 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/27 11:45:38 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/27 12:31:04 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 # define PHONEBOOK_HPP
 
 # include <iostream>
-# include <list>
-# include <map>
 # include <iomanip>
 # include <cctype>
 # include "Contact.hpp"
@@ -29,16 +27,16 @@ class PhoneBook
     public:
 
         PhoneBook ();
-        PhoneBook (const PhoneBook &copy);
+        //PhoneBook (const PhoneBook& copy);
         ~PhoneBook ();
-        PhoneBook &operator= (const PhoneBook &copy);
+        PhoneBook &operator= (const PhoneBook& assign);
 
         void                    run_phonebook(void);
 
     private:
 
-        typedef                 void (PhoneBook::*pbfunc)();
-        typedef                 void (Contact::*Contact_setter)(const std::string &);
+        typedef                 void (PhoneBook::*pbfunc)(void);
+        typedef                 void (Contact::*Contact_setter)(const std::string&);
 
         //horsepower
         pbfunc                  functions[PB_FUNCTIONS];
@@ -50,18 +48,18 @@ class PhoneBook
         int                     contacts_max;
 
         //main functions
-        void                    greetings();
-        void                    add_contact();
-        void                    search_contact();
-        void                    exit_phonebook();
-        void                    help_phonebook();
-        void                    error_phonebook();
+        void                    greetings(void);
+        void                    add_contact(void);
+        void                    search_contact(void);
+        void                    exit_phonebook(void);
+        void                    help_phonebook(void);
+        void                    error_phonebook(void);
 
         //helper functions
-        bool                    readin_stdin(const std::string &ask_field, std::string &buffer, Contact &contact, Contact_setter setter);
-        bool                    my_atoi(std::string &str, int &place_res, int &contact_count);
-        void                    bad_contact_input();
-        bool                    buffer_is_only_space(std::string &buffer);
+        bool                    readin_stdin(const std::string& ask_field, std::string& buffer, Contact& contact, Contact_setter setter);
+        bool                    my_atoi(std::string& str, int& place_res, int& contact_count);
+        void                    bad_contact_input(void);
+        bool                    buffer_is_only_space(std::string& buffer);
         int                     string_to_action(std::string& buffer);
 };
 
@@ -87,6 +85,20 @@ enum action
 /*
 
 LEGACY
+
+#ifndef PHONEBOOK_HPP
+
+# define PHONEBOOK_HPP
+
+# include <iostream>
+# include <list>
+# include <map>
+# include <iomanip>
+# include <cctype>
+# include "Contact.hpp"
+
+# define MAX_CONTACTS 8
+# define PB_FUNCTIONS 5
 
 class PhoneBook
 {
