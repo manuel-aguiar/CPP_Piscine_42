@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:12:38 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/27 11:12:50 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/27 11:41:16 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int main(int ac, char **av)
         capitalize_str(loud);
         std::cout << loud;
     }
+	if (ac == 1)
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
     std::cout << std::endl;
     return 0;
 }
