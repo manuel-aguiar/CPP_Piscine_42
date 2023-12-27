@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:43:29 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/27 13:49:01 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/27 14:03:43 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Account::Account(int initial_deposit)
 {
 	this->_accountIndex = Account::_nbAccounts++;
 	this->_amount = initial_deposit;
-	this->_totalAmount += initial_deposit;
+	Account::_totalAmount += initial_deposit;
 	this->_nbDeposits = 0;
 	this->_nbWithdrawals = 0;
 	Account::_displayTimestamp();
