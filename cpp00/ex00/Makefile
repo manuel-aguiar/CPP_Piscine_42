@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:17:51 by codespace         #+#    #+#              #
-#    Updated: 2023/12/27 11:43:37 by codespace        ###   ########.fr        #
+#    Updated: 2023/12/27 14:07:24 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ $(NAME): $(OBJS)
 	@$(COMP) $(FLAGS) $(OBJS) -o $(NAME)
 	@echo Program $(NAME) ready!!
 
-$(OBJS): $(SRCS)
+$(OBJS): %.o: %.cpp
 	@$(COMP) $(FLAGS) -c $< -o $@
 
 clean:
