@@ -6,12 +6,12 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:17:51 by codespace         #+#    #+#              #
-#    Updated: 2023/12/27 16:58:25 by codespace        ###   ########.fr        #
+#    Updated: 2023/12/27 17:00:34 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ##	Program Name
-NAME 		=		harl
+NAME 		=		harlFilter
 
 ##	Compiler and flags
 COMP		=		c++
