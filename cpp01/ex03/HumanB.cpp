@@ -7,29 +7,27 @@ HumanB::HumanB(const std::string &name) : name(name)
 
 HumanB::~HumanB()
 {
-    
+
 }
 
-HumanB::HumanB(const HumanB &copy) : name(copy.name)
+HumanB::HumanB(const HumanB& copy) : name(copy.name)
 {
     if (this == &copy)
         return ;
-    this->name = copy.name;
-    this->weapon = copy.weapon;
 }
 
-HumanB& HumanB::operator=(const HumanB &copy)
+HumanB& HumanB::operator=(const HumanB& assign)
 {
-    if (this == &copy)
+    if (this == &assign)
         return (*this);
-    this->name = copy.name;
-    this->weapon = copy.weapon;
+    this->name = assign.name;
+    this->weapon = assign.weapon;
     return (*this);
 }
 
 void    HumanB::attack()
 {
-    
+
     std::cout << this->name << " attacks with their ";
     std::cout << this->weapon->getType() << std::endl;
 }

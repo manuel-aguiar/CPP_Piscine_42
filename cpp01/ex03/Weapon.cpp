@@ -8,26 +8,25 @@ Weapon::Weapon(const std::string& type) : type(type)
 /*
 Weapon::Weapon()
 {
-    
+
 }*/
 
 Weapon::~Weapon()
 {
-    
+
 }
 
-Weapon::Weapon(const Weapon &copy)
+Weapon::Weapon(const Weapon& copy) : type(copy.type)
 {
     if (this == &copy)
         return ;
-    this->type = copy.type;
 }
 
-Weapon& Weapon::operator=(const Weapon &copy)
+Weapon& Weapon::operator=(const Weapon& assign)
 {
-    if (this == &copy)
+    if (this == &assign)
         return (*this);
-    this->type = copy.type;
+    this->type = assign.type;
     return (*this);
 }
 

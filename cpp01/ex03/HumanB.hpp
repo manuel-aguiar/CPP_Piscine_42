@@ -8,23 +8,20 @@
 
 class HumanB
 {
-    
+
     public:
-    
         HumanB(const std::string& name);
         ~HumanB();
         HumanB(const HumanB& copy);
-        HumanB& operator= (const HumanB& copy);
-        
+        HumanB& operator= (const HumanB& assign);
+
         void    attack();
         void    setWeapon(Weapon& weapon);
-    
+
     private:
-        
         std::string     name;
         Weapon*         weapon;
         HumanB();
-        
 };
 
 
