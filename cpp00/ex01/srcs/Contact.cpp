@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/27 11:45:24 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/27 11:45:25 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Contact.hpp"
 
 Contact::Contact ()
@@ -16,7 +28,7 @@ Contact::Contact (const Contact &copy)
     this->last = copy.last;
     this->nick = copy.nick;
     this->phone = copy.phone;
-    this->secret = copy.secret; 
+    this->secret = copy.secret;
 }
 
 Contact &Contact::operator= (const Contact &copy)
@@ -27,7 +39,7 @@ Contact &Contact::operator= (const Contact &copy)
     this->last = copy.last;
     this->nick = copy.nick;
     this->phone = copy.phone;
-    this->secret = copy.secret; 
+    this->secret = copy.secret;
     return (*this);
 }
 
@@ -84,7 +96,7 @@ void Contact::setSecret(const std::string &value)
 void Contact::print_summary(void)
 {
     std::string str;
-    
+
     this->print_padding(this->getFirst(), str);
     this->print_padding(this->getLast(), str);
     this->print_padding(this->getNick(), str);
@@ -101,5 +113,5 @@ void    Contact::print_padding(const std::string &member, std::string &buffer)
     {
         std::cout.write(buffer.c_str(), 9);
         std::cout.write(".", 2);
-    }    
+    }
 }

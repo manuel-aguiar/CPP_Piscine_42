@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/27 11:45:38 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/27 11:45:38 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHONEBOOK_HPP
 
 # define PHONEBOOK_HPP
@@ -10,33 +22,33 @@
 # include "Contact.hpp"
 
 # define MAX_CONTACTS 8
-# define PB_FUNCTIONS 5 
+# define PB_FUNCTIONS 5
 
 class PhoneBook
 {
     public:
-    
+
         PhoneBook ();
         PhoneBook (const PhoneBook &copy);
         ~PhoneBook ();
         PhoneBook &operator= (const PhoneBook &copy);
-        
+
         void                    run_phonebook(void);
-        
+
     private:
-        
+
         typedef                 void (PhoneBook::*pbfunc)();
         typedef                 void (Contact::*Contact_setter)(const std::string &);
-        
+
         //horsepower
         pbfunc                  functions[PB_FUNCTIONS];
         Contact                 list[MAX_CONTACTS];
-        
+
         //phonebook stats
         bool                    running;
         int                     contact_count;
         int                     contacts_max;
-        
+
         //main functions
         void                    greetings();
         void                    add_contact();
@@ -44,7 +56,7 @@ class PhoneBook
         void                    exit_phonebook();
         void                    help_phonebook();
         void                    error_phonebook();
-        
+
         //helper functions
         bool                    readin_stdin(const std::string &ask_field, std::string &buffer, Contact &contact, Contact_setter setter);
         bool                    my_atoi(std::string &str, int &place_res, int &contact_count);
@@ -79,21 +91,21 @@ LEGACY
 class PhoneBook
 {
     public:
-    
+
         PhoneBook ();
         PhoneBook (const PhoneBook &copy);
         ~PhoneBook ();
         PhoneBook &operator= (const PhoneBook &copy);
-        
+
         void                    run_phonebook(void);
-        
+
     private:
-    
+
         typedef                 void (PhoneBook::*pbfunc)();
         typedef                 void (Contact::*Contact_setter)(const std::string &);
         std::map                <std::string, pbfunc> functions;
         std::list               <Contact> list;
-        
+
         bool                    running;
         int                     contacts_max;
         void                    greetings();

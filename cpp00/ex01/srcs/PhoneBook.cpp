@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/27 11:45:34 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/27 11:45:34 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook ()
@@ -15,13 +27,13 @@ PhoneBook::PhoneBook ()
 
 PhoneBook::~PhoneBook ()
 {
-    
+
 }
 
 PhoneBook::PhoneBook (const PhoneBook &copy)
 {
     int i;
-    
+
     if (this == &copy)
         return ;
     this->running = copy.running;
@@ -32,7 +44,7 @@ PhoneBook::PhoneBook (const PhoneBook &copy)
     this->functions[ENU_EXIT] = copy.functions[ENU_EXIT];
     this->functions[ENU_HELP] = copy.functions[ENU_HELP];
     this->functions[ENU_ERROR] = copy.functions[ENU_ERROR];
-    
+
     i = 0;
     while (i < this->contact_count)
     {
@@ -45,7 +57,7 @@ PhoneBook::PhoneBook (const PhoneBook &copy)
 PhoneBook &PhoneBook::operator=(const PhoneBook &copy)
 {
     int i;
-    
+
     if (this == &copy)
         return *this;
     this->functions[ENU_ADD] = copy.functions[ENU_ADD];
@@ -56,7 +68,7 @@ PhoneBook &PhoneBook::operator=(const PhoneBook &copy)
 
     this->running = copy.running;
     this->contacts_max = copy.contacts_max;
-    
+
     i = 0;
     while (i < this->contact_count)
     {
@@ -82,7 +94,7 @@ int    PhoneBook::string_to_action(std::string& buffer)
 void    PhoneBook::run_phonebook()
 {
     std::string buffer;
-    
+
     while (this->running)
     {
         std::cout << "Tell me: ";
@@ -134,16 +146,16 @@ void    PhoneBook::add_contact()
             this->list[i] = this->list[i - 1];
         i--;
     }
-        
+
     this->list[0] = contact;
-    this->contact_count += (this->contact_count < this->contacts_max);   
+    this->contact_count += (this->contact_count < this->contacts_max);
 }
 
 bool     PhoneBook::my_atoi(std::string &str, int &place_res, int &contact_count)
 {
     int res;
     int iter;
-    
+
     res = 0;
     iter = 0;
     while (str[iter] && std::isspace(str[iter]))
@@ -172,8 +184,8 @@ void    PhoneBook::search_contact()
     std::list<Contact>::iterator    iter;
     std::string                     buffer;
     int                             index;
-    
-    
+
+
     for(index = 0; index < this->contact_count; index++)
     {
         std::cout << std::setw(10) << std::right << index;
@@ -187,7 +199,7 @@ void    PhoneBook::search_contact()
         return ;
     }
     if (this->my_atoi(buffer, index, this->contact_count) == false)
-    {   
+    {
         std::cout << "Not a valid index :(" << std::endl;
         return ;
     }
@@ -219,32 +231,32 @@ void    PhoneBook::greetings()
 void    PhoneBook::help_phonebook()
 {
     std::cout << "Usage:" << std::endl;
-    std::cout << std::left << std::setw(8) << "ADD";  
+    std::cout << std::left << std::setw(8) << "ADD";
     std::cout << "- save a new contact;" << std::endl;
-    std::cout << std::left << std::setw(8) << "SEARCH";  
+    std::cout << std::left << std::setw(8) << "SEARCH";
     std::cout << "- display a specific contact;" << std::endl;
-    std::cout << std::left << std::setw(8) << "EXIT";  
+    std::cout << std::left << std::setw(8) << "EXIT";
     std::cout << "- exit the PhoneBook (contacts will be lost!!!);" << std::endl;
-    std::cout << std::left << std::setw(8) << "HELP";  
+    std::cout << std::left << std::setw(8) << "HELP";
     std::cout << "- see all functionalities;" << std::endl;
 }
 
 void    PhoneBook::error_phonebook()
 {
     std::cout << "Ops, wrong Input!!" << std::endl;
-    this->help_phonebook();    
+    this->help_phonebook();
 }
 
 bool PhoneBook::buffer_is_only_space(std::string &buffer)
 {
     std::string::size_type  i;
     std::string::size_type  len;
-    
+
     len = buffer.size();
     for (i = 0; i < len; i++)
     {
         if (!std::isspace(buffer[i]))
-            return (false);        
+            return (false);
     }
     return (true);
 }
@@ -272,7 +284,7 @@ PhoneBook::PhoneBook ()
 
 PhoneBook::~PhoneBook ()
 {
-    
+
 }
 
 PhoneBook::PhoneBook (const PhoneBook &copy)
@@ -300,7 +312,7 @@ PhoneBook &PhoneBook::operator=(const PhoneBook &copy)
 void    PhoneBook::run_phonebook()
 {
     std::string buffer;
-    
+
     while (this->running)
     {
         std::cout << "Tell me: ";
@@ -345,7 +357,7 @@ void    PhoneBook::add_contact()
 {
     Contact     contact;
     std::string buffer;
-    
+
     if (this->list.size() == 8)
         this->list.pop_back();
     if (!this->readin_stdin("First Name: ", buffer, contact, &Contact::setFirst) \
@@ -361,7 +373,7 @@ bool     PhoneBook::my_atoi(std::string &str, int &place_res, std::list<Contact>
 {
     std::list<Contact>::size_type   res;
     int                             iter;
-    
+
     res = 0;
     iter = 0;
     while (str[iter] && std::isspace(str[iter]))
@@ -390,7 +402,7 @@ void    PhoneBook::search_contact()
     std::list<Contact>::iterator    iter;
     std::string                     buffer;
     int                             index;
-    
+
     index = 0;
     for(iter = this->list.begin(); iter != this->list.end(); iter++)
     {
@@ -407,7 +419,7 @@ void    PhoneBook::search_contact()
         return ;
     }
     if (this->my_atoi(buffer, index, this->list.size()) == false)
-    {   
+    {
         std::cout << "Not a valid index :(" << std::endl;
         return ;
     }
@@ -441,13 +453,13 @@ void    PhoneBook::greetings()
 void    PhoneBook::help_phonebook()
 {
     std::cout << "Usage:" << std::endl;
-    std::cout << std::left << std::setw(8) << "ADD";  
+    std::cout << std::left << std::setw(8) << "ADD";
     std::cout << "- save a new contact;" << std::endl;
-    std::cout << std::left << std::setw(8) << "SEARCH";  
+    std::cout << std::left << std::setw(8) << "SEARCH";
     std::cout << "- display a specific contact;" << std::endl;
-    std::cout << std::left << std::setw(8) << "EXIT";  
+    std::cout << std::left << std::setw(8) << "EXIT";
     std::cout << "- exit the PhoneBook (contacts will be lost!!!);" << std::endl;
-    std::cout << std::left << std::setw(8) << "HELP";  
+    std::cout << std::left << std::setw(8) << "HELP";
     std::cout << "- see all functionalities;" << std::endl;
 }
 
@@ -455,12 +467,12 @@ bool PhoneBook::buffer_is_only_space(std::string &buffer)
 {
     std::string::size_type  i;
     std::string::size_type  len;
-    
+
     len = buffer.size();
     for (i = 0; i < len; i++)
     {
         if (!std::isspace(buffer[i]))
-            return (false);        
+            return (false);
     }
     return (true);
 }
