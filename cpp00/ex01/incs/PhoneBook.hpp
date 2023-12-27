@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:45:38 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/27 12:31:04 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/27 12:34:55 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class PhoneBook
     public:
 
         PhoneBook ();
-        //PhoneBook (const PhoneBook& copy);
+        PhoneBook (const PhoneBook& copy);
         ~PhoneBook ();
         PhoneBook &operator= (const PhoneBook& assign);
 
