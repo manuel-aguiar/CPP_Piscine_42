@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 11:45:38 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/27 12:57:26 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/27 16:51:30 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@
 
 # define MAX_CONTACTS 8
 # define PB_FUNCTIONS 5
+
+# define ACT_ADD "ADD"
+# define ACT_SEARCH "SEARCH"
+# define ACT_EXIT "EXIT"
+# define ACT_HELP "HELP"
 
 class PhoneBook
 {
@@ -61,24 +66,16 @@ class PhoneBook
         void                    bad_contact_input(void);
         bool                    buffer_is_only_space(std::string& buffer);
         int                     string_to_action(std::string& buffer);
+
+		enum action
+		{
+			ENU_ADD,
+			ENU_SEARCH,
+			ENU_EXIT,
+			ENU_HELP,
+			ENU_ERROR,
+		};
 };
-
-
-# define ACT_ADD "ADD"
-# define ACT_SEARCH "SEARCH"
-# define ACT_EXIT "EXIT"
-# define ACT_HELP "HELP"
-
-enum action
-{
-    ENU_ADD,
-    ENU_SEARCH,
-    ENU_EXIT,
-    ENU_HELP,
-    ENU_ERROR,
-};
-
-
 
 
 
