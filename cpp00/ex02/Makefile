@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:17:51 by codespace         #+#    #+#              #
-#    Updated: 2023/12/27 14:04:19 by codespace        ###   ########.fr        #
+#    Updated: 2023/12/27 14:07:03 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ FLAGS		=		-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 
 ## ALL FILES
 
-SRCS		=		*.cpp
+SRCS		=		Account.cpp		\
+					tests.cpp
+
 OBJS 		=		$(patsubst %.cpp,%.o,$(SRCS))
 
 INC_PATH	= ./
@@ -32,7 +34,7 @@ $(NAME): $(OBJS)
 	@$(COMP) $(FLAGS) $(OBJS) $(INCS) -o $(NAME)
 	@echo Program $(NAME) ready!!
 
-$(OBJS): $(SRCS)
+$(OBJS): %.o: %.cpp
 	@$(COMP) $(FLAGS) $(INCS) -c $< -o $@
 
 clean:
