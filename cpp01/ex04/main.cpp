@@ -21,8 +21,6 @@ int main(int ac, char **av)
     size_t      index;
     size_t      len;
 
-	std::cout << "searching for: '" << str_search << "'" << std::endl;
-
     //preparing files and open error checking
     std::remove(out_name.c_str());
     std::ifstream infile(av[1]);
@@ -40,7 +38,6 @@ int main(int ac, char **av)
         return (1);
     }
 
-
     // main block
     len = str_search.size();
     start = 0;
@@ -49,6 +46,8 @@ int main(int ac, char **av)
     {
         if (!infile.eof())
             temp += "\n";
+
+		// merge the leftovers of the buffer with what was read now
         buffer = buffer.substr(start) + temp;
         start = 0;
         index = 0;
