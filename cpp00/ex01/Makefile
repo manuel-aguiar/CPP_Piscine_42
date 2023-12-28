@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:53:05 by codespace         #+#    #+#              #
-#    Updated: 2023/12/27 11:58:17 by codespace        ###   ########.fr        #
+#    Updated: 2023/12/28 14:58:53 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,28 +37,29 @@ INCS		= 		-I$(INC_PATH)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(COMP) $(FLAGS) $(OBJS) $(INCS) -o $(NAME)
+	@$(COMP) $(FLAGS) $(OBJS) $(INCS) -o $(NAME)
 	@echo Program $(NAME) ready!!
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp
-	mkdir -p $(dir $@)
-	$(COMP) $(FLAGS) $(INCS) -c $< -o $@
+	@mkdir -p $(dir $@)
+	@$(COMP) $(FLAGS) $(INCS) -c $< -o $@
 
 clean:
 	@if [ -d "$(OBJ_PATH)" ]; then \
         rm -rf $(OBJ_PATH); \
     fi
-	@echo Objects successfully deleted!
 
 fclean: clean
 	@if [ -e "$(NAME)" ]; then \
         rm $(NAME); \
     fi
-	@echo Done!!
 
 re: fclean all
 
 git: fclean
 	@git add . && git commit -m "commiting" && git push
 
-.PHONY: clean fclean re git
+run: re
+	@./$(NAME)
+
+.PHONY: clean fclean re git run
