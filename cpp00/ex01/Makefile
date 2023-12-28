@@ -1,13 +1,13 @@
 # **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/27 11:53:05 by codespace         #+#    #+#              #
-#    Updated: 2023/12/28 15:07:31 by codespace        ###   ########.fr        #
-#                                                                              #
+#											 #
+#								 :::      ::::::::    #
+#    Makefile						 :+:      :+:    :+:    #
+#							    +:+ +:+	  +:+      #
+#    By: codespace <codespace@student.42.fr>	 +#+  +:+	+#+	  #
+#							+#+#+#+#+#+   +#+	     #
+#    Created: 2023/12/27 11:53:05 by codespace	  #+#    #+#		#
+#    Updated: 2023/12/28 15:07:31 by codespace	 ###   ########.fr	 #
+#											 #
 # **************************************************************************** #
 
 NAME 		=		phonebook
@@ -25,7 +25,7 @@ OBJ_PATH	=		objs
 ## ALL FILES
 SRC_FILES	=		PhoneBook.cpp			\
 					PhoneBook_run.cpp		\
-					PhoneBook_functions.cpp	\
+					PhoneBook_helper.cpp	\
 					Contact.cpp				\
 					Contact_getset.cpp		\
 					Contact_print.cpp		\
@@ -50,12 +50,12 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp
 
 clean:
 	@if [ -d "$(OBJ_PATH)" ]; then \
-        rm -rf $(OBJ_PATH); \
+	 rm -rf $(OBJ_PATH); \
     fi
 
 fclean: clean
 	@if [ -e "$(NAME)" ]; then \
-        rm $(NAME); \
+	 rm $(NAME); \
     fi
 
 re: fclean all

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 14:57:35 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 14:58:19 by codespace        ###   ########.fr       */
+/*   Created: 2023/12/28 15:51:30 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/28 15:51:32 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void    PhoneBook::add_contact()
 bool     PhoneBook::my_atoi(std::string &str, int &place_res, std::list<Contact>::size_type num_entries)
 {
 	std::list<Contact>::size_type   res;
-	int                             iter;
+	int				 iter;
 
 	res = 0;
 	iter = 0;
@@ -143,8 +143,8 @@ bool     PhoneBook::my_atoi(std::string &str, int &place_res, std::list<Contact>
 void    PhoneBook::search_contact()
 {
 	std::list<Contact>::iterator    iter;
-	std::string                     buffer;
-	int                             index;
+	std::string			buffer;
+	int				 index;
 
 	index = 0;
 	for(iter = this->list.begin(); iter != this->list.end(); iter++)
