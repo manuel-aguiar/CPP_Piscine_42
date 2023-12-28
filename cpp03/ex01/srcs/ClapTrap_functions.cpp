@@ -75,7 +75,7 @@ void    ClapTrap::beRepaired(unsigned int amount)
     }
 }
 
-void    ClapTrap::my_stats( void )
+void    ClapTrap::my_stats( void ) const
 {
     std::cout << std::endl;
     std::cout << "Stats: " << this->name << std::endl;

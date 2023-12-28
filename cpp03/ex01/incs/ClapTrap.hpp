@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:09 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 16:36:09 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/28 16:59:41 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,22 @@
 class ClapTrap
 {
     public:
-	 ClapTrap();
-	 ClapTrap(const std::string& name);
-	 ~ClapTrap();
-	 ClapTrap(const ClapTrap& copy);
-	 ClapTrap& operator= (const ClapTrap& assign);
+		ClapTrap();
+		ClapTrap(const std::string& name);
+		~ClapTrap();
+		ClapTrap(const ClapTrap& copy);
+		ClapTrap& operator= (const ClapTrap& assign);
 
-	 void    attack(const std::string& target);
-	 void    takeDamage(unsigned int amount);
-	 void    beRepaired(unsigned int amount);
-	 void    my_stats( void );
+		void    attack(const std::string& target);
+		void    takeDamage(unsigned int amount);
+		void    beRepaired(unsigned int amount);
+		void    my_stats( void ) const;
 
     protected:
-	 std::string name;
-	 unsigned int hitpoints;
-	 unsigned int energypoints;
-	 unsigned int attackdamage;
+		std::string name;
+		unsigned int hitpoints;
+		unsigned int energypoints;
+		unsigned int attackdamage;
 };
 
 

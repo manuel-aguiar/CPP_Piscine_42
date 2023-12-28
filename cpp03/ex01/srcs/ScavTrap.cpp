@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:46 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 16:37:09 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/28 16:57:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 ScavTrap::ScavTrap() : ClapTrap()
 {
-    std::cout << "Unnamed ScavTrap Constructor called" << std::endl;
-    hitpoints = SCAV_START_HP;
-    energypoints = SCAV_START_EP;
-    attackdamage = SCAV_START_ATTACK;
+    std::cout << "ScavTrap Unnamed Constructor called" << std::endl;
+    //hitpoints = SCAV_START_HP;
+    //energypoints = SCAV_START_EP;
+    //attackdamage = SCAV_START_ATTACK;
 }
 
 ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name)
 {
-    std::cout << "Named ScavTrap - " << name << " - Constructor called" << std::endl;
+    std::cout << "ScavTrap Named - " << name << " - Constructor called" << std::endl;
     hitpoints = SCAV_START_HP;
     energypoints = SCAV_START_EP;
     attackdamage = SCAV_START_ATTACK;
