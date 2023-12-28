@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:13:06 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 14:03:02 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/28 14:33:08 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,18 @@ Point& Point::operator= (const Point& assign)
     x = assign.x;
 	y = assign.y;
     return (*this);
+}
+
+// getters setters
+
+void	Point::set_x( const Fixed& x_coord )
+{
+	x = x_coord;
+}
+
+void	Point::set_y(  const Fixed& y_coord )
+{
+	y = y_coord;
 }
 
 const Fixed&	Point::get_x( void ) const

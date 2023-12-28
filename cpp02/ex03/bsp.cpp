@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:16:55 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 14:25:47 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/28 14:27:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,7 @@ static Fixed	triangle_area(const Point& a, const Point& b, const Point& c)
 	const Fixed& cx = c.get_x();
 	const Fixed& cy = c.get_y();
 
-	Fixed A = Fixed::abs(ax * (by - cy) + bx * (cy - ay) + cx * (ay - by)) * 0.5f;
-	return (A);
+	return (Fixed::abs(ax * (by - cy) + bx * (cy - ay) + cx * (ay - by)) * 0.5f);
 }
 
 bool	bsp(const Point& target, const Point& a, const Point& b, const Point& c)
