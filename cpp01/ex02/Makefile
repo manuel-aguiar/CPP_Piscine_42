@@ -6,11 +6,11 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:53:05 by codespace         #+#    #+#              #
-#    Updated: 2023/12/28 15:19:08 by codespace        ###   ########.fr        #
+#    Updated: 2023/12/28 15:27:38 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		=		zombiehorde
+NAME 		=		pointer_refs
 
 ##	Compiler and flags
 COMP		=		c++
