@@ -6,12 +6,12 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:17:51 by codespace         #+#    #+#              #
-#    Updated: 2023/12/28 13:06:41 by codespace        ###   ########.fr        #
+#    Updated: 2023/12/28 13:15:08 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ##	Program Name
-NAME 		=		fixed_point_ex02
+NAME 		=		BSP
 
 ##	Compiler and flags
 COMP		=		c++
@@ -21,6 +21,8 @@ FLAGS		=		-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 
 SRCS		=		main.cpp	\
 					Fixed.cpp	\
+					Point.cpp	\
+					bsp.cpp
 
 OBJS 		=		$(patsubst %.cpp,%.o,$(SRCS))
 

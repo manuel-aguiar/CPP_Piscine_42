@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:54:54 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 13:04:24 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/28 13:08:26 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ Fixed::Fixed( const float f ) : raw_bits(roundf(f * (1 << frac_bits)))
 {
     std::cout << "Float constructor called" << std::endl;
 }
-
-
 
 //destructors
 
