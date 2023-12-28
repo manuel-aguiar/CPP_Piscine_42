@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:53:05 by codespace         #+#    #+#              #
-#    Updated: 2023/12/28 15:25:50 by codespace        ###   ########.fr        #
+#    Updated: 2023/12/28 15:33:54 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,11 @@ OBJ_PATH	=		objs
 
 
 ## ALL FILES
-SRC_FILES		=		main.cpp	\
-						Fixed.cpp	\
+SRC_FILES		=		main.cpp				\
+						Fixed.cpp				\
+						Fixed_functions.cpp		\
+						Fixed_op_overload.cpp	\
+
 
 ## PREP
 SRCS		:=		$(addprefix $(SRC_PATH)/,$(SRC_FILES)) \
