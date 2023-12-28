@@ -1,14 +1,31 @@
-/******************************************************************************
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/28 12:09:33 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/28 12:36:27 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-Welcome to GDB Online.
-GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
-C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
-Code, Compile, Run and Debug online from anywhere in world.
-
-*******************************************************************************/
 #include <iostream>
 #include "Fixed.hpp"
 
+int main(void)
+{
+	Fixed a (0);
+	Fixed b (10.1f);
+
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << --a << std::endl;
+
+	return (0);
+}
+
+/*
 int main(void) {
   Fixed a;
   Fixed const b(10);
@@ -28,3 +45,4 @@ int main(void) {
 
   return 0;
 }
+*/

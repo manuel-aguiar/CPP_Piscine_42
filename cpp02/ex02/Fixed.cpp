@@ -1,4 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/28 11:54:54 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/28 12:47:01 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Fixed.hpp"
+
+//constructors
 
 Fixed::Fixed( void ) : raw_bits(0)
 {
@@ -17,10 +31,16 @@ Fixed::Fixed( const float f ) : raw_bits(roundf(f * (1 << frac_bits)))
     std::cout << "Float constructor called" << std::endl;
 }
 
+
+
+//destructors
+
 Fixed::~Fixed( void )
 {
     std::cout << "Destructor called" << std::endl;
 }
+
+// copy constructor
 
 Fixed::Fixed(const Fixed& copy) : raw_bits(copy.raw_bits)
 {
@@ -31,6 +51,8 @@ Fixed::Fixed(const Fixed& copy) : raw_bits(copy.raw_bits)
         return ;
     }
 }
+
+//copy assignment constructor
 
 Fixed& Fixed::operator= (const Fixed& assign)
 {
@@ -43,6 +65,8 @@ Fixed& Fixed::operator= (const Fixed& assign)
     raw_bits = assign.raw_bits;
     return (*this);
 }
+
+// generic member functions
 
 float   Fixed::toFloat( void ) const
 {
@@ -67,8 +91,108 @@ void     Fixed::setRawBits( int const raw )
 
 }
 
+// non-member function overload
+
 std::ostream& operator<<(std::ostream& out, const Fixed& num)
 {
 	out << num.toFloat();
 	return (out);
+}
+
+// member operator overloads (comparisons)
+
+bool	Fixed::operator> (const Fixed& other) const
+{
+	return (raw_bits > other.raw_bits);
+}
+
+bool	Fixed::operator< (const Fixed& other) const
+{
+	return (raw_bits < other.raw_bits);
+}
+
+bool	Fixed::operator>= (const Fixed& other) const
+{
+	return (raw_bits >= other.raw_bits);
+}
+
+bool	Fixed::operator<= (const Fixed& other) const
+{
+	return (raw_bits <= other.raw_bits);
+}
+
+bool	Fixed::operator== (const Fixed& other) const
+{
+	return (raw_bits == other.raw_bits);
+}
+
+bool	Fixed::operator!= (const Fixed& other) const
+{
+	return (raw_bits != other.raw_bits);
+}
+
+// member operator overloads (arithmatic operations)
+
+Fixed	Fixed::operator+ (const Fixed& other) const
+{
+	Fixed sum (this->toFloat() + other.toFloat());
+	return (sum);
+}
+
+Fixed	Fixed::operator- (const Fixed& other) const
+{
+	Fixed sum (this->toFloat() - other.toFloat());
+	return (sum);
+}
+
+Fixed	Fixed::operator* (const Fixed& other) const
+{
+	Fixed sum (this->toFloat() * other.toFloat());
+	return (sum);
+}
+
+Fixed	Fixed::operator/ (const Fixed& other) const
+{
+	Fixed sum (0);
+	if (other.raw_bits == 0)
+		return (sum);
+	sum = this->toFloat() / other.toFloat();
+	return (sum);
+}
+
+// increment operator overloads (increment/decrement)
+
+Fixed&	Fixed::operator++(void)
+{
+	++raw_bits;
+	return (*this);
+}
+
+Fixed&	Fixed::operator--(void)
+{
+	--raw_bits;
+	return (*this);
+}
+
+
+//public static member functions
+
+Fixed&	Fixed::min(Fixed& first, Fixed& second)
+{
+	return (first > second ? second : first);
+}
+
+const Fixed&	Fixed::min(const Fixed& first, const Fixed& second)
+{
+	return (first > second ? second : first);
+}
+
+Fixed&	Fixed::max(Fixed& first, Fixed& second)
+{
+	return (first < second ? second : first);
+}
+
+const Fixed&	Fixed::max(const Fixed& first, const Fixed& second)
+{
+	return (first < second ? second : first);
 }

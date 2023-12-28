@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:17:51 by codespace         #+#    #+#              #
-#    Updated: 2023/12/28 11:05:21 by codespace        ###   ########.fr        #
+#    Updated: 2023/12/28 12:11:01 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ FLAGS		=		-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 ## ALL FILES
 
 SRCS		=		main.cpp	\
-					Fixed.cpp
+					Fixed.cpp	\
 
 OBJS 		=		$(patsubst %.cpp,%.o,$(SRCS))
 
@@ -47,4 +47,7 @@ re: fclean all
 git: fclean
 	@git add . && git commit -m "commiting" && git push
 
-.PHONY: clean fclean re git
+run: re
+	@./$(NAME)
+
+.PHONY: clean fclean re git run

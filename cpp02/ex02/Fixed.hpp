@@ -42,12 +42,40 @@ class Fixed
         Fixed( const Fixed& copy );
         Fixed&  operator= ( const Fixed& assign );
 
-		// friend std::ostream& operator<<(std::ostream& out, const Fixed& num);
-
         int                 getRawBits( void ) const;
         void                setRawBits( int const raw);
         float               toFloat( void ) const;
         int                 toInt( void ) const;
+
+		// comparison operator overloads
+		bool	operator> (const Fixed& other);
+		bool	operator< (const Fixed& other);
+		bool	operator>= (const Fixed& other);
+		bool	operator<= (const Fixed& other);
+		bool	operator== (const Fixed& other);
+		bool	operator!= (const Fixed& other);
+
+		// arithmatic operator overloads
+
+		Fixed	operator+ (const Fixed& other);
+		Fixed	operator- (const Fixed& other);
+		Fixed	operator* (const Fixed& other);
+		Fixed	operator/ (const Fixed& other);
+
+
+		// increment operator overloads
+
+		Fixed&	operator++(void);
+
+
+		Fixed&	operator--(void);
+
+		// public member functions
+
+		static	Fixed&	min(Fixed& first, Fixed& second);
+		static	const Fixed&	min(const Fixed& first, const Fixed& second);
+		static	Fixed&	max(Fixed& first, Fixed& second);
+		static	const Fixed&	max(const Fixed& first, const Fixed& second);
 
     private:
         int                 raw_bits;
