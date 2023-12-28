@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/28 16:36:09 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/28 16:36:09 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CLAPTRAP_HPP
 
 #define CLAPTRAP_HPP
@@ -18,10 +30,12 @@ class ClapTrap
 	 ~ClapTrap();
 	 ClapTrap(const ClapTrap& copy);
 	 ClapTrap& operator= (const ClapTrap& assign);
+
 	 void    attack(const std::string& target);
 	 void    takeDamage(unsigned int amount);
 	 void    beRepaired(unsigned int amount);
 	 void    my_stats( void );
+
     protected:
 	 std::string name;
 	 unsigned int hitpoints;

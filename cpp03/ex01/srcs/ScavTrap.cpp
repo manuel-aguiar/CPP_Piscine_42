@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/28 16:36:46 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/28 16:37:09 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap() : ClapTrap()
@@ -26,10 +38,10 @@ ScavTrap::ScavTrap(const ScavTrap& copy) : ClapTrap(copy)
     std::cout << "ScavTrap Copy constructor called" << std::endl;
     if (this == &copy)
 	 return ;
-    this->name = copy.name;
-    this->hitpoints = copy.hitpoints;
-    this->energypoints = copy.energypoints;
-    this->attackdamage = copy.attackdamage;
+    name = copy.name;
+    hitpoints = copy.hitpoints;
+    energypoints = copy.energypoints;
+    attackdamage = copy.attackdamage;
 }
 
 ScavTrap& ScavTrap::operator= (const ScavTrap& assign)
@@ -37,10 +49,10 @@ ScavTrap& ScavTrap::operator= (const ScavTrap& assign)
     std::cout << "ScavTrap assignment operator called" << std::endl;
     if (this == &assign)
 	 return (*this);
-    this->name = assign.name;
-    this->hitpoints = assign.hitpoints;
-    this->energypoints = assign.energypoints;
-    this->attackdamage = assign.attackdamage;
+    name = assign.name;
+    hitpoints = assign.hitpoints;
+    energypoints = assign.energypoints;
+    attackdamage = assign.attackdamage;
     return (*this);
 }
 

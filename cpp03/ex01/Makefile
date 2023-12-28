@@ -1,13 +1,13 @@
 # **************************************************************************** #
-#											 #
-#								 :::      ::::::::    #
-#    Makefile						 :+:      :+:    :+:    #
-#							    +:+ +:+	  +:+      #
-#    By: codespace <codespace@student.42.fr>	 +#+  +:+	+#+	  #
-#							+#+#+#+#+#+   +#+	     #
-#    Created: 2023/12/27 11:53:05 by codespace	  #+#    #+#		#
-#    Updated: 2023/12/28 15:40:03 by codespace	 ###   ########.fr	 #
-#											 #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/12/28 16:36:42 by codespace         #+#    #+#              #
+#    Updated: 2023/12/28 16:36:43 by codespace        ###   ########.fr        #
+#                                                                              #
 # **************************************************************************** #
 
 NAME 		=		scavtrap
@@ -23,8 +23,9 @@ OBJ_PATH	=		objs
 
 
 ## ALL FILES
-SRC_FILES		=		main.cpp		\
-						ClapTrap.cpp	\
+SRC_FILES		=		main.cpp					\
+						ClapTrap.cpp				\
+						ClapTrap_functions.cpp		\
 						ScavTrap.cpp
 
 ## PREP
