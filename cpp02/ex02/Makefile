@@ -6,12 +6,12 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:17:51 by codespace         #+#    #+#              #
-#    Updated: 2023/12/28 12:11:01 by codespace        ###   ########.fr        #
+#    Updated: 2023/12/28 13:06:41 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ##	Program Name
-NAME 		=		fixed_point_ex01
+NAME 		=		fixed_point_ex02
 
 ##	Compiler and flags
 COMP		=		c++
