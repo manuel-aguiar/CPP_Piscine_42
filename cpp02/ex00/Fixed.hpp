@@ -34,7 +34,7 @@ class Fixed
 
     private:
         int                 raw_bits;
-        static const int    fraction_bits = FRAC_BITS;
+        static const int    frac_bits = FRAC_BITS;
 
 };
 
