@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:53:05 by codespace         #+#    #+#              #
-#    Updated: 2023/12/28 14:58:53 by codespace        ###   ########.fr        #
+#    Updated: 2023/12/28 15:06:11 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,11 @@ OBJ_PATH	=		objs
 
 ## ALL FILES
 SRC_FILES	=		PhoneBook.cpp			\
+					PhoneBook_run.cpp		\
+					PhoneBook_functions.cpp	\
 					Contact.cpp				\
+					Contact_getset.cpp		\
+					Contact_print.cpp		\
 					main.cpp
 
 ## PREP
