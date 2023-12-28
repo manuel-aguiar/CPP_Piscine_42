@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 13:43:29 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/27 14:16:14 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/28 15:11:37 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int		Account::_nbAccounts = 0;
 int		Account::_totalAmount = 0;
 int		Account::_totalNbDeposits = 0;
 int		Account::_totalNbWithdrawals = 0;
-
 
 Account::Account(int initial_deposit)
 {
