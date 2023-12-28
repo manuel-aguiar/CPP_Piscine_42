@@ -1,21 +1,20 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed( void )
+Fixed::Fixed( void ) : raw_bits(0)
 {
     std::cout << "Default constructor called" << std::endl;
-    this->raw = 0;
 }
 
-Fixed::Fixed( const int i )
+Fixed::Fixed( const int i ) : raw_bits(i << frac_bits)
 {
     std::cout << "Int constructor called" << std::endl;
-    this->raw = i << 8;
+	if (i > FIXED_INT_MAX || i < FIXED_INT_MIN)
+		std::cout << "warning: int is outside fixed point accuracy range" << std::endl;
 }
 
-Fixed::Fixed( const float f )
+Fixed::Fixed( const float f ) : raw_bits(roundf(f * (1 << frac_bits)))
 {
     std::cout << "Float constructor called" << std::endl;
-    this->raw = 0;
 }
 
 Fixed::~Fixed( void )
@@ -23,7 +22,7 @@ Fixed::~Fixed( void )
     std::cout << "Destructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed& copy)
+Fixed::Fixed(const Fixed& copy) : raw_bits(copy.raw_bits)
 {
     std::cout << "Copy constructor called" << std::endl;
     if (this == &copy)
@@ -31,9 +30,6 @@ Fixed::Fixed(const Fixed& copy)
         std::cout << "Copy constructor: this == copy" << std::endl;
         return ;
     }
-        
-    this->raw = copy.getRawBits();
-    
 }
 
 Fixed& Fixed::operator= (const Fixed& assign)
@@ -44,42 +40,35 @@ Fixed& Fixed::operator= (const Fixed& assign)
         std::cout << "Copy assignment: this == copy" << std::endl;
         return (*this);
     }
-        
-    this->raw = assign.getRawBits();
+    raw_bits = assign.raw_bits;
     return (*this);
 }
 
-std::ostream&   Fixed::operator<< ( std::ostream& out )
+float   Fixed::toFloat( void ) const
 {
-    float   f;
-    
-    f = 123.0f;
-    
-    out << f;
-    
-    return (out);
+    return ((float)raw_bits / (1 << frac_bits));
 }
 
-float   Fixed::toFloat( void )
+int     Fixed::toInt( void ) const
 {
-    float f = 123.0f;
-    return (f);
-}
-
-int     Fixed::toInt( void )
-{
-    return (this->raw >> 8);
+    return (raw_bits >> frac_bits);
 }
 
 int     Fixed::getRawBits( void ) const
 {
     std::cout << "getRawBits function called" << std::endl;
-    return (this->raw);
+    return (this->raw_bits);
 }
 
 void     Fixed::setRawBits( int const raw )
 {
     std::cout << "setRawBits function called" << std::endl;
-    this->raw = raw;
-    
+    this->raw_bits = raw;
+
+}
+
+std::ostream& operator<<(std::ostream& out, const Fixed& num)
+{
+	out << num.toFloat();
+	return (out);
 }
