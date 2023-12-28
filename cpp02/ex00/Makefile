@@ -6,12 +6,12 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:17:51 by codespace         #+#    #+#              #
-#    Updated: 2023/12/27 17:24:07 by codespace        ###   ########.fr        #
+#    Updated: 2023/12/28 09:37:24 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ##	Program Name
-NAME 		=		violence
+NAME 		=		fixedpoint00
 
 ##	Compiler and flags
 COMP		=		c++
