@@ -11,7 +11,7 @@ Code, Compile, Run and Debug online from anywhere in world.
 # include "Weapon.hpp"
 # include <iostream>
 
-/*
+
 int main()
 {
     {
@@ -31,9 +31,9 @@ int main()
     }
     return 0;
 }
-*/
 
 
+/*
 int main()
 {
 
@@ -41,3 +41,4 @@ int main()
 
     return 0;
 }
+*/
