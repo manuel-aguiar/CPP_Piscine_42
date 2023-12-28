@@ -5,47 +5,59 @@
 #                                                     +:+ +:+         +:+      #
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/27 11:17:51 by codespace         #+#    #+#              #
-#    Updated: 2023/12/27 14:07:03 by codespace        ###   ########.fr        #
+#    Created: 2023/12/27 11:53:05 by codespace         #+#    #+#              #
+#    Updated: 2023/12/28 15:07:40 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-##	Program Name
 NAME 		=		accounts
 
 ##	Compiler and flags
 COMP		=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 
-## ALL FILES
+## FOLDERS
+INC_PATH	=		incs
+SRC_PATH	=		srcs
+OBJ_PATH	=		objs
 
-SRCS		=		Account.cpp		\
+
+## ALL FILES
+SRC_FILES	=		Account.cpp		\
 					tests.cpp
 
-OBJS 		=		$(patsubst %.cpp,%.o,$(SRCS))
+## PREP
+SRCS		:=		$(addprefix $(SRC_PATH)/,$(SRC_FILES)) \
 
-INC_PATH	= ./
-INCS 		= -I$(INC_PATH)
+OBJS 		=		$(patsubst $(SRC_PATH)/%.cpp,$(OBJ_PATH)/%.o,$(SRCS))
 
-## RECIPES
+INCS		= 		-I$(INC_PATH)
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(COMP) $(FLAGS) $(OBJS) $(INCS) -o $(NAME)
-	@echo Program $(NAME) ready!!
 
-$(OBJS): %.o: %.cpp
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp
+	@mkdir -p $(dir $@)
 	@$(COMP) $(FLAGS) $(INCS) -c $< -o $@
 
 clean:
-	@rm -f $(OBJS)
+	@if [ -d "$(OBJ_PATH)" ]; then \
+        rm -rf $(OBJ_PATH); \
+    fi
 
 fclean: clean
-	@rm -f $(NAME)
+	@if [ -e "$(NAME)" ]; then \
+        rm $(NAME); \
+    fi
 
 re: fclean all
 
 git: fclean
 	@git add . && git commit -m "commiting" && git push
 
-.PHONY: clean fclean re git
+run: re
+	@./$(NAME)
+
+.PHONY: clean fclean re git run
