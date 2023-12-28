@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:51 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 17:07:45 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/28 17:19:32 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int main()
 {
-    ScavTrap potato;
+    ClapTrap* potato = new ScavTrap();
 
 
 
-	potato.my_stats();
+	potato->my_stats();
 
-	potato.attack("tretas");
+	potato->attack("tretas");
 
 	/*
     potato.attack("antonio");
@@ -41,6 +41,8 @@ int main()
     cenas = potato;
     cenas.my_stats();
 	*/
+
+	delete potato;
 
     return 0;
 }
