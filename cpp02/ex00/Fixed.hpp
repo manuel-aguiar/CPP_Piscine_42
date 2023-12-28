@@ -11,14 +11,14 @@ class Fixed
         ~Fixed();
         Fixed(const Fixed& copy);
         Fixed&  operator= (const Fixed& assign);
-        
+
         int     getRawBits( void ) const;
-        void    setRawBits( int const raw);
-    
+        void    setRawBits( int const set_raw);
+
     private:
         int                 raw;
         static const int    frac = 8;
-        
+
 };
 
 
