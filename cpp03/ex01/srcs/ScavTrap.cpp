@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:46 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 16:57:28 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/28 17:13:17 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 ScavTrap::ScavTrap() : ClapTrap()
 {
     std::cout << "ScavTrap Unnamed Constructor called" << std::endl;
-    //hitpoints = SCAV_START_HP;
-    //energypoints = SCAV_START_EP;
-    //attackdamage = SCAV_START_ATTACK;
+	name = SCAV_START_NAME;
+    hitpoints = SCAV_START_HP;
+    energypoints = SCAV_START_EP;
+    attackdamage = SCAV_START_ATTACK;
 }
 
 ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name)
@@ -63,3 +64,21 @@ void    ScavTrap::guardGate()
     std::cout << "ScavTrap " << this->name << " is in Gate Keeper mode." << std::endl;
 }
 
+void	ScavTrap::attack(const std::string& target)
+{
+	std::cout << "ScavTrap " << this->name << " wants to attack " << target << ", checking energy..." << std::endl;
+	if (this->hitpoints <= 0)
+	{
+		std::cout << "ScavTrap "  << this->name << " is dead, can't attack" << std::endl;
+		return ;
+	}
+	if (this->energypoints == 0)
+	{
+		std::cout << "ScavTrap "  << this->name << " has no energy left, attack failed" << std::endl;
+	}
+	else
+	{
+		this->energypoints--;
+		std::cout << "ScavTrap "  << this->name << " attacks " << target << ", causing " << this->attackdamage << " points of damage!" << std::endl;
+	}
+}

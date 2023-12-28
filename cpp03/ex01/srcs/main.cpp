@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:51 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 16:53:06 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/28 17:07:45 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int main()
 
 
 	potato.my_stats();
+
+	potato.attack("tretas");
 
 	/*
     potato.attack("antonio");
