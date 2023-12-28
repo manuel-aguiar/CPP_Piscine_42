@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/27 11:53:05 by codespace         #+#    #+#              #
-#    Updated: 2023/12/28 15:27:09 by codespace        ###   ########.fr        #
+#    Updated: 2023/12/28 15:35:15 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,9 @@ OBJ_PATH	=		objs
 ## ALL FILES
 SRC_FILES		=		main.cpp		\
 						bsp.cpp			\
-						Fixed.cpp		\
+						Fixed.cpp				\
+						Fixed_functions.cpp		\
+						Fixed_op_overload.cpp	\
 						Point.cpp
 
 ## PREP
