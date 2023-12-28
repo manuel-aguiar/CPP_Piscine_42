@@ -5,48 +5,61 @@
 #                                                     +:+ +:+         +:+      #
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/27 11:17:51 by codespace         #+#    #+#              #
-#    Updated: 2023/12/27 15:50:33 by codespace        ###   ########.fr        #
+#    Created: 2023/12/27 11:53:05 by codespace         #+#    #+#              #
+#    Updated: 2023/12/28 15:18:42 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-##	Program Name
 NAME 		=		zombiehorde
 
 ##	Compiler and flags
 COMP		=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
 
+## FOLDERS
+INC_PATH	=		incs
+SRC_PATH	=		srcs
+OBJ_PATH	=		objs
+
+
 ## ALL FILES
+SRC_FILES		=		main.cpp		\
+						Zombie.cpp		\
+						zombieHorde.cpp
 
-SRCS		=		main.cpp		\
-					Zombie.cpp		\
-					zombieHorde.cpp
+## PREP
+SRCS		:=		$(addprefix $(SRC_PATH)/,$(SRC_FILES)) \
 
+OBJS 		=		$(patsubst $(SRC_PATH)/%.cpp,$(OBJ_PATH)/%.o,$(SRCS))
 
-OBJS 		=		$(patsubst %.cpp,%.o,$(SRCS))
+INCS		= 		-I$(INC_PATH)
 
-INCS		=		-I./
-
-## RECIPES
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(COMP) $(FLAGS) $(OBJS) $(INCS) -o $(NAME)
 	@echo Program $(NAME) ready!!
 
-$(OBJS): %.o: %.cpp
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp
+	@mkdir -p $(dir $@)
 	@$(COMP) $(FLAGS) $(INCS) -c $< -o $@
 
 clean:
-	@rm -f $(OBJS)
+	@if [ -d "$(OBJ_PATH)" ]; then \
+        rm -rf $(OBJ_PATH); \
+    fi
 
 fclean: clean
-	@rm -f $(NAME)
+	@if [ -e "$(NAME)" ]; then \
+        rm $(NAME); \
+    fi
 
 re: fclean all
 
 git: fclean
 	@git add . && git commit -m "commiting" && git push
 
-.PHONY: clean fclean re git
+run: re
+	@./$(NAME)
+
+.PHONY: clean fclean re git run
