@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/28 16:00:39 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/28 16:00:39 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "HumanA.hpp"
 
 HumanA::HumanA(const std::string &name, Weapon& weapon) : name(name), weapon(weapon)
@@ -13,13 +25,13 @@ HumanA::~HumanA()
 HumanA::HumanA(const HumanA &copy) : name(copy.name), weapon(copy.weapon)
 {
     if (this == &copy)
-        return ;
+	 return ;
 }
 
 HumanA& HumanA::operator=(const HumanA &assign)
 {
     if (this == &assign)
-        return (*this);
+	 return (*this);
     this->name = assign.name;
     this->weapon = assign.weapon;
     return (*this);

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/27 11:12:38 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/27 11:43:19 by codespace        ###   ########.fr       */
+/*   Created: 2023/12/28 15:50:08 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/28 15:50:11 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void capitalize_str(std::string& str)
 
     len = str.size();
     for (i = 0; i < len; i++)
-        str[i] = std::toupper(str[i]);
+	 str[i] = std::toupper(str[i]);
 }
 
 int main(int ac, char **av)
@@ -30,9 +30,9 @@ int main(int ac, char **av)
 
     for (int i = 1; i < ac; i++)
     {
-        loud = av[i];
-        capitalize_str(loud);
-        std::cout << loud;
+	 loud = av[i];
+	 capitalize_str(loud);
+	 std::cout << loud;
     }
 	if (ac == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";

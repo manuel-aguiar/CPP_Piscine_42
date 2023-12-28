@@ -1,50 +1,16 @@
-#include "ClapTrap.hpp"
+/* ************************************************************************** */
+/*										      */
+/*								:::      ::::::::   */
+/*   ClapTrap_functions.cpp				 :+:      :+:    :+:   */
+/*							   +:+ +:+	  +:+     */
+/*   By: codespace <codespace@student.42.fr>	 +#+  +:+	+#+	 */
+/*						      +#+#+#+#+#+   +#+	    */
+/*   Created: 2023/12/28 15:46:43 by codespace	  #+#    #+#	      */
+/*   Updated: 2023/12/28 15:47:08 by codespace	 ###   ########.fr	*/
+/*										      */
+/* ************************************************************************** */
 
-ClapTrap::ClapTrap()
-{
-    std::cout << "Unnamed ClapTrap Constructor called" << std::endl;
-    this->name = CLAP_START_NAME;
-    this->hitpoints = CLAP_START_HP;
-    this->energypoints = CLAP_START_EP;
-    this->attackdamage = CLAP_START_ATTACK;
-}
-
-ClapTrap::ClapTrap(const std::string& name) : name(name)
-{
-    std::cout << "Named ClapTrap - " << name << " - Constructor called" << std::endl;
-    this->hitpoints = CLAP_START_HP;
-    this->energypoints = CLAP_START_EP;
-    this->attackdamage = CLAP_START_ATTACK;
-}
-
-ClapTrap::~ClapTrap()
-{
-    std::cout << "ClapTrap Destructor called" << std::endl;
-}
-
-ClapTrap::ClapTrap(const ClapTrap& copy)
-{
-    std::cout << "ClapTrap copy constructor called" << std::endl;
-    if (this == &copy)
-	 return ;
-    this->name = copy.name;
-    this->hitpoints = copy.hitpoints;
-    this->energypoints = copy.energypoints;
-    this->attackdamage = copy.attackdamage;
-}
-
-ClapTrap& ClapTrap::operator= (const ClapTrap& assign)
-{
-    std::cout << "ClapTrap assignment operator called" << std::endl;
-    if (this == &assign)
-	 return (*this);
-    this->name = assign.name;
-    this->hitpoints = assign.hitpoints;
-    this->energypoints = assign.energypoints;
-    this->attackdamage = assign.attackdamage;
-    return (*this);
-}
-
+#include "../incs/ClapTrap.hpp"
 
 void    ClapTrap::attack(const std::string& target)
 {

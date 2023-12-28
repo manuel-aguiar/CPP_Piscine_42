@@ -13,20 +13,20 @@
 class ClapTrap
 {
     public:
-        ClapTrap();
-        ClapTrap(const std::string& name);
-        ~ClapTrap();
-        ClapTrap(const ClapTrap& copy);
-        ClapTrap& operator= (const ClapTrap& assign);
-        void    attack(const std::string& target);
-        void    takeDamage(unsigned int amount);
-        void    beRepaired(unsigned int amount);
-        void    my_stats( void );
+	 ClapTrap();
+	 ClapTrap(const std::string& name);
+	 ~ClapTrap();
+	 ClapTrap(const ClapTrap& copy);
+	 ClapTrap& operator= (const ClapTrap& assign);
+	 void    attack(const std::string& target);
+	 void    takeDamage(unsigned int amount);
+	 void    beRepaired(unsigned int amount);
+	 void    my_stats( void );
     protected:
-        std::string name;
-        unsigned int hitpoints;
-        unsigned int energypoints;
-        unsigned int attackdamage;
+	 std::string name;
+	 unsigned int hitpoints;
+	 unsigned int energypoints;
+	 unsigned int attackdamage;
 };
 
 

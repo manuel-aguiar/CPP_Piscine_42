@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/28 15:58:05 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/28 15:58:05 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FIXED_HPP
 
 # define FIXED_HPP
@@ -33,19 +45,19 @@ Therefore fixed_point FIXED_INT_MAX = INT_MAX >> 8
 class Fixed
 {
     public:
-        Fixed();
-        Fixed( const int i );
-        Fixed( const float f );
+	 Fixed();
+	 Fixed( const int i );
+	 Fixed( const float f );
 
-        ~Fixed();
+	 ~Fixed();
 
-        Fixed( const Fixed& copy );
-        Fixed&  operator= ( const Fixed& assign );
+	 Fixed( const Fixed& copy );
+	 Fixed&  operator= ( const Fixed& assign );
 
-        int                 getRawBits( void ) const;
-        void                setRawBits( int const raw);
-        float               toFloat( void ) const;
-        int                 toInt( void ) const;
+	 int		   getRawBits( void ) const;
+	 void		  setRawBits( int const raw);
+	 float		 toFloat( void ) const;
+	 int		   toInt( void ) const;
 
 		// comparison operator overloads
 		bool	operator> (const Fixed& other) const;
@@ -79,8 +91,8 @@ class Fixed
 		static	const Fixed&	max(const Fixed& first, const Fixed& second);
 
     private:
-        int                 raw_bits;
-        static const int    frac_bits = FRAC_BITS;
+	 int		   raw_bits;
+	 static const int    frac_bits = FRAC_BITS;
 
 };
 

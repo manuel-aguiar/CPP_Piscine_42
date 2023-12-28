@@ -25,7 +25,7 @@ ScavTrap::ScavTrap(const ScavTrap& copy) : ClapTrap(copy)
 {
     std::cout << "ScavTrap Copy constructor called" << std::endl;
     if (this == &copy)
-        return ;
+	 return ;
     this->name = copy.name;
     this->hitpoints = copy.hitpoints;
     this->energypoints = copy.energypoints;
@@ -36,7 +36,7 @@ ScavTrap& ScavTrap::operator= (const ScavTrap& assign)
 {
     std::cout << "ScavTrap assignment operator called" << std::endl;
     if (this == &assign)
-        return (*this);
+	 return (*this);
     this->name = assign.name;
     this->hitpoints = assign.hitpoints;
     this->energypoints = assign.energypoints;

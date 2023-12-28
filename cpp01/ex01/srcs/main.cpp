@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/27 15:51:57 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/27 15:55:38 by codespace        ###   ########.fr       */
+/*   Created: 2023/12/28 16:01:38 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/28 16:01:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int main()
 
     horde = zombieHorde(total, "brah");
     if (!horde)
-        return (1);
+	 return (1);
     for (int i = 0; i < total; i++)
-        horde[i].announce();
+	 horde[i].announce();
 
     delete[] horde;
     return (0);

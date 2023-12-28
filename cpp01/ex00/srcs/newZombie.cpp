@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/27 15:14:13 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/27 15:14:14 by codespace        ###   ########.fr       */
+/*   Created: 2023/12/28 16:02:08 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/28 16:02:09 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Zombie *newZombie (std::string name)
 
     z = new (std::nothrow) Zombie;
     if (!z)
-        return (NULL);
+	 return (NULL);
     z->set_namezzz(name);
     return (z);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 13:13:06 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 14:38:17 by codespace        ###   ########.fr       */
+/*   Created: 2023/12/28 15:57:12 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/28 15:57:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ Point::Point(const Point& copy) : x(copy.x) , y(copy.y)
     std::cout << "Point Copy constructor called" << std::endl;
     if (this == &copy)
     {
-        std::cout << "Point Copy constructor: this == copy" << std::endl;
-        return ;
+	 std::cout << "Point Copy constructor: this == copy" << std::endl;
+	 return ;
     }
 }
 
@@ -43,8 +43,8 @@ Point& Point::operator= (const Point& assign)
     std::cout << "Point Copy assignment operator called" << std::endl;
     if (this == &assign)
     {
-        std::cout << "Point Copy assignment: this == copy" << std::endl;
-        return (*this);
+	 std::cout << "Point Copy assignment: this == copy" << std::endl;
+	 return (*this);
     }
     x = assign.x;
 	y = assign.y;

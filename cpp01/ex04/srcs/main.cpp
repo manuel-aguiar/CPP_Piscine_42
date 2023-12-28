@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/28 16:00:26 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/28 16:00:26 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -7,8 +19,8 @@ int main(int ac, char **av)
 {
     if (ac != 4)
     {
-        std::cout << "Bad number of inputs" << std::endl;
-        return (0);
+	 std::cout << "Bad number of inputs" << std::endl;
+	 return (0);
     }
 
     //necessary variables
@@ -28,14 +40,14 @@ int main(int ac, char **av)
 
     if (!infile.is_open())
     {
-        std::cerr << "Error: infile open failed" << std::endl;
-        return (1);
+	 std::cerr << "Error: infile open failed" << std::endl;
+	 return (1);
     }
     if (!outfile.is_open())
     {
-        std::cerr << "Error: outfile open failed" << std::endl;
-        infile.close();
-        return (1);
+	 std::cerr << "Error: outfile open failed" << std::endl;
+	 infile.close();
+	 return (1);
     }
 
     // main block
@@ -44,46 +56,46 @@ int main(int ac, char **av)
     index = 0;
     while (std::getline(infile, temp))
     {
-        if (!infile.eof())
-            temp += "\n";
+	 if (!infile.eof())
+	     temp += "\n";
 
 		// merge the leftovers of the buffer with what was read now
-        buffer = buffer.substr(start) + temp;
-        start = 0;
-        index = 0;
-        while (1)
-        {
-            // moved past the buffer, ask for more characters from std::getline
-            if (start >= buffer.size())
-                break ;
+	 buffer = buffer.substr(start) + temp;
+	 start = 0;
+	 index = 0;
+	 while (1)
+	 {
+	     // moved past the buffer, ask for more characters from std::getline
+	     if (start >= buffer.size())
+		  break ;
 
-            // find str_search in the buffer
-            index = buffer.find(str_search, start);
-            if (index != std::string::npos)
-            {
-                outfile << buffer.substr(start, index - start);
-                outfile << str_replace;
-                start += (index - start + len);
-            }
+	     // find str_search in the buffer
+	     index = buffer.find(str_search, start);
+	     if (index != std::string::npos)
+	     {
+		  outfile << buffer.substr(start, index - start);
+		  outfile << str_replace;
+		  start += (index - start + len);
+	     }
 
-            //str_search wasn't found, but "\n" may be a part of the substring
-            //dump all except len of str_search to guarantee you don't cut a
-            //potential candidate in half
-            else if (start + len < buffer.size())
-            {
-                outfile << buffer.substr(start, buffer.size() - len - start);
-                start = buffer.size() - len;
-                break ;
-            }
-            // buffer is smaller than len str_search, take no risks and ask for more
-            // characters to std::getline
-            else
-                break ;
-        }
+	     //str_search wasn't found, but "\n" may be a part of the substring
+	     //dump all except len of str_search to guarantee you don't cut a
+	     //potential candidate in half
+	     else if (start + len < buffer.size())
+	     {
+		  outfile << buffer.substr(start, buffer.size() - len - start);
+		  start = buffer.size() - len;
+		  break ;
+	     }
+	     // buffer is smaller than len str_search, take no risks and ask for more
+	     // characters to std::getline
+	     else
+		  break ;
+	 }
     }
     // dump whatever is left on the buffer to outfile
     if (start < buffer.size())
-        outfile << buffer.substr(start);
+	 outfile << buffer.substr(start);
 
     //clean up
     infile.close();

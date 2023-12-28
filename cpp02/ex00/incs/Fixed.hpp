@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/28 15:59:20 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/28 15:59:20 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FIXED_HPP
 
 # define FIXED_HPP
@@ -24,17 +36,17 @@ Representing fixed point numbers of type <32, 8>, meaning:
 class Fixed
 {
     public:
-        Fixed();
-        ~Fixed();
-        Fixed(const Fixed& copy);
-        Fixed&  operator= (const Fixed& assign);
+	 Fixed();
+	 ~Fixed();
+	 Fixed(const Fixed& copy);
+	 Fixed&  operator= (const Fixed& assign);
 
-        int     getRawBits( void ) const;
-        void    setRawBits( int const raw);
+	 int     getRawBits( void ) const;
+	 void    setRawBits( int const raw);
 
     private:
-        int                 raw_bits;
-        static const int    frac_bits = FRAC_BITS;
+	 int		   raw_bits;
+	 static const int    frac_bits = FRAC_BITS;
 
 };
 

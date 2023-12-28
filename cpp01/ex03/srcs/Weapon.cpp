@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/28 16:00:44 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/28 16:00:44 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "Weapon.hpp"
 
 Weapon::Weapon(const std::string& type) : type(type)
@@ -19,13 +31,13 @@ Weapon::~Weapon()
 Weapon::Weapon(const Weapon& copy) : type(copy.type)
 {
     if (this == &copy)
-        return ;
+	 return ;
 }
 
 Weapon& Weapon::operator=(const Weapon& assign)
 {
     if (this == &assign)
-        return (*this);
+	 return (*this);
     this->type = assign.type;
     return (*this);
 }

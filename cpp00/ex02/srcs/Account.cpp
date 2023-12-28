@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/27 13:43:29 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 15:11:37 by codespace        ###   ########.fr       */
+/*   Created: 2023/12/28 15:56:12 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/28 15:56:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,8 @@ bool	Account::makeWithdrawal( int withdrawal )
 
     if (withdrawal > this->_amount)
     {
-        std::cout << "refused" << std::endl;
-        return (false);
+	 std::cout << "refused" << std::endl;
+	 return (false);
     }
     std::cout << withdrawal << ";";
     this->_amount -= withdrawal;

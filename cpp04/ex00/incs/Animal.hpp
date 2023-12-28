@@ -7,12 +7,12 @@
 class Animal
 {
     public:
-        Animal();
-        ~Animal();
-        Animal(const Animal& copy);
-        Animal& operator= (const Animal& assign);
+	 Animal();
+	 ~Animal();
+	 Animal(const Animal& copy);
+	 Animal& operator= (const Animal& assign);
     protected:
-        std::string type;
+	 std::string type;
 };
 
 

@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/27 11:53:05 by codespace         #+#    #+#              #
-#    Updated: 2023/12/28 15:24:58 by codespace        ###   ########.fr        #
+#    Created: 2023/12/28 15:59:05 by codespace         #+#    #+#              #
+#    Updated: 2023/12/28 15:59:06 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,12 +45,12 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp
 
 clean:
 	@if [ -d "$(OBJ_PATH)" ]; then \
-        rm -rf $(OBJ_PATH); \
+	 rm -rf $(OBJ_PATH); \
     fi
 
 fclean: clean
 	@if [ -e "$(NAME)" ]; then \
-        rm $(NAME); \
+	 rm $(NAME); \
     fi
 
 re: fclean all
