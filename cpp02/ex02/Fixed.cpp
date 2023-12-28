@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:54:54 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 12:47:01 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/28 13:04:24 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,12 +168,27 @@ Fixed&	Fixed::operator++(void)
 	return (*this);
 }
 
+Fixed	Fixed::operator++(int)
+{
+	Fixed copy (*this);
+
+	++(*this);
+	return (copy);
+}
+
 Fixed&	Fixed::operator--(void)
 {
 	--raw_bits;
 	return (*this);
 }
 
+Fixed	Fixed::operator--(int)
+{
+	Fixed copy (*this);
+
+	--(*this);
+	return (copy);
+}
 
 //public static member functions
 

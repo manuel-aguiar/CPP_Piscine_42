@@ -48,27 +48,28 @@ class Fixed
         int                 toInt( void ) const;
 
 		// comparison operator overloads
-		bool	operator> (const Fixed& other);
-		bool	operator< (const Fixed& other);
-		bool	operator>= (const Fixed& other);
-		bool	operator<= (const Fixed& other);
-		bool	operator== (const Fixed& other);
-		bool	operator!= (const Fixed& other);
+		bool	operator> (const Fixed& other) const;
+		bool	operator< (const Fixed& other) const;
+		bool	operator>= (const Fixed& other) const;
+		bool	operator<= (const Fixed& other) const;
+		bool	operator== (const Fixed& other) const;
+		bool	operator!= (const Fixed& other) const;
 
 		// arithmatic operator overloads
 
-		Fixed	operator+ (const Fixed& other);
-		Fixed	operator- (const Fixed& other);
-		Fixed	operator* (const Fixed& other);
-		Fixed	operator/ (const Fixed& other);
+		Fixed	operator+ (const Fixed& other) const;
+		Fixed	operator- (const Fixed& other) const;
+		Fixed	operator* (const Fixed& other) const;
+		Fixed	operator/ (const Fixed& other) const;
 
 
 		// increment operator overloads
 
 		Fixed&	operator++(void);
-
+		Fixed	operator++(int);
 
 		Fixed&	operator--(void);
+		Fixed	operator--(int);
 
 		// public member functions
 
