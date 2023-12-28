@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:16:55 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 14:21:40 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/28 14:25:47 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ function ptInTriangle(p, p0, p1, p2) {
 
 #include "Point.hpp"
 
-Fixed	triangle_area(const Point& a, const Point& b, const Point& c)
+static Fixed	triangle_area(const Point& a, const Point& b, const Point& c)
 {
 	const Fixed& ax = a.get_x();
 	const Fixed& ay = a.get_y();
