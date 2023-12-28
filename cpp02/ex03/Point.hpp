@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:09:29 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 13:34:27 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/28 13:59:54 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class Point
 		Point(const Point& copy);
 		Point& operator=(const Point& assign);
 
-		Fixed	get_x( void ) const;
-		Fixed	get_y( void ) const;
+		const Fixed&	get_x( void ) const;
+		const Fixed&	get_y( void ) const;
 
 	private:
 		Point(void);

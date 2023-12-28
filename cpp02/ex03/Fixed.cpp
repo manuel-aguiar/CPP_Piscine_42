@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 11:54:54 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 13:08:26 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/28 14:22:18 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,36 +16,36 @@
 
 Fixed::Fixed( void ) : raw_bits(0)
 {
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << "Fixed Default constructor called" << std::endl;
 }
 
 Fixed::Fixed( const int i ) : raw_bits(i << frac_bits)
 {
-    std::cout << "Int constructor called" << std::endl;
+    std::cout << "Fixed Int constructor called" << std::endl;
 	if (i > FIXED_INT_MAX || i < FIXED_INT_MIN)
 		std::cout << "warning: int is outside fixed point accuracy range" << std::endl;
 }
 
 Fixed::Fixed( const float f ) : raw_bits(roundf(f * (1 << frac_bits)))
 {
-    std::cout << "Float constructor called" << std::endl;
+    std::cout << "Fixed Float constructor called" << std::endl;
 }
 
 //destructors
 
 Fixed::~Fixed( void )
 {
-    std::cout << "Destructor called" << std::endl;
+    std::cout << "Fixed Destructor called" << std::endl;
 }
 
 // copy constructor
 
 Fixed::Fixed(const Fixed& copy) : raw_bits(copy.raw_bits)
 {
-    std::cout << "Copy constructor called" << std::endl;
+    std::cout << "Fixed Copy constructor called" << std::endl;
     if (this == &copy)
     {
-        std::cout << "Copy constructor: this == copy" << std::endl;
+        std::cout << "Fixed Copy constructor: this == copy" << std::endl;
         return ;
     }
 }
@@ -54,10 +54,10 @@ Fixed::Fixed(const Fixed& copy) : raw_bits(copy.raw_bits)
 
 Fixed& Fixed::operator= (const Fixed& assign)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
+    std::cout << "Fixed Copy assignment operator called" << std::endl;
     if (this == &assign)
     {
-        std::cout << "Copy assignment: this == copy" << std::endl;
+        std::cout << "Fixed Copy assignment: this == copy" << std::endl;
         return (*this);
     }
     raw_bits = assign.raw_bits;
@@ -208,4 +208,9 @@ Fixed&	Fixed::max(Fixed& first, Fixed& second)
 const Fixed&	Fixed::max(const Fixed& first, const Fixed& second)
 {
 	return (first < second ? second : first);
+}
+
+Fixed	Fixed::abs(const Fixed& target)
+{
+	return (target > 0 ? target : target * (-1));
 }

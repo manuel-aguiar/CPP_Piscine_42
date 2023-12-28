@@ -78,6 +78,8 @@ class Fixed
 		static	Fixed&	max(Fixed& first, Fixed& second);
 		static	const Fixed&	max(const Fixed& first, const Fixed& second);
 
+		static	Fixed	abs(const Fixed& target);
+
     private:
         int                 raw_bits;
         static const int    frac_bits = FRAC_BITS;

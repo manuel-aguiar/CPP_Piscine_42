@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 13:13:06 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 13:34:25 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/28 14:03:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Point::Point(const Fixed& x, const Fixed& y) : x(x) , y(y)
 
 Point::~Point( void )
 {
-    std::cout << "Destructor called" << std::endl;
+    std::cout << "Point Destructor called" << std::endl;
 }
 
 // copy constructor
@@ -40,10 +40,10 @@ Point::Point(const Point& copy) : x(copy.x) , y(copy.y)
 
 Point& Point::operator= (const Point& assign)
 {
-    std::cout << "Copy assignment operator called" << std::endl;
+    std::cout << "Point Copy assignment operator called" << std::endl;
     if (this == &assign)
     {
-        std::cout << "Copy assignment: this == copy" << std::endl;
+        std::cout << "Point Copy assignment: this == copy" << std::endl;
         return (*this);
     }
     x = assign.x;
@@ -51,12 +51,12 @@ Point& Point::operator= (const Point& assign)
     return (*this);
 }
 
-Fixed	Point::get_x( void ) const
+const Fixed&	Point::get_x( void ) const
 {
 	return (x);
 }
 
-Fixed	Point::get_y( void ) const
+const Fixed&	Point::get_y( void ) const
 {
 	return (y);
 }
