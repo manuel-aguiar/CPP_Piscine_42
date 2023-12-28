@@ -1,11 +1,15 @@
-/******************************************************************************
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/28 16:36:30 by codespace         #+#    #+#             */
+/*   Updated: 2023/12/28 16:36:31 by codespace        ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-Welcome to GDB Online.
-  GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby,
-  C#, OCaml, VB, Perl, Swift, Prolog, Javascript, Pascal, COBOL, HTML, CSS, JS
-  Code, Compile, Run and Debug online from anywhere in world.
-
-*******************************************************************************/
 #include "../incs/ClapTrap.hpp"
 
 int main()
