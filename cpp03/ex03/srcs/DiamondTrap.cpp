@@ -15,7 +15,7 @@
 DiamondTrap::DiamondTrap()
 {
     std::cout << "DiamondTrap Unnamed Constructor called" << std::endl;
-	name = DIAM_START_NAME;
+	name = "tretas";
 }
 
 DiamondTrap::~DiamondTrap()

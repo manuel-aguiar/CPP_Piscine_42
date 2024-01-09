@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/09 12:58:16 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/09 13:18:23 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@
 
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
-
-
-#define DIAM_START_NAME "Unnamed"
-#define DIAM_START_HP 100
-#define DIAM_START_EP 50
-#define DIAM_START_ATTACK 20
 
 class DiamondTrap : public ScavTrap, public FragTrap
 {
@@ -33,6 +27,7 @@ class DiamondTrap : public ScavTrap, public FragTrap
 		//DiamondTrap(const DiamondTrap& copy);
 
 		using	ScavTrap::attack;
+		using	ScavTrap::my_stats;
 
 		void	whoAmI();
 
