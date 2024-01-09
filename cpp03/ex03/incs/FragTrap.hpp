@@ -6,13 +6,13 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/09 12:53:27 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/09 13:09:07 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FragTrap_HPP
+#ifndef FRAGTRAP_HPP
 
-#define FragTrap_HPP
+#define FRAGTRAP_HPP
 
 #include "ClapTrap.hpp"
 
@@ -22,7 +22,7 @@
 #define FRAG_START_EP 100
 #define FRAG_START_ATTACK 30
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
 	public:
 		FragTrap();
