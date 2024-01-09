@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:00:54 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 16:00:54 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/09 12:11:26 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@ class Weapon
 {
 
     public:
-	 Weapon (const std::string& type);
-	 Weapon (const Weapon& copy);
-	 ~Weapon ();
-	 Weapon& operator= (const Weapon& assign);
+		Weapon (const std::string& type);
+		Weapon (const Weapon& copy);
+		~Weapon ();
+		Weapon& operator= (const Weapon& assign);
 
-	 const std::string&      getType() const;
-	 void		      setType(const std::string& type);
+		const std::string&	getType() const;
+		void				setType(const std::string& type);
 
     private:
-	 std::string     type;
-		//Weapon();
+		std::string     type;
+		Weapon();
 
 
 };

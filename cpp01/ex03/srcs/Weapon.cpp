@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:00:44 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 16:00:44 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/09 12:12:11 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ Weapon::Weapon(const std::string& type) : type(type)
     this->type = type;
 }
 
-/*
+
 Weapon::Weapon()
 {
 
-}*/
+}
 
 Weapon::~Weapon()
 {
@@ -31,7 +31,7 @@ Weapon::~Weapon()
 Weapon::Weapon(const Weapon& copy) : type(copy.type)
 {
     if (this == &copy)
-	 return ;
+		return ;
 }
 
 Weapon& Weapon::operator=(const Weapon& assign)
