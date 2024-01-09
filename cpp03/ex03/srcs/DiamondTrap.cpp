@@ -36,7 +36,7 @@ DiamondTrap& DiamondTrap::operator= (const DiamondTrap& assign)
 {
     std::cout << "DiamondTrap - " << name << " - copy assignment operator called" << std::endl;
     if (this == &assign)
-	 return (*this);
+		return (*this);
     name = assign.name;
     hitpoints = assign.hitpoints;
     energypoints = assign.energypoints;
