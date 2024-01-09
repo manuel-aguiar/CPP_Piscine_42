@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:46 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/09 12:23:41 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/09 12:24:24 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ FlagTrap& FlagTrap::operator= (const FlagTrap& assign)
 
 void    FlagTrap::highFivesGuys(void)
 {
-    std::cout << "FlagTrap " << this->name << " is in Gate Keeper mode." << std::endl;
+    std::cout << "FlagTrap " << this->name << ": give me a high five!!" << std::endl;
 }
 
 void	FlagTrap::attack(const std::string& target)
