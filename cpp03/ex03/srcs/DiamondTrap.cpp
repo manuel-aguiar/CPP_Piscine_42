@@ -30,6 +30,10 @@ DiamondTrap::DiamondTrap(const DiamondTrap& copy) : ClapTrap(copy), ScavTrap(cop
     std::cout << "DiamondTrap - " << name << " - Copy constructor called" << std::endl;
     if (this == &copy)
 		return ;
+    name = copy.name;
+    hitpoints = copy.hitpoints;
+    energypoints = copy.energypoints;
+    attackdamage = copy.attackdamage;
 }
 
 DiamondTrap& DiamondTrap::operator= (const DiamondTrap& assign)
@@ -53,14 +57,4 @@ DiamondTrap::~DiamondTrap()
 void	DiamondTrap::whoAmI(void)
 {
 	std::cout << "DiamondTrap: i am - " << name << " -  and my clap name is - " << ClapTrap::name << std::endl;
-}
-
-void	DiamondTrap::diamond_stats( void ) const
-{
-	std::cout << std::endl;
-	std::cout << "Stats: " << name << std::endl;
-	std::cout << "   HP: " << hitpoints << std::endl;
-	std::cout << "   EP: " << energypoints << std::endl;
-	std::cout << "   Attack Strength: " << attackdamage << std::endl;
-	std::cout << std::endl;
 }
