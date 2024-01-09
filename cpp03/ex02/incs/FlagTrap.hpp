@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/09 15:02:14 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/09 15:48:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class FragTrap : public ClapTrap
 		~FragTrap();
 		FragTrap(const FragTrap& copy);
 		FragTrap& operator= (const FragTrap& assign);
-		void	attack(const std::string& target);
+
 		void	highFivesGuys(void);
 };
 
