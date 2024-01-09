@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:46 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/09 14:00:08 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/09 15:02:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ScavTrap::ScavTrap() : ClapTrap()
     attackdamage = SCAV_START_ATTACK;
 }
 
-ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name)
+ScavTrap::ScavTrap(const std::string& start_name) : ClapTrap(start_name)
 {
     std::cout << "ScavTrap Named - " << name << " - Constructor called" << std::endl;
     hitpoints = SCAV_START_HP;
