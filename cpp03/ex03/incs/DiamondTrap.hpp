@@ -6,13 +6,34 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/09 15:02:14 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/09 16:04:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DiamondTrap_HPP
 
-#define DiamondTrap_HPP
+/*
+
+This is called the Diamond Inheritance Problem -
+          Base
+         /    \
+ Derived1    Derived2
+         \    /
+         Monster
+
+Monster inherits from two classes that inherit from the same base class
+Problems arise with the ambiguity of inheriting the same variables and functions
+from two different sides.
+
+On Derived1/2 we make them inherit from "virtual" Base
+	So the same variables/functions are not created multiple times
+However, then if the Derived change values differently, we need to know how to assign them
+on "Monster" with the correct values we desire
+
+*/
+
+#ifndef DIAMONDTRAP_HPP
+
+#define DIAMONDTRAP_HPP
 
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
@@ -26,6 +47,8 @@ class DiamondTrap : public ScavTrap, public FragTrap
 		DiamondTrap(const DiamondTrap& copy);
 		DiamondTrap& operator= (const DiamondTrap& assign);
 
+		void    diamond_stats( void ) const;
+
 		using	ScavTrap::attack;
 
 		void	whoAmI();
@@ -33,7 +56,6 @@ class DiamondTrap : public ScavTrap, public FragTrap
 	private:
 		std::string	name;
 };
-
 
 
 
