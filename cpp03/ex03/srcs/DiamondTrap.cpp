@@ -12,13 +12,20 @@
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap()
+DiamondTrap::DiamondTrap() : ClapTrap()
 {
     std::cout << "DiamondTrap Unnamed Constructor called" << std::endl;
 	name = "tretas";
+	hitpoints = ClapTrap::hitpoints;
+}
+
+DiamondTrap::DiamondTrap(const std::string& name) : ClapTrap(name + "_clap_name"), name(name)
+{
+    std::cout << "DiamondTrap Named - " << name << " - Constructor called" << std::endl;
+	hitpoints = ClapTrap::hitpoints;
 }
 
 DiamondTrap::~DiamondTrap()
 {
-    std::cout << "DiamondTrap Destructor called" << std::endl;
+    std::cout << "DiamondTrap - " << name << " - Destructor called" << std::endl;
 }
