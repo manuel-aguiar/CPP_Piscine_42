@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:46 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/09 14:01:42 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/09 15:02:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ FragTrap::FragTrap() : ClapTrap()
     attackdamage = FRAG_START_ATTACK;
 }
 
-FragTrap::FragTrap(const std::string& name) : ClapTrap(name)
+FragTrap::FragTrap(const std::string& start_name) : ClapTrap(start_name)
 {
     std::cout << "FragTrap Named - " << name << " - Constructor called" << std::endl;
     hitpoints = FRAG_START_HP;
