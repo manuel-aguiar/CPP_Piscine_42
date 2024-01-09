@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:24 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 16:36:25 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/09 14:02:54 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ ClapTrap::ClapTrap(const std::string& name) : name(name) , hitpoints(START_HP), 
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap Destructor called" << std::endl;
+	std::cout << "ClapTrap - " << name << " - Destructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& copy)
 {
-	std::cout << "ClapTrap copy constructor called" << std::endl;
+	std::cout << "ClapTrap - " << name << " - copy constructor called" << std::endl;
 	if (this == &copy)
 		return ;
 	name = copy.name;
@@ -40,7 +40,7 @@ ClapTrap::ClapTrap(const ClapTrap& copy)
 
 ClapTrap& ClapTrap::operator= (const ClapTrap& assign)
 {
-	std::cout << "ClapTrap copy assignment called" << std::endl;
+	std::cout << "ClapTrap - " << name << " - copy assignment called" << std::endl;
 	if (this == &assign)
 		return (*this);
 	name = assign.name;
