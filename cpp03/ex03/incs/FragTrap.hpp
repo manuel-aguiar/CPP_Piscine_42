@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/09 13:09:07 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/09 15:02:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class FragTrap : virtual public ClapTrap
 {
 	public:
 		FragTrap();
-		FragTrap(const std::string& name);
+		FragTrap(const std::string& start_name);
 		~FragTrap();
 		FragTrap(const FragTrap& copy);
 		FragTrap& operator= (const FragTrap& assign);

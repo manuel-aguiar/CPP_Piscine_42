@@ -12,20 +12,35 @@
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : ClapTrap()
+DiamondTrap::DiamondTrap() : ScavTrap(), FragTrap()
 {
     std::cout << "DiamondTrap Unnamed Constructor called" << std::endl;
 	name = "tretas";
-	hitpoints = ClapTrap::hitpoints;
+	hitpoints = FragTrap::hitpoints;
+	energypoints = ScavTrap::energypoints;
+	attackdamage = FragTrap::attackdamage;
 }
 
-DiamondTrap::DiamondTrap(const std::string& name) : ClapTrap(name + "_clap_name"), name(name)
+DiamondTrap::DiamondTrap(const std::string& start_name) : ClapTrap(start_name + "_clap_name"), ScavTrap(start_name), FragTrap(start_name), name(start_name)
 {
     std::cout << "DiamondTrap Named - " << name << " - Constructor called" << std::endl;
-	hitpoints = ClapTrap::hitpoints;
+	hitpoints = FragTrap::hitpoints;
+	energypoints = ScavTrap::energypoints;
+	attackdamage = FragTrap::attackdamage;
 }
+
+//copy
+
+
+//copy assign
 
 DiamondTrap::~DiamondTrap()
 {
     std::cout << "DiamondTrap - " << name << " - Destructor called" << std::endl;
+}
+
+
+void	DiamondTrap::whoAmI(void)
+{
+	std::cout << "DiamondTrap: i am - " << name << " -  and my clap name is - " << ClapTrap::name << std::endl;
 }
