@@ -6,11 +6,11 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/28 16:36:42 by codespace         #+#    #+#              #
-#    Updated: 2024/01/09 12:24:57 by codespace        ###   ########.fr        #
+#    Updated: 2024/01/09 13:09:16 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		=		flagtrap
+NAME 		=		fragtrap
 
 ##	Compiler and flags
 COMP		=		c++
@@ -26,7 +26,8 @@ OBJ_PATH	=		objs
 SRC_FILES		=		main.cpp					\
 						ClapTrap.cpp				\
 						ClapTrap_functions.cpp		\
-						ScavTrap.cpp
+						ScavTrap.cpp				\
+						FragTrap.cpp
 
 ## PREP
 SRCS		:=		$(addprefix $(SRC_PATH)/,$(SRC_FILES)) \
