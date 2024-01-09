@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:06 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 16:48:11 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/09 14:00:03 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ ClapTrap::ClapTrap(const std::string& name) : name(name) , hitpoints(CLAP_START_
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap Destructor called" << std::endl;
+	std::cout << "ClapTrap - " << name << " - Destructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& copy)
