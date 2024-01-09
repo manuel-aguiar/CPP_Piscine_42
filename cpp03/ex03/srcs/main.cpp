@@ -6,21 +6,17 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:51 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 17:19:32 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/09 12:54:51 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main()
 {
-    ClapTrap* potato = new ScavTrap();
+    DiamondTrap cenas;
 
-
-
-	potato->my_stats();
-
-	potato->attack("tretas");
+	cenas.attack("tretas");
 
 	/*
     potato.attack("antonio");
@@ -42,7 +38,6 @@ int main()
     cenas.my_stats();
 	*/
 
-	delete potato;
 
-    return 0;
+    return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/09 12:28:08 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/09 12:51:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 #define DiamondTrap_HPP
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 
 #define DIAM_START_NAME "Unnamed"
@@ -22,7 +23,7 @@
 #define DIAM_START_EP 50
 #define DIAM_START_ATTACK 20
 
-class DiamondTrap : public ClapTrap
+class DiamondTrap : public ScavTrap, public FragTrap
 {
 	public:
 		DiamondTrap();
@@ -31,9 +32,10 @@ class DiamondTrap : public ClapTrap
 		DiamondTrap(const DiamondTrap& copy);
 		DiamondTrap& operator= (const DiamondTrap& assign);
 		void	attack(const std::string& target);
-		void    guardGate();
+		void	whoAmI();
+		using	ScavTrap::attack;
 	private:
-		bool    gatekeeping;
+		std::string	name;
 };
 
 
