@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/09 14:02:54 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/09 14:59:33 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ ClapTrap::ClapTrap() : name(START_NAME) , hitpoints(START_HP), energypoints(STAR
 	std::cout << "Default Constructor called" << std::endl;
 }
 
-ClapTrap::ClapTrap(const std::string& name) : name(name) , hitpoints(START_HP), energypoints(START_EP), attackdamage(START_ATTACK)
+ClapTrap::ClapTrap(const std::string& start_name) : name(start_name) , hitpoints(START_HP), energypoints(START_EP), attackdamage(START_ATTACK)
 {
 	std::cout << "ClapTrap Name Constructor called: " << name << std::endl;
 }

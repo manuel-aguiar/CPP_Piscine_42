@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:14 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 17:01:52 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/09 15:02:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class ClapTrap
 {
     public:
 		ClapTrap();
-		ClapTrap(const std::string& name);
+		ClapTrap(const std::string& start_name);
 		~ClapTrap();
 		ClapTrap(const ClapTrap& copy);
 		ClapTrap& operator= (const ClapTrap& assign);
