@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:00:47 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/09 12:11:36 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/09 12:12:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Code, Compile, Run and Debug online from anywhere in world.
 
 int main()
 {
-	Weapon club;
+	//Weapon club;
     {
 	 Weapon club = Weapon("crude spiked club");
 	 HumanA bob("Bob", club);
