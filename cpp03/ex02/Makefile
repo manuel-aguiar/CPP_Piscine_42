@@ -6,11 +6,11 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/28 16:36:42 by codespace         #+#    #+#              #
-#    Updated: 2023/12/28 16:36:43 by codespace        ###   ########.fr        #
+#    Updated: 2024/01/09 12:24:57 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		=		scavtrap
+NAME 		=		flagtrap
 
 ##	Compiler and flags
 COMP		=		c++
