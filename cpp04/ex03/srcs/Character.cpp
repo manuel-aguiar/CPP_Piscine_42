@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:11:56 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 18:08:47 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 18:13:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ Character::Character(const std::string& new_name) : name(new_name)
 Character::~Character()
 {
 	std::cout << "Character destructor called" << std::endl;
+	for (unsigned int i = 0; i < CHARACTER_SLOTS; i++)
+	{
+		if (sources[i])
+			delete sources[i];
+	}
 }
 
 Character::Character(const Character& copy)
