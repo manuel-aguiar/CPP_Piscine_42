@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 10:47:06 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 10:55:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int main()
     cenas = potato;
     cenas.my_stats();
 	*/
-
 
     return (0);
 }
