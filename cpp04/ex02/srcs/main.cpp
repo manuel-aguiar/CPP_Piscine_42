@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 12:34:37 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 12:43:27 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,16 @@
 #include "WrongCat.hpp"
 #include "Brain.hpp"
 
+int	main()
+{
+	//Animal	hey;
+	Cat		hithere;
+	Dog		hello;
 
+	return (0);
+}
+
+/*
 void	half_cat_half_dog_new_speak_delete(unsigned int number)
 {
 	Animal** everyone = new (std::nothrow) Animal* [number];
@@ -35,7 +44,9 @@ void	half_cat_half_dog_new_speak_delete(unsigned int number)
 	delete[] everyone;
 }
 
-int main()
+
+
+int main5()
 {
 	half_cat_half_dog_new_speak_delete(10);
 
@@ -100,3 +111,4 @@ int main2()
 
 	return (0);
 }
+*/
