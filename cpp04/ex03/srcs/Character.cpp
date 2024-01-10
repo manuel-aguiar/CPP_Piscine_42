@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:11:56 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 17:07:14 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 17:47:24 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,40 @@ const std::string&	Character::getName() const
 
 void Character::equip(AMateria* m)
 {
-
-
+	if (!m)
+	{
+		std::cout << "Character -" << getName() << "- failed to equip: NULL AMateria" << std::endl;
+		return ;
+	}
+	for (unsigned int i = 0; i < CHARACTER_SLOTS; i++)
+	{
+		if (!sources[i])
+		{
+			sources[i] = m;
+			std::cout << "Character -" << getName() << "- succeeded to equip -" \
+			<< m->getType() << "- in slot: " << i << std::endl;
+			return ;
+		}
+	}
+	std::cout << "Character -" << getName() << "- failed to equip: unavaiable slots" << std::endl;
 }
 
 void Character::unequip(int idx)
 {
-
+	if (idx < 0 || idx >= CHARACTER_SLOTS || sources[idx] == NULL)
+	{
+		std::cout << "Character -" << getName() << "- failed to unequip: bad index/empty slot" << std::endl;
+		return ;
+	}
+	sources[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-
+	if (idx < 0 || idx >= CHARACTER_SLOTS || !sources[idx])
+	{
+		std::cout << "Character -" << getName() << "- failed to use: bad index/empty slot" << std::endl;
+		return ;
+	}
+	sources[idx]->use(target);
 }

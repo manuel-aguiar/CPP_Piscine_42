@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:06:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 17:02:24 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 17:46:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define CHARACTER_HPP
 
 # include "ICharacter.hpp"
+# include "AMateria.hpp"
 
 # define CHARACTER_SLOTS 4
 
