@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:36:03 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 17:01:50 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 17:57:23 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,29 @@ MateriaSource& MateriaSource::operator= (const MateriaSource& assign)
 	return (*this);
 }
 
-void MateriaSource::learnMateria(AMateria* )
+void MateriaSource::learnMateria(AMateria* m)
 {
-
+	if (!m)
+	{
+		std::cout << "MateriaSource failed to learn, empty AMateria" << std::endl;
+		return ;
+	}
+	if (used_slots == MATERIA_SLOTS)
+	{
+		std::cout << "MateriaSource failed to learn, no slots" << std::endl;
+		return ;
+	}
+	for (unsigned int i = 0; i < MATERIA_SLOTS; i++)
+	{
+		if (!sources[i])
+		{
+			sources[i] = m;
+			used_slots++;
+			std::cout << "MateriaSource successufully learned: " << m->getType() \
+			<< ": saved on slot " << i << std::endl;
+			return ;
+		}
+	}
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type)

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:06:07 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 17:01:15 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 17:54:10 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class MateriaSource : public IMateriaSource
 		MateriaSource(const MateriaSource& copy);
 		MateriaSource& operator= (const MateriaSource& assign);
 
-		void learnMateria(AMateria*);
+		void learnMateria(AMateria* m);
 		AMateria* createMateria(std::string const & type);
 
 	private:
