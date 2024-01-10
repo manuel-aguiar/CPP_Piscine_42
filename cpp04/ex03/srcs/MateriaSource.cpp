@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:36:03 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 17:57:23 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 18:06:54 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,19 @@ void MateriaSource::learnMateria(AMateria* m)
 	}
 }
 
-AMateria* MateriaSource::createMateria(std::string const & type)
+AMateria* MateriaSource::createMateria(std::string const& type)
 {
-	(void)type;
+	for (unsigned int i = 0; i < MATERIA_SLOTS; i++)
+	{
+		if (sources[i])
+		{
+			if (sources[i]->getType() == type)
+			{
+				std::cout << "MateriaSource successufully created: " << type << " : found on slot " << i << std::endl;
+				return (sources[i]->clone());
+			}
+		}
+	}
+	std::cout << "MateriaSource failed to create: " << type << " : not found on any slot" << std::endl;
 	return (NULL);
 }

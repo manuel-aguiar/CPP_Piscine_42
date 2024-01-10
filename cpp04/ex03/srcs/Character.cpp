@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:11:56 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 17:47:24 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 18:08:47 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 Character::Character(const std::string& new_name) : name(new_name)
 {
 	std::cout << "Character constructor called" << std::endl;
+	for (unsigned int i = 0; i < CHARACTER_SLOTS; i++)
+		sources[i] = NULL;
 }
 
 Character::~Character()
@@ -27,6 +29,8 @@ Character::Character(const Character& copy)
 	std::cout << "Character Copy Constructor called" << std::endl;
 	if (this == &copy)
 		return ;
+	for(unsigned int i = 0; i < CHARACTER_SLOTS; i++)
+		sources[i] = copy.sources[i];
 	name = copy.name;
 }
 
@@ -36,6 +40,8 @@ Character&	Character::operator= (const  Character& assign)
 
 	if (this == &assign)
 		return (*this);
+	for(unsigned int i = 0; i < CHARACTER_SLOTS; i++)
+		sources[i] = assign.sources[i];
 	name = assign.name;
 	return (*this);
 }
