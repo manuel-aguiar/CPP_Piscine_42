@@ -10,24 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-
-	I would have made the public constructor as protected:
-		accessible to descendents Cat/Dog but uninstantiable
-
-	apparently as per the evaluation guide, the class must have a virtual function = 0;
-	so there it is
-
-*/
-
 #ifndef AMATERIA_HPP
 
 # define AMATERIA_HPP
 
-#include "ICharacter.hpp"
-
 #include <string>
-#include <iostream>
+
+class ICharacter;
 
 class AMateria
 {

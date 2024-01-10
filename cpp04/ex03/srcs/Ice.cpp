@@ -1,62 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.cpp                                          :+:      :+:    :+:   */
+/*   Ice.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 11:53:49 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 10:04:43 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Brain.hpp"
+# include "Ice.hpp"
 
-Brain::Brain()
+Ice::Ice() : AMateria()
 {
-	std::cout << "Brain Constructor called" << std::endl;
+	std::cout << "Ice Constructor called" << std::endl;
+	type = "Ice";
 }
 
-Brain::~Brain()
+Ice::~Ice()
 {
-	std::cout << "Brain Destructor called" << std::endl;
+	std::cout << "Ice Destructor called" << std::endl;
 }
 
-Brain::Brain(const Brain& copy)
+Ice::Ice(const Ice& copy) : AMateria(copy)
 {
-	std::cout << "Brain Copy Constructor called" << std::endl;
-
+	std::cout << "Ice Copy Destructor called" << std::endl;
 	if (this == &copy)
 		return ;
-
-	for (int i = 0; i < NUMBER_IDEAS; i++)
-		ideas[i] = copy.ideas[i];
-
 }
 
-Brain& Brain::operator= (const Brain& assign)
+Ice& Ice::operator= (const Ice& assign)
 {
-	std::cout << "Brain Copy Assignment called" << std::endl;
-
+	std::cout << "Ice Copy Assignment called" << std::endl;
 	if (this == &assign)
 		return (*this);
-
-	for (int i = 0; i < NUMBER_IDEAS; i++)
-		ideas[i] = assign.ideas[i];
-
-	return (*this) ;
-}
-
-const std::string& Brain::getIdeas(const unsigned int index) const
-{
-	if (index >= NUMBER_IDEAS)
-		throw std::out_of_range("Index out of bounds");
-	return (ideas[index]);
-}
-
-void	Brain::setIdeas(const unsigned int index, const std::string& thought)
-{
-	if (index >= NUMBER_IDEAS)
-		throw std::out_of_range("Index out of bounds");
-	ideas[index] = thought;
+	return (*this);
 }

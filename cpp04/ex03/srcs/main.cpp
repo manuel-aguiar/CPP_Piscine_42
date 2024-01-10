@@ -6,15 +6,15 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 13:44:20 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 14:16:07 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/AMateria.hpp"
 #include "../incs/Ice.hpp"
 #include "../incs/Cure.hpp"
-#include "../incs/ICharacter.hpp"
-#include "../incs/IMateriaSource.hpp"
+#include "../incs/Character.hpp"
+#include "../incs/MateriaSource.hpp"
 
 int main()
 {
@@ -30,6 +30,7 @@ int main()
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
+
 	delete bob;
 	delete me;
 	delete src;

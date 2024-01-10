@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:30 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 14:07:24 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 14:31:10 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 # define ICHARACTER_HPP
 
-# include "AMateria.hpp"
+# include <string>
 
-# define CHARACTER_SLOTS 4
+class AMateria;
 
 class ICharacter
 {
