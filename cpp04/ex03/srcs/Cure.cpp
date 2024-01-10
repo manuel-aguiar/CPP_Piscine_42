@@ -28,7 +28,7 @@ Cure::Cure(const Cure& copy) : AMateria(copy)
 	std::cout << "Cure Copy Destructor called" << std::endl;
 	if (this == &copy)
 		return ;
-	type = assign.type;
+	type = copy.type;
 }
 
 Cure& Cure::operator= (const Cure& assign)
