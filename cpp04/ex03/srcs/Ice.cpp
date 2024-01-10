@@ -39,3 +39,8 @@ Ice& Ice::operator= (const Ice& assign)
 	type = assign.type;
 	return (*this);
 }
+
+Ice*	Ice::clone() const
+{
+	return (new Ice());
+}

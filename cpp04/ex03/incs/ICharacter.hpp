@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:30 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 14:31:10 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 15:43:46 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define ICHARACTER_HPP
 
 # include <string>
+# include <iostream>
 
 class AMateria;
 

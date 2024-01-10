@@ -43,9 +43,7 @@ SRC_FILES		=		main.cpp			\
 
 ## PREP
 INCS		:=		$(addprefix $(INC_PATH)/,$(INC_FILES))
-
 SRCS		:=		$(addprefix $(SRC_PATH)/,$(SRC_FILES))
-
 OBJS 		=		$(patsubst $(SRC_PATH)/%.cpp,$(OBJ_PATH)/%.o,$(SRCS))
 
 all: $(NAME)

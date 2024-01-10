@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:06:07 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 15:28:45 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 17:01:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,23 @@
 
 # include "IMateriaSource.hpp"
 
+# define MATERIA_SLOTS 4
+
 class MateriaSource : public IMateriaSource
 {
 	public:
+		MateriaSource();
+		~MateriaSource();
 
-		~MateriaSource() {}
+		MateriaSource(const MateriaSource& copy);
+		MateriaSource& operator= (const MateriaSource& assign);
+
 		void learnMateria(AMateria*);
 		AMateria* createMateria(std::string const & type);
+
+	private:
+		unsigned int	used_slots;
+		AMateria* 		sources[MATERIA_SLOTS];
 };
 
 #endif

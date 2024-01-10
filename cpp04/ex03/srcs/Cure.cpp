@@ -39,3 +39,8 @@ Cure& Cure::operator= (const Cure& assign)
 	type = assign.type;
 	return (*this);
 }
+
+Cure*	Cure::clone() const
+{
+	return (new Cure());
+}

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:06:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 15:40:45 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 17:02:24 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 class Character : public ICharacter
 {
 	public:
-		Character();
 		Character(const std::string& new_name);
 
 		~Character();
@@ -35,8 +34,9 @@ class Character : public ICharacter
 		void use(int idx, ICharacter& target);
 
 	private:
-		std::string name;
-
+		std::string 	name;
+		unsigned int	used_slots;
+		AMateria* 		sources[CHARACTER_SLOTS];
 };
 
 
