@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 16:38:28 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 11:12:57 by codespace        ###   ########.fr       */
+/*   Created: 2023/12/28 16:38:24 by codespace         #+#    #+#             */
+/*   Updated: 2024/01/10 11:13:16 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
+#ifndef BRAIN_HPP
 
-# define CAT_HPP
+# define BRAIN_HPP
 
-# include "Animal.hpp"
-# include "Brain.hpp"
+#include <string>
+#include <cstring>
+#include <iostream>
 
-class Cat : public Animal
+#define NUMBER_IDEAS 100
+
+class Brain
 {
-	public:
-		Cat();
-		~Cat();
-		Cat(const Cat& copy);
-		Cat& operator= (const Cat& assign);
+    public:
+		Brain();
+		virtual ~Brain();
+		Brain(const Brain& copy);
+		Brain& operator= (const Brain& assign);
 
-		void	makeSound(void) const;
+		const std::string&	getIdeas(void) const;
+
+    protected:
+		std::string ideas[NUMBER_IDEAS];
 };
 
 #endif

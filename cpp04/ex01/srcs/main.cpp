@@ -6,15 +6,24 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 10:33:54 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 11:13:56 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "WrongCat.hpp"
+#include "Brain.hpp"
 
 int main()
+{
+	Brain first;
+
+
+}
+
+
+int main3()
 {
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();
