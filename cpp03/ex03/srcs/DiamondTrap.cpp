@@ -16,13 +16,13 @@ DiamondTrap::DiamondTrap() : ScavTrap(), FragTrap()
 {
     std::cout << "DiamondTrap Unnamed Constructor called" << std::endl;
 	name = ClapTrap::name;
-	energypoints = SCAV_START_EP;
+	energypoints = ScavTrap::scav_starting_energy;
 }
 
 DiamondTrap::DiamondTrap(const std::string& start_name) : ClapTrap(start_name + "_clap_name"), ScavTrap(start_name), FragTrap(start_name), name(start_name)
 {
     std::cout << "DiamondTrap Named - " << name << " - Constructor called" << std::endl;
-	energypoints = SCAV_START_EP;
+	energypoints = ScavTrap::scav_starting_energy;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& copy) : ClapTrap(copy), ScavTrap(copy), FragTrap(copy)
