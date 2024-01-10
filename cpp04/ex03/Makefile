@@ -28,9 +28,7 @@ SRC_FILES		=		main.cpp			\
 						Ice.cpp				\
 						Cure.cpp			\
 						Character.cpp		\
-						ICharacter.cpp		\
-						MateriaSource.cpp	\
-						IMateriaSource.cpp
+						MateriaSource.cpp
 
 
 ## PREP
