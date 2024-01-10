@@ -6,12 +6,13 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:02:08 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 16:02:09 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 15:12:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.h"
 #include <new>
+
 
 Zombie *newZombie (std::string name)
 {
