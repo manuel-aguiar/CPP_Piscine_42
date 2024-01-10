@@ -26,7 +26,9 @@ OBJ_PATH	=		objs
 SRC_FILES		=		main.cpp		\
 						Animal.cpp		\
 						Cat.cpp			\
-						Dog.cpp
+						Dog.cpp			\
+						WrongAnimal.cpp	\
+						WrongCat.cpp
 
 ## PREP
 SRCS		:=		$(addprefix $(SRC_PATH)/,$(SRC_FILES)) \

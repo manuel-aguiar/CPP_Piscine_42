@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 10:30:33 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 10:33:54 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ int main()
 	delete meta;
 	delete i;
 	delete j;
+
+	const WrongAnimal* bad = new WrongCat();
+
+	bad->makeSound();
+
+	delete bad;
 
 	return (0);
 }
