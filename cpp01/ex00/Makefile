@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/28 16:01:53 by codespace         #+#    #+#              #
-#    Updated: 2024/01/10 15:09:42 by codespace        ###   ########.fr        #
+#    Updated: 2024/01/10 15:10:36 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ $(NAME): $(OBJS)
 	@$(COMP) $(FLAGS) $(OBJS) -I$(INC_PATH) -o $(NAME)
 	@echo Program $(NAME) ready!!
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp $(ALL_INCS)
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp $(INCS)
 	@mkdir -p $(dir $@)
 	@$(COMP) $(FLAGS) -I$(INC_PATH) -c $< -o $@
 

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:02:22 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 16:02:22 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 15:10:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class Zombie
     private:
 	 std::string name;
 };
+
 
 
 #endif
