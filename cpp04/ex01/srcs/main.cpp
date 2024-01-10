@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 11:50:32 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 12:34:37 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,49 @@
 #include "WrongCat.hpp"
 #include "Brain.hpp"
 
+
+void	half_cat_half_dog_new_speak_delete(unsigned int number)
+{
+	Animal** everyone = new (std::nothrow) Animal* [number];
+	unsigned int i;
+
+	for (i = 0; i < number / 2; i++)
+		everyone[i] = new (std::nothrow) Cat();
+	while (i < number)
+		everyone[i++] = new (std::nothrow) Dog();
+
+	for (i = 0; i < number; i++)
+		everyone[i]->makeSound();
+
+	for (i = 0; i < number; i++)
+		delete everyone[i];
+
+	delete[] everyone;
+}
+
 int main()
 {
-	Brain first;
+	half_cat_half_dog_new_speak_delete(10);
 
-	first.setIdeas(10, "hello tretas");
+	return (0);
+}
 
-	Brain second(first);
+int main4()
+{
 
-	std::cout << second.getIdeas(100) << std::endl;
+	// deep copy test
 
+	Cat first;
+
+	first.getBrain()->setIdeas(10, "hello tretas");
+
+	Cat second(first);
+
+	first.getBrain()->setIdeas(10, "haha enganei te");
+
+	std::cout << second.getBrain()->getIdeas(10) << std::endl;
+
+	return (0);
 }
 
 

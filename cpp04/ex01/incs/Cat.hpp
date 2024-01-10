@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:28 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 11:12:57 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 12:08:36 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ class Cat : public Animal
 		Cat& operator= (const Cat& assign);
 
 		void	makeSound(void) const;
+		Brain*	getBrain(void) const;
+	private:
+		Brain*	my_brain;
 };
 
 #endif
