@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                         :+:      :+:    :+:   */
+/*   WrongCat.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,27 +10,27 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Dog.hpp"
+# include "WrongCat.hpp"
 
-Dog::Dog() : Animal()
+WrongCat::WrongCat() : WrongAnimal()
 {
-	std::cout << "Dog Constructor called" << std::endl;
-	type = "Dog";
+	std::cout << "WrongCat Constructor called" << std::endl;
+	type = "WrongCat";
 }
 
-Dog::~Dog()
+WrongCat::~WrongCat()
 {
-	std::cout << "Dog Destructor called" << std::endl;
+	std::cout << "WrongCat Destructor called" << std::endl;
 }
 
-Dog::Dog(const Dog& copy) : Animal(copy)
+WrongCat::WrongCat(const WrongCat& copy) : WrongAnimal(copy)
 {
 	if (this == &copy)
 		return ;
 	type = copy.type;
 }
 
-Dog& Dog::operator= (const Dog& assign)
+WrongCat& WrongCat::operator= (const WrongCat& assign)
 {
 	if (this == &assign)
 		return (*this);
@@ -38,7 +38,7 @@ Dog& Dog::operator= (const Dog& assign)
 	return (*this);
 }
 
-void	Dog::makeSound(void) const
+void	WrongCat::makeSound(void) const
 {
-	std::cout << "\nWoof Woof Woof\n" << std::endl;
+	std::cout << "\nMiauuuuu\n" << std::endl;
 }

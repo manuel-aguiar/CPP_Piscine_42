@@ -1,30 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 16:38:28 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 10:27:06 by codespace        ###   ########.fr       */
+/*   Created: 2023/12/28 16:38:24 by codespace         #+#    #+#             */
+/*   Updated: 2024/01/10 10:29:10 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
+#ifndef ANIMAL_HPP
 
-# define CAT_HPP
+# define ANIMAL_HPP
 
-# include "Animal.hpp"
+#include <string>
+#include <iostream>
 
-class Cat : public Animal
+
+class Animal
 {
-	public:
-		Cat();
-		~Cat();
-		Cat(const Cat& copy);
-		Cat& operator= (const Cat& assign);
+    public:
+		Animal();
+		virtual ~Animal();
+		Animal(const Animal& copy);
+		Animal& operator= (const Animal& assign);
 
-		void	makeSound(void) const;
+		const std::string&	getType(void) const;
+
+		virtual void	makeSound(void) const;
+
+    protected:
+		std::string type;
 };
 
 #endif

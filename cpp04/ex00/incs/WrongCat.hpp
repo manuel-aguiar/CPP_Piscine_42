@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongWrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:28 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 10:27:06 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 10:29:17 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
+#ifndef WRONGCAT_HPP
 
-# define CAT_HPP
+# define WRONGCAT_HPP
 
-# include "Animal.hpp"
+# include "WrongAnimal.hpp"
 
-class Cat : public Animal
+class WrongCat : public WrongAnimal
 {
 	public:
-		Cat();
-		~Cat();
-		Cat(const Cat& copy);
-		Cat& operator= (const Cat& assign);
+		WrongCat();
+		~WrongCat();
+		WrongCat(const WrongCat& copy);
+		WrongCat& operator= (const WrongCat& assign);
 
 		void	makeSound(void) const;
 };

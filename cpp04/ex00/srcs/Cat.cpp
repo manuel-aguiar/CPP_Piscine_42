@@ -37,3 +37,8 @@ Cat& Cat::operator= (const Cat& assign)
 	type = assign.type;
 	return (*this);
 }
+
+void	Cat::makeSound(void) const
+{
+	std::cout << "\nMiauuuuu\n" << std::endl;
+}

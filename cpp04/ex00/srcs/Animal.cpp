@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 10:04:43 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 10:23:18 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,15 @@ Animal& Animal::operator= (const Animal& assign)
 	if (this == &assign)
 		return (*this);
 	type = assign.type;
-	return (*this);
+	return (*this) ;
+}
+
+void	Animal::makeSound(void) const
+{
+	std::cout << "\nI am an Animal, what sound do i make?\n" << std::endl;
+}
+
+const std::string& Animal::getType(void) const
+{
+	return (type);
 }

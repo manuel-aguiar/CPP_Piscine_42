@@ -1,44 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                         :+:      :+:    :+:   */
+/*   WrongWrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 10:04:43 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 10:28:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Dog.hpp"
+# include "WrongAnimal.hpp"
 
-Dog::Dog() : Animal()
+WrongAnimal::WrongAnimal()
 {
-	std::cout << "Dog Constructor called" << std::endl;
-	type = "Dog";
+	std::cout << "WrongAnimal Constructor called" << std::endl;
 }
 
-Dog::~Dog()
+WrongAnimal::~WrongAnimal()
 {
-	std::cout << "Dog Destructor called" << std::endl;
+	std::cout << "WrongAnimal Destructor called" << std::endl;
 }
 
-Dog::Dog(const Dog& copy) : Animal(copy)
+WrongAnimal::WrongAnimal(const WrongAnimal& copy)
 {
 	if (this == &copy)
 		return ;
 	type = copy.type;
 }
 
-Dog& Dog::operator= (const Dog& assign)
+WrongAnimal& WrongAnimal::operator= (const WrongAnimal& assign)
 {
 	if (this == &assign)
 		return (*this);
 	type = assign.type;
-	return (*this);
+	return (*this) ;
 }
 
-void	Dog::makeSound(void) const
+void	WrongAnimal::makeSound(void) const
 {
-	std::cout << "\nWoof Woof Woof\n" << std::endl;
+	std::cout << "\nI am an WrongAnimal, what sound do i make?\n" << std::endl;
+}
+
+const std::string& WrongAnimal::getType(void) const
+{
+	return (type);
 }
