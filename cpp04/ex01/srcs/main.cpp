@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 11:13:56 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 11:49:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ int main()
 {
 	Brain first;
 
+	first.setIdeas(10, "hello tretas");
+
+	Brain second(first);
+
+	std::cout << second.getIdeas(10) << std::endl;
 
 }
 
