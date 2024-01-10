@@ -23,6 +23,16 @@ OBJ_PATH	=		objs
 
 
 ## ALL FILES
+
+INC_FILES		=		AMateria.hpp		\
+						Character.hpp		\
+						Cure.hpp			\
+						Ice.hpp				\
+						ICharacter.hpp		\
+						IMateriaSource.hpp	\
+						MateriaSource.hpp
+
+
 SRC_FILES		=		main.cpp			\
 						AMateria.cpp		\
 						Ice.cpp				\
@@ -32,21 +42,21 @@ SRC_FILES		=		main.cpp			\
 
 
 ## PREP
-SRCS		:=		$(addprefix $(SRC_PATH)/,$(SRC_FILES)) \
+INCS		:=		$(addprefix $(INC_PATH)/,$(INC_FILES))
+
+SRCS		:=		$(addprefix $(SRC_PATH)/,$(SRC_FILES))
 
 OBJS 		=		$(patsubst $(SRC_PATH)/%.cpp,$(OBJ_PATH)/%.o,$(SRCS))
-
-INCS		= 		-I$(INC_PATH)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(COMP) $(FLAGS) $(OBJS) $(INCS) -o $(NAME)
+	@$(COMP) $(FLAGS) $(OBJS) -I$(INC_PATH) -o $(NAME)
 	@echo Program $(NAME) ready!!
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp $(INCS)
 	@mkdir -p $(dir $@)
-	@$(COMP) $(FLAGS) $(INCS) -c $< -o $@
+	@$(COMP) $(FLAGS) -I$(INC_PATH) -c $< -o $@
 
 clean:
 	@if [ -d "$(OBJ_PATH)" ]; then \
