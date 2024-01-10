@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/28 16:01:53 by codespace         #+#    #+#              #
-#    Updated: 2023/12/28 16:01:53 by codespace        ###   ########.fr        #
+#    Updated: 2024/01/10 15:09:42 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,27 +23,31 @@ OBJ_PATH	=		objs
 
 
 ## ALL FILES
+INC_FILES	=		Zombie.h			\
+					Zombie.hpp
+
 SRC_FILES	=		main.cpp			\
 					Zombie.cpp			\
 					newZombie.cpp		\
 					randomChump.cpp
 
 ## PREP
-SRCS		:=		$(addprefix $(SRC_PATH)/,$(SRC_FILES)) \
+
+INCS		:=		$(addprefix $(INC_PATH)/,$(INC_FILES))
+
+SRCS		:=		$(addprefix $(SRC_PATH)/,$(SRC_FILES))
 
 OBJS 		=		$(patsubst $(SRC_PATH)/%.cpp,$(OBJ_PATH)/%.o,$(SRCS))
-
-INCS		= 		-I$(INC_PATH)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(COMP) $(FLAGS) $(OBJS) $(INCS) -o $(NAME)
+	@$(COMP) $(FLAGS) $(OBJS) -I$(INC_PATH) -o $(NAME)
 	@echo Program $(NAME) ready!!
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp $(ALL_INCS)
 	@mkdir -p $(dir $@)
-	@$(COMP) $(FLAGS) $(INCS) -c $< -o $@
+	@$(COMP) $(FLAGS) -I$(INC_PATH) -c $< -o $@
 
 clean:
 	@if [ -d "$(OBJ_PATH)" ]; then \
