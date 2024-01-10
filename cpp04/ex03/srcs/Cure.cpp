@@ -15,7 +15,7 @@
 Cure::Cure() : AMateria()
 {
 	std::cout << "Cure Constructor called" << std::endl;
-	type = "Cure";
+	type = "cure";
 }
 
 Cure::~Cure()
@@ -28,6 +28,7 @@ Cure::Cure(const Cure& copy) : AMateria(copy)
 	std::cout << "Cure Copy Destructor called" << std::endl;
 	if (this == &copy)
 		return ;
+	type = assign.type;
 }
 
 Cure& Cure::operator= (const Cure& assign)
@@ -35,5 +36,6 @@ Cure& Cure::operator= (const Cure& assign)
 	std::cout << "Cure Copy Assignment called" << std::endl;
 	if (this == &assign)
 		return (*this);
+	type = assign.type;
 	return (*this);
 }

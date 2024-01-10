@@ -20,16 +20,15 @@ class Cure : public AMateria
 {
 	public:
 		Cure();
+		Cure(const std::string& new_type);
 
 		~Cure();
 
 		Cure(const Cure& copy);
 		Cure& operator= (const Cure& assign);
 
+
 		Cure*	clone() const;
-
-	private:
-
 };
 
 #endif

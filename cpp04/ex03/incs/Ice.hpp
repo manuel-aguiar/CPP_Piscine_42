@@ -27,7 +27,7 @@ class Ice : public AMateria
 		Ice& operator= (const Ice& assign);
 
 		Ice*	clone() const;
-    private:
+
 };
 
 #endif

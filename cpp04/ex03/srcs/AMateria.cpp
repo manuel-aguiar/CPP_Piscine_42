@@ -37,11 +37,6 @@ AMateria& AMateria::operator= (const AMateria& assign)
 	return (*this) ;
 }
 
-void	AMateria::makeSound(void) const
-{
-	std::cout << "\nI am an AMateria, what sound do i make?\n" << std::endl;
-}
-
 const std::string& AMateria::getType(void) const
 {
 	return (type);
