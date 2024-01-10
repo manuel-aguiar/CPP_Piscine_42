@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 12:43:27 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 13:17:24 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Dog.hpp"
 #include "WrongCat.hpp"
 #include "Brain.hpp"
-
+/*
 int	main()
 {
 	//Animal	hey;
@@ -24,7 +24,7 @@ int	main()
 	return (0);
 }
 
-/*
+
 void	half_cat_half_dog_new_speak_delete(unsigned int number)
 {
 	Animal** everyone = new (std::nothrow) Animal* [number];
@@ -52,8 +52,8 @@ int main5()
 
 	return (0);
 }
-
-int main4()
+*/
+int main()
 {
 
 	// deep copy test
@@ -68,9 +68,15 @@ int main4()
 
 	std::cout << second.getBrain()->getIdeas(10) << std::endl;
 
+	first.makeSound();
+
+	Animal* cenas = new Cat();
+
+	delete cenas;
+
 	return (0);
 }
-
+/*
 
 int main3()
 {
