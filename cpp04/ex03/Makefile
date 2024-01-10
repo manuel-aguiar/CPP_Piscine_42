@@ -10,7 +10,7 @@
 #											 #
 # **************************************************************************** #
 
-NAME 		=		animals
+NAME 		=		materia
 
 ##	Compiler and flags
 COMP		=		c++
@@ -23,13 +23,15 @@ OBJ_PATH	=		objs
 
 
 ## ALL FILES
-SRC_FILES		=		main.cpp		\
-						Animal.cpp		\
-						Cat.cpp			\
-						Dog.cpp			\
-						WrongAnimal.cpp	\
-						WrongCat.cpp	\
-						Brain.cpp
+SRC_FILES		=		main.cpp			\
+						AMateria.cpp		\
+						Ice.cpp				\
+						Cure.cpp			\
+						Character.cpp		\
+						ICharacter.cpp		\
+						MateriaSource.cpp	\
+						IMateriaSource.cpp
+
 
 ## PREP
 SRCS		:=		$(addprefix $(SRC_PATH)/,$(SRC_FILES)) \

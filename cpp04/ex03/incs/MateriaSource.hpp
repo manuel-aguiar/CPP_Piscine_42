@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 16:38:30 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 12:08:45 by codespace        ###   ########.fr       */
+/*   Created: 2024/01/10 14:06:07 by codespace         #+#    #+#             */
+/*   Updated: 2024/01/10 14:08:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
+#ifndef MATERIASOURCE_HPP
 
-# define DOG_HPP
+# define MATERIASOURCE_HPP
 
-# include "Animal.hpp"
-# include "Brain.hpp"
+# include "IMateriaSource.hpp"
 
-class Dog : public Animal
+class MateriaSource : public IMateriaSource
 {
-	public:
-		Dog();
-		~Dog();
-		Dog(const Dog& copy);
-		Dog& operator= (const Dog& assign);
-
-		void	makeSound(void) const;
-		Brain*	getBrain(void) const;
-	private:
-		Brain*	my_brain;
 
 };
-
 
 #endif

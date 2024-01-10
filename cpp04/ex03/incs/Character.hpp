@@ -1,30 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongWrongCat.hpp                                       :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 16:38:28 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 10:29:17 by codespace        ###   ########.fr       */
+/*   Created: 2024/01/10 14:06:12 by codespace         #+#    #+#             */
+/*   Updated: 2024/01/10 14:12:16 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
+#ifndef CHARACTER_HPP
 
-# define WRONGCAT_HPP
+# define CHARACTER_HPP
 
-# include "WrongAnimal.hpp"
+# include "ICharacter.hpp"
 
-class WrongCat : public WrongAnimal
+# define CHARACTER_SLOTS 4
+
+class Character : public ICharacter
 {
 	public:
-		WrongCat();
-		~WrongCat();
-		WrongCat(const WrongCat& copy);
-		WrongCat& operator= (const WrongCat& assign);
+		Character();
+		Character(const std::string& new_name);
 
-		void	makeSound(void) const;
+		~Character();
+
+		Character(const Character& copy);
+		Character& operator= (const Character& assign);
+
+		void equip(AMateria* m);
+		void unequip(int idx);
+		void use(int idx, ICharacter& target);
+
+	private:
+
 };
+
 
 #endif

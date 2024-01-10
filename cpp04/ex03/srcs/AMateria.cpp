@@ -1,44 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.cpp                                         :+:      :+:    :+:   */
+/*   AMateria.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 10:04:43 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 10:23:18 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "WrongCat.hpp"
+# include "AMateria.hpp"
 
-WrongCat::WrongCat() : WrongAnimal()
+AMateria::AMateria()
 {
-	std::cout << "WrongCat Constructor called" << std::endl;
-	type = "WrongCat";
+	std::cout << "AMateria Constructor called" << std::endl;
 }
 
-WrongCat::~WrongCat()
+AMateria::~AMateria()
 {
-	std::cout << "WrongCat Destructor called" << std::endl;
+	std::cout << "AMateria Destructor called" << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat& copy) : WrongAnimal(copy)
+AMateria::AMateria(const AMateria& copy)
 {
 	if (this == &copy)
 		return ;
 	type = copy.type;
 }
 
-WrongCat& WrongCat::operator= (const WrongCat& assign)
+AMateria& AMateria::operator= (const AMateria& assign)
 {
 	if (this == &assign)
 		return (*this);
 	type = assign.type;
-	return (*this);
+	return (*this) ;
 }
 
-void	WrongCat::makeSound(void) const
+void	AMateria::makeSound(void) const
 {
-	std::cout << "\nMiauuuuu\n" << std::endl;
+	std::cout << "\nI am an AMateria, what sound do i make?\n" << std::endl;
+}
+
+const std::string& AMateria::getType(void) const
+{
+	return (type);
 }

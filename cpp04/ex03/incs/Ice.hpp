@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   Ice.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,28 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BRAIN_HPP
+#ifndef ICE_HPP
 
-# define BRAIN_HPP
+# define ICE_HPP
 
-#include <string>
-#include <cstring>
-#include <iostream>
+# include "AMateria.hpp"
 
-#define NUMBER_IDEAS 100
-
-class Brain
+class Ice : public AMateria
 {
     public:
-		Brain();
-		virtual ~Brain();
-		Brain(const Brain& copy);
-		Brain& operator= (const Brain& assign);
+		Ice();
 
-		const std::string&	getIdeas(const unsigned int index) const;
-		void				setIdeas(const unsigned int index, const std::string& thought);
+		~Ice();
+
+		Ice(const Ice& copy);
+		Ice& operator= (const Ice& assign);
+
+		Ice*	clone() const;
     private:
-		std::string ideas[NUMBER_IDEAS];
 };
 
 #endif

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Amateria.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -20,27 +20,32 @@
 
 */
 
-#ifndef ANIMAL_HPP
+#ifndef AMATERIA_HPP
 
-# define ANIMAL_HPP
+# define AMATERIA_HPP
+
+#include "ICharacter.hpp"
 
 #include <string>
 #include <iostream>
 
-
-class Animal
+class AMateria
 {
-    public:
-		Animal();
-		virtual ~Animal();
-		Animal(const Animal& copy);
-		Animal& operator= (const Animal& assign);
 
-		const std::string&	getType(void) const;
+	public:
+		AMateria();
+		AMateria(std::string const & type);
 
-		virtual void	makeSound(void) const = 0;
+		virtual ~AMateria();
 
-    protected:
+		AMateria(const AMateria& copy);
+		AMateria& operator= (const AMateria& assign);
+
+		std::string const & getType() const;
+		virtual AMateria* clone() const = 0;
+		virtual void use(ICharacter& target);
+
+	protected:
 		std::string type;
 };
 
