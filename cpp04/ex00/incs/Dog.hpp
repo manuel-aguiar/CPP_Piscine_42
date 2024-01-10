@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:30 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 16:38:30 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/10 10:06:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,14 @@
 
 # include "Animal.hpp"
 
-
+class Dog : virtual public Animal
+{
+	public:
+		Dog();
+		~Dog();
+		Dog(const Dog& copy);
+		Dog& operator= (const Dog& assign);
+};
 
 
 #endif
