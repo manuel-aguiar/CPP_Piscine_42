@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:30 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 15:43:46 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/11 11:49:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ class ICharacter
 		virtual void equip(AMateria* m) = 0;
 		virtual void unequip(int idx) = 0;
 		virtual void use(int idx, ICharacter& target) = 0;
+
+		virtual void print_stats(void) const = 0;
 };
 
 

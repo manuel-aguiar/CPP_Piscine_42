@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:36:03 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/11 10:49:51 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/11 11:56:24 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,19 @@ AMateria* MateriaSource::createMateria(std::string const& type)
 	}
 	std::cout << "MateriaSource failed to create: " << type << " : not found on any slot" << std::endl;
 	return (NULL);
+}
+
+void	MateriaSource::print_stats(void) const
+{
+	std::cout << "\nMateriaSource Stats: " << std::endl;
+	for (unsigned int i = 0; i < MATERIA_SLOTS; i++)
+	{
+		std::cout << "   Slot " << i << ": ";
+		if (sources[i])
+			std::cout << sources[i]->getType();
+		else
+			std::cout << "empty";
+		std::cout << std::endl;
+	}
+	std::cout << std::endl;
 }

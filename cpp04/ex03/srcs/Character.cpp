@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:11:56 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 18:13:29 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/11 12:09:01 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ Character::Character(const std::string& new_name) : name(new_name)
 {
 	std::cout << "Character constructor called" << std::endl;
 	for (unsigned int i = 0; i < CHARACTER_SLOTS; i++)
-		sources[i] = NULL;
+		slots[i] = NULL;
 }
 
 Character::~Character()
@@ -24,8 +24,8 @@ Character::~Character()
 	std::cout << "Character destructor called" << std::endl;
 	for (unsigned int i = 0; i < CHARACTER_SLOTS; i++)
 	{
-		if (sources[i])
-			delete sources[i];
+		if (slots[i])
+			delete slots[i];
 	}
 }
 
@@ -35,8 +35,8 @@ Character::Character(const Character& copy)
 	if (this == &copy)
 		return ;
 	for(unsigned int i = 0; i < CHARACTER_SLOTS; i++)
-		sources[i] = copy.sources[i];
-	name = copy.name;
+		slots[i] = 0;
+	*this = copy;
 }
 
 Character&	Character::operator= (const  Character& assign)
@@ -46,7 +46,15 @@ Character&	Character::operator= (const  Character& assign)
 	if (this == &assign)
 		return (*this);
 	for(unsigned int i = 0; i < CHARACTER_SLOTS; i++)
-		sources[i] = assign.sources[i];
+	{
+		if (slots[i])
+		{
+			delete slots[i];
+			slots[i] = 0;
+		}
+		if (assign.slots[i])
+			slots[i] = assign.slots[i]->clone();
+	}
 	name = assign.name;
 	return (*this);
 }
@@ -65,9 +73,9 @@ void Character::equip(AMateria* m)
 	}
 	for (unsigned int i = 0; i < CHARACTER_SLOTS; i++)
 	{
-		if (!sources[i])
+		if (!slots[i])
 		{
-			sources[i] = m;
+			slots[i] = m;
 			std::cout << "Character -" << getName() << "- succeeded to equip -" \
 			<< m->getType() << "- in slot: " << i << std::endl;
 			return ;
@@ -78,20 +86,51 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx)
 {
-	if (idx < 0 || idx >= CHARACTER_SLOTS || sources[idx] == NULL)
+	if (idx < 0 || idx >= CHARACTER_SLOTS || slots[idx] == NULL)
 	{
 		std::cout << "Character -" << getName() << "- failed to unequip: bad index/empty slot" << std::endl;
 		return ;
 	}
-	sources[idx] = NULL;
+	slots[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (idx < 0 || idx >= CHARACTER_SLOTS || !sources[idx])
+	if (idx < 0 || idx >= CHARACTER_SLOTS || !slots[idx])
 	{
 		std::cout << "Character -" << getName() << "- failed to use: bad index/empty slot" << std::endl;
 		return ;
 	}
-	sources[idx]->use(target);
+	slots[idx]->use(target);
+}
+
+void	Character::print_stats(void) const
+{
+	std::cout << "\nCharacter Stats: " << name << std::endl;
+	std::cout << "Materias: " << std::endl;
+	for (unsigned int i = 0; i < CHARACTER_SLOTS; i++)
+	{
+		std::cout << "   Slot " << i << ": ";
+		if (slots[i])
+			std::cout << slots[i]->getType();
+		else
+			std::cout << "empty";
+		std::cout << std::endl;
+	}
+	std::cout << std::endl;
+}
+
+void	Character::rename(const std::string& new_name)
+{
+	name = new_name;
+}
+
+AMateria* Character::getSlot(int idx) const
+{
+	if (idx < 0 || idx >= CHARACTER_SLOTS || slots[idx] == NULL)
+	{
+		std::cout << "Character -" << name << "- slot is empty/out of bounds" << std::endl;
+		return (NULL);
+	}
+	return (slots[idx]);
 }
