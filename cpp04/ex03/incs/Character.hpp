@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:06:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 17:46:15 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/11 10:48:56 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ class Character : public ICharacter
 
 	private:
 		std::string 	name;
-		unsigned int	used_slots;
 		AMateria* 		sources[CHARACTER_SLOTS];
 };
 
