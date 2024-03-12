@@ -41,12 +41,12 @@ INCS		= 		-I$(INC_PATH)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(COMP) $(FLAGS) $(OBJS) $(INCS) -o $(NAME)
+	$(COMP) $(FLAGS) $(OBJS) $(INCS) -o $(NAME)
 	@echo Program $(NAME) ready!!
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp
 	@mkdir -p $(dir $@)
-	@$(COMP) $(FLAGS) $(INCS) -c $< -o $@
+	$(COMP) $(FLAGS) $(INCS) -c $< -o $@
 
 clean:
 	@if [ -d "$(OBJ_PATH)" ]; then \
