@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:00:08 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 16:00:08 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/13 12:09:57 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Harl::~Harl()
 Harl::Harl(const Harl& copy)
 {
     if (this == &copy)
-	 return ;
+		return ;
     this->funcs[ENU_NOISE] = copy.funcs[ENU_NOISE];
     this->funcs[ENU_DEBUG] = copy.funcs[ENU_DEBUG];
     this->funcs[ENU_INFO] = copy.funcs[ENU_INFO];
@@ -52,7 +52,7 @@ Harl::Harl(const Harl& copy)
 Harl& Harl:: operator= (const Harl& assign)
 {
     if (this == &assign)
-	 return (*this);
+		return (*this);
     this->funcs[ENU_NOISE] = assign.funcs[ENU_NOISE];
     this->funcs[ENU_DEBUG] = assign.funcs[ENU_DEBUG];
     this->funcs[ENU_INFO] = assign.funcs[ENU_INFO];
@@ -76,8 +76,8 @@ void    Harl::complain(std::string level)
     i = 1;
     while (i < this->num_levels)
     {
-	 call += i * (callers[i] == level);
-	 i++;
+		call += i * (callers[i] == level);
+		i++;
     }
     (*this.*funcs[call])();
 }

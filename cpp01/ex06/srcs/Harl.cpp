@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:59:49 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 15:59:49 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/13 12:11:25 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,24 +76,24 @@ void    Harl::complain(std::string level)
     i = 1;
     while (i < this->num_levels)
     {
-	 call += i * (callers[i] == level);
-	 i++;
+		call += i * (callers[i] == level);
+		i++;
     }
     switch (call)
     {
-	 case ENU_DEBUG:
-	     (*this.*funcs[ENU_DEBUG])();
-	 case ENU_INFO:
-	     (*this.*funcs[ENU_INFO])();
-	 case ENU_WARNING:
-	     (*this.*funcs[ENU_WARNING])();
-	 case ENU_ERROR:
-	 {
-	     (*this.*funcs[ENU_ERROR])();
-	     break ;
-	 }
-	 default:
-	     (*this.*funcs[ENU_NOISE])();
+		case ENU_DEBUG:
+			(*this.*funcs[ENU_DEBUG])();
+		case ENU_INFO:
+			(*this.*funcs[ENU_INFO])();
+		case ENU_WARNING:
+			(*this.*funcs[ENU_WARNING])();
+		case ENU_ERROR:
+		{
+			(*this.*funcs[ENU_ERROR])();
+			break ;
+		}
+		default:
+			(*this.*funcs[ENU_NOISE])();
     }
 }
 
