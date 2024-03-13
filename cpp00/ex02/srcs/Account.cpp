@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:56:12 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 15:56:12 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/13 11:30:51 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Account::Account(int initial_deposit)
 	this->_nbWithdrawals = 0;
 	Account::_displayTimestamp();
 	std::cout << " index:" << this->_accountIndex << ";";
-    std::cout << "amount:" << this->_amount << ";created" << std::endl;
+	std::cout << "amount:" << this->_amount << ";created" << std::endl;
 }
 
 
@@ -104,8 +104,8 @@ bool	Account::makeWithdrawal( int withdrawal )
 
     if (withdrawal > this->_amount)
     {
-	 std::cout << "refused" << std::endl;
-	 return (false);
+		std::cout << "refused" << std::endl;
+		return (false);
     }
     std::cout << withdrawal << ";";
     this->_amount -= withdrawal;
