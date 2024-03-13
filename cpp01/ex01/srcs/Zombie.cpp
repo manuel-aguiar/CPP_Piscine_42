@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:01:33 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 16:01:33 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/13 11:54:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Zombie::Zombie(const Zombie& copy)
 {
 	std::cout << copy.name << ": copiedzzzzz" << std::endl;
     if (this == &copy)
-	 return ;
+		return ;
     this->name = copy.name;
 }
 
@@ -34,7 +34,7 @@ Zombie  &Zombie::operator=(const Zombie& assign)
 {
 	std::cout << assign.name << ": copy-assignedzzzzz" << std::endl;
     if (this == &assign)
-	 return (*this);
+		return (*this);
     this->name = assign.name;
     return (*this);
 }
