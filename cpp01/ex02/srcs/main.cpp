@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:01:09 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 16:01:09 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/13 11:55:33 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main()
     std::string*    stringPTR = &brain;
     std::string&    stringREF = brain;
 
-    std::cout << "Address of string object:			   " << &brain << std::endl;
+    std::cout << "Address of string object:			   		" << &brain << std::endl;
     std::cout << "Address held by pointer to string:		 " << stringPTR << std::endl;
     std::cout << "Address held by reference to string:	      " << &stringREF << std::endl;
 
