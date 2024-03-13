@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:02:22 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 15:10:49 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/13 11:51:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@
 class Zombie
 {
     public:
-	 Zombie();
-	 ~Zombie();
-	 Zombie(const Zombie& copy);
-	 Zombie &operator= (const Zombie& assign);
+		Zombie();
+		~Zombie();
+		Zombie(const Zombie& copy);
+		Zombie &operator= (const Zombie& assign);
 
-	 void 				set_namezzz(const std::string& my_name);
+		void 				set_namezzz(const std::string& my_name);
 		const std::string&	get_namezz() const;
 
-	 void				announce (void);
+		void				announce (void);
 
     private:
 	 std::string name;
