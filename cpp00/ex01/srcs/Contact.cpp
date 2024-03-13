@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:50:53 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 15:55:34 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/13 11:19:33 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Contact::~Contact ()
 Contact::Contact (const Contact &copy)
 {
 	if (this == &copy)
-	 return ;
+		return ;
     this->first = copy.first;
     this->last = copy.last;
     this->nick = copy.nick;
@@ -36,7 +36,7 @@ Contact::Contact (const Contact &copy)
 Contact &Contact::operator= (const Contact& assign)
 {
     if (this == &assign)
-	 return (*this);
+		return (*this);
     this->first = assign.first;
     this->last = assign.last;
     this->nick = assign.nick;

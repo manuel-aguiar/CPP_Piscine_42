@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:51:44 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 15:54:53 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/13 11:18:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void    PhoneBook::add_contact()
 void    PhoneBook::search_contact()
 {
 	std::string			buffer;
-	int				 index;
+	int				 	index;
 
 	for(index = 0; index < this->contact_count; index++)
 	{
@@ -91,7 +91,6 @@ void    PhoneBook::search_contact()
 		std::cout << "Not a valid index :(" << std::endl;
 		return ;
 	}
-
 	this->list[index].print_full();
 }
 

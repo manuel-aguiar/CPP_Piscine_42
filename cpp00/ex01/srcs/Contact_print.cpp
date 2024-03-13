@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:50:44 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 15:55:35 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/13 11:20:34 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ void    Contact::print_padding(const std::string& member)
 {
     std::cout << "|";
     if (member.size() <= 10)
-	 std::cout << std::setw(10) << std::right << member;
+		std::cout << std::setw(10) << std::right << member;
     else
     {
-	 std::cout.write(member.c_str(), 9);
-	 std::cout.write(".", 2);
+		std::cout.write(member.c_str(), 9);
+		std::cout.write(".", 2);
     }
 }

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:50:30 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 15:50:31 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/13 11:15:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,41 +31,41 @@ class PhoneBook
 {
     public:
 
-	 PhoneBook ();
-	 PhoneBook (const PhoneBook& copy);
-	 ~PhoneBook ();
-	 PhoneBook &operator= (const PhoneBook& assign);
+		PhoneBook ();
+		PhoneBook (const PhoneBook& copy);
+		~PhoneBook ();
+		PhoneBook &operator= (const PhoneBook& assign);
 
-	 void		      run_phonebook(void);
+	void		      run_phonebook(void);
 
     private:
 
-	 typedef		   void (PhoneBook::*pbfunc)(void);
-	 typedef		   void (Contact::*Contact_setter)(const std::string&);
+		typedef		void (PhoneBook::*pbfunc)(void);
+		typedef		void (Contact::*Contact_setter)(const std::string&);
 
 	 //horsepower
-	 pbfunc		    functions[PB_FUNCTIONS];
-	 Contact		   list[MAX_CONTACTS];
+		pbfunc		functions[PB_FUNCTIONS];
+		Contact		list[MAX_CONTACTS];
 
 	 //phonebook stats
-	 bool		      running;
-	 int			contact_count;
-	 int			contacts_max;
+		bool		running;
+		int			contact_count;
+		int			contacts_max;
 
 	 //main functions
-	 void		      greetings(void);
-	 void		      add_contact(void);
-	 void		      search_contact(void);
-	 void		      exit_phonebook(void);
-	 void		      help_phonebook(void);
-	 void		      error_phonebook(void);
+		void		greetings(void);
+		void		add_contact(void);
+		void		search_contact(void);
+		void		exit_phonebook(void);
+		void		help_phonebook(void);
+		void		error_phonebook(void);
 
 	 //helper functions
-	 bool		      readin_stdin(const std::string& ask_field, std::string& buffer, Contact& contact, Contact_setter setter);
-	 bool		      my_atoi(std::string& str, int& place_res, int& contact_count);
-	 void		      bad_contact_input(void);
-	 bool		      buffer_is_only_space(std::string& buffer);
-	 int			string_to_action(std::string& buffer);
+		bool		readin_stdin(const std::string& ask_field, std::string& buffer, Contact& contact, Contact_setter setter);
+		bool		my_atoi(std::string& str, int& place_res, int& contact_count);
+		void		bad_contact_input(void);
+		bool		buffer_is_only_space(std::string& buffer);
+		int			string_to_action(std::string& buffer);
 
 		enum action
 		{
