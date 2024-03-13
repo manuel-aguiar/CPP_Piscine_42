@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:00:26 by codespace         #+#    #+#             */
-/*   Updated: 2024/03/13 12:08:24 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/13 13:49:47 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,20 @@ int main(int ac, char **av)
 
     // main block
     len = str_search.size();
+	if (len == 0)
+	{
+    	infile.close();
+    	outfile.close();
+   		return (0);
+	}
     start = 0;
     index = 0;
     while (std::getline(infile, temp))
     {
+		//Getline "extracts and discards" the '\n', if it finds a '\n',
+		//it will stop there but won't receive an eof indication.
+		//So, no eof means there is a newline that was discarded.
+		//Add it back to the string cause it may be part of the "str_search".
 		if (!infile.eof())
 	    	temp += "\n";
 
