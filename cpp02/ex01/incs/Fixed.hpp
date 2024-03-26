@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 10:18:13 by codespace         #+#    #+#             */
-/*   Updated: 2024/03/26 10:35:29 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/26 10:57:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,37 @@ std::ostream& operator<<(std::ostream& out, const Fixed& num);
 	chaining of thee operator<< !!!!!!!!
 	the next one will be able to still be called because they have
 	a reference to cout left byt he previous function call
+*/
+
+/*
+
+	cortesy of chatgpt:
+	Left-to-right associativity: +, -, *, /, %, =, +=, -=, *=, /=, %=, etc.
+	Right-to-left associativity: ++, --, <<, >>, =, +=, -=  (when used as unary operators)
+
+	WAIT (not chatgpt):
+		"<<" has stream insertion operator is left-to-right :)
+		chatgpt is referring to bitshifts
+
+	certain operators work left to right and others as right to left.
+	Example:
+		f = g = h
+		is equal to:
+		g = h
+		f = g
+
+		So, h gets effectively passed to f, "=" operator has right-left associativity
+
+	++ and --
+
+	Since these operators have right-to-left associativity,
+	x++, returns original x and increases x
+	++x, increases x and returns the new increased x
+
+
+	Overloading operators does not change their associacitivity, only how the operator itself behaves
+
+
 */
 
 #endif
