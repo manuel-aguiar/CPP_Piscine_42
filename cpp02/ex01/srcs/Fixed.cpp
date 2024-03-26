@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:58:54 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 15:58:54 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/26 10:28:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,15 @@ Fixed::~Fixed( void )
     std::cout << "Destructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed& copy) : raw_bits(copy.raw_bits)
+Fixed::Fixed(const Fixed& copy) : raw_bits(copy.getRawBits())
 {
     std::cout << "Copy constructor called" << std::endl;
     if (this == &copy)
     {
-	 std::cout << "Copy constructor: this == copy" << std::endl;
-	 return ;
+		std::cout << "Copy constructor: this == copy" << std::endl;
+		return ;
     }
+	*this = copy;
 }
 
 Fixed& Fixed::operator= (const Fixed& assign)
@@ -49,10 +50,10 @@ Fixed& Fixed::operator= (const Fixed& assign)
     std::cout << "Copy assignment operator called" << std::endl;
     if (this == &assign)
     {
-	 std::cout << "Copy assignment: this == copy" << std::endl;
-	 return (*this);
+		std::cout << "Copy assignment: this == copy" << std::endl;
+		return (*this);
     }
-    raw_bits = assign.raw_bits;
+    raw_bits = assign.getRawBits();
     return (*this);
 }
 
@@ -69,14 +70,13 @@ int     Fixed::toInt( void ) const
 int     Fixed::getRawBits( void ) const
 {
     std::cout << "getRawBits function called" << std::endl;
-    return (this->raw_bits);
+    return (raw_bits);
 }
 
 void     Fixed::setRawBits( int const raw )
 {
     std::cout << "setRawBits function called" << std::endl;
-    this->raw_bits = raw;
-
+    raw_bits = raw;
 }
 
 std::ostream& operator<<(std::ostream& out, const Fixed& num)

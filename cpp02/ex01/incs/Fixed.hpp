@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 15:58:59 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 15:58:59 by codespace        ###   ########.fr       */
+/*   Created: 2024/03/26 10:18:13 by codespace         #+#    #+#             */
+/*   Updated: 2024/03/26 10:35:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,23 @@ Therefore fixed_point FIXED_INT_MAX = INT_MAX >> 8
 class Fixed
 {
     public:
-	 Fixed();
-	 Fixed( const int i );
-	 Fixed( const float f );
+		Fixed();
+		Fixed( const int i );
+		Fixed( const float f );
+		~Fixed();
+		Fixed( const Fixed& copy );
+		Fixed&  operator= ( const Fixed& assign );
 
-	 ~Fixed();
+		//friend std::ostream& operator<<(std::ostream& out, const Fixed& num);
 
-	 Fixed( const Fixed& copy );
-	 Fixed&  operator= ( const Fixed& assign );
-
-		// friend std::ostream& operator<<(std::ostream& out, const Fixed& num);
-
-	 int		   getRawBits( void ) const;
-	 void		  setRawBits( int const raw);
-	 float		 toFloat( void ) const;
-	 int		   toInt( void ) const;
+		int			getRawBits(void) const;
+		void		setRawBits(int const raw);
+		float		toFloat(void) const;
+		int			toInt(void) const;
 
     private:
-	 int		   raw_bits;
-	 static const int    frac_bits = FRAC_BITS;
+		int					raw_bits;
+		static const int	frac_bits = FRAC_BITS;
 
 };
 
@@ -91,5 +89,12 @@ class Fixed
 */
 
 std::ostream& operator<<(std::ostream& out, const Fixed& num);
+
+/*
+	returning a reference to the output stream itself is what allows
+	chaining of thee operator<< !!!!!!!!
+	the next one will be able to still be called because they have
+	a reference to cout left byt he previous function call
+*/
 
 #endif
