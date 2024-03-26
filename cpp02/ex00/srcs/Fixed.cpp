@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:59:15 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 15:59:16 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/26 10:09:50 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,7 @@ Fixed::~Fixed( void )
 Fixed::Fixed(const Fixed& copy) : raw_bits(copy.raw_bits)
 {
     std::cout << "Copy constructor called" << std::endl;
-    if (this == &copy)
-    {
-	 std::cout << "Copy constructor: this == copy" << std::endl;
-	 return ;
-    }
+    *this = copy;
 }
 
 Fixed& Fixed::operator= (const Fixed& assign)
@@ -37,18 +33,17 @@ Fixed& Fixed::operator= (const Fixed& assign)
     std::cout << "Copy assignment operator called" << std::endl;
     if (this == &assign)
     {
-	 std::cout << "Copy assignment: this == copy" << std::endl;
-	 return (*this);
+		std::cout << "Copy assignment: this == copy" << std::endl;
+		return (*this);
     }
-
-    raw_bits = assign.raw_bits;
+    raw_bits = assign.getRawBits();
     return (*this);
 }
 
 int     Fixed::getRawBits( void ) const
 {
     std::cout << "getRawBits function called" << std::endl;
-    return (this->raw_bits);
+    return (raw_bits);
 }
 
 void     Fixed::setRawBits( int const raw )
