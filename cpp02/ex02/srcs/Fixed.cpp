@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:58:23 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 15:58:24 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/26 11:27:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,15 @@ Fixed::~Fixed( void )
 
 // copy constructor
 
-Fixed::Fixed(const Fixed& copy) : raw_bits(copy.raw_bits)
+Fixed::Fixed(const Fixed& copy) : raw_bits(copy.getRawBits())
 {
     std::cout << "Copy constructor called" << std::endl;
     if (this == &copy)
     {
-	 std::cout << "Copy constructor: this == copy" << std::endl;
-	 return ;
+		std::cout << "Copy constructor: this == copy" << std::endl;
+		return ;
     }
+	*this = copy;
 }
 
 //copy assignment constructor
@@ -57,16 +58,14 @@ Fixed& Fixed::operator= (const Fixed& assign)
     std::cout << "Copy assignment operator called" << std::endl;
     if (this == &assign)
     {
-	 std::cout << "Copy assignment: this == copy" << std::endl;
-	 return (*this);
+		std::cout << "Copy assignment: this == copy" << std::endl;
+		return (*this);
     }
     raw_bits = assign.raw_bits;
     return (*this);
 }
 
 // generic member functions
-
-
 
 int     Fixed::getRawBits( void ) const
 {
