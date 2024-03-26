@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 10:18:13 by codespace         #+#    #+#             */
-/*   Updated: 2024/03/26 10:57:39 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/26 11:11:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ std::ostream& operator<<(std::ostream& out, const Fixed& num);
 	Right-to-left associativity: ++, --, <<, >>, =, +=, -=  (when used as unary operators)
 
 	WAIT (not chatgpt):
-		"<<" has stream insertion operator is left-to-right :)
+		"<<" as a stream insertion operator is left-to-right :)
 		chatgpt is referring to bitshifts
 
 	certain operators work left to right and others as right to left.
@@ -125,6 +125,11 @@ std::ostream& operator<<(std::ostream& out, const Fixed& num);
 
 	Overloading operators does not change their associacitivity, only how the operator itself behaves
 
+	Associativity is used to evaluate the order of execution of operators of the same precedence
+	a + b + c -> same operator, same precedence
+	left to right, so a + b and then the return of that + c;
+	a + b * c * d, * has higher precendence than +, * evaluated first.
+	* is left to right, so b * c, then res * d, then a + res
 
 */
 
