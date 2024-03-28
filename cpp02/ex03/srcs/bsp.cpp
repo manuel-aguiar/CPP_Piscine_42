@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:57:38 by codespace         #+#    #+#             */
-/*   Updated: 2024/03/28 12:29:07 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/28 12:30:18 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,8 @@ bool	bsp(const Vector& target, const Vector& a, const Vector& b, const Vector& c
 {
 	return
 	(
-		same_plane(a, b, target, c)
-	&&	same_plane(a, c, target, b)
-	&&	same_plane(b, c, target, a)
+		same_plane(a, b, c, target)
+	&&	same_plane(a, c, b, target)
+	&&	same_plane(b, c, a, target)
 	);
 }
