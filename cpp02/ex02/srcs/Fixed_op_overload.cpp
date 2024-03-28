@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:58:18 by codespace         #+#    #+#             */
-/*   Updated: 2024/03/26 11:42:51 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/28 10:57:07 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,19 @@ Fixed	Fixed::operator/ (const Fixed& other) const
 }
 
 // increment operator overloads (increment/decrement)
+
+/*
+
+	Increment/decrement:
+		one is incrementing rawbits by 1 / - 1;
+		the actual fixed point change is determined by the number of bits
+		used for the mantissa
+		incrementing will result in a change by 1 / ( 2 ^ N), where N is the
+		mantissa bits. In your case, the increment = 1 ( 2 ^ 8), 1 / 256 = 0.00390625;
+
+*/
+
+
 
 /*
 	Below is the pre-increment overload,
