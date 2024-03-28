@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:57:38 by codespace         #+#    #+#             */
-/*   Updated: 2024/03/28 12:23:35 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/28 12:29:07 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ static bool	same_plane(const Vector& line_start, const Vector& line_end, \
 	Vector	line_test2 = point2 - line_start;
 	Fixed	cross2 = Vector::cross_product(line, line_test2);
 
-	std::cout << "cross 1" << cross1 <<" cross 2" << cross2 << " product: " << cross1 * cross2 << std::endl;
 	return ((cross1 * cross2) > 0);
 }
 
