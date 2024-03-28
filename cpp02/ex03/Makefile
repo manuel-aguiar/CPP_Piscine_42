@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/28 15:57:02 by codespace         #+#    #+#              #
-#    Updated: 2024/03/12 16:39:49 by codespace        ###   ########.fr        #
+#    Updated: 2024/03/28 12:06:00 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC_FILES		=		main.cpp		\
 						Fixed.cpp				\
 						Fixed_functions.cpp		\
 						Fixed_op_overload.cpp	\
-						Point.cpp
+						Vector.cpp
 
 ## PREP
 SRCS		:=		$(addprefix $(SRC_PATH)/,$(SRC_FILES)) \
@@ -62,7 +62,7 @@ re: fclean all
 git: fclean
 	@git add . && git commit -m "commiting" && git push
 
-run: re
+run: all
 	@./$(NAME)
 
 .PHONY: clean fclean re git run

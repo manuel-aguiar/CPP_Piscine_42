@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Point.hpp                                          :+:      :+:    :+:   */
+/*   Vector.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:57:58 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 15:57:58 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/28 11:55:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 
 # include "Fixed.hpp"
 
-class Point
+class Vector
 {
 	public:
-		Point(const Fixed& x, const Fixed& y);
-		~Point();
-		Point(const Point& copy);
-		Point& operator=(const Point& assign);
+		Vector(const Fixed& x, const Fixed& y);
+		~Vector();
+		Vector(const Vector& copy);
+		Vector& operator=(const Vector& assign);
 
 
 		void			set_x(const Fixed& x_coord);
@@ -31,12 +31,16 @@ class Point
 		const Fixed&	get_x( void ) const;
 		const Fixed&	get_y( void ) const;
 
+		static Fixed	cross_product (Vector& first, Vector& second);
+		
+		Vector	operator- (const Vector& other) const;
+
 	private:
-		Point(void);
+		Vector(void);
 		Fixed	x;
 		Fixed	y;
 };
 
-bool	bsp(const Point& target, const Point& a, const Point& b, const Point& c);
+bool	bsp(const Vector& target, const Vector& a, const Vector& b, const Vector& c);
 
 #endif

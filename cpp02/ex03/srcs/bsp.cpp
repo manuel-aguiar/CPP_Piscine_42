@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:57:38 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 15:57:39 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/28 12:23:35 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,7 @@ function ptInTriangle(p, p0, p1, p2) {
 	A = (1/2) |x1(y2 − y3) + x2(y3 − y1) + x3(y1 − y2)|,
 	where (x1,y1),(x2,y2), and (x3,y3) are the coordinates of vertices of the triangle.
 
-
-*/
-
-#include "Point.hpp"
-
-static Fixed	triangle_area(const Point& a, const Point& b, const Point& c)
+static Fixed	triangle_area(const Vector& a, const Vector& b, const Vector& c)
 {
 	const Fixed& ax = a.get_x();
 	const Fixed& ay = a.get_y();
@@ -71,10 +66,10 @@ static Fixed	triangle_area(const Point& a, const Point& b, const Point& c)
 	const Fixed& cx = c.get_x();
 	const Fixed& cy = c.get_y();
 
-	return (Fixed::abs(ax * (by - cy) + bx * (cy - ay) + cx * (ay - by)) * 0.5f);
+	return (Fixed::abs((ax * (by - cy) + bx * (cy - ay) + cx * (ay - by)) * 0.5f));
 }
 
-bool	bsp(const Point& target, const Point& a, const Point& b, const Point& c)
+bool	fake_bsp(const Vector& target, const Vector& a, const Vector& b, const Vector& c)
 {
 	Fixed all_areas[4];
 
@@ -84,4 +79,58 @@ bool	bsp(const Point& target, const Point& a, const Point& b, const Point& c)
 	all_areas[3] = triangle_area(target, a, c);
 
     return (all_areas[0] == (all_areas[1] + all_areas[2] + all_areas[3]));
+}
+
+
+*/
+
+#include "Vector.hpp"
+
+
+/*
+
+	Change of plans.......
+
+	Vectors and cross products!!!! draw the 3 lines of the triangle
+	Each line divides the space in two
+	If both the remaining points are on the same plane, for all 3 divisions,
+	the point is in the triangle!!!!
+	If it is outside, one of the lines will will divide the plane such that one of the
+	remaining will be on one side and the otheer on the other
+
+
+	So.... vector cross products
+		draw a vector from start to end
+		draw a vector from start to point
+
+		calculate the cross product: a perpendicular vector to both of them
+
+		if both cross p+roducts have the same sign, they are on the same plane
+		checking the sign, multiply one by the other (++ = +, -- = +)
+		if the product of cross products is strictly positive, both points are on the same plane :)
+
+*/
+
+static bool	same_plane(const Vector& line_start, const Vector& line_end, \
+						const Vector& point1, const Vector& point2)
+{
+	Vector	line = line_end - line_start;
+	Vector	line_test1 = point1 - line_start;
+	Fixed 	cross1 = Vector::cross_product(line, line_test1);
+
+	Vector	line_test2 = point2 - line_start;
+	Fixed	cross2 = Vector::cross_product(line, line_test2);
+
+	std::cout << "cross 1" << cross1 <<" cross 2" << cross2 << " product: " << cross1 * cross2 << std::endl;
+	return ((cross1 * cross2) > 0);
+}
+
+bool	bsp(const Vector& target, const Vector& a, const Vector& b, const Vector& c)
+{
+	return
+	(
+		same_plane(a, b, target, c)
+	&&	same_plane(a, c, target, b)
+	&&	same_plane(b, c, target, a)
+	);
 }

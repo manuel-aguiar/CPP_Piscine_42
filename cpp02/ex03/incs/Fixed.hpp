@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/28 15:57:52 by codespace         #+#    #+#             */
-/*   Updated: 2023/12/28 15:57:52 by codespace        ###   ########.fr       */
+/*   Created: 2023/12/28 15:58:05 by codespace         #+#    #+#             */
+/*   Updated: 2024/03/28 11:37:54 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,17 @@ Therefore fixed_point FIXED_INT_MAX = INT_MAX >> 8
 class Fixed
 {
     public:
-	 Fixed();
-	 Fixed( const int i );
-	 Fixed( const float f );
+		Fixed();
+		Fixed( const int i );
+		Fixed( const float f );
+		~Fixed();
+		Fixed( const Fixed& copy );
+		Fixed&  operator= ( const Fixed& assign );
 
-	 ~Fixed();
-
-	 Fixed( const Fixed& copy );
-	 Fixed&  operator= ( const Fixed& assign );
-
-	 int		   getRawBits( void ) const;
-	 void		  setRawBits( int const raw);
-	 float		 toFloat( void ) const;
-	 int		   toInt( void ) const;
+		int				getRawBits( void ) const;
+		void			setRawBits( int const raw);
+		float			toFloat( void ) const;
+		int				toInt( void ) const;
 
 		// comparison operator overloads
 		bool	operator> (const Fixed& other) const;
@@ -83,18 +81,18 @@ class Fixed
 		Fixed&	operator--(void);
 		Fixed	operator--(int);
 
-		// public member functions
+		// public static member functions
 
-		static	Fixed&	min(Fixed& first, Fixed& second);
+		static	Fixed&			min(Fixed& first, Fixed& second);
 		static	const Fixed&	min(const Fixed& first, const Fixed& second);
-		static	Fixed&	max(Fixed& first, Fixed& second);
+		static	Fixed&			max(Fixed& first, Fixed& second);
 		static	const Fixed&	max(const Fixed& first, const Fixed& second);
 
 		static	Fixed	abs(const Fixed& target);
 
     private:
-	 int		   raw_bits;
-	 static const int    frac_bits = FRAC_BITS;
+		int					raw_bits;
+		static const int	frac_bits = FRAC_BITS;
 
 };
 
@@ -122,5 +120,57 @@ class Fixed
 */
 
 std::ostream& operator<<(std::ostream& out, const Fixed& num);
+
+/*
+	returning a reference to the output stream itself is what allows
+	chaining of thee operator<< !!!!!!!!
+	the next one will be able to still be called because they have
+	a reference to cout left byt he previous function call
+*/
+
+/*
+
+	cortesy of chatgpt:
+	Left-to-right associativity: +, -, *, /, %, =, +=, -=, *=, /=, %=, etc.
+	Right-to-left associativity: ++, --, <<, >>, =, +=, -=  (when used as unary operators)
+
+	WAIT (not chatgpt):
+		"<<" as a stream insertion operator is left-to-right :)
+		chatgpt is referring to bitshifts
+
+	certain operators work left to right and others as right to left.
+	Example:
+		f = g = h
+		is equal to:
+		g = h
+		f = g
+
+		So, h gets effectively passed to f, "=" operator has right-left associativity
+
+	++ and --
+
+	Since these operators have right-to-left associativity,
+	x++, returns original x and increases x
+	++x, increases x and returns the new increased x
+
+
+	Overloading operators does not change their associacitivity, only how the operator itself behaves
+
+	Associativity is used to evaluate the order of execution of operators of the same precedence
+	a + b + c -> same operator, same precedence
+	left to right, so a + b and then the return of that + c;
+	a + b * c * d, * has higher precendence than +, * evaluated first.
+	* is left to right, so b * c, then res * d, then a + res
+
+*/
+
+/*
+
+	The reason for the two types of static member functions (const/non-const)
+	is because:
+		if we are chaining the results, we need non-const Fixed instances to carry the math from
+		one to the next
+
+*/
 
 #endif
