@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 15:58:23 by codespace         #+#    #+#             */
-/*   Updated: 2024/03/26 11:27:38 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/28 11:10:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@
 
 Fixed::Fixed( void ) : raw_bits(0)
 {
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << "Default constructor called, raw_bits: " << raw_bits << std::endl;
 }
 
 Fixed::Fixed( const int i ) : raw_bits(i << frac_bits)
 {
-    std::cout << "Int constructor called" << std::endl;
+    std::cout << "Int constructor called, raw_bits: " << raw_bits << std::endl;
 	if (i > FIXED_INT_MAX || i < FIXED_INT_MIN)
 		std::cout << "warning: int is outside fixed point accuracy range" << std::endl;
 }
 
 Fixed::Fixed( const float f ) : raw_bits(roundf(f * (1 << frac_bits)))
 {
-    std::cout << "Float constructor called" << std::endl;
+    std::cout << "Float constructor called, raw_bits: " << raw_bits << std::endl;
 }
 
 //destructors
 
 Fixed::~Fixed( void )
 {
-    std::cout << "Destructor called" << std::endl;
+    std::cout << "Destructor called, raw_bits: " << raw_bits << std::endl;
 }
 
 // copy constructor
