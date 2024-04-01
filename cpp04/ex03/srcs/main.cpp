@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/11 12:11:47 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 14:38:18 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main()
 	hey.equip(new Cure());
 	Character hello(hey);
 
-	hello.rename("cenas");
+	hello.setName("cenas");
 	hello.print_stats();
 
 	hey.print_stats();

@@ -26,7 +26,7 @@ AMateria::AMateria(const AMateria& copy)
 {
 	if (this == &copy)
 		return ;
-	type = copy.type;
+	*this = copy;
 }
 
 AMateria& AMateria::operator= (const AMateria& assign)

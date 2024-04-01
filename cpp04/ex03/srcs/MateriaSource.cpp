@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 16:36:03 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/11 11:56:24 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 14:41:31 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ MateriaSource::MateriaSource(const MateriaSource& copy)
 	std::cout << "MateriaSource Copy Destructor called" << std::endl;
 	if (this == &copy)
 		return ;
-	for(unsigned int i = 0; i < MATERIA_SLOTS; i++)
-		sources[i] = copy.sources[i];
+	*this = copy;
 }
 
 MateriaSource& MateriaSource::operator= (const MateriaSource& assign)

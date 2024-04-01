@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:11:56 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/11 12:09:01 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 14:41:42 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void Character::equip(AMateria* m)
 {
 	if (!m)
 	{
-		std::cout << "Character -" << getName() << "- failed to equip: NULL AMateria" << std::endl;
+		std::cout << "Character -" << name << "- failed to equip: NULL AMateria" << std::endl;
 		return ;
 	}
 	for (unsigned int i = 0; i < CHARACTER_SLOTS; i++)
@@ -76,19 +76,19 @@ void Character::equip(AMateria* m)
 		if (!slots[i])
 		{
 			slots[i] = m;
-			std::cout << "Character -" << getName() << "- succeeded to equip -" \
+			std::cout << "Character -" << name << "- succeeded to equip -" \
 			<< m->getType() << "- in slot: " << i << std::endl;
 			return ;
 		}
 	}
-	std::cout << "Character -" << getName() << "- failed to equip: unavaiable slots" << std::endl;
+	std::cout << "Character -" << name << "- failed to equip: unavaiable slots" << std::endl;
 }
 
 void Character::unequip(int idx)
 {
 	if (idx < 0 || idx >= CHARACTER_SLOTS || slots[idx] == NULL)
 	{
-		std::cout << "Character -" << getName() << "- failed to unequip: bad index/empty slot" << std::endl;
+		std::cout << "Character -" << name << "- failed to unequip: bad index/empty slot" << std::endl;
 		return ;
 	}
 	slots[idx] = NULL;
@@ -98,7 +98,7 @@ void Character::use(int idx, ICharacter& target)
 {
 	if (idx < 0 || idx >= CHARACTER_SLOTS || !slots[idx])
 	{
-		std::cout << "Character -" << getName() << "- failed to use: bad index/empty slot" << std::endl;
+		std::cout << "Character -" << name << "- failed to use: bad index/empty slot" << std::endl;
 		return ;
 	}
 	slots[idx]->use(target);
@@ -120,7 +120,7 @@ void	Character::print_stats(void) const
 	std::cout << std::endl;
 }
 
-void	Character::rename(const std::string& new_name)
+void	Character::setName(const std::string& new_name)
 {
 	name = new_name;
 }

@@ -23,6 +23,7 @@ class IMateriaSource
 		virtual void learnMateria(AMateria* ) = 0;
 		virtual AMateria* createMateria(std::string const & type) = 0;
 
+		// my own, for visualization, cleaner than static cast to Character *
 		virtual void print_stats(void) const = 0;
 };
 

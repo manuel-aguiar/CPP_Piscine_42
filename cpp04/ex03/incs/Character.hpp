@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:06:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 14:14:30 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 14:28:37 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ class Character : public ICharacter
 		void unequip(int idx);
 		void use(int idx, ICharacter& target);
 
-		void	rename(const std::string& new_name);
-		void	print_stats(void) const;
+		void		setName(const std::string& new_name);
+		void		print_stats(void) const;
 		AMateria* 	getSlot(int idx)	const;
 	private:
 		std::string 	name;
