@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 11:53:53 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 12:47:58 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Brain
 {
     public:
 		Brain();
-		virtual ~Brain();
+		~Brain();
 		Brain(const Brain& copy);
 		Brain& operator= (const Brain& assign);
 
