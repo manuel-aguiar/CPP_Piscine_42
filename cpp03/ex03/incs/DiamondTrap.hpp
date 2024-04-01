@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 10:35:29 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 10:41:04 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ that we want
 
 Essentially, we must manually assign the values we want, pretty much
 
+
+Consclusion is, avoid this type of pattern, it generates more bad than good
 
 */
 
