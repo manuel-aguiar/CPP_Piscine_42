@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/09 15:02:14 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 09:16:53 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,42 @@ class ScavTrap : public ClapTrap
 		ScavTrap(const std::string& start_name);
 		~ScavTrap();
 		ScavTrap(const ScavTrap& copy);
-		ScavTrap& operator= (const ScavTrap& assign);
+		using	ClapTrap::operator=;
 		void	attack(const std::string& target);
 		void    guardGate();
 	private:
 		bool    gatekeeping;
 };
 
+/*
 
+	Assignment operator is not inherited but the compiler will
+	provide a definition of the derived class in class the class
+	does not provide it itself
+
+	Ommiting, the operator= called will be compiler definition:
+		https://stackoverflow.com/questions/9161512/assignment-operator-inheritance
+
+	The compiler will call the base class operator=
+		In the end: final machine code will be equal whether you state the operator= or not
+		(running the problem with/without "using" yields the same output, ClapTrap copy assignment is called regardless)
+	BUT: let's make it explicity and use the "using" keyword :)
+
+	SO, twwo options:
+		- "using" ClapTrap operator= (which is okay given
+		the members are the same and will all be copied)
+		- Define it ourselved from scratch
+	Subject says constructors must print different messages, not the assignment operator
+	As per above, one must still give a definition, otherwise the compiler will infuse its own
+
+
+	Inheritance of constructors is only available from c++11 (-std=c++11),
+	not here :)
+		"error: inheriting constructors only available with ‘-std=c++11’ or ‘-std=gnu++11’ [-Werror]"
+		but one can still "using" the operator=
+	Copy constructor is... a constructor!!! not inherited with "using" either
+
+*/
 
 
 #endif

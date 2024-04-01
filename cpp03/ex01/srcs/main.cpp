@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/09 15:18:24 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 09:03:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 int main()
 {
     ScavTrap potato("juau");
+	ScavTrap cenas(potato);
 
-
-
-	potato.my_stats();
-
-	potato.attack("tretas");
+	cenas = potato;
+	cenas.my_stats();
 
 	/*
     potato.attack("antonio");
