@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 09:20:49 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 09:23:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ class ScavTrap : public ClapTrap
 		void	attack(const std::string& target);
 		void    guardGate();
 
-	private:
-		bool    gatekeeping;
 };
 
 /*

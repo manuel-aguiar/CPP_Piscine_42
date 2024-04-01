@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:46 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 09:15:44 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 09:23:41 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ ScavTrap::ScavTrap(const ScavTrap& copy) : ClapTrap(copy)
 
 void    ScavTrap::guardGate()
 {
-    gatekeeping = true;
     std::cout << "ScavTrap " << name << " is in Gate Keeper mode." << std::endl;
 }
 
