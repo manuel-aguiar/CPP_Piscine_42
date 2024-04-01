@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:20 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 08:38:01 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 08:43:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	}
 }
 
-void	ClapTrap::my_stats( void )
+void	ClapTrap::my_stats( void ) const
 {
 	std::cout << std::endl;
 	std::cout << "Stats: " << name << std::endl;
