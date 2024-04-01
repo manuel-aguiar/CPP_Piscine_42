@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 11:53:49 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 12:20:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ Brain::Brain(const Brain& copy)
 
 	if (this == &copy)
 		return ;
-
-	for (int i = 0; i < NUMBER_IDEAS; i++)
-		ideas[i] = copy.ideas[i];
-
+	*this = copy;
 }
 
 Brain& Brain::operator= (const Brain& assign)

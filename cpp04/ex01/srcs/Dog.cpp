@@ -30,8 +30,8 @@ Dog::Dog(const Dog& copy) : Animal(copy)
 	std::cout << "Dog Copy Constructor called" << std::endl;
 	if (this == &copy)
 		return ;
-	type = copy.type;
-	my_brain = new (std::nothrow) Brain(*(copy.my_brain));
+	my_brain = new (std::nothrow) Brain();
+	*this = copy;
 }
 
 Dog& Dog::operator= (const Dog& assign)

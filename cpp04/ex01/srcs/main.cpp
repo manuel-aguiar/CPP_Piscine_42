@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 12:34:37 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 12:31:04 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ void	half_cat_half_dog_new_speak_delete(unsigned int number)
 	delete[] everyone;
 }
 
-int main()
+int main1()
 {
 	half_cat_half_dog_new_speak_delete(10);
 
 	return (0);
 }
 
-int main4()
+int main()
 {
 
 	// deep copy test
@@ -56,6 +56,7 @@ int main4()
 	first.getBrain()->setIdeas(10, "haha enganei te");
 
 	std::cout << second.getBrain()->getIdeas(10) << std::endl;
+	std::cout << first.getBrain()->getIdeas(10) << std::endl;
 
 	return (0);
 }

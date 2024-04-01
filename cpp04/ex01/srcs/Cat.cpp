@@ -26,13 +26,20 @@ Cat::~Cat()
 	delete my_brain;
 }
 
+/*
+	heap allocation of a new empty brain
+
+	calls assignment operator
+		which calls brain assignment operator
+*/
+
 Cat::Cat(const Cat& copy) : Animal(copy)
 {
 	std::cout << "Cat Copy Destructor called" << std::endl;
 	if (this == &copy)
 		return ;
-	type = copy.type;
-	my_brain = new (std::nothrow) Brain(*(copy.my_brain));
+	my_brain = new (std::nothrow) Brain();
+	*this = copy;
 }
 
 Cat& Cat::operator= (const Cat& assign)
