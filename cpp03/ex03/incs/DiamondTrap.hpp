@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/09 17:08:46 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 10:26:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ class DiamondTrap : public ScavTrap, public FragTrap
 
 		using	ScavTrap::attack;
 		void	whoAmI();
+
 	private:
 		std::string	name;
 };

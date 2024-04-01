@@ -37,15 +37,26 @@ DiamondTrap::DiamondTrap(const DiamondTrap& copy) : ClapTrap(copy), ScavTrap(cop
     *this = copy;
 }
 
+/*
+
+	In this case i need the operator=explicitely because i have an extra member variable to copy
+	and i cannot lose it :). still, i can call the operator= function of Scav, which in turn will be
+	of Clap
+
+	It would still work if i called Fragtrap operator= as both are equal to ClapTrap::operator=
+
+	Of note, const static int scav_starting_energy is initialized at the beginning of the program,
+	and is available to all classes, it is not a member variable we need to copy.
+
+*/
+
 DiamondTrap& DiamondTrap::operator= (const DiamondTrap& assign)
 {
     std::cout << "DiamondTrap - " << name << " - copy assignment operator called" << std::endl;
     if (this == &assign)
 		return (*this);
+	ScavTrap::operator=(assign);
     name = assign.name;
-    hitpoints = assign.hitpoints;
-    energypoints = assign.energypoints;
-    attackdamage = assign.attackdamage;
     return (*this);
 }
 
