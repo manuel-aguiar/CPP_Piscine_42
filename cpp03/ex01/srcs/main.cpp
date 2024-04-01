@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 09:45:29 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 12:15:57 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ int main()
 	cenas.guardGate();
 
 	ClapTrap *ptr;
+
+	ClapTrap hello("hey");
+
+	hello.attack("cenas");
 
 	ptr = new (std::nothrow) ScavTrap("cenas");
 	if (!ptr)
