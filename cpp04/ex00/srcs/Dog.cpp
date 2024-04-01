@@ -27,14 +27,14 @@ Dog::Dog(const Dog& copy) : Animal(copy)
 {
 	if (this == &copy)
 		return ;
-	type = copy.type;
+	*this = copy;
 }
 
 Dog& Dog::operator= (const Dog& assign)
 {
 	if (this == &assign)
 		return (*this);
-	type = assign.type;
+	Animal::operator=(assign);
 	return (*this);
 }
 

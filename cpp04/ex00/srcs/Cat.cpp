@@ -27,14 +27,14 @@ Cat::Cat(const Cat& copy) : Animal(copy)
 {
 	if (this == &copy)
 		return ;
-	type = copy.type;
+	*this = copy;
 }
 
 Cat& Cat::operator= (const Cat& assign)
 {
 	if (this == &assign)
 		return (*this);
-	type = assign.type;
+	Animal::operator=(assign);
 	return (*this);
 }
 
