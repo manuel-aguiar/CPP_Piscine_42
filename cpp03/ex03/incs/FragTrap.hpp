@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 10:09:41 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 10:33:13 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,12 @@ class FragTrap : virtual public ClapTrap
 		void	highFivesGuys(void);
 };
 
+/*
 
+	Virtual inheritance from ClapTrap, in case there are subclasses of FragTrap and
+	those inherit from Base class as well, only one instance of Base Class is instantiated
+
+*/
 
 
 #endif

@@ -12,6 +12,18 @@
 
 #include "DiamondTrap.hpp"
 
+/*
+
+	Given our order of construction, essentially all member variables will become
+	those of FragTrap.
+
+	ClapTrap -> ScavTrap (override) -> FragTrap (override)
+
+	so, we manually assign the ScavTrap energy points and on base class,
+	Attack will be "using" ScavTrap
+
+*/
+
 DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap()
 
 {
