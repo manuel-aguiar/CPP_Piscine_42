@@ -28,6 +28,7 @@ class Cure : public AMateria
 		Cure(const Cure& copy);
 		Cure& operator= (const Cure& assign);
 
+		//declaring Amateria's virtual funcs
 		void	use(ICharacter& target);
 		Cure*	clone() const;
 };

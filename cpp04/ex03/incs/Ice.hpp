@@ -27,6 +27,7 @@ class Ice : public AMateria
 		Ice(const Ice& copy);
 		Ice& operator= (const Ice& assign);
 
+		//declaring Amateria's virtual funcs
 		void	use(ICharacter& target);
 		Ice*	clone() const;
 

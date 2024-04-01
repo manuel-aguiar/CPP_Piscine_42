@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:30 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/11 11:49:39 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 14:19:21 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,12 @@ class ICharacter
 		virtual void print_stats(void) const = 0;
 };
 
+/*
+
+	Icharacter and Imateriasource, being interfaces, need no constructors
+
+	AMateria, is an abstract class but has non-static member variables, so it needs a constructor
+
+*/
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:06:07 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/11 11:49:47 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 14:13:51 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ class MateriaSource : public IMateriaSource
 	public:
 		MateriaSource();
 		~MateriaSource();
-
 		MateriaSource(const MateriaSource& copy);
 		MateriaSource& operator= (const MateriaSource& assign);
 
+		// declaring Imateria's pure virtual functions
 		void learnMateria(AMateria* m);
 		AMateria* createMateria(std::string const & type);
 

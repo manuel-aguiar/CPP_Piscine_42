@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/03/12 16:42:31 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/01 11:51:08 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ re: fclean all
 git: fclean
 	@git add . && git commit -m "commiting" && git push
 
-run: $(NAME)
+run: all
 	@./$(NAME)
 
 .PHONY: clean fclean re git run

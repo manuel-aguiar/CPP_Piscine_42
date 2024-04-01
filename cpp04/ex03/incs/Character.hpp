@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:06:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/11 12:06:35 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 14:14:30 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ class Character : public ICharacter
 		Character(const Character& copy);
 		Character& operator= (const Character& assign);
 
+		// declaring Icharacter's pure virtual functions
 		std::string const & getName() const;
 		void equip(AMateria* m);
 		void unequip(int idx);

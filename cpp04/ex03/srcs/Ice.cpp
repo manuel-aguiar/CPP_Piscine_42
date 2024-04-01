@@ -28,7 +28,7 @@ Ice::Ice(const Ice& copy) : AMateria(copy)
 	std::cout << "Ice Copy Destructor called" << std::endl;
 	if (this == &copy)
 		return ;
-	type = copy.type;
+	*this = copy;
 }
 
 Ice& Ice::operator= (const Ice& assign)
