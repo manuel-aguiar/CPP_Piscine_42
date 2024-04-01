@@ -73,7 +73,7 @@ re: fclean all
 git: fclean
 	@git add . && git commit -m "commiting" && git push
 
-run: re
+run: all
 	@./$(NAME)
 
 .PHONY: clean fclean re git run

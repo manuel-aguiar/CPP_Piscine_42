@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 13:20:37 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 12:50:58 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 
 	apparently as per the evaluation guide, the class must have a virtual function = 0;
 	so there it is
+
+	It must have a virtual function such that it is not instantiable
+		virtual func() = 0 is C++ syntax
+		Any derived class that doesn't present a declaration and implementation for
+		such a function, will become an abstract class as well.
 
 */
 

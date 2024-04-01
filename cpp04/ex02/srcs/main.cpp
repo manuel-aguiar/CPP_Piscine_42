@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 13:17:24 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 12:53:04 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,16 @@ int main()
 	Animal* cenas = new Cat();
 
 	delete cenas;
+
+	/*
+
+		Animal animall;
+
+		the above will not compile, animal is an abstract class given it has at least one
+		pure viirtual function
+
+	*/
+
 
 	return (0);
 }
