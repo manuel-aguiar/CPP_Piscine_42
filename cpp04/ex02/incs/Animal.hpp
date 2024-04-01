@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 12:50:58 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 12:57:36 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,15 @@ class Animal
     protected:
 		std::string type;
 };
+
+/*
+	random note:
+
+	lvalue = has location in memory, persistent
+		you do math and save the value somewhere
+	rvalue = temporary that is discarded, example middle math evaluation
+	x =	1 + 1 + 1, 2 + 1 (2 is discarded), 3 assigned to x
+
+*/
 
 #endif
