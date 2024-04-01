@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/28 16:36:42 by codespace         #+#    #+#              #
-#    Updated: 2024/04/01 10:02:18 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/01 11:44:42 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME 		=		diamondtrap
 
 ##	Compiler and flags
 COMP		=		c++
-FLAGS		=		-Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow -fsanitize=address -g
+FLAGS		=		-Wall -Wextra -Werror -std=c++98 -Wshadow -fsanitize=address -g
 
 ## FOLDERS
 INC_PATH	=		incs
