@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 09:23:22 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 09:26:47 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,12 @@ class ScavTrap : public ClapTrap
 		void	attack(const std::string& target);
 		void    guardGate();
 
+	/*
+
+	private:
+		bool	gatekeeping;
+
+	*/
 };
 
 /*
@@ -57,6 +63,10 @@ class ScavTrap : public ClapTrap
 		- Define it ourselved from scratch
 	Subject says constructors must print different messages, not the assignment operator
 	As per above, one must still give a definition, otherwise the compiler will infuse its own
+
+	BEFORE:
+		i had a bool gatekeeping to track gatekeeping mode
+		int he spiriti of the exercise, i removed it in order to directly use the ClapTrap assignment operator
 
 
 	Inheritance of constructors is only available from c++11 (-std=c++11),
