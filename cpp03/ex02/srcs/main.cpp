@@ -6,21 +6,27 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/09 12:33:37 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 09:55:41 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FlagTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main()
 {
-    ClapTrap* potato = new FlagTrap();
+    ClapTrap* potato = new FragTrap();
 
 
 
 	potato->my_stats();
 
+	// this function will call ClapTrap attack
 	potato->attack("tretas");
+
+	ClapTrap* ya_man = new ScavTrap("cenas");
+	// this function will call ScavTrap attack
+	ya_man->attack("tretas");
 
 	/*
     potato.attack("antonio");
@@ -43,6 +49,7 @@ int main()
 	*/
 
 	delete potato;
+	delete ya_man;
 
     return 0;
 }
