@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:46 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 10:04:30 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 10:10:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ FragTrap::FragTrap(const FragTrap& copy) : ClapTrap(copy)
     attackdamage = copy.attackdamage;
 }
 
+/*
 FragTrap& FragTrap::operator= (const FragTrap& assign)
 {
     std::cout << "FragTrap - " << name << " - copy assignment operator called" << std::endl;
@@ -56,7 +57,7 @@ FragTrap& FragTrap::operator= (const FragTrap& assign)
     attackdamage = assign.attackdamage;
     return (*this);
 }
-
+*/
 
 void    FragTrap::highFivesGuys(void)
 {

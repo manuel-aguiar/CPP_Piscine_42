@@ -12,14 +12,18 @@
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() : ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap()
+
 {
     std::cout << "DiamondTrap Unnamed Constructor called" << std::endl;
 	name = ClapTrap::name;
+	ClapTrap::name += "_clap_name";
 	energypoints = ScavTrap::scav_starting_energy;
 }
 
-DiamondTrap::DiamondTrap(const std::string& start_name) : ClapTrap(start_name + "_clap_name"), ScavTrap(start_name), FragTrap(start_name), name(start_name)
+DiamondTrap::DiamondTrap(const std::string& start_name) : ClapTrap(start_name + "_clap_name"), \
+														ScavTrap(start_name), FragTrap(start_name), \
+														name(start_name)
 {
     std::cout << "DiamondTrap Named - " << name << " - Constructor called" << std::endl;
 	energypoints = ScavTrap::scav_starting_energy;
@@ -30,10 +34,7 @@ DiamondTrap::DiamondTrap(const DiamondTrap& copy) : ClapTrap(copy), ScavTrap(cop
     std::cout << "DiamondTrap - " << name << " - Copy constructor called" << std::endl;
     if (this == &copy)
 		return ;
-    name = copy.name;
-    hitpoints = copy.hitpoints;
-    energypoints = copy.energypoints;
-    attackdamage = copy.attackdamage;
+    *this = copy;
 }
 
 DiamondTrap& DiamondTrap::operator= (const DiamondTrap& assign)

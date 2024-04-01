@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 10:57:50 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 10:10:33 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@ class ScavTrap : virtual public ClapTrap
 		ScavTrap(const std::string& start_name);
 		~ScavTrap();
 		ScavTrap(const ScavTrap& copy);
-		ScavTrap& operator= (const ScavTrap& assign);
+		
+		using ClapTrap::operator=;
 
 		void	attack(const std::string& target);
 		void    guardGate();
+
 	protected:
-		bool    gatekeeping;
 		const static unsigned int	scav_starting_energy = SCAV_START_EP;
 };
 
