@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 09:32:35 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 09:45:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,18 @@ int main()
 	cenas.my_stats();
 	cenas.guardGate();
 
+	ClapTrap *ptr;
+
+	ptr = new (std::nothrow) ScavTrap("cenas");
+	if (!ptr)
+		return (1);
+	ptr->attack("cenas");
 	/*
-    potato.attack("antonio");
-    potato.my_stats();
-    potato.beRepaired(100);
-    potato.my_stats();
-    potato.attack("antonio");
-    potato.my_stats();
-    potato.takeDamage(3000);
-    potato.my_stats();
-    potato.beRepaired(100);
-    potato.my_stats();
-    potato.attack("antonio");
-    potato.my_stats();
-
-    ScavTrap cenas (potato);
-    cenas.my_stats();
-    cenas = potato;
-    cenas.my_stats();
+		runtime polymorphism, since attack is virtual at ClapTrap,
+		at runtime the program will call ScavTrap's "attack".
+		If attack is not virtual at ClapTrap, it will cal ClapTrap attack
 	*/
+	delete ptr;
 
-
-    return 0;
+    return (0);
 }

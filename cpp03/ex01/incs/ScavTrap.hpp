@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 09:34:37 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 09:35:30 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class ScavTrap : public ClapTrap
 
 		using	ClapTrap::operator=;
 
-		void	attack(const std::string& target) override;
+		void	attack(const std::string& target); // override;
 		void    guardGate();
 
 	/*
@@ -77,5 +77,13 @@ class ScavTrap : public ClapTrap
 
 */
 
+/*
+	OVERRIDE
+		override keyword is only available for c++11 and on :)
+		error: override controls (override/final) only available with ‘-std=c++11’ or ‘-std=gnu++11’ [-Werror]
+
+
+
+*/
 
 #endif

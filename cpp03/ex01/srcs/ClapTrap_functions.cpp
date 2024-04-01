@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 08:40:07 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 08:43:05 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/01 09:44:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	ClapTrap::attack(const std::string& target)
 {
-	std::cout << this->name << " wants to attack " << target << ", checking energy..." << std::endl;
+	std::cout << "ClapTrap: " << name << " wants to attack " \
+	<< target << ", checking energy..." << std::endl;
 	if (hitpoints <= 0)
 	{
-		std::cout << this->name << " is dead, can't attack" << std::endl;
+		std::cout << name << " is dead, can't attack" << std::endl;
 		return ;
 	}
 	if (energypoints == 0)
