@@ -23,6 +23,14 @@ OBJ_PATH	=		objs
 
 
 ## ALL FILES
+
+INC_FILES		=		Animal.hpp		\
+						Cat.hpp			\
+						Dog.hpp			\
+						WrongAnimal.hpp	\
+						WrongCat.hpp	\
+						Brain.hpp
+
 SRC_FILES		=		main.cpp		\
 						Animal.cpp		\
 						Cat.cpp			\
@@ -32,6 +40,8 @@ SRC_FILES		=		main.cpp		\
 						Brain.cpp
 
 ## PREP
+ALL_INCS	:=		$(addprefix $(INC_PATH)/,$(INC_FILES))
+
 SRCS		:=		$(addprefix $(SRC_PATH)/,$(SRC_FILES)) \
 
 OBJS 		=		$(patsubst $(SRC_PATH)/%.cpp,$(OBJ_PATH)/%.o,$(SRCS))
@@ -44,7 +54,7 @@ $(NAME): $(OBJS)
 	$(COMP) $(FLAGS) $(OBJS) $(INCS) -o $(NAME)
 	@echo Program $(NAME) ready!!
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp $(ALL_INCS)
 	@mkdir -p $(dir $@)
 	$(COMP) $(FLAGS) $(INCS) -c $< -o $@
 
