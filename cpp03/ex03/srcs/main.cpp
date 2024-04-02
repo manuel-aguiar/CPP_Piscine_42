@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/02 12:55:56 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/02 13:55:59 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,8 @@
 
 int main()
 {
-    DiamondTrap cenas("tretas");
-
-	ClapTrap *ptr = &cenas;
-
-	ptr->my_stats();
-	ptr->attack("antonio");
+    DiamondTrap cenas;
+	cenas.whoAmI();
 	/*
 	cenas.whoAmI();
 

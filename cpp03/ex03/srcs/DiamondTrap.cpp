@@ -33,11 +33,13 @@
 
 */
 
-DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap()
+DiamondTrap::DiamondTrap() :	ClapTrap(), \
+								ScavTrap(), \
+								FragTrap(), \
+								name(ClapTrap::name)
 
 {
     std::cout << "DiamondTrap Unnamed Constructor called" << std::endl;
-	name = ClapTrap::name;
 	ClapTrap::name += "_clap_name";
 	energypoints = ScavTrap::scav_starting_energy;
 }
