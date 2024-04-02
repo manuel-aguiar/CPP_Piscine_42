@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/02 14:29:58 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/02 14:31:48 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,10 @@ class ClapTrap
 	is called via Base vtable, BUT IT IS CALLED FROM INSIDE THE DERIVED DESTRUCTOR
 	As with all virtual functions, if the derived provides an override, it becomes the closest candidate fit in
 	the inheritance chain.
+
+	If Derived doesn't provide an override for the Base virtual destructor, compiler will probably infuse a default
+	destructor....
+	Do it, nevertheless
 
 */
 
