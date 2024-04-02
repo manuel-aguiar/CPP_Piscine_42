@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/02 09:16:16 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/02 11:59:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int main()
 {
     ScavTrap potato("juau");
+
+/*
 	ScavTrap cenas(potato);
 
 	potato.takeDamage(20);
@@ -40,6 +42,6 @@ int main()
 	std::cout << sizeof(ClapTrap) << " " << sizeof(ScavTrap) << std::endl;
 
 	delete poli;
-
+*/
     return (0);
 }
