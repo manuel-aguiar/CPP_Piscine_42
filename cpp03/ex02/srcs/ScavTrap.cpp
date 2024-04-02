@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:46 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 09:59:43 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/02 11:33:24 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,29 @@ ScavTrap::ScavTrap(const ScavTrap& copy) : ClapTrap(copy)
 
 /*
 
-	Assignment operator is ommitted here given that we are "using" ClapTrap::operator=
+	I initially considered not implementing the operator= overload since the structure
+	of Base and Derive is internally the same:
+		vtable pointer (because Claptrap has a virtual destructor and virtual attack())
+		member variables, to which Derived adds non
 
-	HOWEVER (thanks Anatolli):
-		what if the derived class has more members? they must be assigned as well.
-		1) one can call the base class copy constructor this->ClapTrap::operator=
-		2) manually copy the remaining members
-			This looks like better practice and to make sure that all members are correctly copied
-		In our case, "using ClapTrap::operator=" works but in general, it is not desired
+	However, this creates problems since, if i was to add more variables to Derived
+	"using ClapTrap::operator=" would only copy the members that are already present
+	in the Base class and not the rest
+
+	So, for maintanability and retaining flexibility for further features, it is best
+	to declare and define an operateor= overload for the Derived class, even if it
+	at first calls the Base assignment operator
 
 */
+
+ScavTrap& ScavTrap::operator= (const ScavTrap& assign)
+{
+    std::cout << "ScavTrap - " << name << " - copy assignment operator called" << std::endl;
+    if (this == &assign)
+		return (*this);
+	ClapTrap::operator=(assign);
+    return (*this);
+}
 
 void    ScavTrap::guardGate()
 {
