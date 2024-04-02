@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/02 13:35:56 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/02 14:22:51 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,6 @@
 int main()
 {
     ScavTrap one("one");
-	ScavTrap two("two");
-
-	two = one;
 
 /*
 	ScavTrap cenas(potato);

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 12:17:00 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/02 14:29:58 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ class ClapTrap
 		not the point of the exercise but essentially we are allowing for the
 		free of a base class pointer to call the derived destructor
 		and avoiding undeefined behaviour
+			it goes to the vtable of the derived class and calls the derived destructor
 
 		More a particularity of abstract classes
 		In our case, claptrap is supposed to be instantiated on its own
@@ -84,6 +85,20 @@ class ClapTrap
 		If the base class is instantiated, the destructor will be normally called as usual,
 		it is just unnecessary overhead to make the destructor virtual if
 		the class is going to be instantiated normally
+
+
+	Destruction, in general
+	We don't see it, but the compiler infuses code to ensure that destruction takes place in the correct order
+	(most derived, to most base, inversely to construction).
+	In reality, it is as if we wrote:
+	Derived::~Derived()
+	{
+		Base::~Base;
+	}
+	So, if you have a virtual destructor, Derived' destructor will be called via Derived vtable, then Base::~Base
+	is called via Base vtable, BUT IT IS CALLED FROM INSIDE THE DERIVED DESTRUCTOR
+	As with all virtual functions, if the derived provides an override, it becomes the closest candidate fit in
+	the inheritance chain.
 
 */
 
