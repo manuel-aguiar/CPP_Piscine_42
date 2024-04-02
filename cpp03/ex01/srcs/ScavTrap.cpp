@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:46 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/02 12:06:48 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/02 12:21:00 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,14 @@ ScavTrap::ScavTrap() : ClapTrap(), gatekeeping(false)
 
 ScavTrap::ScavTrap(const std::string& start_name) : ClapTrap(start_name), gatekeeping(false)
 {
-    std::cout << "ScavTrap Named - " << name << " - Constructor called" << std::endl;
+    std::cout << "ScavTrap Named - " << start_name << " - Constructor called" << std::endl;
+
+	/*
+		this following line, in our case, is irrelevant, since name will
+		be initialized to the name we want by the ClapTrap constructor
+		we keep it for coherence, as it is an inherited member variable
+	*/
+	name = start_name;
     hitpoints = SCAV_START_HP;
     energypoints = SCAV_START_EP;
     attackdamage = SCAV_START_ATTACK;
