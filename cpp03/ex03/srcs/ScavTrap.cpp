@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:46 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/02 12:19:06 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/02 12:53:27 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,14 @@ void	ScavTrap::attack(const std::string& target)
 		energypoints--;
 		std::cout << "ScavTrap "  << name << " attacks " << target << ", causing " << attackdamage << " points of damage!" << std::endl;
 	}
+}
+
+void	ScavTrap::my_stats( void ) const
+{
+	std::cout << std::endl;
+	std::cout << "Stats: " << name << std::endl;
+	std::cout << "   HP: " << hitpoints << std::endl;
+	std::cout << "   EP: " << energypoints << std::endl;
+	std::cout << "   Attack Strength: " << attackdamage << std::endl;
+	std::cout << std::endl;
 }

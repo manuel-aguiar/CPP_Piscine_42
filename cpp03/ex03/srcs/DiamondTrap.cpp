@@ -42,6 +42,18 @@ DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap()
 	energypoints = ScavTrap::scav_starting_energy;
 }
 
+/*
+
+	In virtual inheritance, the most derived class must call all of its ancestors directly.
+	If i ommitt the "ClapTrap(start_name + "_clap_name")" in the member initializer list,
+	the compiler will call ClapTrap default constructor instead -> iit is the compiler that saves us
+		I expected the ClapTrap parameter constructor to be called by ScavTrap's parameter constructor
+		but upon compilation, default ClapTrap was called instead, meaning that it was the compiler
+		who put it there
+
+
+*/
+
 DiamondTrap::DiamondTrap(const std::string& start_name) :	ClapTrap(start_name + "_clap_name"), \
 															ScavTrap(start_name), \
 															FragTrap(start_name), \
@@ -75,9 +87,8 @@ DiamondTrap& DiamondTrap::operator= (const DiamondTrap& assign)
     std::cout << "DiamondTrap - " << name << " - copy assignment operator called" << std::endl;
     if (this == &assign)
 		return (*this);
-	FragTrap::operator=(assign);
 	ScavTrap::operator=(assign);
-
+	FragTrap::operator=(assign);
     name = assign.name;
     return (*this);
 }
@@ -88,7 +99,18 @@ DiamondTrap::~DiamondTrap()
 }
 
 
-void	DiamondTrap::whoAmI(void)
+void	DiamondTrap::whoAmI(void) const
 {
 	std::cout << "DiamondTrap: i am - " << name << " -  and my clap name is - " << ClapTrap::name << std::endl;
+}
+
+void	DiamondTrap::my_stats() const
+{
+	std::cout << std::endl;
+	std::cout << "DiamondTrap: i am - " << name << " -  and my clap name is - " << ClapTrap::name << std::endl;
+	std::cout << "Here are my DiamondTrap Stats: " << name << std::endl;
+	std::cout << "   HP: " << hitpoints << std::endl;
+	std::cout << "   EP: " << energypoints << std::endl;
+	std::cout << "   Attack Strength: " << attackdamage << std::endl;
+	std::cout << std::endl;
 }
