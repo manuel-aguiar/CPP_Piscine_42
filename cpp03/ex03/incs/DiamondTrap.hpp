@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/02 12:55:07 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/02 13:17:52 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ class DiamondTrap : public ScavTrap, public FragTrap
 		DiamondTrap(const DiamondTrap& copy);
 		DiamondTrap& operator= (const DiamondTrap& assign);
 
-		using	ScavTrap::attack;
 		void	whoAmI() const;
 
 		//override
@@ -82,6 +81,39 @@ class DiamondTrap : public ScavTrap, public FragTrap
 		std::string	name;
 };
 
+/*
+	//using	ScavTrap::attack;
 
+
+	Interesting: regardless of the order of inheritance that you establish,
+	DiamondTrap always inherits ScavTrap::attack and not FragTrap(ClapTrap)
+
+	EVEN "using	FragTrap::attack", results in SCAVTRAP ATTACK being called
+	even claptrap, it doesn't call claptrap
+
+	Okay.... so "using" doesn't really do much in here
+	If neither Scav/Frag try to override attack, no problem, one instance and
+	that's what Diamond inherits -> directly from ClapTrap
+
+	If both override:
+		error: no unique final overrider for ‘virtual void ClapTrap::attack(const string&)’ in ‘DiamondTrap’
+
+		The way to solve this is to explicitely override it in the DiamondTrap Class by
+		doing another
+		void attack() .... etc
+
+	If only one overrides, that's the one that prevails.
+	So ScavTrap overrides and that's what DiamondTrap gets,
+	If you don't want that override, DiamondTrap needs to override the method itself, as in above
+
+	Essentially, "using" does nothing here:
+
+		"using" can be used in this context in case there is no diamond inheritance,
+		as we tried to do in ScavTrap para "using" ClapTrap assignment operator
+
+	
+
+
+*/
 
 #endif

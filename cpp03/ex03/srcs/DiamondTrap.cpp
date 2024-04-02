@@ -44,13 +44,23 @@ DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap()
 
 /*
 
-	In virtual inheritance, the most derived class must call all of its ancestors directly.
+	In virtual inheritance, the most derived class MUST CALL ALL OF ITS ANCESTORS DIRECTLY.
 	If i ommitt the "ClapTrap(start_name + "_clap_name")" in the member initializer list,
 	the compiler will call ClapTrap default constructor instead -> iit is the compiler that saves us
 		I expected the ClapTrap parameter constructor to be called by ScavTrap's parameter constructor
 		but upon compilation, default ClapTrap was called instead, meaning that it was the compiler
-		who put it there
+		who put it in there
 
+	If you ommitt the ClapTrap(copy) in the copy constructor, the compiler straight up does not
+	allow you to compile and that's it. To comply with the inheritance rules, the most derived
+	must call all, itself. That is the way that virtual inheritance is translated to having
+
+	only one instance of each ancestor at most: it is the grandchild that calls one of each,
+	the middle family constructors only add things on top, themselves they don't call
+	their respective ancestors.
+
+	Meaning... in virtual inheritance, the compiler basically removes all constructor calls from your
+	middle constructors.....? x'O
 
 */
 

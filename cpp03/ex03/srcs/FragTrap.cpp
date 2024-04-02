@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:46 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/02 12:55:01 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/02 13:13:24 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,3 @@ void    FragTrap::highFivesGuys(void)
 {
     std::cout << "FragTrap " << this->name << ": give me a high five!!" << std::endl;
 }
-
