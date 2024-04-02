@@ -6,11 +6,18 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 11:40:20 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/02 12:14:24 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/ClapTrap.hpp"
+
+/*
+
+	No problem placing all member variables on the initalizer list since
+	they are all explicit part of ClapTrap class and not inherited
+
+*/
 
 ClapTrap::ClapTrap() :	name(CLAP_START_NAME) , \
 						hitpoints(CLAP_START_HP), \

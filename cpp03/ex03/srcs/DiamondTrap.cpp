@@ -22,6 +22,15 @@
 	so, we manually assign the ScavTrap energy points and on base class,
 	Attack will be "using" ScavTrap
 
+	in ALL CONSTRUCTORS, the compiler will check that the order by which we call the
+	inherited constructors is maintained with respect to what we defined in the header file:
+
+	"class DiamondTrap : public ScavTrap, public FragTrap"
+
+
+	in this case, "name" is allso a member  variable of class DiamondTrap in itself
+	so we can add it to the member initializer list before the function body
+
 */
 
 DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap()
@@ -34,8 +43,8 @@ DiamondTrap::DiamondTrap() : ClapTrap(), ScavTrap(), FragTrap()
 }
 
 DiamondTrap::DiamondTrap(const std::string& start_name) :	ClapTrap(start_name + "_clap_name"), \
-															ScavTrap(start_name), \
-															FragTrap(start_name), \
+															ScavTrap("teste"), \
+															FragTrap("outros"), \
 															name(start_name)
 {
     std::cout << "DiamondTrap Named - " << name << " - Constructor called" << std::endl;
@@ -52,14 +61,12 @@ DiamondTrap::DiamondTrap(const DiamondTrap& copy) : ClapTrap(copy), ScavTrap(cop
 
 /*
 
-	In this case i need the operator=explicitely because i have an extra member variable to copy
-	and i cannot lose it :). still, i can call the operator= function of Scav, which in turn will be
-	of Clap
+	In this case, an operator= overload for DiamondTrap is unavoidable since it adds a member variable
+	on top of the inherited member variables
 
-	It would still work if i called Fragtrap operator= as both are equal to ClapTrap::operator=
+	In any case, to allow further growth of the its superclasses, we call the assignment operators
+	in the order of inheritance we specified in DiamondTrap.hpp
 
-	Of note, const static int scav_starting_energy is initialized at the beginning of the program,
-	and is available to all classes, it is not a member variable we need to copy.
 
 */
 
@@ -68,7 +75,9 @@ DiamondTrap& DiamondTrap::operator= (const DiamondTrap& assign)
     std::cout << "DiamondTrap - " << name << " - copy assignment operator called" << std::endl;
     if (this == &assign)
 		return (*this);
+	FragTrap::operator=(assign);
 	ScavTrap::operator=(assign);
+
     name = assign.name;
     return (*this);
 }
