@@ -6,13 +6,13 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:46 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/02 11:33:24 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/02 12:09:27 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap()
+ScavTrap::ScavTrap() : ClapTrap(), gatekeeping(false)
 {
     std::cout << "ScavTrap Unnamed Constructor called" << std::endl;
 	name = SCAV_START_NAME;
@@ -21,9 +21,16 @@ ScavTrap::ScavTrap() : ClapTrap()
     attackdamage = SCAV_START_ATTACK;
 }
 
-ScavTrap::ScavTrap(const std::string& start_name) : ClapTrap(start_name)
+ScavTrap::ScavTrap(const std::string& start_name) : ClapTrap(start_name), gatekeeping(false)
 {
     std::cout << "ScavTrap Named - " << name << " - Constructor called" << std::endl;
+
+	/*
+		this following line, in our case, is irrelevant, since name will
+		be initialized to the name we want by the ClapTrap constructor
+		we keep it for coherence, as it is an inherited member variable
+	*/
+	name = start_name;
     hitpoints = SCAV_START_HP;
     energypoints = SCAV_START_EP;
     attackdamage = SCAV_START_ATTACK;
@@ -37,6 +44,7 @@ ScavTrap::~ScavTrap()
 ScavTrap::ScavTrap(const ScavTrap& copy) : ClapTrap(copy)
 {
     std::cout << "ScavTrap Copy constructor called" << std::endl;
+	*this = copy;
 }
 
 /*
@@ -62,11 +70,13 @@ ScavTrap& ScavTrap::operator= (const ScavTrap& assign)
     if (this == &assign)
 		return (*this);
 	ClapTrap::operator=(assign);
+	gatekeeping = assign.gatekeeping;
     return (*this);
 }
 
 void    ScavTrap::guardGate()
 {
+	gatekeeping = true;
     std::cout << "ScavTrap " << name << " is in Gate Keeper mode." << std::endl;
 }
 
