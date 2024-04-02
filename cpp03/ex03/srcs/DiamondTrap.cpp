@@ -64,6 +64,9 @@ DiamondTrap::DiamondTrap() :	ClapTrap(), \
 	Meaning... in virtual inheritance, the compiler basically removes all constructor calls from your
 	middle constructors.....? x'O
 
+	Order matters, if you explicitely call ScavTrap constructor before ClapTrap, won't compile and
+	will warn you that the order is incorrect because ClapTrap is base of ScavTrap.
+
 */
 
 DiamondTrap::DiamondTrap(const std::string& start_name) :	ClapTrap(start_name + "_clap_name"), \
