@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 12:15:57 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/02 09:16:16 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,27 @@ int main()
 
 	potato.takeDamage(20);
 	potato.attack("cenas");
+	potato.my_stats();
 	cenas = potato;
 	cenas.my_stats();
-	cenas.guardGate();
 
-	ClapTrap *ptr;
 
-	ClapTrap hello("hey");
+	std::cout << "\nassign scav into clap:" << std::endl;
+	ClapTrap *poli = new ScavTrap;
+	*poli = potato;
+	poli->my_stats();
 
-	hello.attack("cenas");
+	std::cout << "\nassign scav into clap:" << std::endl;
+	std::cout << "instantiate scav:" << std::endl;
+	ScavTrap scav("tretas");
+	std::cout << "instantiate clap:" << std::endl;
+	ClapTrap clap("cenas");
+	std::cout << "assignment:" << std::endl;
+	clap = scav;
 
-	ptr = new (std::nothrow) ScavTrap("cenas");
-	if (!ptr)
-		return (1);
-	ptr->attack("cenas");
-	/*
-		runtime polymorphism, since attack is virtual at ClapTrap,
-		at runtime the program will call ScavTrap's "attack".
-		If attack is not virtual at ClapTrap, it will cal ClapTrap attack
-	*/
-	delete ptr;
+	std::cout << sizeof(ClapTrap) << " " << sizeof(ScavTrap) << std::endl;
+
+	delete poli;
 
     return (0);
 }
