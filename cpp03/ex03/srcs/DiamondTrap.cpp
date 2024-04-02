@@ -31,6 +31,27 @@
 	in this case, "name" is allso a member  variable of class DiamondTrap in itself
 	so we can add it to the member initializer list before the function body
 
+	ClapTrap("_clap_name")  <- why not this in the member initializer list?
+		because it will be overriden by Scav and Frag :)
+		manually add "_clap_name" to clap name and that's it
+
+
+	Fun fact.....
+		ScavTrap::name += "_clap_name"; achieves exactly the same effect
+
+	because.......... they are all the same variable under different names
+	assembly is exactly the same.
+	FragTrap::name would also work.
+
+	The variables are not doubled, especially considering that we are using virtual inheritance
+	and only one base class instance is created. The remaining constructors add to it, at best,
+	if they add more variables.
+	so, ClapTrap::name == ScavTrap::name == FragTrap::Name,
+	The exception is DiamondTrap::name which refers to its own member variable
+		Resolution of conflict is solved to the closest candidate fit, which in this case
+		is its own variable and not the one inherited
+		So, to refer to inherited, explicitely say where it comes from (ClapTrap::name, for instance)
+
 */
 
 DiamondTrap::DiamondTrap() :	ClapTrap(), \
@@ -65,7 +86,7 @@ DiamondTrap::DiamondTrap() :	ClapTrap(), \
 	middle constructors.....? x'O
 
 	Order matters, if you explicitely call ScavTrap constructor before ClapTrap, won't compile and
-	will warn you that the order is incorrect because ClapTrap is base of ScavTrap.
+	will warn you that the order is incorrect because ClapTrap is base of ScavTrap
 
 */
 
