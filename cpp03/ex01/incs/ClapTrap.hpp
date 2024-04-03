@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/02 14:31:48 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/02 15:11:09 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,12 @@ class ClapTrap
 		If the base class is instantiated, the destructor will be normally called as usual,
 		it is just unnecessary overhead to make the destructor virtual if
 		the class is going to be instantiated normally
+
+		Rule of thumb: if a class has a virtual function, add a virtual destructor, just in case,
+		no big extra cost and allows for polymorphism. Virtual function usually means that
+		a class is to be used a base class for something else
+			Cost is low, vtable is per-class and not per instance, actual object remains the same in size,
+			it is the vtable that grows
 
 
 	Destruction, in general

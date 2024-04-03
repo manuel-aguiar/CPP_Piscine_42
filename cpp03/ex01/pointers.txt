@@ -1,0 +1,55 @@
+#include <iostream>
+
+class Base1 {
+public:
+    int i[6];
+    virtual void foo1() {}
+};
+
+class Base2 {
+public:
+    int j[6];
+    virtual void foo2() {}
+};
+
+class Derived : public Base1, public Base2 {
+public:
+    void bar() {}
+};
+
+int main()
+{
+    Derived d;
+    Base1* ptr1 = &d;
+    Base2* ptr2 = &d;
+    std::cout << "ptr1: " << ptr1 << std::endl;
+    std::cout << "ptr2: " << ptr2 << std::endl;
+    std::cout << "sizeof Base1: " << sizeof(Base1)  << std::endl
+              << "sizeof Base2: " << sizeof(Base2)  << std::endl
+              << "sizeof Derived: " << sizeof(Derived) << std::endl;
+    return 0;
+}
+
+
+https://shaharmike.com/cpp/vtable-part1/
+
+
+This will print different addresses, 32 bytes apart,
+this means that the Derived object is actually composed of the two subojects and,
+int this case, it has 2 vtable pointers
+
+
+empty class has sizeof = 1:
+{
+	chatgpt
+	"
+		In C++, an empty class has a size of at least 1 byte to ensure that each object of that
+		class has a unique address in memory. This is known as the "empty base class optimization" or "empty member optimization".
+		Even though an empty class may not have any data members, the C++ standard mandates
+		that objects of distinct types must have distinct addresses in memory. Therefore, an empty
+		class must have a nonzero size to fulfill this requirement.
+	"
+}
+
+
+

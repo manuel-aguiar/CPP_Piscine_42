@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/02 13:43:17 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/02 15:19:17 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ class ScavTrap : public ClapTrap
 /*
 
 	Assignment operator is not inherited but the compiler will
-	provide a definition of the derived class in class the class
+	provide a definition of the derived class in case the class
 	does not provide it itself
 
 	Ommiting, the operator= called will be compiler definition:
@@ -52,11 +52,8 @@ class ScavTrap : public ClapTrap
 	The compiler will call the base class operator=
 		In the end: final machine code will be equal whether you state the operator= or not
 		(running the problem with/without "using" yields the same output, ClapTrap copy assignment is called regardless)
-	BUT: let's make it explicity and use the "using" keyword :)
 
-	SO, twwo options:
-		- "using" ClapTrap operator= (which is okay given
-		the members are the same and will all be copied)
+	So,
 		- Define it ourselved from scratch
 	Subject says constructors must print different messages, not the assignment operator
 	As per above, one must still give a definition, otherwise the compiler will infuse its own
