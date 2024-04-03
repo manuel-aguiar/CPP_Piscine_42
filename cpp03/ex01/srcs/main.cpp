@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/02 14:22:51 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/03 14:48:33 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,18 @@
 
 int main()
 {
-    ScavTrap one("one");
+    ScavTrap scav("one");
+
+	scav.my_stats();
+
+	ClapTrap clap("cenas");
+
+	ClapTrap *clap_in_scav = &scav;
+
+	*clap_in_scav = clap;
+
+	scav.my_stats();
+	scav.attack("tozé");
 
 /*
 	ScavTrap cenas(potato);
