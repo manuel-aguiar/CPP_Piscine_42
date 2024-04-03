@@ -51,5 +51,144 @@ empty class has sizeof = 1:
 	"
 }
 
+	Quick rewrite of this:
 
+	VTT: virtual-table table, all constructors
+		this is for virtual inheritance, where grandparent is instantiated first
+		virtual offset-> get to grandparent from subobject
+
+#include <iostream>
+using namespace std;
+
+class Grandparent {
+ public:
+  virtual void grandparent_foo() {}
+  int grandparent_data;
+};
+
+class Parent1 : virtual public Grandparent {
+ public:
+  virtual void parent1_foo() {}
+  int parent1_data;
+};
+
+class Parent2 : virtual public Grandparent {
+ public:
+  virtual void parent2_foo() {}
+  int parent2_data;
+};
+
+class Child : public Parent1, public Parent2 {
+ public:
+  virtual void child_foo() {}
+  int child_data;
+};
+
+int main() {
+  Child child;
+}
+
+	non virtual thunk: -> this adjustment from subobject to objcet + object overriden call, from objcet vtable
+		thunks appear when a class that is not the first subobject has a virtual function, otherwise, not needed
+		object to subobject, simple arithmatic, known by child object
+
+
+
+
+https://shaharmike.com/cpp/vtable-part1/  this is gold, basically
+
+	base has a vtable, and a vbtable for base-in-child, that is what allows the override
+
+code to prove this:
+
+#include <iostream>
+using namespace std;
+
+
+class Parent1 {
+ public:
+  virtual void parent1_foo() {}
+  void * parent1_data;
+};
+
+class Parent2 {
+ public:
+  virtual void parent2_foo() {}
+  void * parent2_data;
+};
+
+class Child : public Parent1, public Parent2 {
+ public:
+  virtual void child_foo() {}
+  void child_method(){}
+  void * child_data;
+};
+
+int main(void)
+{
+    Child c;
+
+    Parent2 p1;
+    Parent2 p2;
+
+
+    void ***p1_ptr = (void ***)&p1;
+    void ***p2_ptr = (void ***)&p2;
+
+    std::cout << p1_ptr << "   " << *p1_ptr << std::endl;
+    std::cout << p2_ptr << "   " << *p2_ptr << std::endl;
+
+    Parent2 *der_ptr;
+
+    der_ptr = &c;
+
+    void ***p2_der_vtable = (void ***)der_ptr;
+
+    std::cout << p2_der_vtable << "   " << *p2_der_vtable << std::endl;
+
+    return 0;
+}
+
+
+brain breaker:
+
+#include <iostream>
+using namespace std;
+
+class FooInterface {
+public:
+	virtual ~FooInterface() = default;
+	virtual void Foo() = 0;
+};
+
+class BarInterface {
+public:
+	virtual ~BarInterface() = default;
+
+	virtual void Bar() = 0;
+};
+
+class Concrete : public FooInterface, public BarInterface {
+public:
+	void Foo() override { cout << "Foo()" << endl; }
+	void Bar() override { cout << "Bar()" << endl; }
+};
+
+int main() {
+	Concrete c;
+	c.Foo();
+	c.Bar();
+
+	FooInterface* foo = &c;
+	foo->Foo();
+
+	BarInterface* bar = (BarInterface*)(foo);
+	bar->Bar(); // Prints "Foo()" - WTF?
+}
+
+c-style static cast of foo to bar, bar thinks it is bar but is foo
+acesses foo's table and executes Foo()
+what we do is a dynamic cast to get to the correct subobjcet
+
+Only virtual functions go to the virtual table, all other are staticlly binded
 
