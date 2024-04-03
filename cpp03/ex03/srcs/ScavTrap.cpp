@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:46 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/02 13:13:26 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/03 15:42:58 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ ScavTrap& ScavTrap::operator= (const ScavTrap& assign)
 void    ScavTrap::guardGate()
 {
 	gatekeeping = true;
-    std::cout << "ScavTrap " << this->name << " is in Gate Keeper mode." << std::endl;
+    std::cout << "ScavTrap " << name << " is in Gate Keeper mode." << std::endl;
 }
 
 void	ScavTrap::attack(const std::string& target)

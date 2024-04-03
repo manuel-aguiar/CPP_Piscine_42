@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:36:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/03 15:37:18 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/03 15:49:03 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ int main()
 
 		Notice grandparent address is higher than parents
 
-		Sizeof a derived class
+		Sizeof a derived class is not the sum of the parts,
+		there is padding, vptr optimization (reutilizing scavtrap as diamondtraps vtable)
+		and more stuff
 	*/
 
 	/*

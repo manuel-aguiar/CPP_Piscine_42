@@ -90,12 +90,19 @@ DiamondTrap::DiamondTrap() :	ClapTrap(), \
 
 */
 
+/*
+	redundant setting the name to += "_clap_name" but i had scav and clap overwriting
+	the name variable in their construction.
+	Anyways, unnavoidable that clap::name equals frag::name, same variable
+*/
+
 DiamondTrap::DiamondTrap(const std::string& start_name) :	ClapTrap(start_name + "_clap_name"), \
 															ScavTrap(start_name), \
 															FragTrap(start_name), \
 															name(start_name)
 {
     std::cout << "DiamondTrap Named - " << start_name << " - Constructor called" << std::endl;
+	ClapTrap::name += "_clap_name";
 	energypoints = ScavTrap::scav_starting_energy;
 }
 
