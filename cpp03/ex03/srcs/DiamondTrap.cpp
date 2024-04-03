@@ -115,14 +115,11 @@ DiamondTrap::DiamondTrap(const DiamondTrap& copy) : ClapTrap(copy), ScavTrap(cop
 }
 
 /*
-
 	In this case, an operator= overload for DiamondTrap is unavoidable since it adds a member variable
 	on top of the inherited member variables
 
 	In any case, to allow further growth of the its superclasses, we call the assignment operators
 	in the order of inheritance we specified in DiamondTrap.hpp
-
-
 */
 
 DiamondTrap& DiamondTrap::operator= (const DiamondTrap& assign)
