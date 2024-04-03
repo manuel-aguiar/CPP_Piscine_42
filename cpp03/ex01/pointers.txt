@@ -55,7 +55,7 @@ empty class has sizeof = 1:
 
 	VTT: virtual-table table, all constructors
 		this is for virtual inheritance, where grandparent is instantiated first
-		virtual offset-> get to grandparent from subobject
+		virtual-base offset-> get to grandparent from subobject
 
 #include <iostream>
 using namespace std;
