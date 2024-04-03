@@ -92,6 +92,8 @@ int main() {
 		thunks appear when a class that is not the first subobject has a virtual function, otherwise, not needed
 		object to subobject, simple arithmatic, known by child object
 
+		construction saves one virtual pointer because Child is the same as parent1-in-child subobject
+
 
 
 
