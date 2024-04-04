@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/02 10:24:01 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/04 14:37:21 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int main()
 
 	const WrongAnimal* bad = new WrongCat();
 
-	bad->makeSound();
+	bad->makeSound(); // animal sound :(
 
 	delete bad;
 
