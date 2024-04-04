@@ -13,11 +13,9 @@
 # include "Cat.hpp"
 # include "Brain.hpp"
 
-Cat::Cat() : Animal()
+Cat::Cat() : Animal("Cat"), my_brain(new (std::nothrow) Brain())
 {
 	std::cout << "Cat Constructor called" << std::endl;
-	type = "Cat";
-	my_brain = new (std::nothrow) Brain();
 }
 
 Cat::~Cat()
@@ -26,13 +24,19 @@ Cat::~Cat()
 	delete my_brain;
 }
 
-Cat::Cat(const Cat& copy) : Animal(copy)
+/*
+	heap allocation of a new empty brain
+
+	calls assignment operator
+		which calls brain assignment operator
+*/
+
+Cat::Cat(const Cat& copy) : Animal(copy), my_brain(new (std::nothrow) Brain())
 {
 	std::cout << "Cat Copy Destructor called" << std::endl;
 	if (this == &copy)
 		return ;
-	type = copy.type;
-	my_brain = new (std::nothrow) Brain(*(copy.my_brain));
+	*this = copy;
 }
 
 Cat& Cat::operator= (const Cat& assign)

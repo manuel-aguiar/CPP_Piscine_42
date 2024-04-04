@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/01/10 14:20:58 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/04 15:15:24 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ Animal::Animal()
 Animal::~Animal()
 {
 	std::cout << "Animal Destructor called" << std::endl;
+}
+
+Animal::Animal(const std::string& type) : type(type)
+{
+	std::cout << "Animal Parameter Constructor called" << std::endl;
 }
 
 Animal::Animal(const Animal& copy)

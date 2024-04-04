@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 12:57:36 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/04 15:15:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ class Animal
 		virtual void	makeSound(void) const = 0;
 
     protected:
+		Animal(const std::string& type);
 		std::string type;
 };
 
