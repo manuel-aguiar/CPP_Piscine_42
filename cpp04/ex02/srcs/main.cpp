@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/04 15:18:18 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/04 15:36:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int main()
 	first.getBrain()->setIdeas(10, "haha enganei te");
 	std::cout << second.getBrain()->getIdeas(10) << std::endl;
 	first.makeSound();
-	Animal* cenas = new Cat();
+	Animal* cenas = new Dog();
+	cenas->makeSound();
 	delete cenas;
 
 	/*
