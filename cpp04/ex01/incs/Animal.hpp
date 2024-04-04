@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 12:19:45 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/04 15:06:47 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,15 @@ class Animal
 		virtual void	makeSound(void) const;
 
     protected:
+		Animal(const std::string& type);
 		std::string type;
 };
+
+
+/*
+	Protected parameterized constructor, Animal can't be instantiated with it but
+	it is helpful for the derived class to add it to the initialized member list
+*/
 
 /*
 
@@ -42,8 +49,9 @@ class Animal
 	to instantiate a Dog, it will call Dog's destructor before Animals
 	Otherwise, if Dog has more members and more cleanup, only the Animal destructor will be called
 
-	This will be particularly important in the Braine xercise where Cat's and Dogs must free
+	This will be particularly important in the Brain exercise where Cat's and Dogs must free
 	their Brain
+		-> without virtual destructor -> leaks :)
 
 */
 

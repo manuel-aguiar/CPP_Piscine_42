@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 12:31:04 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/04 15:12:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ int main()
 	Cat second(first);
 
 	first.getBrain()->setIdeas(10, "haha enganei te");
+
+	Cat third;
+
+	third = first;
 
 	std::cout << second.getBrain()->getIdeas(10) << std::endl;
 	std::cout << first.getBrain()->getIdeas(10) << std::endl;

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 12:20:38 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/04 14:49:11 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ Brain::~Brain()
 Brain::Brain(const Brain& copy)
 {
 	std::cout << "Brain Copy Constructor called" << std::endl;
-
 	if (this == &copy)
 		return ;
 	*this = copy;

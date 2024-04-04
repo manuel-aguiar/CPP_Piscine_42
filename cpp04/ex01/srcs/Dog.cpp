@@ -12,11 +12,9 @@
 
 # include "Dog.hpp"
 
-Dog::Dog() : Animal()
+Dog::Dog() : Animal("Dog"), my_brain(new (std::nothrow) Brain())
 {
-	std::cout << "Dog Constructor called" << std::endl;
-	type = "Dog";
-	my_brain = new (std::nothrow) Brain();
+	std::cout << "Dog Default Constructor called" << std::endl;
 }
 
 Dog::~Dog()
@@ -25,12 +23,11 @@ Dog::~Dog()
 	delete my_brain;
 }
 
-Dog::Dog(const Dog& copy) : Animal(copy)
+Dog::Dog(const Dog& copy) : Animal(copy), my_brain(new (std::nothrow) Brain())
 {
 	std::cout << "Dog Copy Constructor called" << std::endl;
 	if (this == &copy)
 		return ;
-	my_brain = new (std::nothrow) Brain();
 	*this = copy;
 }
 

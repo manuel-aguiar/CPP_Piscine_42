@@ -13,11 +13,9 @@
 # include "Cat.hpp"
 # include "Brain.hpp"
 
-Cat::Cat() : Animal()
+Cat::Cat() : Animal("Cat"), my_brain(new (std::nothrow) Brain())
 {
 	std::cout << "Cat Constructor called" << std::endl;
-	type = "Cat";
-	my_brain = new (std::nothrow) Brain();
 }
 
 Cat::~Cat()
@@ -33,12 +31,11 @@ Cat::~Cat()
 		which calls brain assignment operator
 */
 
-Cat::Cat(const Cat& copy) : Animal(copy)
+Cat::Cat(const Cat& copy) : Animal(copy), my_brain(new (std::nothrow) Brain())
 {
 	std::cout << "Cat Copy Destructor called" << std::endl;
 	if (this == &copy)
 		return ;
-	my_brain = new (std::nothrow) Brain();
 	*this = copy;
 }
 
