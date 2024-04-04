@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/04 15:15:12 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/04 15:31:07 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,20 @@
 #include <string>
 #include <iostream>
 
+/*
+	Abstract class has at least one pure virtual function:
+		a function prototype, explicitely without definition
+		syntax: virtual func = 0;
+
+	Making all the constructors protected would make it impossible
+	to instantiate from main.
+
+	Interestingly enough, you you put the constructors protected,
+	derived can add them to their member initialization lists
+	(pre-construction)
+	but not at the function bodies :0
+	Constructor Body is already post-construction
+*/
 
 class Animal
 {
@@ -46,6 +60,7 @@ class Animal
 		virtual void	makeSound(void) const = 0;
 
     protected:
+		// Animal();
 		Animal(const std::string& type);
 		std::string type;
 };
