@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/04 15:12:05 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/05 10:04:32 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 void	half_cat_half_dog_new_speak_delete(unsigned int number)
 {
+
 	Animal** everyone = new (std::nothrow) Animal* [number];
 	unsigned int i;
 
@@ -26,13 +27,24 @@ void	half_cat_half_dog_new_speak_delete(unsigned int number)
 	while (i < number)
 		everyone[i++] = new (std::nothrow) Dog();
 
-	for (i = 0; i < number; i++)
-		everyone[i]->makeSound();
+	std::cout << "\narray construction is complete!\n" << std::endl;
 
 	for (i = 0; i < number; i++)
-		delete everyone[i];
+	{
+		if (everyone[i])
+			everyone[i]->makeSound();
+	}
+
+
+	for (i = 0; i < number; i++)
+	{
+		if (everyone[i])
+			delete everyone[i];
+	}
 
 	delete[] everyone;
+
+	std::cout << "\narray destruction is complete!\n" << std::endl;
 }
 
 int main1()
@@ -61,6 +73,8 @@ int main()
 
 	std::cout << second.getBrain()->getIdeas(10) << std::endl;
 	std::cout << first.getBrain()->getIdeas(10) << std::endl;
+
+	half_cat_half_dog_new_speak_delete(10);
 
 	return (0);
 }
