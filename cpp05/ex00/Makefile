@@ -6,15 +6,16 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/01 15:29:34 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/05 14:14:12 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		=		materia
+NAME 		=		bureaucrat
 
 ##	Compiler and flags
 COMP		=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
+DEBUG_FLAGS	=		-DDEBUG
 
 ## FOLDERS
 INC_PATH	=		incs
@@ -27,8 +28,10 @@ OBJ_PATH	=		objs
 INC_FILES		=		Bureaucrat.hpp
 
 
+
 SRC_FILES		=		main.cpp			\
-						Bureaucrat.cpp
+						Bureaucrat.cpp		\
+						Bureaucrat_funcs.cpp
 
 
 ## PREP
@@ -64,4 +67,8 @@ git: fclean
 run: all
 	@./$(NAME)
 
-.PHONY: clean fclean re git run
+debug: FLAGS += $(DEBUG_FLAGS)
+debug: re
+
+
+.PHONY: clean fclean re git run debug
