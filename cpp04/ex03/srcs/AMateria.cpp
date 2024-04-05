@@ -24,6 +24,7 @@ AMateria::~AMateria()
 
 AMateria::AMateria(const AMateria& copy)
 {
+	std::cout << "AMateria Copy Destructor called" << std::endl;
 	if (this == &copy)
 		return ;
 	*this = copy;
@@ -31,6 +32,7 @@ AMateria::AMateria(const AMateria& copy)
 
 AMateria& AMateria::operator= (const AMateria& assign)
 {
+	std::cout << "AMateria Copy Assignment called" << std::endl;
 	if (this == &assign)
 		return (*this);
 	type = assign.type;
@@ -45,5 +47,5 @@ const std::string& AMateria::getType(void) const
 void	AMateria::use(ICharacter& target)
 {
 	(void)target;
-	std::cout << "* shoots an ice bolt at " << "target.getName()" << " *" << std::endl;
+	std::cout << "* something..... at " << "target.getName()" << " *" << std::endl;
 }

@@ -36,7 +36,7 @@ Ice& Ice::operator= (const Ice& assign)
 	std::cout << "Ice Copy Assignment called" << std::endl;
 	if (this == &assign)
 		return (*this);
-	type = assign.type;
+	AMateria::operator=(assign);
 	return (*this);
 }
 
@@ -47,5 +47,5 @@ Ice*	Ice::clone() const
 
 void	Ice::use(ICharacter& target)
 {
-	std::cout << "* shoots an ice bolt at "<< target.getName() << " *" << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

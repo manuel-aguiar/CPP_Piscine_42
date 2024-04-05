@@ -36,7 +36,7 @@ Cure& Cure::operator= (const Cure& assign)
 	std::cout << "Cure Copy Assignment called" << std::endl;
 	if (this == &assign)
 		return (*this);
-	type = assign.type;
+	AMateria::operator=(assign);
 	return (*this);
 }
 

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:11:56 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/01 14:41:42 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/05 11:20:06 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void	Character::setName(const std::string& new_name)
 	name = new_name;
 }
 
-AMateria* Character::getSlot(int idx) const
+const AMateria* Character::getSlot(int idx) const
 {
 	if (idx < 0 || idx >= CHARACTER_SLOTS || slots[idx] == NULL)
 	{

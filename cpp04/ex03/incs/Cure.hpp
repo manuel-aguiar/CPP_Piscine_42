@@ -31,6 +31,9 @@ class Cure : public AMateria
 		//declaring Amateria's virtual funcs
 		void	use(ICharacter& target);
 		Cure*	clone() const;
+
+	private:
+		int		extra;
 };
 
 #endif
