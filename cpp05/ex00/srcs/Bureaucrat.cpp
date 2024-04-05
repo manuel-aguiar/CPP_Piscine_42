@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:07 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/05 14:17:46 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/05 14:46:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ Bureaucrat::Bureaucrat(const std::string& new_name, const int new_grade) : \
 	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "Bureaucrat Parameter Construction Called" << std::endl;
 	#endif
+
+	if (new_grade > MIN_GRADE)
+		throw GradeTooLowException();
+	else if (new_grade < MAX_GRADE)
+		throw GradeTooHighException();
+	//else
+	//	grade = new_grade;
 }
 
 Bureaucrat::~Bureaucrat()
@@ -53,9 +60,19 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& assign)
 	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "Bureaucrat Copy Assignment Called" << std::endl;
 	#endif
+
 	if (this == &assign)
 		return (*this);
 	grade = assign.grade;
 	return (*this);
 }
 
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+    return ("Grade: too high; range max-min: 1 - 150");
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+    return ("Grade: too low; range max-min: 1 - 150");
+}

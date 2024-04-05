@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:24:57 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/05 14:15:35 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/05 14:45:42 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,30 @@ class Bureaucrat
 		Bureaucrat	 		operator--(void);
 		Bureaucrat& 		operator--(int);
 
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				const char *what(void) const throw();
+		};
+
+		class GradeTooLowException : public std::exception
+		{
+			public:
+				const char *what(void) const throw();
+		};
+
 	private:
 		const std::string	name;
 		int					grade;
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureau);
+
+
+/*
+
+	https://medium.com/@sumana.dotnettricks/catch-c-the-ultimate-guide-to-mastering-exception-handling-576051bcb5e
+
+*/
 
 #endif
