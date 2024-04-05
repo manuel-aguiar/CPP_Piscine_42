@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:07 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/05 14:15:25 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/05 14:17:46 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ Bureaucrat::Bureaucrat(const std::string& new_name, const int new_grade) : \
 	name(new_name), \
 	grade(new_grade)
 {
-	#ifdef DEBUG
+	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "Bureaucrat Parameter Construction Called" << std::endl;
 	#endif
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	#ifdef DEBUG
+	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "Bureaucrat Destructor Called" << std::endl;
 	#endif
 }
@@ -40,7 +40,7 @@ Bureaucrat::~Bureaucrat()
 
 Bureaucrat::Bureaucrat(const Bureaucrat& copy) : name(copy.name), grade(copy.grade)
 {
-	#ifdef DEBUG
+	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "Bureaucrat Copy Constructor Called" << std::endl;
 	#endif
 	if (this == &copy)
@@ -50,7 +50,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat& copy) : name(copy.name), grade(copy.gra
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& assign)
 {
-	#ifdef DEBUG
+	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "Bureaucrat Copy Assignment Called" << std::endl;
 	#endif
 	if (this == &assign)
