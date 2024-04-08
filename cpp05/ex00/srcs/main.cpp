@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 09:41:01 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 10:11:16 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,34 @@ int	main1(void)
 	{
 		++b;
 		std::cout << "random phrase after exception is thrown by the previous line" << std::endl;
+		/*
+			won't print, throw() is called when ++b; control passes to the try-block,
+			which passes to the catch-block
+
+		*/
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 		std::cout << b;
+
+		/*
+
+			Throw passes execution to the try-block, which passes to the catch-block
+
+			So, technically, the function that called "throw()" is not "exited" but
+			the program counter and stack pointer go to some other point in the code
+
+			Only after the appropriate catch-handler is found will stack unwinding start.
+
+			In this case, bureaucrat's grade was unsuccessfully increased.
+
+		*/
 	}
 	return (0);
 }
 
-int	main2(void)
+int	main(void)
 {
 	Bureaucrat b("josé", 1);
 
@@ -59,7 +77,7 @@ int	main2(void)
 			begin
 		*/
 	}
-	catch(const Bureaucrat::GradeTooLowException& e)
+	catch(const Bureaucrat::GradeTooHighException& e)
 	{
 		std::cerr << e.what() << std::endl;
 		std::cout << b;
@@ -67,7 +85,23 @@ int	main2(void)
 	return (0);
 }
 
-int	main(void)
+/*
+
+	Bureaucrat Parameter Construction Called
+	josé, bureaucrat grade, 1
+	Bureaucrat Parameter Construction Called
+	antonio, bureaucrat grade, 139
+	GradeTooHighException Constructor Called		<- Exception Construtor is called before stack_unwinding
+	Bureaucrat antonio Destructor Called			<- Only afterwards, unwinding starts
+	Grade: too high; range max-min: 1 - 150
+	josé, bureaucrat grade, 1
+	GradeTooHighException Destructor Called
+	Bureaucrat josé Destructor Called
+
+*/
+
+
+int	main2(void)
 {
 	Bureaucrat b("josé", 1);
 
@@ -89,6 +123,7 @@ int	main(void)
 		}
 		std::cout << "catch fails, so this will not be printed wither" << std::endl;
 		/*
+			This output will not show up
 
 			resolution from inenr to outter loop,
 			this catch block fails, so examine the outter try
@@ -102,6 +137,7 @@ int	main(void)
 		std::cout << "EXCEPTION 		caught in the outter loop" << std::endl;
 	}
 
+	std::cout << "exiting program" << std::endl;
 
 	return (0);
 }
