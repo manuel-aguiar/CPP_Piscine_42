@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 10:11:16 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 10:33:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main1(void)
 	return (0);
 }
 
-int	main(void)
+int	main2(void)
 {
 	Bureaucrat b("josé", 1);
 
@@ -101,7 +101,7 @@ int	main(void)
 */
 
 
-int	main2(void)
+int	main(void)
 {
 	Bureaucrat b("josé", 1);
 
