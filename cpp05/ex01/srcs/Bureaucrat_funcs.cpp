@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:44:59 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 09:54:06 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 11:46:55 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 const std::string&	Bureaucrat::getName() const
 {
-	return (name);
+	return (_name);
 }
 
 int			Bureaucrat::getGrade() const
 {
-	return (grade);
+	return (_grade);
 }
 
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& bureau)
@@ -31,16 +31,16 @@ std::ostream&	operator<<(std::ostream& os, const Bureaucrat& bureau)
 
 void	Bureaucrat::upgrade()
 {
-	if (grade - 1 < MAX_GRADE)
+	if (_grade - 1 < MAX_GRADE)
 		throw GradeTooHighException();
-	grade--;
+	_grade--;
 }
 
 void	Bureaucrat::downgrade()
 {
-	if (grade + 1 > MIN_GRADE)
+	if (_grade + 1 > MIN_GRADE)
 		throw GradeTooLowException();
-	grade++;
+	_grade++;
 }
 
 /*
