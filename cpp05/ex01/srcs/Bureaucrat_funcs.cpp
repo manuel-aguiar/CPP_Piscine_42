@@ -6,12 +6,17 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:44:59 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 11:46:55 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 12:25:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
+void	Bureaucrat::signForm(Form& form)
+{
+	form.beSigned(*this);
+}
 
 const std::string&	Bureaucrat::getName() const
 {

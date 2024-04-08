@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:07 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 11:46:42 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 12:07:32 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Bureaucrat::Bureaucrat(const std::string& new_name, const int new_grade) : \
 	_grade(new_grade)
 {
 	#ifdef DEBUG_CONSTRUCTOR
-		std::cout << "Bureaucrat Parameter Construction Called" << std::endl;
+		std::cout << "Bureaucrat "  << _name << " Parameter Construction Called" << std::endl;
 	#endif
 
 	if (new_grade > MIN_GRADE)
@@ -40,7 +40,7 @@ Bureaucrat::Bureaucrat(const std::string& new_name, const int new_grade) : \
 Bureaucrat::~Bureaucrat()
 {
 	#ifdef DEBUG_CONSTRUCTOR
-		std::cout << "Bureaucrat " << name << " Destructor Called" << std::endl;
+		std::cout << "Bureaucrat " << _name << " Destructor Called" << std::endl;
 	#endif
 }
 

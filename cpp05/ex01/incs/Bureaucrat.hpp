@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:24:57 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 11:44:48 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 12:25:08 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 
 #define MIN_GRADE 150
 #define MAX_GRADE 1
+
+class Form;
 
 class Bureaucrat
 {
@@ -39,6 +41,9 @@ class Bureaucrat
 		Bureaucrat 			operator++(int);
 		Bureaucrat&	 		operator--(void);
 		Bureaucrat	 		operator--(int);
+
+		void	signForm(Form& form);
+
 
 		class GradeTooHighException : public std::exception
 		{

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:36:40 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 12:02:57 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 12:13:04 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ Form::Form() :
 
 Form::Form(	const std::string	name, \
 			const int			sign_grade, \
-			const int			exec_grade, \
-			bool				is_signed) :
+			const int			exec_grade ) :
 			_name(name), \
 			_sign_grade(sign_grade), \
 			_exec_grade(exec_grade), \
@@ -77,9 +76,9 @@ Form& Form::operator=(const Form& assign)
 
 std::ostream& operator<<(std::ostream& os, const Form& form)
 {
-	os << "Form: " << _name << "\n"
-	<< "	sign_grade: " << _sign_grade << "\n"
-	<< "	exec_grade: " << _exec_grade << "\n"
-	<< "	is_signed? " << (_is_signed ? "Yes" : "No") << std::endl;
+	os << "Form: " << form.getName() << "\n"
+	<< "	sign_grade: " << form.getSignGrade() << "\n"
+	<< "	exec_grade: " << form.getExecGrade() << "\n"
+	<< "	is_signed? " << (form.getIsSigned() ? "Yes" : "No") << std::endl;
 	return (os);
 }

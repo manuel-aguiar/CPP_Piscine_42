@@ -6,16 +6,17 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 11:35:38 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 12:16:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main(void)
 {
 	Bureaucrat b("josé", 1);
-
+	Form f("cenas", 5, 7);
 	std::cout << b;
 	try
 	{

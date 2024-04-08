@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 11:51:58 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 12:20:25 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,17 @@ class Form
 		Form();
 		Form(	const std::string	name, \
 				const int			sign_grade, \
-				const int			exec_grade, \
-				bool				is_signed);
+				const int			exec_grade);
 		~Form();
 		Form(const Form& copy);
 		Form& operator=(const Form& assign);
 
+		const std::string&	getName() const;
+		int					getSignGrade() const;
+		int					getExecGrade() const;
+		int					getIsSigned() const;
 
+		void	beSigned(const Bureaucrat& bureau);
 
 		class GradeTooHighException : public std::exception
 		{
