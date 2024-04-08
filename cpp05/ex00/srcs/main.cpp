@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 10:33:02 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 11:01:41 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,43 @@ int	main1(void)
 	}
 	return (0);
 }
+
+/*
+	try without catch or catch without try, doesn't allow compilation
+*/
+
+int	main(void)
+{
+	Bureaucrat *b;
+
+	try
+	{
+		b = new Bureaucrat("josé", 1);
+		++(*b);
+		std::cout << "random phrase after exception is thrown by the previous line" << std::endl;
+	}
+	catch(const std::bad_alloc& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+		delete b;
+	}
+	return (0);
+}
+
+/*
+
+	using "new" inside a try block
+
+	try block, or anything within {} sets a scope for any variables inside
+	so, if you are calling new, the variable must come from the outter scope or else
+	the pointer is lost, FOREVER :)
+
+
+*/
 
 int	main2(void)
 {
@@ -101,7 +138,7 @@ int	main2(void)
 */
 
 
-int	main(void)
+int	main3(void)
 {
 	Bureaucrat b("josé", 1);
 
