@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:07 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/05 14:46:28 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 09:57:41 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Bureaucrat::Bureaucrat(const std::string& new_name, const int new_grade) : \
 Bureaucrat::~Bureaucrat()
 {
 	#ifdef DEBUG_CONSTRUCTOR
-		std::cout << "Bureaucrat Destructor Called" << std::endl;
+		std::cout << "Bureaucrat " << name << " Destructor Called" << std::endl;
 	#endif
 }
 
@@ -67,12 +67,4 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& assign)
 	return (*this);
 }
 
-const char *Bureaucrat::GradeTooHighException::what() const throw()
-{
-    return ("Grade: too high; range max-min: 1 - 150");
-}
 
-const char *Bureaucrat::GradeTooLowException::what() const throw()
-{
-    return ("Grade: too low; range max-min: 1 - 150");
-}

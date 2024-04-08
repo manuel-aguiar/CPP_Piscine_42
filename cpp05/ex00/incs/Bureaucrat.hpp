@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:24:57 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/05 14:56:39 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 10:00:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,24 @@ class Bureaucrat
 		void				upgrade();
 		void				downgrade();
 
-		Bureaucrat 			operator++(void);
-		Bureaucrat& 		operator++(int);
-		Bureaucrat	 		operator--(void);
-		Bureaucrat& 		operator--(int);
+		Bureaucrat&			operator++(void);
+		Bureaucrat 			operator++(int);
+		Bureaucrat&	 		operator--(void);
+		Bureaucrat	 		operator--(int);
 
 		class GradeTooHighException : public std::exception
 		{
 			public:
+				GradeTooHighException();			//for test purposes
+				~GradeTooHighException() throw();	//for test purposes
 				const char *what(void) const throw();
 		};
 
 		class GradeTooLowException : public std::exception
 		{
 			public:
+				GradeTooLowException();				//for test purposes
+				~GradeTooLowException() throw();	//for test purposes
 				const char *what(void) const throw();
 		};
 
@@ -58,6 +62,64 @@ class Bureaucrat
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureau);
 
+
+/*
+		class GradeTooHighException : public std::exception
+		{
+			public:
+				GradeTooHighException(const char *msg) : msg(msg) {}
+				const char *what(void) const throw();
+			private:
+				const char *msg;
+		};
+		defining my own paremeter constructor for the exception:
+			it did not work as intended.......
+
+*/
+
+/*
+
+	throw-try-catch-exception and Stack Unwinding
+
+	If the xeception is caught in any of the catch-blocks, all variables inside
+	the try-block are destroyed
+
+	throw operand creates an object (the exception)
+
+	https://learn.microsoft.com/en-us/cpp/cpp/exceptions-and-stack-unwinding-in-cpp?view=msvc-170
+	"
+		If a matching handler is still not found, or if an exception occurs during the
+		unwinding process but before the handler gets control, the predefined run-time
+		function terminate is called. If an exception occurs after the exception is thrown
+		but before the unwind begins, terminate is called.
+	"
+
+	function terminate:
+		function called at runtime
+		-> infused by the compiler when handling exceptions
+
+	automatic objects will be destroy during stack unwinding
+
+	"automatic objects"?
+		[Class] hello;   is an automatic object:
+			it is constructed on the stack via constructor, either explicit or implicit
+			[new] [class] is not automatic, will not be destroyed by stack unwinding since..
+				it is not on the stack
+
+	When an exception is thrown, the stack starts unwinding to try to find a try-catch block
+	Unwinding starts at the throw statement
+		-> all the function calls and associated automatic variables on the stack are
+		destroy in reverse order to construction (makes sense, cleaning the call stack)
+	If (it doesn't find a try block)
+		 it will keep unwinding until destroying the stack
+		-> and then calls terminate();
+	else if (try block is found)
+
+
+
+
+
+*/
 
 /*
 

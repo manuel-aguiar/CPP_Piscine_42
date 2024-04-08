@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:44:59 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/05 14:34:34 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 09:54:06 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,32 +43,46 @@ void	Bureaucrat::downgrade()
 	grade++;
 }
 
-Bureaucrat	Bureaucrat::operator++(void)
-{
-	Bureaucrat	copy(*this);
+/*
+	pre-increment
+*/
 
+Bureaucrat&	Bureaucrat::operator++(void)
+{
 	this->upgrade();
-	return (copy);
+	return (*this);
 }
 
-Bureaucrat&	Bureaucrat::operator++(int)
+/*
+	Post increment
+*/
+
+Bureaucrat	Bureaucrat::operator++(int)
 {
+	Bureaucrat	copy(*this);
 
 	++(*this);
-	return (*this);
-}
-
-Bureaucrat	Bureaucrat::operator--(void)
-{
-	Bureaucrat	copy(*this);
-
-
-	this->downgrade();
 	return (copy);
 }
 
-Bureaucrat&	Bureaucrat::operator--(int)
+/*
+	pre-decrement
+*/
+
+Bureaucrat&	Bureaucrat::operator--(void)
 {
-	--(*this);
+	this->downgrade();
 	return (*this);
+}
+
+/*
+	post-decrement
+*/
+
+Bureaucrat	Bureaucrat::operator--(int)
+{
+	Bureaucrat	copy(*this);
+
+	--(*this);
+	return (copy);
 }

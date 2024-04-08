@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/05 14:17:35 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/08 10:00:19 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ INC_FILES		=		Bureaucrat.hpp
 
 SRC_FILES		=		main.cpp			\
 						Bureaucrat.cpp		\
-						Bureaucrat_funcs.cpp
+						Bureaucrat_funcs.cpp	\
+						Bureaucrat_exceptions.cpp
 
 
 ## PREP
@@ -43,7 +44,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(COMP) $(FLAGS) $(OBJS) -I$(INC_PATH) -o $(NAME)
-	echo Program $(NAME) ready!!
+	@echo Program $(NAME) ready!!
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp $(INCS)
 	mkdir -p $(dir $@)
@@ -68,7 +69,7 @@ run: all
 	@./$(NAME)
 
 debug: FLAGS += $(DEBUG_FLAGS)
-debug: re
+debug: re run
 
 
 .PHONY: clean fclean re git run debug
