@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 12:44:22 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 12:46:47 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class Form
 		int					getSignGrade() const;
 		int					getExecGrade() const;
 		int					getIsSigned() const;
+		void				setIsSigned();
 
 		void			beSigned(const Bureaucrat& bureau);
 		virtual void	execute(const Bureaucrat& executor) = 0;

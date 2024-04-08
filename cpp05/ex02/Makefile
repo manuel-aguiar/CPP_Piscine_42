@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/08 11:57:44 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/08 12:47:23 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,16 +26,16 @@ OBJ_PATH	=		objs
 ## ALL FILES
 
 INC_FILES		=		Bureaucrat.hpp		\
-						Form.hpp
+						AForm.hpp
 
 
 SRC_FILES		=		main.cpp					\
 						Bureaucrat.cpp				\
 						Bureaucrat_funcs.cpp		\
 						Bureaucrat_exceptions.cpp	\
-						Form.cpp					\
-						Form_funcs.cpp				\
-						Form_exceptions.cpp
+						AForm.cpp					\
+						AForm_funcs.cpp				\
+						AForm_exceptions.cpp
 
 
 
