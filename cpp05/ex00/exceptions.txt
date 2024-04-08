@@ -1,0 +1,74 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    exceptions.txt                                     :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/04/05 13:32:02 by codespace         #+#    #+#              #
+#    Updated: 2024/04/08 11:03:27 by codespace        ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+gcc uses Itanium C++ ABI
+https://www.linkedin.com/pulse/heap-allocated-question-armin-kassemi-langroodi
+
+gcc 13.2 -> exceptions are allocated on the heap
+	that's how they survive stack unwinding
+
+throw is the one that calls for the allocation of the exception:
+"
+		extern "C" void *
+		__cxxabiv1::__cxa_allocate_exception(std::size_t thrown_size) noexcept
+		{
+		thrown_size += sizeof (__cxa_refcounted_exception);
+
+		void *ret = malloc (thrown_size);
+
+		#if USE_POOL
+		if (!ret)
+			ret = emergency_pool.allocate (thrown_size);
+		#endif
+
+		if (!ret)
+			std::terminate ();
+
+		memset (ret, 0, sizeof (__cxa_refcounted_exception));
+
+		return (void *)((char *)ret + sizeof (__cxa_refcounted_exception));
+		}
+
+"
+if malloc fails, cann the emergency pool, if the emergency pool fails...
+	call terminate()
+So with GCC, the program can crash from failing to allocate memory for malloc :0
+
+emergency pool flag : GLIBCXX_EH_POOL_STATIC
+This pool is allocated at the beginning of the program
+	if it fails, oh well call terminate :(
+
+clang, no emergency pool (Itanium C++ ABI as well)
+
+
+MSVC (Windows) execeptions are allocated on the stack :0 ?????
+	bit weird, may be dangerous because exception itself may then allocate on
+	the heap
+
+***************************************************
+
+Exceptions vs C-style
+
+So in C, one would chek errno to see if anything is wrong
+
+That means a lot of runtime if/else to handle That
+
+C++ exceptions are essentially code jumps:
+	if done in try loops, exception scales above
+	more costly if an exception happens
+	faster if no exception happens :)
+	(than C)
+
+C++ exceptions force you to handle them or else the program ends
+in C, if you don't you may have the program still running
+and crashing somewhere unexpectedly while c++ exceptions will
+tell you exactly where it failed and called terminate()
