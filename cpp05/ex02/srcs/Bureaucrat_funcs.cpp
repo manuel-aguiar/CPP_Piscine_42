@@ -6,12 +6,12 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:44:59 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 12:34:01 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 12:48:13 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 void	Bureaucrat::signForm(Form& form)
 {

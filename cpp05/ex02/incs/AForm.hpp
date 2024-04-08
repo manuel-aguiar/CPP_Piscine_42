@@ -6,13 +6,13 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 12:46:47 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 12:47:59 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
+#ifndef AFORM_HPP
 
-# define FORM_HPP
+# define AFORM_HPP
 
 #include <string>
 #include <iostream>
