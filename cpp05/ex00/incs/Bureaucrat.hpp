@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:24:57 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 10:00:38 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 11:45:07 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 # define BUREAUCRAT_HPP
 
-#include <iostream>
 #include <string>
+#include <iostream>
+#include <exception>
 
 #define MIN_GRADE 150
 #define MAX_GRADE 1
@@ -56,12 +57,15 @@ class Bureaucrat
 		};
 
 	private:
-		const std::string	name;
-		int					grade;
+		Bureaucrat();
+		const std::string	_name;
+		int					_grade;
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureau);
 
+
+//TEST TO DO, put exceptions classes as private
 
 /*
 		class GradeTooHighException : public std::exception
