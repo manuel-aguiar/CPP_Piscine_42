@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:57:53 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 12:04:19 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 12:32:18 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Form::GradeTooHighException::~GradeTooHighException() throw()
 
 const char *Form::GradeTooHighException::what() const throw()
 {
-    return ("Grade: too high; range max-min: 1 - 150");
+    return ("Form: Grade too high");
 }
 
 
@@ -49,5 +49,5 @@ Form::GradeTooLowException::~GradeTooLowException() throw()
 
 const char *Form::GradeTooLowException::what() const throw()
 {
-    return ("Grade: too low; range max-min: 1 - 150");
+    return ("Form: Grade too low");
 }

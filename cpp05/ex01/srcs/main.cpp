@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 12:16:14 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 12:26:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 	std::cout << b;
 	try
 	{
-		++b;
+		
 	}
 	catch(const std::exception& e)
 	{
