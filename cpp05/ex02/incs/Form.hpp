@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.hpp                                          :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 12:47:59 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 09:13:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AFORM_HPP
+#ifndef FORM_HPP
 
-# define AFORM_HPP
+# define FORM_HPP
 
 #include <string>
 #include <iostream>
@@ -35,10 +35,8 @@ class Form
 		int					getSignGrade() const;
 		int					getExecGrade() const;
 		int					getIsSigned() const;
-		void				setIsSigned();
 
-		void			beSigned(const Bureaucrat& bureau);
-		virtual void	execute(const Bureaucrat& executor) = 0;
+		void	beSigned(const Bureaucrat& bureau);
 
 		class GradeTooHighException : public std::exception
 		{
@@ -53,6 +51,14 @@ class Form
 			public:
 				GradeTooLowException();				//for test purposes
 				~GradeTooLowException() throw();	//for test purposes
+				const char *what(void) const throw();
+		};
+
+		class FormAlreadySigned : public std::exception
+		{
+			public:
+				FormAlreadySigned();				//for test purposes
+				~FormAlreadySigned() throw();		//for test purposes
 				const char *what(void) const throw();
 		};
 

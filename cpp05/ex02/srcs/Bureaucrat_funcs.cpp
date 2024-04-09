@@ -6,12 +6,32 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:44:59 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 12:48:13 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 09:25:19 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
+#include "Form.hpp"
+
+/*
+
+	"throw" inside a catch block will try to find an outter try-catch block
+	to scale the problem to outside the function.
+		side note: throw without an active exception
+
+	In the context of the exercise, both with/without throw can make sense
+	i opted for not "throwing" after getting the exception at the bureaucrat
+	at the signing level and let the program run as usual, catching
+	future exceptions that might occur from non signing
+
+	However, "throwing" upwards may make sense if the rest of the program
+	depends on signForm
+
+	As we are just testing and have no general guidelines apart from printing
+	messages regarding success/failure, i don't throw and my main is
+	smaller :D
+
+*/
 
 void	Bureaucrat::signForm(Form& form)
 {
@@ -23,6 +43,12 @@ void	Bureaucrat::signForm(Form& form)
 	catch(const Form::GradeTooLowException& e)
 	{
 		std::cerr << _name << " couldn't sign " << form.getName() <<" because " << e.what() << std::endl;
+		//throw; // <- "throw" here will try to find an outter try-catch block
+	}
+	catch(const Form::FormAlreadySigned& e)
+	{
+		std::cerr << _name << " couldn't sign " << form.getName() <<" because " << e.what() << std::endl;
+		//throw; // <- "throw" here will try to find an outter try-catch block
 	}
 }
 

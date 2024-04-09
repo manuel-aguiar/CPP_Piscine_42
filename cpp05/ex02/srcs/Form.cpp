@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.cpp                                          :+:      :+:    :+:   */
+/*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:36:40 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 12:48:11 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/08 12:13:04 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AForm.hpp"
+#include "Form.hpp"
 
 Form::Form() :
 			_name("some garbage value, i'll make it private anyways"), \

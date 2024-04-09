@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 12:33:39 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 09:19:18 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,18 @@ int	main(void)
 {
 	Bureaucrat b("josé", 8);
 	Form f("cenas", 5, 7);
+	Bureaucrat c("antonio", 1);
 	std::cout << b;
-	try
-	{
-		b.signForm(f);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	b.signForm(f);
+	c.signForm(f);
+	c.signForm(f);
 	std::cout << b;
 	return (0);
 }
 
+/*
+
+	try-catch block is placed inside the Bureaucrat::signform(form) method, not need
+	for another try-catch block outside
+
+*/
