@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 10:45:09 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 12:04:42 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Form
 {
 	public:
 		Form();
-		Form(	const std::string	name, \
+		Form(	const std::string&	name, \
 				const int			sign_grade, \
 				const int			exec_grade);
 		~Form();
@@ -45,6 +45,7 @@ class Form
 				virtual ~FormExceptions() throw();				//for debug purposes
 				virtual const char *what(void) const throw() = 0;
 		};
+
 		class GradeTooHighException : public FormExceptions
 		{
 			public:
