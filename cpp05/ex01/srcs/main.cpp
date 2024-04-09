@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 09:14:24 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 09:19:06 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(void)
 	c.signForm(f);
 	c.signForm(f);
 	std::cout << b;
+	throw;
 	return (0);
 }
 
