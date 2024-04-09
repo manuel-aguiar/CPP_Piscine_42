@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:44:59 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 09:53:06 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 09:54:19 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	Bureaucrat::signForm(Form& form)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << _name << " caught a non-Form exception :0, we need to handle that!!!" << std::endl;
+		std::cerr << _name << " caught a non-Form exception :0, we need to handle that!!! " << e.what() << std::endl;
 		// throw ;
 		/*
 			Bureaucrat doesn't know what to do here unless it is a Form issue :(

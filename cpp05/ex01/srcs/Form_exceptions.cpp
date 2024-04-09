@@ -6,27 +6,28 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:57:53 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 09:42:53 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 09:58:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-
+// generic
 Form::FormExceptions::FormExceptions()
 {
 	#ifdef DEBUG_CONSTRUCTOR
-		std::cout << "Form FormAlreadySigned Constructor Called" << std::endl;
+		std::cout << "Form FormExceptions Constructor Called" << std::endl;
 	#endif
 }
 
 Form::FormExceptions::~FormExceptions() throw()
 {
 	#ifdef DEBUG_CONSTRUCTOR
-		std::cout << "Form FormAlreadySigned Destructor Called" << std::endl;
+		std::cout << "Form FormExceptions Destructor Called" << std::endl;
 	#endif
 }
 
+//grade too high
 Form::GradeTooHighException::GradeTooHighException()
 {
 	#ifdef DEBUG_CONSTRUCTOR
@@ -67,6 +68,7 @@ const char *Form::GradeTooLowException::what() const throw()
     return ("Form: Grade too low");
 }
 
+//form already signed
 Form::FormAlreadySigned::FormAlreadySigned()
 {
 	#ifdef DEBUG_CONSTRUCTOR
