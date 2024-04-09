@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 09:59:51 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 10:45:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(void)
 	std::cout << b;
 	return (0);
 }
+
 
 /*
 
@@ -61,5 +62,15 @@ int	main(void)
 	is the same as any other derived class :)
 
 
+
+*/
+
+/*
+
+	Interesting note:
+		Our Form class has a class itself that is abstract:
+		Form::FormExceptions
+
+		BUT: we can still instantiate our Form without a problem
 
 */
