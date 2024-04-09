@@ -1,0 +1,139 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    exceptions.txt                                     :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/04/05 13:32:02 by codespace         #+#    #+#              #
+#    Updated: 2024/04/09 10:57:42 by codespace        ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+gcc uses Itanium C++ ABI
+https://www.linkedin.com/pulse/heap-allocated-question-armin-kassemi-langroodi
+
+gcc 13.2 -> exceptions are allocated on the heap
+	that's how they survive stack unwinding
+
+throw is the one that calls for the allocation of the exception:
+"
+		extern "C" void *
+		__cxxabiv1::__cxa_allocate_exception(std::size_t thrown_size) noexcept
+		{
+		thrown_size += sizeof (__cxa_refcounted_exception);
+
+		void *ret = malloc (thrown_size);
+
+		#if USE_POOL
+		if (!ret)
+			ret = emergency_pool.allocate (thrown_size);
+		#endif
+
+		if (!ret)
+			std::terminate ();
+
+		memset (ret, 0, sizeof (__cxa_refcounted_exception));
+
+		return (void *)((char *)ret + sizeof (__cxa_refcounted_exception));
+		}
+
+"
+if malloc fails, cann the emergency pool, if the emergency pool fails...
+	call terminate()
+So with GCC, the program can crash from failing to allocate memory for malloc :0
+
+emergency pool flag : GLIBCXX_EH_POOL_STATIC
+This pool is allocated at the beginning of the program
+	if it fails, oh well call terminate :(
+
+clang, no emergency pool (Itanium C++ ABI as well)
+
+
+MSVC (Windows) execeptions are allocated on the stack :0 ?????
+	bit weird, may be dangerous because exception itself may then allocate on
+	the heap
+
+***************************************************
+
+https://learn.microsoft.com/en-us/cpp/cpp/errors-and-exception-handling-modern-cpp?view=msvc-170
+
+Exceptions vs C-style
+
+So in C, one would chek errno to see if anything is wrong
+
+That means a lot of runtime if/else to handle That
+
+C++ exceptions are essentially code jumps:
+	if done in try loops, exception scales above
+	more costly if an exception happens
+	faster if no exception happens :)
+	(than C)
+
+C++ exceptions force you to handle them or else the program ends
+in C, if you don't you may have the program still running
+and crashing somewhere unexpectedly while c++ exceptions will
+tell you exactly where it failed and called terminate()
+
+Exceptions separate error detection from error handling
+
+stack unwinding allow for clean destruction
+
+
+*************************************************
+https://learn.microsoft.com/en-us/cpp/cpp/how-to-design-for-exception-safety?view=msvc-170
+"
+The three exception guarantees
+Typically, exception safety is discussed in terms of the three exception
+guarantees that a function can provide: the no-fail guarantee, the strong
+guarantee, and the basic guarantee.
+"
+
+"std::nothrow" with malloc is....  weird
+
+No throw you are essentially saying that you trust that a function and their
+sub functions to never fail
+
+nothrow will make malloc = NULL on failure and you can handle that the C way
+but that's not very c++ is it.... xD
+
+******************************************
+
+Carefull with exceptions and delete's on destructors
+
+If constructor partially fails, destructor will not be called.
+Standard Library templates have their own exception handling such that
+if constructor fails at some point, they are responsible for managing their ownpartial destruction.
+\/
+RAII - resource acquisition is initialization
+https://en.cppreference.com/w/cpp/language/raii
+
+"
+Consider whether to store all class state in a data member that is wrapped in a smart pointer,
+especially if a class has a concept of "initialization that is permitted to fail." Although
+C++ allows for uninitialized data members, it does not support uninitialized or partially
+initialized class instances. A constructor must either succeed or fail; no object is
+created if the constructor does not run to completion.
+"
+*****************************
+
+  class exception
+  {
+  public:
+    exception() _GLIBCXX_NOTHROW { }
+    virtual ~exception() _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
+#if __cplusplus >= 201103L
+    exception(const exception&) = default;
+    exception& operator=(const exception&) = default;
+    exception(exception&&) = default;
+    exception& operator=(exception&&) = default;
+#endif
+
+    /** Returns a C-style character string describing the general cause
+     *  of the current error.  */
+    virtual const char*
+    what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
+  };
+
+
+****************************
