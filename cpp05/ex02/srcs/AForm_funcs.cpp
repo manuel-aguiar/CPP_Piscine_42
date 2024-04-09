@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form_funcs.cpp                                     :+:      :+:    :+:   */
+/*   AForm_funcs.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,33 +11,33 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
-void	Form::beSigned(const Bureaucrat& bureau)
+void	AForm::beSigned(const Bureaucrat& bureau)
 {
 	if (_is_signed)
-		throw Form::FormAlreadySigned();
+		throw AForm::AFormAlreadySigned();
 	if (bureau.getGrade() > _sign_grade)
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	_is_signed = true;
 }
 
-const std::string&	Form::getName() const
+const std::string&	AForm::getName() const
 {
 	return (_name);
 }
 
-int					Form::getSignGrade() const
+int					AForm::getSignGrade() const
 {
 	return (_sign_grade);
 }
 
-int					Form::getExecGrade() const
+int					AForm::getExecGrade() const
 {
 	return (_exec_grade);
 }
 
-int					Form::getIsSigned() const
+int					AForm::getIsSigned() const
 {
 	return (_is_signed);
 }

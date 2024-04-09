@@ -6,12 +6,12 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:44:59 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 09:54:19 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 11:35:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 /*
 
@@ -33,14 +33,14 @@
 
 */
 
-void	Bureaucrat::signForm(Form& form)
+void	Bureaucrat::signForm(AForm& form)
 {
 	try
 	{
 		form.beSigned(*this);
 		std::cout << _name << " signed " << form.getName() << std::endl;
 	}
-	catch(const Form::FormExceptions& e)
+	catch(const AForm::AFormExceptions& e)
 	{
 		std::cerr << _name << " couldn't sign " << form.getName() <<" because " << e.what() << std::endl;
 		//throw; // <- "throw" here will try to find an outter try-catch block

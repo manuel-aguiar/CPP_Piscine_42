@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
+#ifndef AFORM_HPP
 
-# define FORM_HPP
+# define AFORM_HPP
 
 #include <string>
 #include <iostream>
@@ -20,16 +20,16 @@
 
 #include "Bureaucrat.hpp"
 
-class Form
+class AForm
 {
 	public:
-		Form();
-		Form(	const std::string	name, \
+		AForm();
+		AForm(	const std::string	name, \
 				const int			sign_grade, \
 				const int			exec_grade);
-		~Form();
-		Form(const Form& copy);
-		Form& operator=(const Form& assign);
+		~AForm();
+		AForm(const AForm& copy);
+		AForm& operator=(const AForm& assign);
 
 		const std::string&	getName() const;
 		int					getSignGrade() const;
@@ -38,15 +38,15 @@ class Form
 
 		void	beSigned(const Bureaucrat& bureau);
 
-		class FormExceptions : public std::exception
+		class AFormExceptions : public std::exception
 		{
 			public:
-				FormExceptions();								//for debug purposes
-				virtual ~FormExceptions() throw();				//for debug purposes
+				AFormExceptions();								//for debug purposes
+				virtual ~AFormExceptions() throw();				//for debug purposes
 				virtual const char *what(void) const throw() = 0;
 		};
 
-		class GradeTooHighException : public FormExceptions
+		class GradeTooHighException : public AFormExceptions
 		{
 			public:
 				GradeTooHighException();						//for debug purposes
@@ -54,7 +54,7 @@ class Form
 				const char *what(void) const throw();
 		};
 
-		class GradeTooLowException : public FormExceptions
+		class GradeTooLowException : public AFormExceptions
 		{
 			public:
 				GradeTooLowException();							//for debug purposes
@@ -62,11 +62,11 @@ class Form
 				const char *what(void) const throw();
 		};
 
-		class FormAlreadySigned : public FormExceptions
+		class AFormAlreadySigned : public AFormExceptions
 		{
 			public:
-				FormAlreadySigned();							//for debug purposes
-				~FormAlreadySigned() throw();					//for debug purposes
+				AFormAlreadySigned();							//for debug purposes
+				~AFormAlreadySigned() throw();					//for debug purposes
 				const char *what(void) const throw();
 		};
 
@@ -77,7 +77,7 @@ class Form
 		bool				_is_signed;
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& form);
+std::ostream& operator<<(std::ostream& os, const AForm& AForm);
 
 #endif
 

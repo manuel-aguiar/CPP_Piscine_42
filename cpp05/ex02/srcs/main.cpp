@@ -6,17 +6,17 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 11:20:55 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 11:34:45 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 int	main(void)
 {
 	Bureaucrat b("josé", 8);
-	Form f("cenas", 5, 7);
+	AForm f("cenas", 5, 7);
 	Bureaucrat c("antonio", 1);
 	std::cout << b;
 	b.signForm(f);
