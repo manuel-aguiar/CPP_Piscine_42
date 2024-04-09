@@ -1,0 +1,47 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    weird_stuff.txt                                    :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/04/09 10:55:45 by codespace         #+#    #+#              #
+#    Updated: 2024/04/09 11:12:03 by codespace        ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+https://stackoverflow.com/questions/1055387/throw-keyword-in-functions-signature
+
+#include <iostream>
+void throw_exception() throw(const char *) {
+    throw 10;
+}
+void my_unexpected() {
+    std::cout << "well - this was unexpected" << std::endl;
+}
+int main(int argc, char **argv) {
+    std::set_unexpected(my_unexpected);
+    try {
+        throw_exception();
+    } catch(int x) {
+        std::cout << "catch int: " << x << std::endl;
+    } catch(...) {
+        std::cout << "catch ..." << std::endl;
+    }
+}
+
+user@user:~/tmp$ g++ -o except.test except.test.cpp
+user@user:~/tmp$ ./except.test
+well - this was unexpected
+terminate called after throwing an instance of 'int'
+Aborted (core dumped)
+
+:0
+************************************************
+
+throw() -> this is the same as throw(void)
+	-> meaning, don't throw anything :don
+	Security measure, destructors are not supposed to throw
+	exceptions themselves
+	If a destructor throws an exception while other is being handled, the program
+	will calll terminate()

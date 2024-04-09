@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/05 13:32:02 by codespace         #+#    #+#              #
-#    Updated: 2024/04/08 11:23:25 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/09 10:57:42 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,3 +115,25 @@ C++ allows for uninitialized data members, it does not support uninitialized or 
 initialized class instances. A constructor must either succeed or fail; no object is
 created if the constructor does not run to completion.
 "
+*****************************
+
+  class exception
+  {
+  public:
+    exception() _GLIBCXX_NOTHROW { }
+    virtual ~exception() _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
+#if __cplusplus >= 201103L
+    exception(const exception&) = default;
+    exception& operator=(const exception&) = default;
+    exception(exception&&) = default;
+    exception& operator=(exception&&) = default;
+#endif
+
+    /** Returns a C-style character string describing the general cause
+     *  of the current error.  */
+    virtual const char*
+    what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW;
+  };
+
+
+****************************

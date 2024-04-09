@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 10:01:38 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 11:01:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,36 +82,3 @@ std::ostream& operator<<(std::ostream& os, const Form& form);
 #endif
 
 
-/*
-
-	Exceptions can be generic or more specific
-	To make it more interesting, i want the bureaucrat to just be worried about
-	specific Form Exceptions
-		In this case, Form is initialized and no more containers/templates
-		are initialized, so nothing will "throw" any exception at us, except
-		the form itself
-		so, Bureaucrat, instead of  catch (std::exception), will
-		try to catch (Form::FormExceptions)
-
-	Form exceptions inherit from the main handler which makes its destructor virtual
-	as well as the what function (pure virtual, such that the compiler, won't let us
-	instantiate and throw an exception that does not override the What() function :) )
-
-	In general, maybe sticking to catch (std::exception) may be agood idea because
-	you will have containers that may throw something at you and you need to handle it
-
-	However, the handling may be different from a runtime problem regarding inputs
-	from, say, a failure to allocate memory or save a file
-
-	The bureaucrat, to be sure, can have a double catch:
-		catch Form::Exceptions
-		{
-
-		}
-		catch std::exceptions
-		{
-			implement code to manage these, but hey, still not granular enough, depending on the case
-		}
-
-	Order of catching matters, start with the specifics and then go to the generics
-*/

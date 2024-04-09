@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:57:53 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 09:58:05 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 11:16:41 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,49 @@ Form::FormExceptions::~FormExceptions() throw()
 	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "Form FormExceptions Destructor Called" << std::endl;
 	#endif
+	//throw Form::GradeTooHighException();
+	/*
+
+	With this throw, even on a double try-catch, the program will call terminate
+	since by the standard, destructors throwing wile resolving a previous
+	exception will always call terminate
+
+	throw() in the destructor signature does not prevent to "throw" in the
+	destructor body
+
+	All of this is bad practice, we are just experimenting :)
+
+	int	main(void)
+{
+	Bureaucrat b("josé", 8);
+	Form f("cenas", 5, 7);
+	Bureaucrat c("antonio", 1);
+	try
+	{
+		try
+		{
+			std::cout << b;
+			b.signForm(f);
+			c.signForm(f);
+			c.signForm(f);
+			std::cout << b;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+
+
+
+	return (0);
+	}
+	*/
 }
 
 //grade too high
