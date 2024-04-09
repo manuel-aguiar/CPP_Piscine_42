@@ -36,7 +36,8 @@ class AForm
 		int					getExecGrade() const;
 		int					getIsSigned() const;
 
-		void	beSigned(const Bureaucrat& bureau);
+		void			beSigned(const Bureaucrat& bureau);
+		virtual void	execute(const Bureaucrat& bureau) = 0;
 
 		class AFormExceptions : public std::exception
 		{

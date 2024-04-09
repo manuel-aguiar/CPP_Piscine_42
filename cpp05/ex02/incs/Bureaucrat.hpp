@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:24:57 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 11:34:17 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 11:36:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ class Bureaucrat
 		Bureaucrat	 		operator--(int);
 
 		void	signForm(AForm& form);
-
+		void	executeForm(const AForm& form);
 
 		class GradeTooHighException : public std::exception
 		{
