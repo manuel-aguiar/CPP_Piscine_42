@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 13:13:00 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 14:52:03 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,17 @@
 
 int	main(void)
 {
-	PresidentialPardonForm form("joaquim");
+	RobotomyRequestForm form("joaquim");
 	Bureaucrat juau("juau", 1);
 
 	juau.signForm(form);
 	juau.signForm(form);
 	juau.executeForm(form);
+	juau.executeForm(form);
+	juau.executeForm(form);
+	juau.executeForm(form);
+	juau.executeForm(form);
+
 	//form.execute(juau);
 	return (0);
 }
