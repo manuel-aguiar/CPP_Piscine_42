@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:20:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 15:40:43 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 15:56:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,20 @@ class Intern
 		ShrubberyCreationForm*	new_shrub(const std::string& target);
 		RobotomyRequestForm*	new_robot(const std::string& target);
 		AForm*					throw_dummy(const std::string& target);
-		static const 		funcs factory[4] =
+		static const 		funcs factory[4];
 		{
 			&new_pres,
 			&new_shrub,
 			&new_robot,
 			&throw_dummy
 		}
+};
+
+const Intern::funcs Intern::factory[4] = {
+    &Intern::new_pres,
+    &Intern::new_shrub,
+    &Intern::new_robot,
+    &Intern::throw_dummy
 };
 
 /*
