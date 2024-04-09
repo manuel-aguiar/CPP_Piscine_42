@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:57:49 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 12:23:31 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 09:13:31 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 void	Form::beSigned(const Bureaucrat& bureau)
 {
+	if (_is_signed)
+		throw Form::FormAlreadySigned();
 	if (bureau.getGrade() > _sign_grade)
 		throw Form::GradeTooLowException();
 	_is_signed = true;

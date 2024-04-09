@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 12:20:25 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 09:13:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,14 @@ class Form
 			public:
 				GradeTooLowException();				//for test purposes
 				~GradeTooLowException() throw();	//for test purposes
+				const char *what(void) const throw();
+		};
+
+		class FormAlreadySigned : public std::exception
+		{
+			public:
+				FormAlreadySigned();				//for test purposes
+				~FormAlreadySigned() throw();		//for test purposes
 				const char *what(void) const throw();
 		};
 

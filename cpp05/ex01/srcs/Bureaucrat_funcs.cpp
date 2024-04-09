@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:44:59 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 12:34:01 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 09:15:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ void	Bureaucrat::signForm(Form& form)
 		std::cout << _name << " signed " << form.getName() << std::endl;
 	}
 	catch(const Form::GradeTooLowException& e)
+	{
+		std::cerr << _name << " couldn't sign " << form.getName() <<" because " << e.what() << std::endl;
+	}
+	catch(const Form::FormAlreadySigned& e)
 	{
 		std::cerr << _name << " couldn't sign " << form.getName() <<" because " << e.what() << std::endl;
 	}

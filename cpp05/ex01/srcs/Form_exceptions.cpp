@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:57:53 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 12:32:18 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 09:12:56 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,23 @@ Form::GradeTooLowException::~GradeTooLowException() throw()
 const char *Form::GradeTooLowException::what() const throw()
 {
     return ("Form: Grade too low");
+}
+
+Form::FormAlreadySigned::FormAlreadySigned()
+{
+	#ifdef DEBUG_CONSTRUCTOR
+		std::cout << "Form FormAlreadySigned Constructor Called" << std::endl;
+	#endif
+}
+
+Form::FormAlreadySigned::~FormAlreadySigned() throw()
+{
+	#ifdef DEBUG_CONSTRUCTOR
+		std::cout << "Form FormAlreadySigned Destructor Called" << std::endl;
+	#endif
+}
+
+const char *Form::FormAlreadySigned::what() const throw()
+{
+    return ("Form: form is already signed");
 }
