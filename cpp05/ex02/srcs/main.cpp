@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 11:13:43 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 11:20:55 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,11 @@ int	main(void)
 	Bureaucrat b("josé", 8);
 	Form f("cenas", 5, 7);
 	Bureaucrat c("antonio", 1);
-	try
-	{
-		try
-		{
-			std::cout << b;
-			b.signForm(f);
-			c.signForm(f);
-			c.signForm(f);
-			std::cout << b;		/* code */
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << '\n';
-		}		/* code */
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-
-
-
-
+	std::cout << b;
+	b.signForm(f);
+	c.signForm(f);
+	c.signForm(f);
+	std::cout << b;
 	return (0);
 }
 

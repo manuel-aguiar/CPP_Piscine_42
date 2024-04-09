@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/09 10:55:45 by codespace         #+#    #+#              #
-#    Updated: 2024/04/09 11:12:03 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/09 11:18:35 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,10 @@ Aborted (core dumped)
 ************************************************
 
 throw() -> this is the same as throw(void)
-	-> meaning, don't throw anything :don
+	-> meaning, don't throw anything :D
 	Security measure, destructors are not supposed to throw
 	exceptions themselves
 	If a destructor throws an exception while other is being handled, the program
 	will calll terminate()
+
+c++11 replaces thhe signature with noexcept but has backward compatibility
