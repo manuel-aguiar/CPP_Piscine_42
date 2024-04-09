@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:44:59 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 09:25:19 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 09:51:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,19 @@ void	Bureaucrat::signForm(Form& form)
 		form.beSigned(*this);
 		std::cout << _name << " signed " << form.getName() << std::endl;
 	}
-	catch(const Form::GradeTooLowException& e)
+	catch(const Form::FormExceptions& e)
 	{
 		std::cerr << _name << " couldn't sign " << form.getName() <<" because " << e.what() << std::endl;
 		//throw; // <- "throw" here will try to find an outter try-catch block
 	}
-	catch(const Form::FormAlreadySigned& e)
+	catch(const std::exception& e)
 	{
-		std::cerr << _name << " couldn't sign " << form.getName() <<" because " << e.what() << std::endl;
-		//throw; // <- "throw" here will try to find an outter try-catch block
+		std::cerr << _name << " caught a non-Form exception :0, we need to handle that!!!" << std::endl;
+		throw ;
+		/*
+			Bureaucrat doesn't know what to do here unless it is a Form issue :(
+			Scale the problem to an outter try-catch, maybe they know what to do :)
+		*/
 	}
 }
 
