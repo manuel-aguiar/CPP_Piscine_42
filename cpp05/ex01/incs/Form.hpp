@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 09:55:39 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 10:00:17 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,32 +41,32 @@ class Form
 		class FormExceptions : public std::exception
 		{
 			public:
-				FormExceptions();								//for test purposes
-				virtual ~FormExceptions() throw();				//for test purposes
+				FormExceptions();								//for debug purposes
+				virtual ~FormExceptions() throw();				//for debug purposes
 				virtual const char *what(void) const throw() = 0;
 		};
 
 		class GradeTooHighException : public FormExceptions
 		{
 			public:
-				GradeTooHighException();						//for test purposes
-				~GradeTooHighException() throw();				//for test purposes
+				GradeTooHighException();						//for debug purposes
+				~GradeTooHighException() throw();				//for debug purposes
 				const char *what(void) const throw();
 		};
 
 		class GradeTooLowException : public FormExceptions
 		{
 			public:
-				GradeTooLowException();							//for test purposes
-				~GradeTooLowException() throw();				//for test purposes
+				GradeTooLowException();							//for debug purposes
+				~GradeTooLowException() throw();				//for debug purposes
 				const char *what(void) const throw();
 		};
 
 		class FormAlreadySigned : public FormExceptions
 		{
 			public:
-				FormAlreadySigned();							//for test purposes
-				~FormAlreadySigned() throw();					//for test purposes
+				FormAlreadySigned();							//for debug purposes
+				~FormAlreadySigned() throw();					//for debug purposes
 				const char *what(void) const throw();
 		};
 
