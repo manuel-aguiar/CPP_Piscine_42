@@ -45,7 +45,7 @@ AForm::GradeTooHighException::~GradeTooHighException() throw()
 
 const char *AForm::GradeTooHighException::what() const throw()
 {
-    return ("AForm: Grade too high");
+    return ("Grade is too high");
 }
 
 
@@ -66,7 +66,7 @@ AForm::GradeTooLowException::~GradeTooLowException() throw()
 
 const char *AForm::GradeTooLowException::what() const throw()
 {
-    return ("AForm: Grade too low");
+    return ("Grade is too low");
 }
 
 //AForm already signed
@@ -86,5 +86,25 @@ AForm::AFormAlreadySigned::~AFormAlreadySigned() throw()
 
 const char *AForm::AFormAlreadySigned::what() const throw()
 {
-    return ("AForm: AForm is already signed");
+    return ("is already signed");
+}
+
+//AForm not yet signed
+AForm::AFormNotYetSigned::AFormNotYetSigned()
+{
+	#ifdef DEBUG_CONSTRUCTOR
+		std::cout << "AForm AFormNotYetSigned Constructor Called" << std::endl;
+	#endif
+}
+
+AForm::AFormNotYetSigned::~AFormNotYetSigned() throw()
+{
+	#ifdef DEBUG_CONSTRUCTOR
+		std::cout << "AForm AFormNotYetSigned Destructor Called" << std::endl;
+	#endif
+}
+
+const char *AForm::AFormNotYetSigned::what() const throw()
+{
+    return ("is not yet signed");
 }

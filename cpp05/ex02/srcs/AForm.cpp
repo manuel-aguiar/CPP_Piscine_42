@@ -23,7 +23,7 @@ AForm::AForm() :
 	#endif
 }
 
-AForm::AForm(	const std::string	name, \
+AForm::AForm(	const std::string&	name, \
 			const int			sign_grade, \
 			const int			exec_grade ) :
 			_name(name), \

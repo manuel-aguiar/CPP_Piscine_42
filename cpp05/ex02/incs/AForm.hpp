@@ -24,10 +24,10 @@ class AForm
 {
 	public:
 		AForm();
-		AForm(	const std::string	name, \
+		AForm(	const std::string&	name, \
 				const int			sign_grade, \
 				const int			exec_grade);
-		~AForm();
+		virtual ~AForm();
 		AForm(const AForm& copy);
 		AForm& operator=(const AForm& assign);
 
@@ -37,7 +37,8 @@ class AForm
 		int					getIsSigned() const;
 
 		void			beSigned(const Bureaucrat& bureau);
-		virtual void	execute(const Bureaucrat& bureau) = 0;
+		void			beExecuted(const Bureaucrat& bureau) const;
+		virtual void	execute(const Bureaucrat& executor) const = 0;
 
 		class AFormExceptions : public std::exception
 		{
@@ -68,6 +69,13 @@ class AForm
 			public:
 				AFormAlreadySigned();							//for debug purposes
 				~AFormAlreadySigned() throw();					//for debug purposes
+				const char *what(void) const throw();
+		};
+		class AFormNotYetSigned : public AFormExceptions
+		{
+			public:
+				AFormNotYetSigned();							//for debug purposes
+				~AFormNotYetSigned() throw();					//for debug purposes
 				const char *what(void) const throw();
 		};
 

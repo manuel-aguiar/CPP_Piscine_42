@@ -6,23 +6,37 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 11:34:45 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 13:13:00 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int	main(void)
 {
-	Bureaucrat b("josé", 8);
-	AForm f("cenas", 5, 7);
-	Bureaucrat c("antonio", 1);
-	std::cout << b;
-	b.signForm(f);
-	c.signForm(f);
-	c.signForm(f);
-	std::cout << b;
+	PresidentialPardonForm form("joaquim");
+	Bureaucrat juau("juau", 1);
+
+	juau.signForm(form);
+	juau.signForm(form);
+	juau.executeForm(form);
+	//form.execute(juau);
+	return (0);
+}
+
+int	main1(void)
+{
+	PresidentialPardonForm form("joaquim");
+	std::cout << form;
+	PresidentialPardonForm outro("antonio");
+	std::cout << outro;
+	outro = form;
+	std::cout << outro;
+
 	return (0);
 }
 

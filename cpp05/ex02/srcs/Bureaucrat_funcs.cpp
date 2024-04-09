@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:44:59 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 11:35:14 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/09 13:14:26 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,25 @@ void	Bureaucrat::signForm(AForm& form)
 			Either we handle that or maybe send a throw for an outter try-catch block to handle that
 			In the spirit of the exercise, we won't throw anything :D
 		*/
+	}
+}
+
+void	Bureaucrat::executeForm(const AForm& form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << _name << " executed " << form.getName() << std::endl;
+	}
+	catch(const AForm::AFormExceptions& e)
+	{
+		std::cerr << _name \
+		<< " can't execute " << form.getName() \
+		<< " because " << e.what() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << _name << " caught a non-Form exception :0, we need to handle that!!! " << e.what() << std::endl;
 	}
 }
 

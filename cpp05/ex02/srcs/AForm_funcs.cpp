@@ -13,6 +13,14 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
+void	AForm::beExecuted(const Bureaucrat& bureau) const
+{
+	if(!_is_signed)
+		throw AForm::AFormNotYetSigned();
+	if (bureau.getGrade() > _exec_grade)
+		throw AForm::GradeTooLowException();
+}
+
 void	AForm::beSigned(const Bureaucrat& bureau)
 {
 	if (_is_signed)
