@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:20:30 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/10 12:04:00 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/10 12:09:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ const Intern::funcs Intern::form_factory[4] = \
 	&Intern::new_shrub,
 	&Intern::throw_dummy
 };
-
 
 AForm*	Intern::new_pres(const std::string& target)
 {
