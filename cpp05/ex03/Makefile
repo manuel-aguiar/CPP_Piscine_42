@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/09 14:18:12 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/10 11:58:49 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME 		=		bureaucrat
 
 ##	Compiler and flags
 COMP		=		c++
-FLAGS		=		-Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
+FLAGS		=		-Wall -Wextra -Werror -std=c++98
+FSANITIZE_FLAGS =	 -fsanitize=address -g
 DEBUG_FLAGS	=		-DDEBUG_CONSTRUCTOR
 
 ## FOLDERS
@@ -29,7 +30,8 @@ INC_FILES		=		Bureaucrat.hpp		\
 						AForm.hpp			\
 						PresidentialPardonForm.hpp	\
 						ShrubberyCreationForm.hpp	\
-						RobotomyRequestForm.hpp
+						RobotomyRequestForm.hpp		\
+						Intern.hpp
 
 
 SRC_FILES		=		main.cpp					\
@@ -41,7 +43,8 @@ SRC_FILES		=		main.cpp					\
 						AForm_exceptions.cpp		\
 						PresidentialPardonForm.cpp	\
 						ShrubberyCreationForm.cpp	\
-						RobotomyRequestForm.cpp
+						RobotomyRequestForm.cpp		\
+						Intern.cpp
 
 
 
@@ -81,5 +84,7 @@ run: all
 debug: FLAGS += $(DEBUG_FLAGS)
 debug: re run
 
+fsan: FLAGS += $(FSANITIZE_FLAGS)
+fsan: re run
 
 .PHONY: clean fclean re git run debug

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:20:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 15:56:38 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/10 11:56:18 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
+# define FORM_COUNT 3
 
 class Intern
 {
@@ -31,29 +32,28 @@ class Intern
 		Intern(const Intern& copy);
 		Intern& operator=(const Intern& assign);
 
-		void	makeForm(const std::string& form_name, const std::string& target);
+		AForm* 	makeForm(const std::string& form, const std::string& target);
+
+		class InternUnavailableForm : public AForm::AFormExceptions
+		{
+			public:
+				InternUnavailableForm();						//for debug purposes
+				~InternUnavailableForm() throw();				//for debug purposes
+				const char *what(void) const throw();
+		};
 
 	private:
-		typedef					AForm* (Intern::*funcs)(const std::string& target);
-		PresidentialPardonForm*	new_pres(const std::string& target);
-		ShrubberyCreationForm*	new_shrub(const std::string& target);
-		RobotomyRequestForm*	new_robot(const std::string& target);
-		AForm*					throw_dummy(const std::string& target);
-		static const 		funcs factory[4];
-		{
-			&new_pres,
-			&new_shrub,
-			&new_robot,
-			&throw_dummy
-		}
+		typedef						AForm* (Intern::*funcs)(const std::string& target);
+		AForm*						new_pres(const std::string& target);
+		AForm*						new_shrub(const std::string& target);
+		AForm*						new_robot(const std::string& target);
+		AForm*						throw_dummy(const std::string& target);
+		AForm*						ask_factory(const std::string& form, const std::string& target);
+		static const std::string	form_names[4];
+		static const funcs			form_factory[4];
+		static const int			form_count = FORM_COUNT;
 };
 
-const Intern::funcs Intern::factory[4] = {
-    &Intern::new_pres,
-    &Intern::new_shrub,
-    &Intern::new_robot,
-    &Intern::throw_dummy
-};
 
 /*
 
