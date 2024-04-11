@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/11 08:59:01 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/11 09:05:54 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ SRC_FILES		=		main.cpp					\
 						Base.cpp					\
 						A.cpp						\
 						B.cpp						\
-						C.cpp
+						C.cpp						\
+						funcs.cpp
 
 
 ## PREP
