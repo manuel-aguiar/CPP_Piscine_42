@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 08:59:14 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/11 09:16:06 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/11 09:20:21 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 # define BASE_HPP
 
 # include "Base.hpp"
+# include <iostream>
 
 class Base
 {
-	//public:
-	//	virtual ~Base();
+	public:
+		virtual ~Base();
 };
 
 Base*	generate(void);

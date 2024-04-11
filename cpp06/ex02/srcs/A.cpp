@@ -6,7 +6,18 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 08:59:18 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/11 08:59:19 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/11 09:22:59 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "A.hpp"
+
+A::A()
+{
+	std::cout << "A Constructor Called" << std::endl;
+}
+
+A::~A()
+{
+	std::cout << "A Destructor Called" << std::endl;
+}

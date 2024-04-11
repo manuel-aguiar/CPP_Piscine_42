@@ -6,7 +6,18 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 08:59:25 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/11 08:59:26 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/11 09:22:04 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "C.hpp"
+
+C::C()
+{
+	std::cout << "C Constructor Called" << std::endl;
+}
+
+C::~C()
+{
+	std::cout << "C Destructor Called" << std::endl;
+}

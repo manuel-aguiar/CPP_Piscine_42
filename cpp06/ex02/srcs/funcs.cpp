@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 09:05:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/11 09:15:55 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/11 09:18:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 Base*	generate(void)
 {
 	int 	res;
-	Base*	ptr;
 
 	std::srand(std::time(0)); // total waste
 	res = std::rand() % 3;
@@ -43,10 +42,10 @@ Base*	generate(void)
 
 void	identify(Base* p)
 {
-
+	(void)p;
 }
 
 void	identify(Base& p)
 {
-
+	(void)p;
 }

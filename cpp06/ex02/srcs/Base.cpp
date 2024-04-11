@@ -6,7 +6,13 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 08:59:23 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/11 08:59:24 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/11 09:22:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Base.hpp"
+
+Base::~Base()
+{
+	std::cout << "Base Destructor Called" << std::endl;
+}
