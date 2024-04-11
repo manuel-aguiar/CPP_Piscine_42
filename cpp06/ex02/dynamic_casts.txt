@@ -1,0 +1,111 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    dynamic_casts.txt                                  :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/04/11 11:50:45 by codespace         #+#    #+#              #
+#    Updated: 2024/04/11 12:22:06 by codespace        ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+dynamic cast requires the base class to have a vtable, otherwise doesn't work.
+probably because dynamic cast uses the base class vtable to get the Derived
+class this.
+
+This can be solved at compile time....? how?
+
+
+Yoou can cast upwards directly, as we have done with Base pointer to Derived,
+because Derived knows its internal structure
+The other way, not possible, compiler warning:
+	invalid conversion, -fpermissive
+Because the Base knows nothing about its descendents
+
+So to cast down and get the correct address, we need a different method
+Essentially, this is a "this pointer adjustment" that must be done when
+Base looks at its Base-in-devired vtable to find the top offset to get Derived
+
+Enter dynamic cast. (dynamic dispatch). It requires the Base class to have a vtable
+otherwise you can't. So dynamic_cast, as implied by name, uses Runtime Type information (RTTI)
+in order to work and needs a vtable for that.
+	If an object doesn't have a vtable, it can't be polymorphic.
+	Polymorphic objects: declare or inherit a virtual function
+		https://en.cppreference.com/w/cpp/language/object#Polymorphic_objects
+
+
+	Function calls are resolved at compile time, always to the same place, so the
+	object behaves the same everytime.
+
+Child *ptr = dynamic_cast<Child *>(p2);
+	This is the this pointer adjustment;
+
+Child *ptr = static_cast<Child *>(p2);
+	This achieves the same!!!!!!!!
+	But without  the ruuntime check :0. Also doesn't require objects to be polymorphic to work
+	no vtables. So if you want to downcast in class that don't have that, use static cast
+
+
+
+
+Parent2 *ptr = dynamic_cast<Parent2 *>(&c); this works and is solved at compile time
+since, once again, Child knows its own composition.
+	This is the upcast we are used to.
+
+Parent2 *ptr = static_cast<Parent2 *>(&c); -> works exactly the same
+Parent2 *ptr = (Parent2 *)(&c);				-> ssame way (oh no...)
+Parent2 *ptr = (Parent1*)(&c);				-> the compiler found what we were up to and didn't let as do it :(
+
+
+Parent2 *ptr = reinterpret_cast<Parent2 *>(&c);  -> oh SHIT :( this gives address of Parent1
+						-> Because the address of C starts at the first member
+
+
+Parent2 *ptr = (Parent2 *)p1;   ops :)
+
+
+"
+#include <iostream>
+
+class Parent1
+{
+    public:
+        int a;
+        //virtual ~Parent1() {}
+};
+
+class Parent2
+{
+    public:
+        int b;
+        //virtual ~Parent2() {}
+};
+
+class Child : public Parent1, public Parent2
+{
+    public:
+        int c;
+};
+
+int main()
+{
+    Child c;
+    Parent1 *p1;
+    Parent2 *p2;
+    p1 = &c;
+    p2 = &c;
+    std::cout
+    << "Child:            " << &c << std::endl
+    << "Parent1 in Child: " << p1 << std::endl
+    << "Parent2 in Child: "  << p2 << std::endl << std::endl;
+
+    Child* ptr;
+    ptr = p2;
+    std::cout << ptr << std::endl;
+
+    // dyynamic cast downard requires polymorphic base class, Parent1 is not virtual
+
+    return 0;
+}
+"
