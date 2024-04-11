@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:02:07 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/11 13:05:00 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/11 15:15:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,17 @@
 
 # define SCALARCONVERTER_HPP
 
+# include <string>
+# include <iostream>
+# include <sstream>
+# include <cctype>
+# include <iomanip>
+# include <limits>
+
 class ScalarConverter
 {
 	public:
-		~ScalarConverter();
-
-		static void convert(const std::string& literal);
+		static void convert(std::string literal);
 
 	private:
 		ScalarConverter();
