@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/10 13:29:09 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/11 08:59:01 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,17 @@ OBJ_PATH	=		objs
 
 ## ALL FILES
 
-INC_FILES		=		ScalarConverter.hpp
+INC_FILES		=		Base.hpp			\
+						A.hpp				\
+						B.hpp				\
+						C.hpp
 
 
 SRC_FILES		=		main.cpp					\
-						ScalarConverter.cpp
-
+						Base.cpp					\
+						A.cpp						\
+						B.cpp						\
+						C.cpp
 
 
 ## PREP
