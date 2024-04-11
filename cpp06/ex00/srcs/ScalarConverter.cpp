@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:02:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/11 15:24:48 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/11 16:08:00 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,8 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& assign)
 
 
 
-bool	too_many_args(std::stringstream& ss)
-{
-	std::string dummy;
 
-	if (ss >> dummy)
-		return (true);
-	return (false);
-}
-/*
+
 static void	print(char c)
 {
 	std::cout 	<< "char: '" << c << "'" << std::endl
@@ -64,7 +57,7 @@ static void	print(char c)
 				<< "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << 'f' << std::endl
 				<< "double: " << std::fixed << std::setprecision(1) << static_cast<double>(c) << std::endl;
 }
-
+/*
 static void	print(int i)
 {
 	std::cout << "int print called" << std::endl;
@@ -102,7 +95,7 @@ static void	print(double d)
 enum
 {
 	ERROR,
-	CHAT,
+	CHAR,
 	INT,
 	FLOAT,
 	DOUBLE,
@@ -153,6 +146,56 @@ bool	valid_int(const std::string& str, int& place_int)
 
 }
 */
+int	is_char(std::string& word)
+{
+	if (word.length() == 1
+	&& ((word[0] >= 32 && word[0] < '0')
+	|| (word[0] > '9' && word[0] <= 126)))
+		return (true);
+	return (false);
+}
+
+/*
+    std::cout << "char float value: " << std::numeric_limits<char>::min() << std::endl;
+    std::cout << "char float value: " << std::numeric_limits<char>::max() << std::endl;
+    std::cout << "int double value: " << std::numeric_limits<int>::min() << std::endl;
+    std::cout << "int double value: " << std::numeric_limits<int>::max() << std::endl;
+    std::cout << "Minimum float value: " << std::numeric_limits<float>::min() << std::endl;
+    std::cout << "Maximum float value: " << std::numeric_limits<float>::max() << std::endl;
+    std::cout << "Minimum double value: " << std::numeric_limits<double>::min() << std::endl;
+    std::cout << "Maximum double value: " << std::numeric_limits<double>::max() << std::endl;
+
+*/
+/*
+int is_int(std::string& str)
+{
+	int	i;
+	int neg;
+	long base;
+	long expo;
+
+	i = 0;
+	neg = 1;
+	if (str[i] == '-')
+		neg = -1;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (!str[i])
+		return (0);
+	base = 0;
+	while (str[i] && std::isdigit(str[i]))
+	{
+		base *= 10;
+		if (base == std::numeric_limits<int>::max() / 10 &&
+		(str[i] - '0'))
+		base += str[i] - '0';
+		i++;
+	}
+
+
+}
+*/
+
 void	print_pseudo(std::string& word, int type)
 {
 	std::string sfloat;
@@ -184,26 +227,29 @@ void	print_pseudo(std::string& word, int type)
 				<< "double: " << sdouble << std::endl;
 }
 
-void	print_nan(void)
+bool	too_many_args(std::string& word, std::string& literal)
 {
-	std::cout	<< "char: impossible\n"
-				<< "int: impossible\n"
-				<< "float: nanf\n"
-				<< "double: nanf" << std::endl;
+	std::stringstream ss(literal);
+	std::string dummy;
+
+	ss >> word;
+	if (ss >> dummy)
+		return (true);
+	return (false);
 }
 
 void	ScalarConverter::convert(std::string literal)
 {
-	std::stringstream ss(literal);
 	std::string word;
 
-	ss >> word;
-	if (too_many_args(ss))
+	if (too_many_args(word, literal))
 	{
-		std::cout << "too many args" << std::endl;
+		std::cout << "string literal has too many args" << std::endl;
 		return ;
 	}
 	int pseudo = is_pseudo(word);
 	if (pseudo)
 		return (print_pseudo(word, pseudo));
+	if (is_char(word))
+		return (print(word[0]));
 }
