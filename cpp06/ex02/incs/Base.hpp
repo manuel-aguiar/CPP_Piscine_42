@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 08:59:14 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/11 09:20:21 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/11 09:51:35 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ class Base
 	public:
 		virtual ~Base();
 };
+
+extern int g_rand_seed;
 
 Base*	generate(void);
 void	identify(Base* p);

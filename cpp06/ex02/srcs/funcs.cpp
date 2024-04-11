@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 09:05:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/11 09:32:17 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/11 09:51:13 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,19 @@
 #include <cstdlib>
 #include <ctime>
 
+
+int	call_srand(void)
+{
+	std::srand(std::time(0));
+	return 1;
+}
+
+int g_rand_seed = call_srand();
+
 Base*	generate(void)
 {
 	int 	res;
 
-	std::srand(std::time(0)); // total waste
 	res = std::rand() % 3;
 	switch(res)
 	{
@@ -42,20 +50,17 @@ Base*	generate(void)
 
 void	identify(Base* p)
 {
-	A* a = dynamic_cast<A*>(p);
-	if (a)
+	if (dynamic_cast<A*>(p))
 	{
 		std::cout << "A" << std::endl;
 		return ;
 	}
-	B* b = dynamic_cast<B*>(p);
-	if (b)
+	if (dynamic_cast<B*>(p))
 	{
 		std::cout << "B" << std::endl;
 		return ;
 	}
-	C* c = dynamic_cast<C*>(p);
-	if (c)
+	if (dynamic_cast<C*>(p))
 	{
 		std::cout << "C" << std::endl;
 		return ;
@@ -67,24 +72,24 @@ void	identify(Base& p)
 {
 	try
 	{
-		A& a = dynamic_cast<A&>(p);
+		dynamic_cast<A&>(p);
 		std::cout << "A" << std::endl;
 		return ;
 	}
-	catch(const std::bad_cast& e) {}
+	catch(const std::exception&) {}
 	try
 	{
-		B& b = dynamic_cast<B&>(p);
+		dynamic_cast<B&>(p);
 		std::cout << "B" << std::endl;
 		return ;
 	}
-	catch(const std::bad_cast& e) {}
+	catch(const std::exception&) {}
 	try
 	{
-		C& c = dynamic_cast<C&>(p);
+		dynamic_cast<C&>(p);
 		std::cout << "C" << std::endl;
 		return ;
 	}
-	catch(const std::bad_cast& e) {}
+	catch(const std::exception&) {}
 	std::cout << "something else" << std::endl;
 }
