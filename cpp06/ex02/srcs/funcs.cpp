@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 09:05:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/11 09:51:13 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/11 09:53:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@
 #include <cstdlib>
 #include <ctime>
 
-
 int	call_srand(void)
 {
 	std::srand(std::time(0));
-	return 1;
+	return (1);
 }
 
 int g_rand_seed = call_srand();
