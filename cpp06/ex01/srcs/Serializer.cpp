@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 10:45:17 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/11 10:49:22 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/11 12:39:19 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,16 @@ Serializer& Serializer::operator=(const Serializer& assign)
 	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "Serializer Copy Assignment called" << std::endl;
 	#endif
+	(void)assign;
 	return (*this);
 }
 
 uintptr_t Serializer::serialize(Data* ptr)
 {
-
+	return (reinterpret_cast<uintptr_t>(ptr));
 }
 
 Data* Serializer::deserialize(uintptr_t raw)
 {
-
+	return (reinterpret_cast<Data *>(raw));
 }

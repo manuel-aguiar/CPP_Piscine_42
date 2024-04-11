@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 10:41:56 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/11 11:41:28 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/11 12:38:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 # define SERIALIZER_HPP
 
-#include <cstdint>
+#include <stdint.h>
 #include <iostream>
 
 class Data;
