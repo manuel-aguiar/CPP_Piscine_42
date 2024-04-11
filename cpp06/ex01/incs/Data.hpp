@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 10:41:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/11 10:47:39 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/11 12:23:07 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 # define DATA_HPP
 
+#include <string>
+#include <iostream>
 
 class Data
 {
@@ -23,7 +25,8 @@ class Data
 		Data(const Data& copy);
 		Data& operator=(const Data& assign);
 
-	private:
+		int				a_number;
+		std::string		a_string;
 };
 
 

@@ -1,0 +1,118 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    reinterpret_casts.txt                              :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/04/11 12:25:30 by codespace         #+#    #+#              #
+#    Updated: 2024/04/11 12:30:03 by codespace        ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+https://stackoverflow.com/questions/7831696/reinterpret-cast-vs-c-style-cast
+
+
+reinterpret_cast as bad
+
+but c-style are worse because we don't know exactly which one is occurring
+
+example:
+#include <iostream>
+
+class Parent1
+{
+    public:
+        int a;
+        //virtual ~Parent1() {}
+};
+
+class Parent2
+{
+    public:
+        int b;
+       //virtual ~Parent2() {}
+};
+
+class Child : public Parent1, public Parent2
+{
+    public:
+        int c;
+};
+
+int main()
+{
+    Child c;
+    Parent1 *p1;
+    Parent2 *p2;
+    p1 = &c;
+    p2 = &c;
+    std::cout
+    << "Child:            " << &c << std::endl
+    << "Parent1 in Child: " << p1 << std::endl
+    << "Parent2 in Child: "  << p2 << std::endl << std::endl;
+
+   Child *ptr = (Child *)p2;
+
+    std::cout <<  ptr << std::endl;
+
+
+    return 0;
+}
+
+Here, the c-style cast from p2 to child correctly returns the address of child
+Because c-style starts with const_cast, then static_cast, then reinterpret
+
+In reality, c-style is doing a static_cast in this particular example
+
+
+#include <iostream>
+
+class Parent1
+{
+    public:
+        int a;
+        //virtual ~Parent1() {}
+};
+
+class Parent2
+{
+    public:
+        int b;
+       //virtual ~Parent2() {}
+};
+
+class Child : public Parent1, public Parent2
+{
+    public:
+        int c;
+};
+
+int main()
+{
+    Child c;
+    Parent1 *p1;
+    Parent2 *p2;
+    p1 = &c;
+    p2 = &c;
+    std::cout
+    << "Child:            " << &c << std::endl
+    << "Parent1 in Child: " << p1 << std::endl
+    << "Parent2 in Child: "  << p2 << std::endl << std::endl;
+
+   Child *ptr = reinterpret_cast<Child *>(p2);
+
+    std::cout <<  ptr << std::endl;
+
+
+    return 0;
+}
+
+Straight reinterpret will just make Child * think it is a child but it
+holds the address of Parent2, erroneously.
+
+So, reinterpret casts as well as C-style casts, should be a reason to be concerned
+about our.
+
+We wiill use reinterpret cast in the exercise to move types but we must be aware that
+that is not really desirable.........................
