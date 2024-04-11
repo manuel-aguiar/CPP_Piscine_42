@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:02:07 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/10 13:02:38 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/11 13:05:00 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,16 @@
 
 class ScalarConverter
 {
+	public:
+		~ScalarConverter();
 
+		static void convert(const std::string& literal);
+
+	private:
+		ScalarConverter();
+		~ScalarConverter();
+		ScalarConverter(const ScalarConverter& copy);
+		ScalarConverter& operator=(const ScalarConverter& assign);
 };
 
 

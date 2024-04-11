@@ -6,11 +6,11 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/10 13:03:27 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/10 13:29:09 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		=		scalar
+NAME 		=		convert
 
 ##	Compiler and flags
 COMP		=		c++
