@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:02:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/11 16:08:00 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/12 09:53:17 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& assign)
 
 
 
-static void	print(char c)
+static void	print_char(char c)
 {
 	std::cout 	<< "char: '" << c << "'" << std::endl
 				<< "int: " << static_cast<int>(c) << std::endl
@@ -151,8 +151,8 @@ int	is_char(std::string& word)
 	if (word.length() == 1
 	&& ((word[0] >= 32 && word[0] < '0')
 	|| (word[0] > '9' && word[0] <= 126)))
-		return (true);
-	return (false);
+		return (CHAR);
+	return (ERROR);
 }
 
 /*
@@ -166,35 +166,52 @@ int	is_char(std::string& word)
     std::cout << "Maximum double value: " << std::numeric_limits<double>::max() << std::endl;
 
 */
-/*
-int is_int(std::string& str)
+
+int is_number(std::string& str)
 {
 	int	i;
-	int neg;
-	long base;
-	long expo;
 
+	//basic atoi with no calculations, strtod/strtol used later
 	i = 0;
-	neg = 1;
-	if (str[i] == '-')
-		neg = -1;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	if (!str[i])
-		return (0);
-	base = 0;
+	if (!str[i] || !std::isdigit(str[i]))
+		return (ERROR);
 	while (str[i] && std::isdigit(str[i]))
-	{
-		base *= 10;
-		if (base == std::numeric_limits<int>::max() / 10 &&
-		(str[i] - '0'))
-		base += str[i] - '0';
 		i++;
-	}
 
+	//could be an int, oveflows checked later
+	if (!str[i])
+		return (INT);
+	if (str[i] != '.')
+		return (ERROR);
 
+	//could be a float or double
+	i++;
+	while (str[i] && std::isdigit(str[i]))
+		i++;
+
+	//doesn't end with an 'f', it's a double
+	if (!str[i])
+		return (DOUBLE);
+	if (str[i] == 'f' && !str[i + 1])
+		return (FLOAT);
+
+	//exponents.....
+	if (str[i++] != 'e')
+		return (ERROR);
+	if (str[i] && str[i] != '+' && str[i] != '-')
+		return (ERROR);
+	i++;
+	while (str[i] && std::isdigit(str[i]))
+		i++;
+	if (str[i])
+		return (ERROR);
+	
+	//could be float or double, lets get double and check the limits later
+	return (DOUBLE);
 }
-*/
+
 
 void	print_pseudo(std::string& word, int type)
 {
@@ -227,6 +244,14 @@ void	print_pseudo(std::string& word, int type)
 				<< "double: " << sdouble << std::endl;
 }
 
+void	print_error(void)
+{
+	std::cout	<< "char: impossible\n"
+				<< "int: impossible\n"
+				<< "float: impossible\n"
+				<< "double: impossible" << std::endl;
+}
+
 bool	too_many_args(std::string& word, std::string& literal)
 {
 	std::stringstream ss(literal);
@@ -238,18 +263,46 @@ bool	too_many_args(std::string& word, std::string& literal)
 	return (false);
 }
 
+int		find_type(std::string& word)
+{
+	int	type;
+
+	type = is_pseudo(word);
+	if (!type)
+		type = is_char(word);
+	if (!type)
+		type = is_number(word);
+	return (type);
+}
+
 void	ScalarConverter::convert(std::string literal)
 {
 	std::string word;
+	int			type;
 
 	if (too_many_args(word, literal))
 	{
 		std::cout << "string literal has too many args" << std::endl;
 		return ;
 	}
-	int pseudo = is_pseudo(word);
-	if (pseudo)
-		return (print_pseudo(word, pseudo));
-	if (is_char(word))
-		return (print(word[0]));
+	type = find_type(word);
+	switch(type)
+	{
+		case ERROR:
+			return (print_error());
+		case CHAR:
+			return (print_char(word[0]));
+		case INT:
+			return ;
+		case FLOAT:
+			return ;
+		case DOUBLE:
+			return ;
+		case PSEUDO_NAN:
+			return (print_pseudo(word, type));
+		case PSEUDO_FLOAT:
+			return (print_pseudo(word, type));
+		case PSEUDO_DOUBLE:
+			return (print_pseudo(word, type));
+	}
 }

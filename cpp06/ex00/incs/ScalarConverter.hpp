@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:02:07 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/11 15:15:28 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/12 09:15:50 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <cctype>
 # include <iomanip>
 # include <limits>
+# include <cerrno>
+# include <cstdlib>
 
 class ScalarConverter
 {
