@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:02:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/12 09:53:17 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/12 10:19:27 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,38 +114,7 @@ int	is_pseudo(const std::string& str)
 		return (PSEUDO_NAN);
 	return (0);
 }
-/*
-int	valid_float(const std::string& str)
-{
-	int i;
 
-	i = 0;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	i
-	while (str[i] && std::isdigit(str[i]))
-		i++;
-	if (!str[i])
-		return (INT);
-	if (str[i] != )
-}
-
-bool	valid_int(const std::string& str, int& place_int)
-{
-	int i;
-	int res;
-	int neg;
-
-	i = 0;
-	if (!str[i] || !(str[i] == '-' || str[i] == '+'))
-		return (false);
-	neg = str[i] == '-'
-	i++;
-	if (!std::isdigit(str[i]))
-		return (false);
-
-}
-*/
 int	is_char(std::string& word)
 {
 	if (word.length() == 1
@@ -213,6 +182,7 @@ int is_number(std::string& str)
 }
 
 
+
 void	print_pseudo(std::string& word, int type)
 {
 	std::string sfloat;
@@ -250,6 +220,45 @@ void	print_error(void)
 				<< "int: impossible\n"
 				<< "float: impossible\n"
 				<< "double: impossible" << std::endl;
+}
+
+void	print_int(std::string& word)
+{
+	long 	conversion;
+
+	conversion = std::strtol(word.c_str(), NULL, 10);
+	if (errno == ERANGE)
+		return (print_error());
+	
+	//print CHAR
+	if (conversion < -128 || conversion > 127)
+		std::cout << "char: impossible\n";
+	else if (conversion < 32)
+		std::cout << "char: non displayable\n";
+	else
+		std::cout << "char: '" << static_cast<char>(conversion) << "'\n";
+	
+	// print INT
+	if (conversion > std::numeric_limits<int>::max()
+	 || conversion < std::numeric_limits<int>::min())
+	 	std::cout << "int: impossible\n";
+	else
+		std::cout << "int: " << static_cast<int>(conversion) << '\n';
+	
+	// print FLOAT
+	if (conversion != 0 && (conversion > std::numeric_limits<float>::max()
+	 || conversion < std::numeric_limits<float>::min()))
+	 	std::cout << "float: impossible\n";
+	else
+		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(conversion) << "f\n";
+
+	// print DOUBLE			I HATE THIS EXERCISE
+	if (conversion != 0 && (conversion > std::numeric_limits<double>::max()
+	 || conversion < std::numeric_limits<double>::min()))
+	 	std::cout << "double: impossible\n";
+	else
+		std::cout << "double: " << std::fixed << std::setprecision(1)  << static_cast<double>(conversion);
+	std::cout << std::endl;
 }
 
 bool	too_many_args(std::string& word, std::string& literal)
@@ -293,7 +302,7 @@ void	ScalarConverter::convert(std::string literal)
 		case CHAR:
 			return (print_char(word[0]));
 		case INT:
-			return ;
+			return (print_int(word));
 		case FLOAT:
 			return ;
 		case DOUBLE:
