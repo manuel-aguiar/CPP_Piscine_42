@@ -1,0 +1,58 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    floating_point.txt                                 :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: manuel <manuel@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/04/12 10:54:46 by manuel            #+#    #+#              #
+#    Updated: 2024/04/12 11:21:11 by manuel           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+So... i still don't understand how floating point numbers work.
+
+Before, we did fixed point numbers.
+fixed POINT numbers.
+123.000000
+The point is fixed and subdivides the decimals and the fractions among the bits
+FLOATING point numbers, as stated by their name, imply that the bits
+are not always divided the same way.
+
+That is way the floating point number can represent bigger numbers than an
+INT, and that is naturally at the cost of precision because the number of bits
+available is the same
+
+Float points sets the base numbers and moves them around according to an exponent
+
+so, 0.5f = 5.0e-1
+
+or 5 x (10 ^ -1)
+
+50 is represented as 5.0e+1 or 5 * (10 ^ 1)
+
+In that sense, the POINT is floating, because it is the value of the exponent that
+dictates that. Exponents bigger than zero will add zeros to the right
+Exponents lower than zero will move the point to the left.
+
+This flexibility comes naturally at the cost of precision.
+123e-2 = 1.23
+
+So 23 bits mantisa (underlying number), 1 bit sign, 8 bits exponent
+but.. :0 exponent needs to have a sign.
+
+Exponent bias:
+
+
+CPP02.... here we go
+https://www.cprogramming.com/tutorial/floating_point/understanding_floating_point.html
+
+
+Accuracy vs Precision:
+
+Accuracy -> how close to the true value
+Precision -> how much information we have about the value
+
+Floats have low accuracy and high precision.
+Ints have high accuracy and low precision.
+This is the trade-off

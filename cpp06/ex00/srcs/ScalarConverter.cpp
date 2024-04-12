@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:02:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/12 10:41:43 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/12 11:55:30 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,8 +166,8 @@ static void	print_int(std::string& word)
 	long 	conversion;
 
 	conversion = std::strtol(word.c_str(), NULL, 10);
-	if (errno == ERANGE)
-		return (print_error());
+	//if (errno == ERANGE)
+	//	return (print_error());
 	
 	//print CHAR
 	if (conversion < -128 || conversion > 127)
@@ -185,20 +185,16 @@ static void	print_int(std::string& word)
 		std::cout << "int: " << static_cast<int>(conversion) << '\n';
 	
 	// print FLOAT
-	if (conversion != 0
-	 && (conversion > std::numeric_limits<float>::max()
-	 || conversion < std::numeric_limits<float>::min()))
-	 	std::cout << "float: impossible\n";
-	else
-		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(conversion) << "f\n";
+	std::cout << "float: ";
+	if (conversion > std::numeric_limits<float>::max())
+		std::cout << '+';
+	std::cout << std::fixed << std::setprecision(1) << static_cast<float>(conversion) << "f\n";
 
-	// print DOUBLE			I HATE THIS EXERCISE
-	if (conversion != 0
-	 && (conversion > std::numeric_limits<double>::max()
-	 || conversion < std::numeric_limits<double>::min()))
-	 	std::cout << "double: impossible\n";
-	else
-		std::cout << "double: " << std::fixed << std::setprecision(1)  << static_cast<double>(conversion);
+	// print DOUBLE
+	std::cout << "double: ";
+	if (conversion > std::numeric_limits<double>::max())
+		std::cout << '+';
+	std::cout << std::fixed << std::setprecision(1) << static_cast<double>(conversion);
 	std::cout << std::endl;
 }
 
@@ -207,8 +203,6 @@ static void	print_float(std::string& word)
 	double conversion;
 
 	conversion = std::strtod(word.c_str(), NULL);
-	if (errno == ERANGE)
-		return (print_error());
 	
 	//print CHAR
 	if (conversion < -128.0f || conversion > 127.0f)
@@ -226,20 +220,16 @@ static void	print_float(std::string& word)
 		std::cout << "int: " << static_cast<int>(conversion) << '\n';
 	
 	// print FLOAT
-	if (conversion != 0.0f
-	 && (conversion > std::numeric_limits<float>::max()
-	 || conversion < std::numeric_limits<float>::min()))
-	 	std::cout << "float: impossible\n";
-	else
-		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(conversion) << "f\n";
+	std::cout << "float: ";
+	if (conversion > std::numeric_limits<float>::max())
+		std::cout << '+';
+	std::cout << std::fixed << std::setprecision(1) << static_cast<float>(conversion) << "f\n";
 
-	// print DOUBLE			I HATE THIS EXERCISE
-	if (conversion != 0.0f
-	 && (conversion > std::numeric_limits<double>::max()
-	 || conversion < std::numeric_limits<double>::min()))
-	 	std::cout << "double: impossible\n";
-	else
-		std::cout << "double: " << std::fixed << std::setprecision(1)  << static_cast<double>(conversion);
+	// print DOUBLE
+	std::cout << "double: ";
+	if (conversion > std::numeric_limits<double>::max())
+		std::cout << '+';
+	std::cout << std::fixed << std::setprecision(1) << static_cast<double>(conversion);
 	std::cout << std::endl;
 }
 
@@ -248,10 +238,7 @@ static void	print_double(std::string& word)
 	double conversion;
 
 	conversion = std::strtod(word.c_str(), NULL);
-	if (errno == ERANGE)
-		return (print_error());
-	
-	//print CHAR
+
 	if (conversion < -128.0 || conversion > 127.0)
 		std::cout << "char: impossible\n";
 	else if (conversion < 32.0)
@@ -267,20 +254,16 @@ static void	print_double(std::string& word)
 		std::cout << "int: " << static_cast<int>(conversion) << '\n';
 	
 	// print FLOAT
-	if (conversion != 0.0
-	 && (conversion > std::numeric_limits<float>::max()
-	 || conversion < std::numeric_limits<float>::min()))
-	 	std::cout << "float: impossible\n";
-	else
-		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(conversion) << "f\n";
+	std::cout << "float: ";
+	if (conversion > std::numeric_limits<float>::max())
+		std::cout << '+';
+	std::cout << std::fixed << std::setprecision(1) << static_cast<float>(conversion) << "f\n";
 
-	// print DOUBLE			I HATE THIS EXERCISE
-	if (conversion != 0.0
-	 && (conversion > std::numeric_limits<double>::max()
-	 || conversion < std::numeric_limits<double>::min()))
-	 	std::cout << "double: impossible\n";
-	else
-		std::cout << "double: " << std::fixed << std::setprecision(1)  << static_cast<double>(conversion);
+	// print DOUBLE
+	std::cout << "double: ";
+	if (conversion > std::numeric_limits<double>::max())
+		std::cout << '+';
+	std::cout << std::fixed << std::setprecision(1) << static_cast<double>(conversion);
 	std::cout << std::endl;
 }
 
