@@ -6,14 +6,14 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 15:46:23 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/12 16:26:46 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/12 16:32:34 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "whatever.hpp"
 #include <iostream>
 
-int main( void )
+int main1( void )
     {
         int a = 2;
         int b = 3;
@@ -30,21 +30,34 @@ int main( void )
         return 0;
 }
 
-int main1(void)
+int main(void)
 {
-    int i = 5;
-    int j = 6;
+    {
+        int i = 5;
+        int j = 6;
 
-    std::cout << "i: " << i << " j: " << j << std::endl;
-    ::swap(i, j);
-    std::cout << "i: " << i << " j: " << j << std::endl;
+        std::cout << "i: " << i << " j: " << j << std::endl;
+        ::swap(i, j);
+        std::cout << "i: " << i << " j: " << j << std::endl;
+    }
 
-    std::string a("tretas");
-    std::string b("cenas");
+    {
+        std::string i("tretas");
+        std::string j("cenas");
 
-    std::cout << "i: " << a << " j: " << b << std::endl;
-    ::swap(a, b);
-    std::cout << "i: " << a << " j: " << b << std::endl;  
+        std::cout << "i: " << i << " j: " << j << std::endl;
+        ::swap(i, j);
+        std::cout << "i: " << i << " j: " << j << std::endl;
+    }
+
+    {
+        float i = 1.50e+38;
+        float j = 0.5e+20;
+
+        std::cout << "i: " << i << " j: " << j << std::endl;
+        ::swap(i, j);
+        std::cout << "i: " << i << " j: " << j << std::endl;
+    }
 
     return (0);
 }
