@@ -6,7 +6,7 @@
 #    By: manuel <manuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/12 15:45:50 by manuel           ###   ########.fr        #
+#    Updated: 2024/04/12 16:49:29 by manuel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,7 @@ OBJ_PATH	=		objs
 INC_FILES		=		whatever.hpp
 
 
-SRC_FILES		=		main.cpp					\
-						whatever.cpp
+SRC_FILES		=		main.cpp
 
 
 
