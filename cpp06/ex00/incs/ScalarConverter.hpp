@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:02:07 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/12 09:15:50 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/12 10:36:48 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,20 @@ class ScalarConverter
 		ScalarConverter& operator=(const ScalarConverter& assign);
 };
 
+
+
+
+enum
+{
+	ERROR,
+	CHAR,
+	INT,
+	FLOAT,
+	DOUBLE,
+	PSEUDO_FLOAT,
+	PSEUDO_DOUBLE,
+	PSEUDO_NAN,
+};
 
 
 #endif

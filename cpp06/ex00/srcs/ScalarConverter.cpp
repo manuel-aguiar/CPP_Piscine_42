@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:02:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/12 10:19:27 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/12 10:37:42 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,6 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& assign)
 }
 
 
-
-
-
-
 static void	print_char(char c)
 {
 	std::cout 	<< "char: '" << c << "'" << std::endl
@@ -57,54 +53,9 @@ static void	print_char(char c)
 				<< "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << 'f' << std::endl
 				<< "double: " << std::fixed << std::setprecision(1) << static_cast<double>(c) << std::endl;
 }
-/*
-static void	print(int i)
-{
-	std::cout << "int print called" << std::endl;
-	//char
-	std::cout << "char: ";
-	if (i > 31 && i <= 127)
-		std::cout << "'" << static_cast<char>(i) << "'";
-	else
-		std::cout << "Non displayable";
-
-	//int
-	std::cout << "\nint: " << i
-
-	//float
-	<< "\nfloat: " << std::fixed << std::setprecision(1) << static_cast<float>(i) << 'f'
-
-	//double
-	<< "\ndouble: " << std::fixed << std::setprecision(1) << static_cast<double>(i)
-	<< std::endl;
-}
-*/
-/*
-static void	print(float f)
-{
-
-}
 
 
-static void	print(double d)
-{
-
-}
-*/
-
-enum
-{
-	ERROR,
-	CHAR,
-	INT,
-	FLOAT,
-	DOUBLE,
-	PSEUDO_FLOAT,
-	PSEUDO_DOUBLE,
-	PSEUDO_NAN,
-};
-
-int	is_pseudo(const std::string& str)
+static int	is_pseudo(const std::string& str)
 {
 	if (str == "+inf" || str == "-inf")
 		return (PSEUDO_DOUBLE);
@@ -115,7 +66,7 @@ int	is_pseudo(const std::string& str)
 	return (0);
 }
 
-int	is_char(std::string& word)
+static int	is_char(std::string& word)
 {
 	if (word.length() == 1
 	&& ((word[0] >= 32 && word[0] < '0')
@@ -124,19 +75,7 @@ int	is_char(std::string& word)
 	return (ERROR);
 }
 
-/*
-    std::cout << "char float value: " << std::numeric_limits<char>::min() << std::endl;
-    std::cout << "char float value: " << std::numeric_limits<char>::max() << std::endl;
-    std::cout << "int double value: " << std::numeric_limits<int>::min() << std::endl;
-    std::cout << "int double value: " << std::numeric_limits<int>::max() << std::endl;
-    std::cout << "Minimum float value: " << std::numeric_limits<float>::min() << std::endl;
-    std::cout << "Maximum float value: " << std::numeric_limits<float>::max() << std::endl;
-    std::cout << "Minimum double value: " << std::numeric_limits<double>::min() << std::endl;
-    std::cout << "Maximum double value: " << std::numeric_limits<double>::max() << std::endl;
-
-*/
-
-int is_number(std::string& str)
+static int is_number(std::string& str)
 {
 	int	i;
 
@@ -183,7 +122,7 @@ int is_number(std::string& str)
 
 
 
-void	print_pseudo(std::string& word, int type)
+static void	print_pseudo(std::string& word, int type)
 {
 	std::string sfloat;
 	std::string sdouble;
@@ -214,7 +153,7 @@ void	print_pseudo(std::string& word, int type)
 				<< "double: " << sdouble << std::endl;
 }
 
-void	print_error(void)
+static void	print_error(void)
 {
 	std::cout	<< "char: impossible\n"
 				<< "int: impossible\n"
@@ -222,7 +161,7 @@ void	print_error(void)
 				<< "double: impossible" << std::endl;
 }
 
-void	print_int(std::string& word)
+static void	print_int(std::string& word)
 {
 	long 	conversion;
 
@@ -261,7 +200,85 @@ void	print_int(std::string& word)
 	std::cout << std::endl;
 }
 
-bool	too_many_args(std::string& word, std::string& literal)
+static void	print_float(std::string& word)
+{
+	double conversion;
+
+	conversion = std::strtod(word.c_str(), NULL);
+	if (errno == ERANGE)
+		return (print_error());
+	
+	//print CHAR
+	if (conversion < -128.0f || conversion > 127.0f)
+		std::cout << "char: impossible\n";
+	else if (conversion < 32.0f)
+		std::cout << "char: non displayable\n";
+	else
+		std::cout << "char: '" << static_cast<char>(conversion) << "'\n";
+	
+	// print INT
+	if (conversion > std::numeric_limits<int>::max()
+	 || conversion < std::numeric_limits<int>::min())
+	 	std::cout << "int: impossible\n";
+	else
+		std::cout << "int: " << static_cast<int>(conversion) << '\n';
+	
+	// print FLOAT
+	if (conversion != 0.0f && (conversion > std::numeric_limits<float>::max()
+	 || conversion < std::numeric_limits<float>::min()))
+	 	std::cout << "float: impossible\n";
+	else
+		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(conversion) << "f\n";
+
+	// print DOUBLE			I HATE THIS EXERCISE
+	if (conversion != 0.0f && (conversion > std::numeric_limits<double>::max()
+	 || conversion < std::numeric_limits<double>::min()))
+	 	std::cout << "double: impossible\n";
+	else
+		std::cout << "double: " << std::fixed << std::setprecision(1)  << static_cast<double>(conversion);
+	std::cout << std::endl;
+}
+
+static void	print_double(std::string& word)
+{
+	double conversion;
+
+	conversion = std::strtod(word.c_str(), NULL);
+	if (errno == ERANGE)
+		return (print_error());
+	
+	//print CHAR
+	if (conversion < -128.0 || conversion > 127.0)
+		std::cout << "char: impossible\n";
+	else if (conversion < 32.0)
+		std::cout << "char: non displayable\n";
+	else
+		std::cout << "char: '" << static_cast<char>(conversion) << "'\n";
+	
+	// print INT
+	if (conversion > std::numeric_limits<int>::max()
+	 || conversion < std::numeric_limits<int>::min())
+	 	std::cout << "int: impossible\n";
+	else
+		std::cout << "int: " << static_cast<int>(conversion) << '\n';
+	
+	// print FLOAT
+	if (conversion != 0.0 && (conversion > std::numeric_limits<float>::max()
+	 || conversion < std::numeric_limits<float>::min()))
+	 	std::cout << "float: impossible\n";
+	else
+		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(conversion) << "f\n";
+
+	// print DOUBLE			I HATE THIS EXERCISE
+	if (conversion != 0.0 && (conversion > std::numeric_limits<double>::max()
+	 || conversion < std::numeric_limits<double>::min()))
+	 	std::cout << "double: impossible\n";
+	else
+		std::cout << "double: " << std::fixed << std::setprecision(1)  << static_cast<double>(conversion);
+	std::cout << std::endl;
+}
+
+static bool	too_many_args(std::string& word, std::string& literal)
 {
 	std::stringstream ss(literal);
 	std::string dummy;
@@ -272,7 +289,7 @@ bool	too_many_args(std::string& word, std::string& literal)
 	return (false);
 }
 
-int		find_type(std::string& word)
+static int		find_type(std::string& word)
 {
 	int	type;
 
@@ -304,9 +321,9 @@ void	ScalarConverter::convert(std::string literal)
 		case INT:
 			return (print_int(word));
 		case FLOAT:
-			return ;
+			return (print_float(word));
 		case DOUBLE:
-			return ;
+			return (print_double(word));
 		case PSEUDO_NAN:
 			return (print_pseudo(word, type));
 		case PSEUDO_FLOAT:
