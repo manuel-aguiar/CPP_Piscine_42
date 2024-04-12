@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:02:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/12 11:55:30 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/12 11:56:53 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,8 +166,6 @@ static void	print_int(std::string& word)
 	long 	conversion;
 
 	conversion = std::strtol(word.c_str(), NULL, 10);
-	//if (errno == ERANGE)
-	//	return (print_error());
 	
 	//print CHAR
 	if (conversion < -128 || conversion > 127)
