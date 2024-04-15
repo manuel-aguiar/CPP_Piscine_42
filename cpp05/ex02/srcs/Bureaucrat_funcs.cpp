@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:44:59 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/15 10:37:46 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 13:05:25 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 
 */
 
-void	Bureaucrat::signForm(AForm& form)
+void	Bureaucrat::signForm(AForm& form) throw()
 {
 	try
 	{
@@ -44,6 +44,10 @@ void	Bureaucrat::signForm(AForm& form)
 	{
 		std::cerr << _name << " couldn't sign " << form.getName() <<" because " << e.what() << std::endl;
 		//throw; // <- "throw" here will try to find an outter try-catch block
+		/*
+			I opted to not throw, hence the prototype informing the using it is not expected
+			to try-catch a potential throw, from this function
+		*/
 	}
 	catch(const std::exception& e)
 	{
@@ -57,7 +61,7 @@ void	Bureaucrat::signForm(AForm& form)
 	}
 }
 
-void	Bureaucrat::executeForm(const AForm& form)
+void	Bureaucrat::executeForm(const AForm& form) throw()
 {
 	try
 	{
