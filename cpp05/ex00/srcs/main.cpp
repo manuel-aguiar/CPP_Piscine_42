@@ -6,11 +6,69 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 09:36:34 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 14:17:11 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+
+/*
+
+	If you have multiple nested try blocks, unwinding goes from the inner to the outter try blocks
+
+
+	If an exception occurs while unwinding and before the catch takes control, terminate() is called
+
+*/
+
+int	main(void)
+{
+	Bureaucrat b("josé", 1);
+
+	std::cout << b;
+	try
+	{
+		try
+		{
+			Bureaucrat c("antonio", 139);
+			std::cout << c;
+			++b; // ops, exception
+			std::cout << "random phrase after exception is thrown by the previous line" << std::endl;
+		}
+		catch(const Bureaucrat::GradeTooHighException& e)	//changing this to the one we expect to get
+		{
+			std::cerr << e.what() << std::endl;
+			std::cout << b;
+			std::cout << "EXCEPTION 		caught in the inner loop" << std::endl;
+
+			throw ;		// let's scale it upwards and see what happens :)
+						// going to throw this same expection, until it find a try-catch block that
+						// can handle it ( if not, terminate() )
+
+		}
+		std::cout << "catch fails, so this will not be printed wither" << std::endl;
+		/*
+			This output will not show up
+
+			resolution from inenr to outter loop,
+			this catch block fails, so examine the outter try
+			don't execute anything in this try, go straight to the catch-handlers and try
+			to find an appropriate match
+		*/
+	}
+	catch(const Bureaucrat::GradeTooHighException& e)
+	{
+		std::cerr << e.what() << '\n';
+		std::cout << "EXCEPTION 		caught in the outter loop" << std::endl;
+
+		// exception was caught again in the outter try-block :)
+	}
+
+	std::cout << "exiting program" << std::endl;
+
+	return (0);
+}
+
 
 int	main1(void)
 {
@@ -207,59 +265,3 @@ int	main3(void)
    	24 |  catch(const std::exception e)
 */
 
-/*
-
-	If you have multiple nested try blocks, unwinding goes from the inner to the outter try blocks
-
-
-	If an exception occurs while unwinding and before the catch takes control, terminate() is called
-
-*/
-
-int	main(void)
-{
-	Bureaucrat b("josé", 1);
-
-	std::cout << b;
-	try
-	{
-		try
-		{
-			Bureaucrat c("antonio", 139);
-			std::cout << c;
-			++b; // ops, exception
-			std::cout << "random phrase after exception is thrown by the previous line" << std::endl;
-		}
-		catch(const Bureaucrat::GradeTooHighException& e)	//changing this to the one we expect to get
-		{
-			std::cerr << e.what() << std::endl;
-			std::cout << b;
-			std::cout << "EXCEPTION 		caught in the inner loop" << std::endl;
-
-			throw ;		// let's scale it upwards and see what happens :)
-						// going to throw this same expection, until it find a try-catch block that
-						// can handle it ( if not, terminate() )
-
-		}
-		std::cout << "catch fails, so this will not be printed wither" << std::endl;
-		/*
-			This output will not show up
-
-			resolution from inenr to outter loop,
-			this catch block fails, so examine the outter try
-			don't execute anything in this try, go straight to the catch-handlers and try
-			to find an appropriate match
-		*/
-	}
-	catch(const Bureaucrat::GradeTooHighException& e)
-	{
-		std::cerr << e.what() << '\n';
-		std::cout << "EXCEPTION 		caught in the outter loop" << std::endl;
-
-		// exception was caught again in the outter try-block :)
-	}
-
-	std::cout << "exiting program" << std::endl;
-
-	return (0);
-}
