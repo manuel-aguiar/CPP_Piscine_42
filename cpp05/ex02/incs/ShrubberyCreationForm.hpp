@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:40:32 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 14:42:02 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 10:45:37 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,6 @@ class Bureaucrat;
 class ShrubberyCreationForm : public AForm
 {
 	public:
-		ShrubberyCreationForm(const std::string& target);
-		~ShrubberyCreationForm();
-		ShrubberyCreationForm(const ShrubberyCreationForm& copy);
-		ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& assign);
-
-		const std::string&	getTarget() const;
-		void				execute(const Bureaucrat& executor) const;
 
 		class ShrubberyOpenFileFail : public AForm::AFormExceptions
 		{
@@ -41,6 +34,14 @@ class ShrubberyCreationForm : public AForm
 				~ShrubberyOpenFileFail() throw();				//for debug purposes
 				const char *what(void) const throw();
 		};
+
+		ShrubberyCreationForm(const std::string& target);
+		~ShrubberyCreationForm();
+		ShrubberyCreationForm(const ShrubberyCreationForm& copy);
+		ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& assign);
+
+		const std::string&	getTarget() const;
+		void				execute(const Bureaucrat& executor) const throw(AFormExceptions, ShrubberyOpenFileFail);
 
 	private:
 		const std::string	_target;

@@ -23,22 +23,6 @@
 class AForm
 {
 	public:
-		AForm();
-		AForm(	const std::string&	name, \
-				const int			sign_grade, \
-				const int			exec_grade);
-		virtual ~AForm();
-		AForm(const AForm& copy);
-		AForm& operator=(const AForm& assign);
-
-		const std::string&	getName() const;
-		int					getSignGrade() const;
-		int					getExecGrade() const;
-		int					getIsSigned() const;
-
-		void			beSigned(const Bureaucrat& bureau);
-		void			beExecuted(const Bureaucrat& bureau) const;
-		virtual void	execute(const Bureaucrat& executor) const = 0;
 
 		class AFormExceptions : public std::exception
 		{
@@ -79,7 +63,27 @@ class AForm
 				const char *what(void) const throw();
 		};
 
+
+		AForm(	const std::string&	name, \
+				const int			sign_grade, \
+				const int			exec_grade) \
+				throw(AFormExceptions);
+		virtual ~AForm();
+		AForm(const AForm& copy);
+		AForm& operator=(const AForm& assign);
+
+		const std::string&	getName() const;
+		int					getSignGrade() const;
+		int					getExecGrade() const;
+		int					getIsSigned() const;
+
+		void			beSigned(const Bureaucrat& bureau) throw(AFormExceptions);
+		void			beExecuted(const Bureaucrat& bureau) const throw(AFormExceptions);
+		virtual void	execute(const Bureaucrat& executor) const throw(AFormExceptions) = 0;
+
+
 	private:
+		AForm();
 		const std::string	_name;
 		const int			_sign_grade;
 		const int			_exec_grade;

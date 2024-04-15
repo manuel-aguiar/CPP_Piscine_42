@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:46:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 14:18:24 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 10:45:17 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ const std::string& ShrubberyCreationForm::getTarget() const
 
 */
 
-void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const
+void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const throw(AFormExceptions, ShrubberyOpenFileFail)
 {
 	this->beExecuted(executor);
 	std::ofstream file(( _target + "_shrubbery" ).c_str());

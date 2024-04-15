@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:46:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 14:51:46 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 10:45:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ const std::string& RobotomyRequestForm::getTarget() const
 
 */
 
-void	RobotomyRequestForm::execute(const Bureaucrat& executor) const
+void	RobotomyRequestForm::execute(const Bureaucrat& executor) const throw(AFormExceptions)
 {
 	this->beExecuted(executor);
 	std::cout << "Brrrrr.... ";
