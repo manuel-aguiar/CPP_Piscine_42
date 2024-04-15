@@ -6,7 +6,7 @@
 /*   By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/15 18:39:34 by mmaria-d         ###   ########.fr       */
+/*   Updated: 2024/04/15 18:44:40 by mmaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(void)
 	std::cout << "\n\n\nMAIN 1\n" << std::endl; 
 
 	{
-		ShrubberyCreationForm form("joaquim");
+		RobotomyRequestForm form("joaquim");
 		Bureaucrat juau("juau", 1);
 
 		juau.signForm(form);
