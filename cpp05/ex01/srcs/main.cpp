@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 10:45:39 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 18:29:40 by mmaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,58 @@
 
 int	main(void)
 {
-	Bureaucrat b("josé", 8);
-	Form f("cenas", 5, 7);
-	Bureaucrat c("antonio", 1);
-	std::cout << b;
-	b.signForm(f);
-	c.signForm(f);
-	c.signForm(f);
-	std::cout << b;
+
+	std::cout << "\n\n\nMAIN 1\n" << std::endl; 
+
+	{
+		Bureaucrat b("josé", 8);
+		Form f("cenas", 5, 7);
+		Bureaucrat c("antonio", 1);
+		std::cout << b;
+		b.signForm(f);
+		c.signForm(f);
+		c.signForm(f);
+		std::cout << b;		
+	}
+
+	
+
+	{
+		std::cout << "\n\n\nMAIN 2\n" << std::endl; 
+		Form b("tretas", 10, 10);
+		Bureaucrat juau("hey", 12);
+		try
+		{
+			b.beSigned(juau);
+		}
+		catch(const Form::FormExceptions& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+		std::cout << "\n\n\nMAIN 3\n" << std::endl; 
+		try
+		{
+			Form b("tretas", 0, 10);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+		std::cout << "\n\n\nMAIN 4\n" << std::endl; 
+		try
+		{
+			Form b("tretas", 1, 151);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+		
+	}
 	return (0);
 }
 
