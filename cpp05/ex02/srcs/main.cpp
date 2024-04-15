@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/15 12:59:18 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 18:39:34 by mmaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,74 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
+
 int	main(void)
 {
-	ShrubberyCreationForm form("joaquim");
-	Bureaucrat juau("juau", 1);
 
-	juau.signForm(form);
-	juau.signForm(form);
-	juau.executeForm(form);
-	juau.executeForm(form);
-	juau.executeForm(form);
-	juau.executeForm(form);
-	juau.executeForm(form);
+	std::cout << "\n\n\nMAIN 1\n" << std::endl; 
 
-	//form.execute(juau);
-	return (0);
-}
+	{
+		ShrubberyCreationForm form("joaquim");
+		Bureaucrat juau("juau", 1);
 
-int	main1(void)
-{
-	PresidentialPardonForm form("joaquim");
-	std::cout << form;
-	PresidentialPardonForm outro("antonio");
-	std::cout << outro;
-	outro = form;
-	std::cout << outro;
+		juau.signForm(form);
+		juau.signForm(form);
+		juau.executeForm(form);
+		juau.executeForm(form);
+		juau.executeForm(form);
+		juau.executeForm(form);
+		juau.executeForm(form);
 
+		//form.execute(juau);
+	}
+
+
+	std::cout << "\n\n\nMAIN 2\n" << std::endl; 
+
+	
+	{
+		PresidentialPardonForm form("joaquim");
+		std::cout << form;
+		PresidentialPardonForm outro("antonio");
+		std::cout << outro;
+		outro = form;
+		std::cout << outro;
+	}
+
+	std::cout << "\n\n\nMAIN 3\n" << std::endl; 
+
+	{
+		AForm* rrf;
+		Bureaucrat boss("boss", 1);
+
+		rrf = new PresidentialPardonForm("antonio");
+		if (rrf)
+		{
+			std::cout << *dynamic_cast<PresidentialPardonForm *>(rrf);
+			boss.executeForm(*rrf);
+			boss.signForm(*rrf);
+			boss.executeForm(*rrf);
+			delete rrf;
+		}
+		rrf = new ShrubberyCreationForm("antonio");
+		if (rrf)
+		{
+			std::cout << *dynamic_cast<ShrubberyCreationForm *>(rrf);
+			boss.executeForm(*rrf);
+			boss.signForm(*rrf);
+			boss.executeForm(*rrf);
+			delete rrf;
+		}
+		rrf = new RobotomyRequestForm("antonio");
+		if (rrf)
+		{
+			std::cout << *dynamic_cast<RobotomyRequestForm *>(rrf);
+			boss.executeForm(*rrf);
+			boss.signForm(*rrf);
+			boss.executeForm(*rrf);
+			delete rrf;
+		}
+	}
 	return (0);
 }
 
@@ -52,33 +94,3 @@ int	main1(void)
 
 */
 
-/*
-	make debug
-
-	Bureaucrat josé Parameter Construction Called
-	Form Parameter Constructor Called
-	Bureaucrat antonio Parameter Construction Called
-	josé, bureaucrat grade, 8
-	Form FormExceptions Constructor Called
-	Form GradeTooLowException Constructor Called
-	josé couldn't sign cenas because Form: Grade too low
-	Form GradeTooLowException Destructor Called
-	Form FormExceptions Destructor Called
-	antonio signed cenas
-	Form FormExceptions Constructor Called
-	Form FormAlreadySigned Constructor Called
-	antonio couldn't sign cenas because Form: form is already signed
-	Form FormAlreadySigned Destructor Called
-	Form FormExceptions Destructor Called
-	josé, bureaucrat grade, 8
-	Bureaucrat antonio Destructor Called
-	Form Destructor Called
-	Bureaucrat josé Destructor Called
-
-	Exceptions is initialized with the throw keyword,
-	as expected, order of construction of exception classes
-	is the same as any other derived class :)
-
-
-
-*/
