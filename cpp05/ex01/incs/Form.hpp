@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:36:50 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 12:04:42 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 10:33:08 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,6 @@
 class Form
 {
 	public:
-		Form();
-		Form(	const std::string&	name, \
-				const int			sign_grade, \
-				const int			exec_grade);
-		~Form();
-		Form(const Form& copy);
-		Form& operator=(const Form& assign);
-
-		const std::string&	getName() const;
-		int					getSignGrade() const;
-		int					getExecGrade() const;
-		int					getIsSigned() const;
-
-		void	beSigned(const Bureaucrat& bureau);
 
 		class FormExceptions : public std::exception
 		{
@@ -70,7 +56,24 @@ class Form
 				const char *what(void) const throw();
 		};
 
+		Form(	const std::string&	name, \
+				const int			sign_grade, \
+				const int			exec_grade)
+				throw(FormExceptions);
+		~Form();
+		Form(const Form& copy);
+		Form& operator=(const Form& assign);
+
+
+		const std::string&	getName() const;
+		int					getSignGrade() const;
+		int					getExecGrade() const;
+		int					getIsSigned() const;
+
+		void				beSigned(const Bureaucrat& bureau) throw(FormExceptions);
+
 	private:
+		Form();
 		const std::string	_name;
 		const int			_sign_grade;
 		const int			_exec_grade;

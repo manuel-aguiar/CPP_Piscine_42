@@ -6,14 +6,14 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:57:49 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 09:13:31 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 10:19:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-void	Form::beSigned(const Bureaucrat& bureau)
+void	Form::beSigned(const Bureaucrat& bureau) throw(FormExceptions)
 {
 	if (_is_signed)
 		throw Form::FormAlreadySigned();

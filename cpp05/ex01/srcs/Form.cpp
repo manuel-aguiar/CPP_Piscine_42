@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 11:36:40 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 12:04:54 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 10:29:56 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ Form::Form() :
 
 Form::Form(	const std::string&	name, \
 			const int			sign_grade, \
-			const int			exec_grade ) :
+			const int			exec_grade ) \
+			throw(FormExceptions) :
 			_name(name), \
 			_sign_grade(sign_grade), \
 			_exec_grade(exec_grade), \

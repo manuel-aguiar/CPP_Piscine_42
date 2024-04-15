@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:44:59 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 09:54:19 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 10:25:25 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,14 @@ std::ostream&	operator<<(std::ostream& os, const Bureaucrat& bureau)
 	return (os);
 }
 
-void	Bureaucrat::upgrade()
+void	Bureaucrat::upgrade() throw(GradeTooHighException)
 {
 	if (_grade - 1 < MAX_GRADE)
 		throw GradeTooHighException();
 	_grade--;
 }
 
-void	Bureaucrat::downgrade()
+void	Bureaucrat::downgrade() throw(GradeTooLowException)
 {
 	if (_grade + 1 > MIN_GRADE)
 		throw GradeTooLowException();
@@ -91,9 +91,10 @@ void	Bureaucrat::downgrade()
 	pre-increment
 */
 
-Bureaucrat&	Bureaucrat::operator++(void)
+Bureaucrat&	Bureaucrat::operator++(void) throw(GradeTooHighException)
 {
 	this->upgrade();
+	throw GradeTooLowException();
 	return (*this);
 }
 
@@ -101,7 +102,7 @@ Bureaucrat&	Bureaucrat::operator++(void)
 	Post increment
 */
 
-Bureaucrat	Bureaucrat::operator++(int)
+Bureaucrat	Bureaucrat::operator++(int) throw(GradeTooHighException)
 {
 	Bureaucrat	copy(*this);
 
@@ -113,7 +114,7 @@ Bureaucrat	Bureaucrat::operator++(int)
 	pre-decrement
 */
 
-Bureaucrat&	Bureaucrat::operator--(void)
+Bureaucrat&	Bureaucrat::operator--(void) throw(GradeTooLowException)
 {
 	this->downgrade();
 	return (*this);
@@ -123,7 +124,7 @@ Bureaucrat&	Bureaucrat::operator--(void)
 	post-decrement
 */
 
-Bureaucrat	Bureaucrat::operator--(int)
+Bureaucrat	Bureaucrat::operator--(int) throw(GradeTooLowException)
 {
 	Bureaucrat	copy(*this);
 
