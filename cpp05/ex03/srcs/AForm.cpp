@@ -25,7 +25,8 @@ AForm::AForm() :
 
 AForm::AForm(	const std::string&	name, \
 			const int			sign_grade, \
-			const int			exec_grade ) :
+			const int			exec_grade ) \
+			throw(AFormExceptions): \
 			_name(name), \
 			_sign_grade(sign_grade), \
 			_exec_grade(exec_grade), \

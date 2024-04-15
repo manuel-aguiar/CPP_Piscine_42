@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:46:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 13:50:37 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 13:18:58 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ const std::string& PresidentialPardonForm::getTarget() const
 
 */
 
-void	PresidentialPardonForm::execute(const Bureaucrat& executor) const
+void	PresidentialPardonForm::execute(const Bureaucrat& executor) const throw(AFormExceptions)
 {
 	this->beExecuted(executor);
 	std::cout << _target << " has been pardoned by Zaphod Beeblebrox."  << std::endl;

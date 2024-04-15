@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:20:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/10 11:56:18 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 13:28:19 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Intern
 		Intern(const Intern& copy);
 		Intern& operator=(const Intern& assign);
 
-		AForm* 	makeForm(const std::string& form, const std::string& target);
+		AForm* 	makeForm(const std::string& form, const std::string& target) throw(); //throw nothing, Intern handles FormExceptions
 
 		class InternUnavailableForm : public AForm::AFormExceptions
 		{
@@ -47,7 +47,7 @@ class Intern
 		AForm*						new_pres(const std::string& target);
 		AForm*						new_shrub(const std::string& target);
 		AForm*						new_robot(const std::string& target);
-		AForm*						throw_dummy(const std::string& target);
+		AForm*						throw_unavailable(const std::string& target);
 		AForm*						ask_factory(const std::string& form, const std::string& target);
 		static const std::string	form_names[4];
 		static const funcs			form_factory[4];

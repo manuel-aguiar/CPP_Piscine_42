@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:20:30 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/10 12:09:38 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 13:28:34 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ const Intern::funcs Intern::form_factory[4] = \
 	&Intern::new_pres,
 	&Intern::new_robot,
 	&Intern::new_shrub,
-	&Intern::throw_dummy
+	&Intern::throw_unavailable
 };
 
 AForm*	Intern::new_pres(const std::string& target)
@@ -74,7 +74,7 @@ AForm*	Intern::new_robot(const std::string& target)
 	return (new RobotomyRequestForm(target));
 }
 
-AForm*	Intern::throw_dummy(const std::string& target)
+AForm*	Intern::throw_unavailable(const std::string& target)
 {
 	(void)target;
 	throw InternUnavailableForm();
@@ -91,7 +91,7 @@ AForm*	Intern::ask_factory(const std::string& form, const std::string& target)
 	return ((this->*form_factory[i])(target));
 }
 
-AForm*	Intern::makeForm(const std::string& form, const std::string& target)
+AForm*	Intern::makeForm(const std::string& form, const std::string& target) throw()
 {
 	AForm*	new_form;
 

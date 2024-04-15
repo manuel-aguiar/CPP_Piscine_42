@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:40:32 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 13:50:23 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 13:18:43 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class PresidentialPardonForm : public AForm
 		PresidentialPardonForm&	operator=(const PresidentialPardonForm& assign);
 
 		const std::string&	getTarget() const;
-		void				execute(const Bureaucrat& executor) const;
+		void				execute(const Bureaucrat& executor) const throw(AFormExceptions);
 
 	private:
 		const std::string	_target;
