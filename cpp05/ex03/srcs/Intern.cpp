@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 15:20:30 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/15 13:28:34 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 14:32:25 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ AForm*	Intern::makeForm(const std::string& form, const std::string& target) thro
 	{
 		new_form = ask_factory(form, target);
 		std::cout << "Intern creates " << new_form->getName() << std::endl;
+		return (new_form);
 	}
 	catch(const std::bad_alloc& e)
 	{
