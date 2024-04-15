@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:24:57 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/15 10:08:20 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 10:26:18 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,6 @@
 class Bureaucrat
 {
 	public:
-		Bureaucrat(const std::string& new_name, const int new_grade);
-		~Bureaucrat();
-		Bureaucrat(const Bureaucrat& copy);
-		Bureaucrat& 		operator=(const Bureaucrat& assign);
-
-		const std::string&	getName() const;
-		int					getGrade() const;
 
 		class GradeTooHighException : public std::exception
 		{
@@ -48,6 +41,14 @@ class Bureaucrat
 				const char *what(void) const throw();
 		};
 
+		Bureaucrat(const std::string& new_name, const int new_grade) \
+			throw(GradeTooHighException, GradeTooLowException);
+		~Bureaucrat();
+		Bureaucrat(const Bureaucrat& copy);
+		Bureaucrat& 		operator=(const Bureaucrat& assign);
+
+		const std::string&	getName() const;
+		int					getGrade() const;
 		void				upgrade() throw(GradeTooHighException);
 		void				downgrade() throw(GradeTooLowException);
 
@@ -58,7 +59,7 @@ class Bureaucrat
 
 
 	private:
-		Bureaucrat();
+		Bureaucrat() throw(GradeTooHighException, GradeTooLowException);
 		const std::string	_name;
 		int					_grade;
 };
