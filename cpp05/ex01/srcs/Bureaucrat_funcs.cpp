@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:44:59 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/15 10:25:25 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 13:02:59 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 
 */
 
-void	Bureaucrat::signForm(Form& form)
+void	Bureaucrat::signForm(Form& form) throw()
 {
 	try
 	{

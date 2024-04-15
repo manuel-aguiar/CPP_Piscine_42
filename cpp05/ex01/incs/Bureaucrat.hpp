@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:24:57 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/15 10:28:40 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 13:03:11 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ class Bureaucrat
 		Bureaucrat&	 		operator--(void) throw(GradeTooLowException);
 		Bureaucrat	 		operator--(int) throw(GradeTooLowException);
 
-		void	signForm(Form& form);
+		void	signForm(Form& form)  throw();
 
 	private:
 		Bureaucrat()
