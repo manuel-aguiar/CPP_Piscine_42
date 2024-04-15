@@ -6,14 +6,13 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:07 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/15 10:26:33 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 10:35:56 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() \
-	throw(GradeTooHighException, GradeTooLowException): \
+Bureaucrat::Bureaucrat(): \
 	_name("unnamed"), \
 	_grade(5)
 {
