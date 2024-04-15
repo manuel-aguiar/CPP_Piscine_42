@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/09 14:52:03 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 12:59:18 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int	main(void)
 {
-	RobotomyRequestForm form("joaquim");
+	ShrubberyCreationForm form("joaquim");
 	Bureaucrat juau("juau", 1);
 
 	juau.signForm(form);

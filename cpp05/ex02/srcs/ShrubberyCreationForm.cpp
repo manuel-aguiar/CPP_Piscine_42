@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:46:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/15 10:45:17 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 12:58:48 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,10 @@ const std::string& ShrubberyCreationForm::getTarget() const
 	execute is const, so caller cannot be chhanged internally
 	can't add a variable _is_executed and change that
 	so the same form can be executed multiple times
+
+	interesting, we are overriding the virtual execute AForm but with a different
+	prototype and an extra throw
+	Compiler only demands that at least
 
 */
 
