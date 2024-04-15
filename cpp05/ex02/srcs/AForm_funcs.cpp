@@ -13,7 +13,7 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 
-void	AForm::beExecuted(const Bureaucrat& bureau) const
+void	AForm::beExecuted(const Bureaucrat& bureau) const throw(AFormExceptions)
 {
 	if(!_is_signed)
 		throw AForm::AFormNotYetSigned();
@@ -21,7 +21,7 @@ void	AForm::beExecuted(const Bureaucrat& bureau) const
 		throw AForm::GradeTooLowException();
 }
 
-void	AForm::beSigned(const Bureaucrat& bureau)
+void	AForm::beSigned(const Bureaucrat& bureau) throw(AFormExceptions)
 {
 	if (_is_signed)
 		throw AForm::AFormAlreadySigned();
