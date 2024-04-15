@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:24:57 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/15 10:26:18 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 10:27:21 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ class Bureaucrat
 
 		const std::string&	getName() const;
 		int					getGrade() const;
+		
 		void				upgrade() throw(GradeTooHighException);
 		void				downgrade() throw(GradeTooLowException);
 
