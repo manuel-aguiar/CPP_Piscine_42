@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:07 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/08 12:07:32 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/15 10:37:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ Bureaucrat::Bureaucrat() : \
 	#endif
 }
 
-Bureaucrat::Bureaucrat(const std::string& new_name, const int new_grade) : \
+Bureaucrat::Bureaucrat(const std::string& new_name, const int new_grade) \
+	throw(GradeTooHighException, GradeTooLowException): \
 	_name(new_name), \
 	_grade(new_grade)
 {
