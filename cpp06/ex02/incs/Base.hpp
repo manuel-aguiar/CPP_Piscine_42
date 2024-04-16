@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 08:59:14 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/11 09:51:35 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/16 12:02:41 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Base
 
 extern int g_rand_seed;
 
-Base*	generate(void);
+Base*	generate(void) throw(std::bad_alloc);
 void	identify(Base* p);
 void	identify(Base& p);
 

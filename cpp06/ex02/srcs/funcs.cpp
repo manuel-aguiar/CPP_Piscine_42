@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 09:05:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/16 12:00:12 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/16 12:02:48 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	call_srand(void)
 
 int g_rand_seed = call_srand();
 
-Base*	generate(void)
+Base*	generate(void) throw(std::bad_alloc)
 {
 	switch(std::rand() % 3)
 	{
