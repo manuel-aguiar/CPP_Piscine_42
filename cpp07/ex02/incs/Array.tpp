@@ -6,33 +6,13 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:51:27 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/16 15:41:05 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/16 15:50:37 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_TPP
 
 # define ARRAY_TPP
-
-#include <stdexcept>
-#include <exception>
-
-template <class T>
-class Array
-{
-	public:
-		Array();
-		Array(const unsigned int n);
-		~Array();
-		Array(const Array<T>& copy);
-		Array& operator=(const Array<T>& assign);
-		T&	operator[](const size_t index);
-
-		size_t			size(void) const;
-	private:
-		size_t			_size;
-		T*				_arr;
-};
 
 template <class T>
 Array<T>::Array() : _size(0), _arr(0)
@@ -60,7 +40,7 @@ Array<T>::~Array()
 }
 
 template <class T>
-Array<T>::Array(const Array<T>& copy) : _size(copy._size), _arr(new T[_size]())
+Array<T>::Array(const Array<T>& copy) : _size(copy._size), _arr(new T[_size])
 {
 	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "Array Copy Constructor called" << std::endl;
@@ -90,7 +70,7 @@ Array<T>& Array<T>::operator=(const Array<T>& assign)
 template <class T>
 T&	Array<T>::operator[](const size_t index)
 {
-	if (index > _size || index < 0)
+	if (index >= _size || index < 0)
 		throw std::out_of_range("Index is out of range");
 	return (_arr[index]);
 }
