@@ -6,9 +6,11 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 08:59:28 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/16 11:59:09 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/16 12:00:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <exception>
 
 #include "Base.hpp"
 #include "A.hpp"
@@ -41,6 +43,5 @@ int main(void)
 	{
 		std::cerr << e.what() << std::endl;
 	}
-
 	return (0);
 }

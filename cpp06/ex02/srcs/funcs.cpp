@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 09:05:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/16 11:57:25 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/16 12:00:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 #include <string>
 #include <iostream>
+#include <exception>
 #include <cstdlib>
 #include <ctime>
 
