@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/01 15:29:09 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/15 18:44:40 by mmaria-d         ###   ########.fr       */
+/*   Updated: 2024/04/16 08:57:50 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 int	main(void)
 {
 
-	std::cout << "\n\n\nMAIN 1\n" << std::endl; 
+	std::cout << "\n\n\nMAIN 1\n" << std::endl;
 
 	{
 		RobotomyRequestForm form("joaquim");
@@ -38,9 +38,9 @@ int	main(void)
 	}
 
 
-	std::cout << "\n\n\nMAIN 2\n" << std::endl; 
+	std::cout << "\n\n\nMAIN 2\n" << std::endl;
 
-	
+
 	{
 		PresidentialPardonForm form("joaquim");
 		std::cout << form;
@@ -50,13 +50,13 @@ int	main(void)
 		std::cout << outro;
 	}
 
-	std::cout << "\n\n\nMAIN 3\n" << std::endl; 
+	std::cout << "\n\n\nMAIN 3\n" << std::endl;
 
 	{
 		AForm* rrf;
 		Bureaucrat boss("boss", 1);
 
-		rrf = new PresidentialPardonForm("antonio");
+		rrf = new (std::nothrow) PresidentialPardonForm("antonio");
 		if (rrf)
 		{
 			std::cout << *dynamic_cast<PresidentialPardonForm *>(rrf);
@@ -65,7 +65,7 @@ int	main(void)
 			boss.executeForm(*rrf);
 			delete rrf;
 		}
-		rrf = new ShrubberyCreationForm("antonio");
+		rrf = new (std::nothrow) ShrubberyCreationForm("antonio");
 		if (rrf)
 		{
 			std::cout << *dynamic_cast<ShrubberyCreationForm *>(rrf);
@@ -74,7 +74,7 @@ int	main(void)
 			boss.executeForm(*rrf);
 			delete rrf;
 		}
-		rrf = new RobotomyRequestForm("antonio");
+		rrf = new (std::nothrow) RobotomyRequestForm("antonio");
 		if (rrf)
 		{
 			std::cout << *dynamic_cast<RobotomyRequestForm *>(rrf);

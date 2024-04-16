@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 13:44:59 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/15 13:27:05 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/16 08:56:57 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ void	Bureaucrat::downgrade() throw(GradeTooLowException)
 Bureaucrat&	Bureaucrat::operator++(void) throw(GradeTooHighException)
 {
 	this->upgrade();
-	throw GradeTooLowException();
 	return (*this);
 }
 
