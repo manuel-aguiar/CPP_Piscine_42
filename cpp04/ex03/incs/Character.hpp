@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:06:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/05 11:19:52 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/16 14:33:57 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class Character : public ICharacter
 		void				print_stats(void) const;
 		const AMateria* 	getSlot(int idx)	const;
 	private:
+		Character();
 		std::string 	name;
 		AMateria* 		slots[CHARACTER_SLOTS];
 };

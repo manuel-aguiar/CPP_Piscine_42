@@ -6,15 +6,22 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 14:11:56 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/05 11:20:06 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/16 14:35:57 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Character.hpp"
 
+Character::Character() : name("tretas")
+{
+	std::cout << "Character Default constructor called" << std::endl;
+	for (unsigned int i = 0; i < CHARACTER_SLOTS; i++)
+		slots[i] = NULL;
+}
+
 Character::Character(const std::string& new_name) : name(new_name)
 {
-	std::cout << "Character constructor called" << std::endl;
+	std::cout << "Character Parameter constructor called" << std::endl;
 	for (unsigned int i = 0; i < CHARACTER_SLOTS; i++)
 		slots[i] = NULL;
 }

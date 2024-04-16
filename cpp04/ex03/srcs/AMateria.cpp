@@ -14,7 +14,12 @@
 
 AMateria::AMateria()
 {
-	std::cout << "AMateria Constructor called" << std::endl;
+	std::cout << "AMateria Default Constructor called" << std::endl;
+}
+
+AMateria::AMateria(const std::string& type) : type(type)
+{
+	std::cout << "AMateria Paremeter Constructor called" << std::endl;
 }
 
 AMateria::~AMateria()
@@ -35,7 +40,6 @@ AMateria& AMateria::operator= (const AMateria& assign)
 	std::cout << "AMateria Copy Assignment called" << std::endl;
 	if (this == &assign)
 		return (*this);
-	type = assign.type;
 	return (*this) ;
 }
 

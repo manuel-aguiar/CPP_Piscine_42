@@ -12,10 +12,9 @@
 
 # include "Ice.hpp"
 
-Ice::Ice() : AMateria()
+Ice::Ice() : AMateria("ice")
 {
 	std::cout << "Ice Constructor called" << std::endl;
-	type = "ice";
 }
 
 Ice::~Ice()

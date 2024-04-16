@@ -23,8 +23,7 @@ class AMateria
 {
 
 	public:
-		AMateria();
-		AMateria(std::string const & type);
+		AMateria(const std::string& type);
 
 		virtual ~AMateria();
 
@@ -36,7 +35,8 @@ class AMateria
 		virtual void use(ICharacter& target);
 
 	protected:
-		std::string type;
+		AMateria();
+		const std::string type;
 };
 
 /*
