@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 08:59:28 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/11 09:59:54 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/16 11:59:09 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "B.hpp"
 #include "C.hpp"
 
-void	tests(int n)
+void	tests(int n) throw(std::bad_alloc)
 {
 	Base *ptr;
 
@@ -33,6 +33,14 @@ void	tests(int n)
 
 int main(void)
 {
-	tests(10);
+	try
+	{
+		tests(10);
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
+
 	return (0);
 }
