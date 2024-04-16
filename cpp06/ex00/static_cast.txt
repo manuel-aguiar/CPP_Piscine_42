@@ -1,0 +1,47 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    static_cast.txt                                    :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/04/16 10:43:29 by codespace         #+#    #+#              #
+#    Updated: 2024/04/16 10:44:32 by codespace        ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+#include <unistd.h>
+
+int main(void)
+{
+    float f = 65.5f;
+    int i = static_cast<int>(f);
+    write(1, &i, 1);
+    return (0);
+}
+
+main:
+  push rbp
+  mov rbp, rsp
+  sub rsp, 16
+  movss xmm0, DWORD PTR .LC0[rip]
+  movss DWORD PTR [rbp-4], xmm0
+  movss xmm0, DWORD PTR [rbp-4]
+  cvttss2si eax, xmm0
+  mov DWORD PTR [rbp-8], eax
+  lea rax, [rbp-8]
+  mov edx, 1
+  mov rsi, rax
+  mov edi, 1
+  call write
+  mov eax, 0
+  leave
+  ret
+.LC0:
+  .long 1115881472
+
+
+hmm... using 128 bit registers? x'D xmm0
+
+cvttss2si  <- this is the instruction that does the conversion from float to int
+			
