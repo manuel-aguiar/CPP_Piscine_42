@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:02:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/16 10:15:39 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/16 11:53:41 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static int is_number(std::string& str)
 	//doesn't end with an 'f', it's a double
 	if (!str[i])
 		return (DOUBLE);
-	if (str[i] == 'f' && !str[i + 1])
+	if ((str[i] == 'f' || str[i] == 'F') && !str[i + 1])
 		return (FLOAT);
 
 	//exponents.....
@@ -103,11 +103,14 @@ static int is_number(std::string& str)
 	i++;
 	while (str[i] && std::isdigit(str[i]))
 		i++;
-	if (str[i])
-		return (ERROR);
 
-	//could be float or double, lets get double and check the limits later
-	return (DOUBLE);
+	//between float and double, again :)
+	if (!str[i])
+		return (DOUBLE);
+	if ((str[i] == 'f' || str[i] == 'F') && !str[i + 1])
+		return (FLOAT);
+
+	return (ERROR);
 }
 
 
@@ -161,38 +164,71 @@ static void	print_char(char c)
 
 static void	print_int(std::string& word)
 {
-	long 	conversion;
+	long 	long_conv;
+	double	double_conv;
 
-	conversion = std::strtol(word.c_str(), NULL, 10);
+	//if number is bigger than max, returns max but sets errno to ERANGE
+	long_conv = std::strtol(word.c_str(), NULL, 10);
+
+	//check and save if errno was set to ERANGE
+	const bool out_of_range = (errno == ERANGE);
 
 	//print CHAR
-	if (conversion < -128 || conversion > 127)
+	if (long_conv < -128 || long_conv > 127)
 		std::cout << "char: impossible\n";
-	else if (conversion < 32)
+	else if (long_conv < 32)
 		std::cout << "char: non displayable\n";
 	else
-		std::cout << "char: '" << static_cast<char>(conversion) << "'\n";
+		std::cout << "char: '" << static_cast<char>(long_conv) << "'\n";
 
 	// print INT
-	if (conversion > std::numeric_limits<int>::max()
-	 || conversion < std::numeric_limits<int>::min())
+	//no extra protection needed, if out of range, deffinitely off int LIMITS
+	if (long_conv > std::numeric_limits<int>::max()
+	 || long_conv < std::numeric_limits<int>::min())
 	 	std::cout << "int: impossible\n";
 	else
-		std::cout << "int: " << static_cast<int>(conversion) << '\n';
+		std::cout << "int: " << static_cast<int>(long_conv) << '\n';
 
-	// print FLOAT
-	std::cout << "float: ";
-	if (conversion > std::numeric_limits<float>::max())
-		std::cout << '+';
-	std::cout << std::fixed << std::setprecision(1) << static_cast<float>(conversion) << "f\n";
+	//may be too much for a long, but not for a double
+	if (!out_of_range)
+	{
+		// print FLOAT
+		std::cout << "float: ";
+		if (long_conv > std::numeric_limits<float>::max())
+			std::cout << '+';
+		std::cout << std::fixed << std::setprecision(1) << static_cast<float>(long_conv) << "f\n";
 
-	// print DOUBLE
-	std::cout << "double: ";
-	if (conversion > std::numeric_limits<double>::max())
-		std::cout << '+';
-	std::cout << std::fixed << std::setprecision(1) << static_cast<double>(conversion);
+		// print DOUBLE
+		std::cout << "double: ";
+		if (long_conv > std::numeric_limits<double>::max())
+			std::cout << '+';
+		std::cout << std::fixed << std::setprecision(1) << static_cast<double>(long_conv);
+	}
+	else
+	{
+		double_conv = std::strtod(word.c_str(), NULL);
+		// print FLOAT
+		std::cout << "float: ";
+		if (double_conv > std::numeric_limits<float>::max())
+			std::cout << '+';
+		std::cout << std::fixed << std::setprecision(1) << static_cast<float>(double_conv) << "f\n";
+
+		// print DOUBLE
+		std::cout << "double: ";
+		if (double_conv > std::numeric_limits<double>::max())
+			std::cout << '+';
+		std::cout << std::fixed << std::setprecision(1) << static_cast<double>(double_conv);
+	}
+
 	std::cout << std::endl;
 }
+
+/*
+	std::strtod will also set errno = ERANGE on out of range error (no exceptions thrown)
+	however, strtod will place bits for +inf -inf and nan, which are internally
+	interpretable and comparable
+	So we don't need to save errno in this case to get +inf and -inf
+*/
 
 static void	print_float(std::string& word)
 {

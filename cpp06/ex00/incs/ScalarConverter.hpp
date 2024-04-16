@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:02:07 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/12 10:36:48 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/16 11:44:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ class ScalarConverter
 		ScalarConverter& operator=(const ScalarConverter& assign);
 };
 
-
-
-
 enum
 {
 	ERROR,
@@ -50,5 +47,10 @@ enum
 	PSEUDO_NAN,
 };
 
+
+/*
+	This is probably the worst code i have ever written i'm my very long....
+	months experience :D
+*/
 
 #endif
