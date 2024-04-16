@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 16:38:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/04 15:29:02 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/16 13:28:32 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ class Animal
 		std::string type;
 };
 
+//astein
+# define CLR_RED 	"\033[1;31m"
+# define CLR_BLUE 	"\033[1;34m"
+# define CLR_CYAN 	"\033[1;36m"
+# define CLR_PINK 	"\033[1;35m"
+# define CLR_RESET 	"\033[0m"
+# define CLR_GRN 	"\033[32m"
 
 /*
 	Protected parameterized constructor, Animal can't be instantiated with it but
