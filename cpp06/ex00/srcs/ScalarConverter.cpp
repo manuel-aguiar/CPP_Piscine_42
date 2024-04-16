@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:02:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/12 11:56:53 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/16 10:15:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,6 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& assign)
 	(void)assign;
 	return (*this);
 }
-
-
-static void	print_char(char c)
-{
-	std::cout 	<< "char: '" << c << "'" << std::endl
-				<< "int: " << static_cast<int>(c) << std::endl
-				<< "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << 'f' << std::endl
-				<< "double: " << std::fixed << std::setprecision(1) << static_cast<double>(c) << std::endl;
-}
-
 
 static int	is_pseudo(const std::string& str)
 {
@@ -115,7 +105,7 @@ static int is_number(std::string& str)
 		i++;
 	if (str[i])
 		return (ERROR);
-	
+
 	//could be float or double, lets get double and check the limits later
 	return (DOUBLE);
 }
@@ -161,12 +151,20 @@ static void	print_error(void)
 				<< "double: impossible" << std::endl;
 }
 
+static void	print_char(char c)
+{
+	std::cout 	<< "char: '" << c << "'" << std::endl
+				<< "int: " << static_cast<int>(c) << std::endl
+				<< "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << 'f' << std::endl
+				<< "double: " << std::fixed << std::setprecision(1) << static_cast<double>(c) << std::endl;
+}
+
 static void	print_int(std::string& word)
 {
 	long 	conversion;
 
 	conversion = std::strtol(word.c_str(), NULL, 10);
-	
+
 	//print CHAR
 	if (conversion < -128 || conversion > 127)
 		std::cout << "char: impossible\n";
@@ -174,14 +172,14 @@ static void	print_int(std::string& word)
 		std::cout << "char: non displayable\n";
 	else
 		std::cout << "char: '" << static_cast<char>(conversion) << "'\n";
-	
+
 	// print INT
 	if (conversion > std::numeric_limits<int>::max()
 	 || conversion < std::numeric_limits<int>::min())
 	 	std::cout << "int: impossible\n";
 	else
 		std::cout << "int: " << static_cast<int>(conversion) << '\n';
-	
+
 	// print FLOAT
 	std::cout << "float: ";
 	if (conversion > std::numeric_limits<float>::max())
@@ -201,7 +199,7 @@ static void	print_float(std::string& word)
 	double conversion;
 
 	conversion = std::strtod(word.c_str(), NULL);
-	
+
 	//print CHAR
 	if (conversion < -128.0f || conversion > 127.0f)
 		std::cout << "char: impossible\n";
@@ -209,14 +207,14 @@ static void	print_float(std::string& word)
 		std::cout << "char: non displayable\n";
 	else
 		std::cout << "char: '" << static_cast<char>(conversion) << "'\n";
-	
+
 	// print INT
 	if (conversion > std::numeric_limits<int>::max()
 	 || conversion < std::numeric_limits<int>::min())
 	 	std::cout << "int: impossible\n";
 	else
 		std::cout << "int: " << static_cast<int>(conversion) << '\n';
-	
+
 	// print FLOAT
 	std::cout << "float: ";
 	if (conversion > std::numeric_limits<float>::max())
@@ -243,14 +241,14 @@ static void	print_double(std::string& word)
 		std::cout << "char: non displayable\n";
 	else
 		std::cout << "char: '" << static_cast<char>(conversion) << "'\n";
-	
+
 	// print INT
 	if (conversion > std::numeric_limits<int>::max()
 	 || conversion < std::numeric_limits<int>::min())
 	 	std::cout << "int: impossible\n";
 	else
 		std::cout << "int: " << static_cast<int>(conversion) << '\n';
-	
+
 	// print FLOAT
 	std::cout << "float: ";
 	if (conversion > std::numeric_limits<float>::max())
