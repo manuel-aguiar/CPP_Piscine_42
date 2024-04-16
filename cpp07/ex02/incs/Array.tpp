@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:51:27 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/16 15:36:52 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/16 15:41:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ Array<T>::Array(const Array<T>& copy) : _size(copy._size), _arr(new T[_size]())
 template <class T>
 Array<T>& Array<T>::operator=(const Array<T>& assign)
 {
-	#ifndef DEBUG_CONSTRUCTOR
+	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "Array Copy Assignment called" << std::endl;
 	#endif
 	if (_size != assign._size)
