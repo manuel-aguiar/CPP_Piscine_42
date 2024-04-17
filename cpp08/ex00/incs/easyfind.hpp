@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 08:23:39 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/17 09:43:46 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/17 11:41:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 #include <algorithm>
 #include <iostream>
 
-template <class Container>
+template <
+class Container
+>
 typename Container::iterator
 easyfind(Container& container, int value)
 {
