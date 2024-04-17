@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 08:23:39 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/17 13:29:51 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/17 13:52:00 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,24 @@ template <
 typename Container::iterator
 easyfind(Container& container, int value)
 {
+	std::cout << "calling easyfind, INTEGER, SEQUENCE containers" << std::endl;
 	typename Container::iterator it = std::find(container.begin(), container.end(), value);
 	if (it == container.end())
-		std::cerr << "ops"<< std::endl;
+		throw std::runtime_error("Value not found in container");
+    return (it);
+}
+
+template <
+	class Container,
+	typename Value
+>
+typename Container::iterator
+easyfind(Container& container, Value& value)
+{
+	std::cout << "calling easyfind, GENERIC, SEQUENCE containers" << std::endl;
+	typename Container::iterator it = std::find(container.begin(), container.end(), value);
+	if (it == container.end())
+		throw std::runtime_error("Value not found in container");
     return (it);
 }
 
@@ -44,6 +59,7 @@ template <
 typename Container<int, Value, Compare, Allocator>::iterator
 easyfind(Container<int, Value, Compare, Allocator>& container, int key)
 {
+	std::cout << "calling easyfind, INTEGER, ASSOCIATIVE containers" << std::endl;
 	typename Container<int, Value, Compare, Allocator>::iterator it = container.find(key);
 	if (it == container.end())
 		throw std::runtime_error("Value not found in container");
@@ -63,26 +79,16 @@ template <
 	typename Allocator
 >
 typename Container<Key, Value, Compare, Allocator>::iterator
-generic_easyfind(Container<Key, Value, Compare, Allocator>& container, Key& key)
+easyfind(Container<Key, Value, Compare, Allocator>& container, Key& key)
 {
+	std::cout << "calling easyfind, GENERIC, ASSOCIATIVE containers" << std::endl;
 	typename Container<Key, Value, Compare, Allocator>::iterator it = container.find(key);
 	if (it == container.end())
-		std::cerr << "ops"<< std::endl;
+		throw std::runtime_error("Value not found in container");
     return (it);
 }
 
-template <
-	class Container,
-	typename Value
->
-typename Container::iterator
-generic_easyfind(Container& container, Value& value)
-{
-	typename Container::iterator it = std::find(container.begin(), container.end(), value);
-	if (it == container.end())
-		std::cerr << "ops"<< std::endl;
-    return (it);
-}
+
 
 /*
 	container.end() is a sentinel value that is one past the last value in the container

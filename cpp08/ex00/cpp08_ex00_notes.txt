@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ex00_notes.txt                                     :+:      :+:    :+:    #
+#    cpp08_ex00_notes.txt                               :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/17 13:13:26 by codespace         #+#    #+#              #
-#    Updated: 2024/04/17 13:39:54 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/17 13:52:13 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,5 +83,10 @@ And we have a general template
 
 
 ALTHOUGH ALL OF THIS JUST NEEDS TO USE THE MAP.FIND() METHOD, STILL FUN
+
+So, we have 2 templates, one generic and one specific
+
+The compiler will always look for the most specialized template to instantiate
+since it reduces type deduction efforts :)
 
 

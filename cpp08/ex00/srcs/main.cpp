@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 08:20:57 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/17 13:18:54 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/17 13:49:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int main(void)
 
 		try
 		{
-			std::map<std::string, int>::iterator it = generic_easyfind(map, target);
+			std::map<std::string, int>::iterator it = easyfind(map, target);
 			std::pair<const std::string, int>& pair = *it;
 			std::cout << "map find " << pair.first << std::endl;
 		}
@@ -72,43 +72,65 @@ int main(void)
 
 	}
 
-/*
-{
-    std::vector<int> vector;
-    vector.push_back(5);
-    vector.push_back(3);
-    vector.push_back(2);
-    vector.push_back(5);
-    vector.push_back(7);
-    int  target(5);
 
-	int res = *easyfind(vector, target);
+	{
+		std::vector<int> vector;
+		vector.push_back(5);
+		vector.push_back(3);
+		vector.push_back(2);
+		vector.push_back(5);
+		vector.push_back(7);
+		int  target(5);
 
-	std::cout << res << std::endl;
-}
+		try
+		{
+			int res = *easyfind(vector, target);
+			std::cout << res << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 
-{
-    std::string container("tretas");
+	}
 
-    int target = 65;
+	{
+		std::string container("tretas");
 
-	int res = *easyfind(container, target);
+		int target = 65;
 
-	std::cout << res << std::endl;
-}
+		try
+		{
+			int res = *easyfind(container, target);
+			std::cout << res << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 
-{
-    std::vector<std::string> vector;
-    vector.push_back("cenas");
-    vector.push_back("tretas");
-    vector.push_back("coisas");
-    vector.push_back("existencias");
-    vector.push_back("yolo");
-    std::string  target("tretas");
+	}
 
-	std::string res = *generic_easyfind(vector, target);
-}
-*/
+	{
+		std::vector<std::string> vector;
+		vector.push_back("cenas");
+		vector.push_back("tretas");
+		vector.push_back("coisas");
+		vector.push_back("existencias");
+		vector.push_back("yolo");
+		std::string  target("tretas");
+
+		try
+		{
+			std::string res = *easyfind(vector, target);
+			std::cout << res << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+
+	}
 
 	return (0);
 }
