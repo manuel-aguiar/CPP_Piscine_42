@@ -1,0 +1,58 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    cpp08_notes.txt                                    :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/04/17 11:33:25 by marvin            #+#    #+#              #
+#    Updated: 2024/04/17 13:53:04 by codespace        ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+Containers
+
+Essentially they are class templates tha define and implement data structures
+the one usually needs (templates such that the compiler can type check and
+produce machine code for the concrete types we use in these templates)
+
+
+***********************************************************************
+Iterators
+
+Generalized pointers to allowing going through containers (given containers
+are templates that are supposed to support any type).
+
+Since they are an abstraction of pointers, function templates that take iterators also take
+pointers.
+	find <algorithm> can take pointers instead of container.begin and container.end
+
+
+***********************************************************************
+Allocator
+
+More templates: generalized allocation, used for STL for instance
+Templates themselves because they will be used to allocate for the size of
+the type they will receive (checked at compile time when a container is invocked)
+
+std::allocator is deprecated and from c++11, std:allocator_traits is used by STL
+
+***********************************************************
+Vector
+
+std::vector
+Defined in header <vector>
+template<
+    class T,
+    class Allocator = std::allocator<T>
+> class vector;
+
+To instatiate a vector, one only needs vector<int>, because allocator has a default value
+that falls back to std::allocator<int>
+
+Dynamic array that grows in size 2^N or 1.5^N to achieve constant amortized time push_back operation
+(i'm not an expert, but makes math sense)
+https://stackoverflow.com/questions/5232198/how-does-the-capacity-of-stdvector-grow-automatically-what-is-the-rate
+
+Iterators (pointers) may become invalidated as the array grows in size (if realloc forces copying the full
+array in the worst case)
