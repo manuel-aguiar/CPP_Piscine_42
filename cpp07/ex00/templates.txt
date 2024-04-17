@@ -3,12 +3,25 @@
 #                                                         :::      ::::::::    #
 #    templates.txt                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: manuel <manuel@student.42.fr>              +#+  +:+       +#+         #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 16:33:10 by manuel            #+#    #+#              #
-#    Updated: 2024/04/12 16:38:08 by manuel           ###   ########.fr        #
+#    Updated: 2024/04/17 11:45:40 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+
+specialized templates:
+
+template<>
+void func <int>(int A)
+{
+
+}
+
+they take precedence over generic templates during the linking phase by the compiler
+
+*********************************
 
 oh S, this is magic
 
