@@ -1,0 +1,87 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    ex00_notes.txt                                     :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/04/17 13:13:26 by codespace         #+#    #+#              #
+#    Updated: 2024/04/17 13:39:54 by codespace        ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+In this exercise one can experiment doing it for associative containers,
+it requires a more verbose approach to the template
+
+template <
+	template<
+		typename,
+		typename,
+		typename,
+		typename
+	> class Container,
+	typename Key,
+	typename Value,
+	typename Compare,
+	typename Allocator
+>
+typename Container<Key, Value, Compare, Allocator>::iterator
+generic_easyfind(Container<Key, Value, Compare, Allocator>& container, Key& key)
+{
+	typename Container<Key, Value, Compare, Allocator>::iterator it = container.find(key);
+	if (it == container.end())
+		std::cerr << "ops"<< std::endl;
+    return (it);
+}
+
+This is a template template, where you have a nested template inside
+	In this part, i tried class and typename, and they look interchangeable
+
+However, on hte iterator, one must use typename, because the iterator
+is DEPENDENT on the previous template (like a typedef)
+
+In this specific case, map takes 4 parameters: key, value, compare, Allocator
+
+compare and allocator are usually deduced by the compiler depending on the type
+that we instantiate the map with.
+For instance:
+	std::map<int, std::string>
+	Compare is a template itself by default, set to std::less<T>, or std::less<int>
+		(because the map compares keys)
+	Allocate will allocate a std::pair (the actual object in the map's nodes)
+	std::pair is in itself a template :)
+	In our case:
+		std::pair<const int, std::string>
+		"const int?" It is a map, one can't change the keys, only the values
+		if reverse:
+			std::pair<const std::string, int>
+
+		Look at the prototype for map, cppreference.com:
+		template<
+			class Key,
+			class T,
+			class Compare = std::less<Key>,
+			class Allocator = std::allocator<std::pair<const Key, T>>
+		> class map;
+	So, std::allocator<T> 								-> template
+	std::allocator<std::pair<T,A>> 						-> more template
+	std::allocator<std::pair<const int, std::string>> 	-> OMG
+
+
+	btw, std::less is also a template to be overrun by individual methods
+	for int, it is trivial, for std::string it will call internally some form
+	of strcmp defined at std::string, etc,etc,etc, all deduced at compile time.
+	Insane.
+
+
+	So the compiler looks at the final use, and creates machine code to run through
+	AAAAALLLLLLL those templates (may be a simple code in the end, the effort is done
+	at compile time)
+
+Finally, instead of taking an int, we give it a typename Key to be infused at compile time
+And we have a general template
+
+
+ALTHOUGH ALL OF THIS JUST NEEDS TO USE THE MAP.FIND() METHOD, STILL FUN
+
+

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 08:20:57 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/17 10:23:31 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/17 13:18:54 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,59 @@ int main(void)
 {
 
 
-{
-	std::map<int, std::string> map;
+	{
+		std::map<int, std::string> map;
 
-	map[5] = "tretas";
-	map[1] = "tretas";
-	map[4] = "tretas";
-	map[2] = "tretas";
-	map[6] = "tretas";
+		map[5] = "tretas";
+		map[1] = "tretas";
+		map[4] = "tretas";
+		map[2] = "tretas";
+		map[6] = "tretas";
 
-	int target = 5;
+		int target = 7;
 
-	std::map<int, std::string>::iterator it = easyfind(map, target);
-	std::pair<const int, std::string>& pair = *it;
-	std::cout << "map find " << pair.first << std::endl;
+		try
+		{
+			std::map<int, std::string>::iterator it = easyfind(map, target);
+			std::pair<const int, std::string>& pair = *it;
+			std::cout << "map find " << pair.first << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 
-}
 
 
+	}
+
+
+	std::cout << "generic easyfind" << std::endl;
+	{
+		std::map<std::string, int> map;
+
+		map["cenas"] = 3;
+		map["tretas"] = 2;
+		map["coisas"] = 5;
+		map["templates"] = 4;
+		map["yaya"] = 10;
+
+		std::string target = "templates";
+
+		try
+		{
+			std::map<std::string, int>::iterator it = generic_easyfind(map, target);
+			std::pair<const std::string, int>& pair = *it;
+			std::cout << "map find " << pair.first << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+
+	}
+
+/*
 {
     std::vector<int> vector;
     vector.push_back(5);
@@ -61,7 +96,7 @@ int main(void)
 
 	std::cout << res << std::endl;
 }
-/*
+
 {
     std::vector<std::string> vector;
     vector.push_back("cenas");
