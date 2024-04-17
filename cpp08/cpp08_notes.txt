@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/17 11:33:25 by marvin            #+#    #+#              #
-#    Updated: 2024/04/17 13:53:04 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/17 15:13:11 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,3 +56,73 @@ https://stackoverflow.com/questions/5232198/how-does-the-capacity-of-stdvector-g
 
 Iterators (pointers) may become invalidated as the array grows in size (if realloc forces copying the full
 array in the worst case)
+
+
+*********************
+
+stack
+
+std::stack is a container ADAPTER, that by default buids off of std:.deque
+
+template<
+    class T,
+    class Container = std::deque<T>
+> class stack;
+
+However
+"
+	The standard containers std::vector (including std::vector<bool>),
+	std::deque and std::list satisfy these requirements. By default, if
+	no container class is specified for a particular stack class instantiation,
+	the standard container std::deque is used.
+"
+
+It can be used as a list, vector or deque
+Hence:
+"
+	Member type	Definition
+	container_type	Container
+	value_type	Container::value_type
+	size_type	Container::size_type
+	reference	Container::reference
+	const_reference	Container::const_reference
+"
+
+Container_type -> if yoou want to user member functions fo the container, you needd to
+know what it is and if it iis available.
+
+Iterators: check the type and use the underleeying iterators :)
+
+**************************
+
+std::unordered_map
+
+
+template<
+    class Key,
+    class T,
+    class Hash = std::hash<Key>,
+    class KeyEqual = std::equal_to<Key>,
+    class Allocator = std::allocator<std::pair<const Key, T>>
+> class unordered_map;
+
+Hash is overridable :0
+
+	https://en.cppreference.com/w/cpp/utility/hash
+	std::hash
+
+	"
+		Standard library specializations
+		Each header that declares the template std::hash also
+		provides enabled specializations of std::hash for the following types:
+
+		all cv-unqualified arithmetic types
+		all cv-unqualified enumeration types
+		all cv-unqualified pointer types
+		std::nullptr_t
+	"
+
+	default implementations :) also for other types on the page
+
+	If you know something about the distribution of your variables, you can infuse a better
+	hash function on your table :)
