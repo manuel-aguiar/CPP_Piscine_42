@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/17 13:40:37 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/17 14:17:18 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ fclean: clean
 
 re: fclean all
 
-git: fclean
+git:
 	@git add $(INCS) $(SRCS) Makefile cpp08_ex00_notes.txt && git commit -m "commiting" && git push
 
 run: all
