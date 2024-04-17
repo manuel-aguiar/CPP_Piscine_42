@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#    By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/11 10:41:30 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/17 18:42:38 by mmaria-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		=		convert
+NAME 		=		serializer
 
 ##	Compiler and flags
 COMP		=		c++
