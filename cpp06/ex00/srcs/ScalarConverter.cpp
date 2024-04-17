@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:02:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/16 11:53:41 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/17 18:33:32 by mmaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ static int is_number(std::string& str)
 
 	//could be a float or double
 	i++;
+	if (!std::isdigit(str[i]))
+		return (ERROR);
 	while (str[i] && std::isdigit(str[i]))
 		i++;
 
@@ -96,11 +98,17 @@ static int is_number(std::string& str)
 		return (FLOAT);
 
 	//exponents.....
-	if (str[i++] != 'e')
+	if (str[i] && str[i] != 'e')
 		return (ERROR);
+	i++;
 	if (str[i] && str[i] != '+' && str[i] != '-')
 		return (ERROR);
 	i++;
+	
+	// i hate this, tks valgrind, really...
+	unsigned long int j = i;
+	if (j >= str.size())
+		return (ERROR);
 	while (str[i] && std::isdigit(str[i]))
 		i++;
 
@@ -299,12 +307,30 @@ static void	print_double(std::string& word)
 	std::cout << std::endl;
 }
 
+static bool is_only_spaces(const std::string& word)
+{
+	for (size_t i = 0; i < word.length(); i++)
+	{
+		if (!std::isspace(word[i]))
+			return (false);
+	}
+	return (true);
+}
+
 static bool	too_many_args(std::string& word, std::string& literal)
 {
 	std::stringstream ss(literal);
 	std::string dummy;
 
 	ss >> word;
+	if (is_only_spaces(literal))
+	{
+		word = literal;
+		return (false);
+	}
+		
+	//else
+	//	std::cout << "'" << word << "'" << std::endl;
 	if (ss >> dummy)
 		return (true);
 	return (false);
@@ -326,12 +352,14 @@ void	ScalarConverter::convert(std::string literal)
 {
 	std::string word;
 	int			type;
-
+	
 	if (too_many_args(word, literal))
 	{
 		std::cout << "string literal has too many args" << std::endl;
 		return ;
 	}
+	//else
+	//	std::cout << "'" << word << "'" << std::endl;
 	type = find_type(word);
 	switch(type)
 	{

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#    By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/10 13:29:09 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/17 18:21:58 by mmaria-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME 		=		convert
 
 ##	Compiler and flags
 COMP		=		c++
-FLAGS		=		-Wall -Wextra -Werror -std=c++98
+FLAGS		=		-Wall -Wextra -Werror -std=c++98 -g
 FSANITIZE_FLAGS =	 -fsanitize=address -g
 DEBUG_FLAGS	=		-DDEBUG_CONSTRUCTOR
 
