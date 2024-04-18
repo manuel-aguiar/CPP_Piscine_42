@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/18 08:52:18 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/18 08:57:06 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ INC_FILES		=		Span.hpp
 
 
 SRC_FILES		=		main.cpp		\
-						Span.cpp
+						Span.cpp		\
+						Span_funcs.cpp
 
 
 

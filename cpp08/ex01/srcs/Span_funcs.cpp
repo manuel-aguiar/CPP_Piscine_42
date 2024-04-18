@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Span_funcs.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 08:53:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/18 08:54:08 by codespace        ###   ########.fr       */
+/*   Created: 2024/04/18 08:41:55 by codespace         #+#    #+#             */
+/*   Updated: 2024/04/18 08:54:30 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-int main(void)
+int	call_srand(void)
 {
-
-	return (0);
+	std::srand(std::time(0));
+	return (1);
 }
+
+int g_rand_seed = call_srand();
