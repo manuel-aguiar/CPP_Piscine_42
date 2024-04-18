@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:39:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/18 11:23:59 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/18 14:47:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ class Span
 		Span(const Span& copy);
 		Span& operator=(const Span& assign);
 
-		unsigned long int	shortestSpan(void) const;
-		unsigned long int 	longestSpan(void) const;
+		size_t				shortestSpan(void) const;
+		size_t 				longestSpan(void) const;
 		void				addNumber(const int num);
 		void				addBatch(const size_t count);
 		void				print_numbers(void) const;
@@ -54,27 +54,30 @@ class Span
 		//c++98 doesn't allow lambedas, can't overload << as i wanted :(
 		struct PrintElement
 		{
-				// interesting overload, never thought of this, tks chatgpt
-				// function call via PrintElement(), where for_each will
-				// dump the number (const int& as it is a set)
-				void operator()(const int& n) const
-				{
-					std::cout << n << std::endl;
-				}
+			// interesting overload, never thought of this, tks chatgpt
+			// function call via PrintElement(), where for_each will
+			// dump the number (const int& as it is a set)
+
+			PrintElement();
+			~PrintElement();
+			PrintElement(const PrintElement& copy);
+			PrintElement& operator=(const PrintElement& assign);
+
+
+
+			void operator()(const int& n) const;
 		};
 
 		struct GetShortest
 		{
-			void operator()(const int& n)
-			{
-				if (_shortest == 0)
-					_shortest = std::numeric_limits<int>::max();
-				else if (n - _save < _shortest)
-					_shortest = n - _save;
-				_save = n;
-			}
-			int		_shortest;
-			int		_save;
+			GetShortest();
+			~GetShortest();
+			GetShortest(const GetShortest& copy);
+			GetShortest& operator=(const GetShortest& assign);
+
+			void operator()(const int& n);
+			size_t		_shortest;
+			size_t		_save;
 		};
 };
 

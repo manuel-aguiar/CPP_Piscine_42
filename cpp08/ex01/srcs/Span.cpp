@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:57:42 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/18 10:52:44 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/18 14:36:35 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ Span::Span(const Span& copy) :
 	#endif
 	if (this == &copy)
 		return ;
+
+
 }
 
 Span&	Span::operator=(const Span& assign)
@@ -60,5 +62,74 @@ Span&	Span::operator=(const Span& assign)
 	_used_capacity =assign._used_capacity;
 	_numbers = assign._numbers;
 	_doubled_entry = assign._doubled_entry;
+	return (*this);
+}
+
+// helper subclasses for std::for_each
+
+Span::PrintElement::PrintElement()
+{
+	#ifdef DEBUG_CONSTRUCTOR
+		std::cout << "Span::PrintElement Default Constructor Called" << std::endl;
+	#endif
+}
+
+Span::PrintElement::~PrintElement()
+{
+	#ifdef DEBUG_CONSTRUCTOR
+		std::cout << "Span::PrintElement Destructor Called" << std::endl;
+	#endif
+}
+
+Span::PrintElement::PrintElement(const PrintElement& copy)
+{
+	#ifdef DEBUG_CONSTRUCTOR
+		std::cout << "Span::PrintElement Copy Constructor Called" << std::endl;
+	#endif
+	(void)copy;
+}
+
+Span::PrintElement& Span::PrintElement::operator=(const PrintElement& assign)
+{
+	#ifdef DEBUG_CONSTRUCTOR
+		std::cout << "Span::PrintElement Copy Assignment Called" << std::endl;
+	#endif
+	(void)assign;
+	return (*this);
+}
+
+Span::GetShortest::GetShortest() :
+	_shortest(std::numeric_limits<int>::max()),
+	_save(std::numeric_limits<int>::min())
+{
+	#ifdef DEBUG_CONSTRUCTOR
+		std::cout << "Span::GetShortest Default Constructor Called" << std::endl;
+	#endif
+}
+
+Span::GetShortest::~GetShortest()
+{
+	#ifdef DEBUG_CONSTRUCTOR
+		std::cout << "Span::GetShortest Destructor Called" << std::endl;
+	#endif
+}
+
+Span::GetShortest::GetShortest(const GetShortest& copy) :
+	_shortest(copy._shortest),
+	_save(copy._save)
+{
+	#ifdef DEBUG_CONSTRUCTOR
+		std::cout << "Span::GetShortest Copy Constructor Called" << std::endl;
+	#endif
+	(void)copy;
+}
+
+Span::GetShortest& Span::GetShortest::operator=(const GetShortest& assign)
+{
+	#ifdef DEBUG_CONSTRUCTOR
+		std::cout << "Span::GetShortest Copy Assignment Called" << std::endl;
+	#endif
+	_shortest = assign._shortest;
+	_save = assign._save;
 	return (*this);
 }

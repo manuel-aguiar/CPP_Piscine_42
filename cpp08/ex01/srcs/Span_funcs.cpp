@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:41:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/18 11:26:06 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/18 14:47:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ int	call_srand(void)
 
 int g_rand_seed = call_srand();
 
-unsigned long int	Span::longestSpan() const
+size_t	Span::longestSpan() const
 {
 	if (_used_capacity <= 1)
 		throw std::runtime_error("Span doesn't have enough numbers to calculate");
 	return (*--(_numbers.end()) - *(_numbers.begin()));
 }
 
-unsigned long int	Span::shortestSpan() const
+size_t	Span::shortestSpan() const
 {
 	if (_used_capacity <= 1)
 		throw std::runtime_error("Span doesn't have enough numbers to calculate");
@@ -49,7 +49,7 @@ void	Span::addNumber(const int num)
 
 	//check if the number is already there, counts for capacity but shortest span is 0
 	std::pair<std::set<int>::iterator, bool> iter = _numbers.insert(num);
-	if (iter.second)
+	if (iter.second == false)
 		_doubled_entry = true;
 	_used_capacity++;
 }
@@ -91,4 +91,18 @@ int		Span::operator++(void)
 void	Span::print_numbers(void) const
 {
 	std::for_each(_numbers.begin(), _numbers.end(), PrintElement());
+}
+
+void	Span::PrintElement::operator()(const int& n) const
+{
+	std::cout << n << std::endl;
+}
+
+void	Span::GetShortest::operator()(const int& n)
+{
+	//std::cout << "\nbefore   n " << n << " save " << _save << " _shortest " << _shortest << std::endl;
+	if (n - _save < _shortest)
+		_shortest = n - _save;
+	_save = n;
+	//std::cout << "after   n " << n << " save " << _save << " _shortest " << _shortest << std::endl;
 }
