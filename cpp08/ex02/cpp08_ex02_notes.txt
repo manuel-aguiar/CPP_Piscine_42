@@ -1,0 +1,20 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    cpp08_ex02_notes.txt                               :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/04/18 15:58:47 by codespace         #+#    #+#              #
+#    Updated: 2024/04/18 15:58:51 by codespace        ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+Member objects
+Member name	Definition
+Container c
+
+the underlying container
+(protected member object)
+
+
