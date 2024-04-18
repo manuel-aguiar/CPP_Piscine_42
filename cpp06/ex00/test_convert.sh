@@ -5,6 +5,9 @@ out_file="test_convert_output.txt"
 
 #test inputs
 inputs=(
+	" "
+	"\n"
+	"\t"
 	"-."
 	"+."
 	".+"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:02:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/17 18:33:32 by mmaria-d         ###   ########.fr       */
+/*   Updated: 2024/04/18 14:04:53 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,12 @@ static int	is_pseudo(const std::string& str)
 static int	is_char(std::string& word)
 {
 	if (word.length() == 1
-	&& ((word[0] >= 32 && word[0] < '0')
-	|| (word[0] > '9' && word[0] <= 126)))
+	&& (std::isprint(word[0])
+	|| word[0] == '\n'
+	|| word[0] == '\t'
+	|| word[0] == '\v'
+	|| word[0] == ' '
+	|| word[0] == '\b'))
 		return (CHAR);
 	return (ERROR);
 }
@@ -104,7 +108,7 @@ static int is_number(std::string& str)
 	if (str[i] && str[i] != '+' && str[i] != '-')
 		return (ERROR);
 	i++;
-	
+
 	// i hate this, tks valgrind, really...
 	unsigned long int j = i;
 	if (j >= str.size())
@@ -311,7 +315,11 @@ static bool is_only_spaces(const std::string& word)
 {
 	for (size_t i = 0; i < word.length(); i++)
 	{
-		if (!std::isspace(word[i]))
+		if (!(word[i] == '\n'
+		|| word[i] == '\t'
+		|| word[i] == '\v'
+		|| word[i] == ' '
+		|| word[i] == '\b'))
 			return (false);
 	}
 	return (true);
@@ -328,7 +336,7 @@ static bool	too_many_args(std::string& word, std::string& literal)
 		word = literal;
 		return (false);
 	}
-		
+
 	//else
 	//	std::cout << "'" << word << "'" << std::endl;
 	if (ss >> dummy)
@@ -352,7 +360,7 @@ void	ScalarConverter::convert(std::string literal)
 {
 	std::string word;
 	int			type;
-	
+
 	if (too_many_args(word, literal))
 	{
 		std::cout << "string literal has too many args" << std::endl;
