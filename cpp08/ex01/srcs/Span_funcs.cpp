@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:41:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/18 14:47:05 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/18 15:31:27 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	Span::_add_rand_int(void)
 	if (_used_capacity == _total_capacity)
 		throw std::runtime_error ("Span is already at max capacity");
 	_used_capacity++;
-	num = rand();
+	num = rand() - RAND_MAX / 2;
 	_numbers.insert(num);
 	return(num);
 }
@@ -101,8 +101,7 @@ void	Span::PrintElement::operator()(const int& n) const
 void	Span::GetShortest::operator()(const int& n)
 {
 	//std::cout << "\nbefore   n " << n << " save " << _save << " _shortest " << _shortest << std::endl;
-	if (n - _save < _shortest)
-		_shortest = n - _save;
+	_shortest = std::min(n - _save, _shortest);
 	_save = n;
 	//std::cout << "after   n " << n << " save " << _save << " _shortest " << _shortest << std::endl;
 }

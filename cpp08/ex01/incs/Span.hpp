@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:39:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/18 14:47:22 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/18 15:30:53 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,26 @@
 #include <ctime>
 #include <set>
 #include <limits>
+
+/*
+	Purposefully not a very efficient solution.
+
+	Instead of Vector and a call to std::sort everytime you want to calculate the longest
+	span, std::set rebalances (costly) the RB-tree on every insert, keeping it sorted.
+	So .begin() - --.end() will be the longest span.
+	Iteration using std::for_each
+
+
+	Vector looks like the best case. The resize operation doesn't take place very often.
+	Then go for std::sort, or even stable_sort to preserve order of equals, if that is
+	important.
+
+	Set should be better if you want to find if an element is a part of it, on average
+
+	I didn't know anything about set, so now is about time!!!
+
+	Still fun.
+*/
 
 class Span
 {
@@ -75,7 +95,7 @@ class Span
 			GetShortest(const GetShortest& copy);
 			GetShortest& operator=(const GetShortest& assign);
 
-			void operator()(const int& n);
+			void 		operator()(const int& n);
 			size_t		_shortest;
 			size_t		_save;
 		};
