@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:39:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/18 15:30:53 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/18 15:36:25 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 	important.
 
 	Set should be better if you want to find if an element is a part of it, on average
+	but this is not a case of frequent lookups and few insertions/deletions
 
 	I didn't know anything about set, so now is about time!!!
 
