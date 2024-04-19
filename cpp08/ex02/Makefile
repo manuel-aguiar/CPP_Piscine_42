@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#    By: manuel <manuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/18 15:39:59 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/19 09:38:40 by manuel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		=		span
+NAME 		=		mutantstack
 
 ##	Compiler and flags
 COMP		=		c++
@@ -31,8 +31,7 @@ INC_FILES		=		MutantStack.hpp			\
 
 
 
-SRC_FILES		=		main.cpp				\
-						MutantStack.cpp
+SRC_FILES		=		main.cpp
 
 
 
