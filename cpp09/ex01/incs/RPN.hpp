@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:00:59 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/19 10:36:27 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/19 10:48:32 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,28 @@
 
 # define RPN_HPP
 
-#include <iostream>
+# include <iostream>
+# include <stack>
 
+
+
+
+class RPN
+{
+    public:
+        RPN(const std::string& str);
+        ~RPN();
+        RPN(const RPN& copy);
+        RPN&    operator=(const RPN& assign);
+
+
+
+    private:
+        RPN();
+        std::string         _arg;
+        std::stack<int>     _operands;
+
+};
 
 
 
