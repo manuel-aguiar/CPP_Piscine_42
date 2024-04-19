@@ -6,11 +6,11 @@
 #    By: manuel <manuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/19 09:54:08 by manuel           ###   ########.fr        #
+#    Updated: 2024/04/19 10:34:13 by manuel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		=		mutantstack
+NAME 		=		RPN
 
 ##	Compiler and flags
 COMP		=		c++
@@ -63,7 +63,7 @@ fclean: clean
 re: fclean all
 
 git:
-	@git add $(INCS) $(SRCS) Makefile cpp09_ex01_notes.txt && git commit -m "commiting" && git push
+	@git add $(INCS) $(SRCS) Makefile cpp09_ex01_notes.txt test_RPN.sh && git commit -m "commiting" && git push
 
 run: all
 	@./$(NAME)
