@@ -7,6 +7,7 @@ program="RPN"
 inputs=(
 	" "
     "hello potato"
+    "3   5   +    /     -"
 )
 
 #remove previous outfile if it exists

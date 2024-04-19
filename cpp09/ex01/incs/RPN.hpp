@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:00:59 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/19 10:48:32 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/19 11:25:14 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@
 
 # include <iostream>
 # include <stack>
+# include <cctype>
+# include <sstream>
 
-
-
+# define VALID_CHARS " 0123456789+-/*"
 
 class RPN
 {
@@ -34,17 +35,21 @@ class RPN
         RPN(const RPN& copy);
         RPN&    operator=(const RPN& assign);
 
-
+    bool        parse(void);
 
     private:
         RPN();
-        std::string         _arg;
-        std::stack<int>     _operands;
+
+        bool    check_valid_chars(void) const;
+
+
+        std::string              _arg;
+        std::stack<int>          _operands;
 
 };
 
 
 
-# define CERR(x) std::cerr << x << std::endl
+# define CERR(x) std::cout << x << std::endl
 
 #endif

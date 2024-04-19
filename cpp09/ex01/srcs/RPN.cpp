@@ -6,12 +6,11 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:42:37 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/19 10:47:58 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/19 11:25:46 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
-
 
 RPN::RPN()
 {
@@ -25,7 +24,6 @@ RPN::RPN(const std::string& str) : _arg(str)
 	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "RPN Constructor called" << std::endl;
 	#endif
-    std::cout << _arg << std::endl;
 }
 
 RPN::~RPN()

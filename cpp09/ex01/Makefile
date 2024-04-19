@@ -6,7 +6,7 @@
 #    By: manuel <manuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/19 10:34:13 by manuel           ###   ########.fr        #
+#    Updated: 2024/04/19 11:04:31 by manuel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ INC_FILES		=		RPN.hpp
 
 
 SRC_FILES		=		main.cpp		\
-						RPN.cpp
+						RPN.cpp			\
+						RPN_parsing.cpp
 
 
 

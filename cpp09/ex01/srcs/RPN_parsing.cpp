@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   RPN_parsing.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/19 10:02:27 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/19 11:24:40 by manuel           ###   ########.fr       */
+/*   Created: 2024/04/19 10:58:42 by manuel            #+#    #+#             */
+/*   Updated: 2024/04/19 11:28:42 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <RPN.hpp>
+# include "RPN.hpp"
 
-int main(int ac, char **av)
+bool RPN::parse(void)
 {
-    if (ac != 2)
+    if (_arg.find_first_not_of(VALID_CHARS, 0) != std::string::npos
+    || _arg.length() == 0 
+    || !std::isdigit(_arg[0]))
     {
-        CERR("RPN: wrong number of arguments");
-        return (1);
+        CERR("RPN: invalid input");
+        return (false);
     }
-    try
+    std::stringstream ss(_arg);
+    std::string word;
+    while (ss >> word)
     {
-        RPN rpn(av[1]);
-        if(!rpn.parse())
-            return (1);
+        std::cout << word << " ";
     }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-        return (1);
-    }
-    return (0);
+    std::cout << std::endl;
+    return (true);
 }
