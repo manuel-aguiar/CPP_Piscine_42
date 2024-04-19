@@ -6,7 +6,7 @@
 #    By: manuel <manuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/19 09:54:34 by manuel           ###   ########.fr        #
+#    Updated: 2024/04/19 14:45:31 by manuel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME 		=		mutantstack
 COMP		=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98
 FSANITIZE_FLAGS =	 -fsanitize=address -g
-DEBUG_FLAGS	=		-DDEBUG_CONSTRUCTOR
+DEBUG_FLAGS	=		-DDEBUG_CONSTRUCTOR -DOPERATORS
 
 ## FOLDERS
 INC_PATH	=		incs
@@ -26,11 +26,12 @@ OBJ_PATH	=		objs
 
 ## ALL FILES
 
-INC_FILES		=
+INC_FILES		=	PmergeMe.hpp
 
 
 
-SRC_FILES		=	main.cpp
+SRC_FILES		=	main.cpp		\
+					PmergeMe.cpp
 
 
 
