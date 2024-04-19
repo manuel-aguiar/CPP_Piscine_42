@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN_parsing.cpp                                    :+:      :+:    :+:   */
+/*   RPN_funcs.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:58:42 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/19 12:45:03 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/19 12:50:46 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ bool    RPN::apply_operation(const std::string& op)
     return (false);
 }
 
-bool    RPN::sumation(const int target)
+inline bool    RPN::sumation(const int target)
 {
     _operands.top() += target;
     #ifdef DEBUG_OPERATORS
@@ -95,29 +95,32 @@ bool    RPN::sumation(const int target)
     return (true);
 }
 
-bool    RPN::subtraction(const int target)
+inline bool    RPN::subtraction(const int target)
 {
-    #ifdef DEBUG_OPERATORS
-        std::cout << "subtraction" << std::endl;
-    #endif
     _operands.top() -= target;
+    #ifdef DEBUG_OPERATORS
+        std::cout   << "subtraction:  target " << target
+                    << " new top " << _operands.top() << std::endl;
+    #endif
     return (true);
 }
 
-bool    RPN::multiplication(const int target)
+inline bool    RPN::multiplication(const int target)
 {
-    #ifdef DEBUG_OPERATORS
-        std::cout << "multiplication" << std::endl;
-    #endif
     _operands.top() *= target;
+    #ifdef DEBUG_OPERATORS
+        std::cout   << "multiplication:  target " << target
+                    << " new top " << _operands.top() << std::endl;
+    #endif
     return (true);
 }
 
-bool    RPN::division(const int target)
+inline bool    RPN::division(const int target)
 {
-    #ifdef DEBUG_OPERATORS
-        std::cout << "division" << std::endl;
-    #endif
      _operands.top() /= target;
+    #ifdef DEBUG_OPERATORS
+        std::cout   << "division:  target " << target
+                    << " new top " << _operands.top() << std::endl;
+    #endif
     return (true);
 }
