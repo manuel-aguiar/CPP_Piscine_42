@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:02:27 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/19 12:05:09 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/19 12:46:09 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ int main(int ac, char **av)
         CERR("RPN: wrong number of arguments");
         return (1);
     }
+
+    // try-catch potential <new> failures from containers
     try
     {
         RPN rpn(av[1]);
-        if(!rpn.parse())
+        if(!rpn.calculate())
         {
             CERR("RPN: invalid expression");
             return (1);
