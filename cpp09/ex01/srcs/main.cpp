@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:02:27 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/19 11:31:40 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/19 12:05:09 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ int main(int ac, char **av)
     {
         RPN rpn(av[1]);
         if(!rpn.parse())
+        {
+            CERR("RPN: invalid expression");
             return (1);
+        }
     }
     catch(const std::exception& e)
     {

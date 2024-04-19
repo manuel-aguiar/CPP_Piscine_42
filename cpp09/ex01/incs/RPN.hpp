@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:00:59 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/19 11:40:08 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/19 12:22:53 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <stack>
 # include <cctype>
 # include <sstream>
+# include <cstdlib>
 
 # define VALID_CHARS " 0123456789+-/*"
 
@@ -37,16 +38,24 @@ class RPN
 
         bool        parse(void);
         bool        calculate(const std::string& op);
-        bool        sumation(void);
-        bool        subtraction(void);
-        bool        multiplication(void);
-        bool        division(void);
+        bool        sumation(const int target);
+        bool        subtraction(const int target);
+        bool        multiplication(const int target);
+        bool        division(const int target);
 
     private:
         RPN();
 
         bool    check_valid_chars(void) const;
+        
+        typedef enum
+        {
+            E_NUM,
+            E_OP,
+            E_ERROR,
+        }   e_type;
 
+        e_type deduce_type(const std::string& word);
 
         std::string              _arg;
         std::stack<int>          _operands;
