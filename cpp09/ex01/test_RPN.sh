@@ -26,7 +26,7 @@ rm -f $out_file
 #loop through inputs and run
 for input in "${inputs[@]}"
 do
-	echo -e "input is: \"$input\"\n"  >> $out_file
+	echo -e "input is: \"$input\""  >> $out_file
     ./$program "$input" >> $out_file
-	echo -e "\n"  >> $out_file
+	echo -e  >> $out_file
 done
