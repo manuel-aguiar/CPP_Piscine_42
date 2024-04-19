@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:00:59 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/19 11:25:14 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/19 11:40:08 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,12 @@ class RPN
         RPN(const RPN& copy);
         RPN&    operator=(const RPN& assign);
 
-    bool        parse(void);
+        bool        parse(void);
+        bool        calculate(const std::string& op);
+        bool        sumation(void);
+        bool        subtraction(void);
+        bool        multiplication(void);
+        bool        division(void);
 
     private:
         RPN();

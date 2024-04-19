@@ -6,7 +6,7 @@
 #    By: manuel <manuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/19 11:04:31 by manuel           ###   ########.fr        #
+#    Updated: 2024/04/19 11:36:51 by manuel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME 		=		RPN
 COMP		=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98
 FSANITIZE_FLAGS =	 -fsanitize=address -g
-DEBUG_FLAGS	=		-DDEBUG_CONSTRUCTOR
+DEBUG_FLAGS	=		-DDEBUG_CONSTRUCTOR -DDEBUG_OPERATORS
 
 ## FOLDERS
 INC_PATH	=		incs
