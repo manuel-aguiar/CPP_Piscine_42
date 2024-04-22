@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:51:27 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/16 16:04:31 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/22 10:17:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ Array<T>& Array<T>::operator=(const Array<T>& assign)
 		if (_arr)
 			delete [] _arr;
 		_arr = new T[assign._size];
+		_size = assign._size;
 	}
-	_size = assign._size;
 	for (size_t i = 0; i < _size; i++)
 		_arr[i] = assign._arr[i];
 	return (*this);
