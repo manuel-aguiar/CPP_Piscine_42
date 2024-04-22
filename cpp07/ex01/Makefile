@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: manuel <manuel@student.42.fr>              +#+  +:+       +#+         #
+#    By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/12 16:44:55 by manuel           ###   ########.fr        #
+#    Updated: 2024/04/22 18:17:58 by mmaria-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		=		whatever
+NAME 		=		iter
 
 ##	Compiler and flags
 COMP		=		c++
