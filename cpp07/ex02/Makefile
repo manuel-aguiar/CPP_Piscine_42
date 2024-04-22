@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#    By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/16 14:53:58 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/22 18:17:54 by mmaria-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		=		whatever
+NAME 		=		array
 
 ##	Compiler and flags
 COMP		=		c++
