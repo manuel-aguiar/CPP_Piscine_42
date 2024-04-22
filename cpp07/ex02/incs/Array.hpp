@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:54:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/16 15:50:17 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/22 16:05:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Array
 {
 	public:
 		Array();
-		Array(const unsigned int n);
+		Array(const unsigned int n);		// this is a problemmmmmmm, -1 size will underflow to UINT_MAX 4gb, nice
 		~Array();
 		Array(const Array<T>& copy);
 		Array& operator=(const Array<T>& assign);

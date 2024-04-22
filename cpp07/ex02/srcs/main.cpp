@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:54:06 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/22 15:51:49 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/22 16:04:52 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,18 @@ int main(void)
 
 		std::cout << "\nOut of range access: " << std::endl;
 		bigger[23] = 38;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	std::cout << "\nempty array" << std::endl;
+
+	try
+	{
+		Array<int> arr (0);
+		std::cout << arr[0] << std::endl;
 	}
 	catch(const std::exception& e)
 	{
