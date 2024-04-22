@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 15:46:51 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/22 09:11:27 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/22 09:12:13 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,12 @@ template <typename T> T& max(T& a, T& b)
 {
     return (a > b ? a : b);
 }
+
+/*
+	Prefer the reference version because, for instance
+	in case of a string or some container, i don't want
+	to copy it entirely for this functions, best
+	to access it via reference
+*/
 
 #endif
