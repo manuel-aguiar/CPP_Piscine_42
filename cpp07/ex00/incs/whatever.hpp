@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 15:46:51 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/22 09:12:13 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/22 09:30:55 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 
 template <typename T> void swap(T& a, T& b)
 {
-    T temp;
-
-    temp = a;
+    T& temp = a;
     a = b;
     b = temp;
 }
@@ -38,6 +36,13 @@ template <typename T> T& max(T& a, T& b)
 	in case of a string or some container, i don't want
 	to copy it entirely for this functions, best
 	to access it via reference
+
+	Also, reference version is more flexible, compiler can
+	dereference a reference and assign it to a value,
+	but won't convert a value to a reference to it.
+
+	So the reference version works for both references and values,
+	while the value versiuon does not.
 */
 
 #endif
