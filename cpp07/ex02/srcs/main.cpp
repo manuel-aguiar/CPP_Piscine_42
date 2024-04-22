@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:54:06 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/22 10:23:46 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/22 15:51:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,15 @@ int main3(int, char **) {
   return 0;
 }
 
+
 int main(void)
 {
 	/*
 		Wide try-catch, new[] can fail at any moment :)
 	*/
+
+	std::cout << "Array of ints" << std::endl;
+
 	try
 	{
 		std::cout << "Array Construction" << std::endl;
@@ -90,6 +94,92 @@ int main(void)
 		std::cout << bigger.size() << std::endl;
 
 		std::cout << "assign " << bigger[1] << std::endl;
+
+
+		std::cout << "\nOut of range access: " << std::endl;
+		bigger[23] = 38;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	std::cout << "\narray of std::strings" << std::endl;
+
+	try
+	{
+		std::cout << "Array Construction" << std::endl;
+		Array<std::string> arr(10);
+		arr[1] = "yeah some sentence";
+		std::cout << arr[1] << std::endl;
+
+
+		std::cout << "\nArray Copy" << std::endl;
+		Array<std::string> copy(arr);
+		copy[1] = "nop, i'm a copy";
+		std::cout << "original " << arr[1] << "  copy: " << copy[1] << std::endl;
+
+
+		std::cout << "\nArray Assign" << std::endl;
+		Array<std::string> bigger(24);
+
+		bigger = arr;
+		std::cout << bigger.size() << std::endl;
+
+		std::cout << "assign " << bigger[1] << std::endl;
+
+
+		std::cout << "\nOut of range access: " << std::endl;
+		bigger[23] = 38;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	std::cout << "\narray of... Arrays of floats, why not, sue me" << std::endl;
+
+	try
+	{
+		std::cout << "Array Construction" << std::endl;
+		Array<
+			Array<
+				float
+			>
+		> arr(10);
+
+		arr[1] = Array<float>(5);
+		arr[1][0] = 1.1f;
+		arr[1][1] = 3.2e+4;
+		arr[1][2] = -0.5e-20;
+		arr[1][3] = 42.42f;
+		arr[1][4] = 24.24f;
+
+		std::cout << arr[1][3] << std::endl;
+
+
+		std::cout << "\nArray Copy" << std::endl;
+		Array<
+			Array<
+				float
+			>
+		>  copy(arr);
+		copy[1] = Array<float>(10);
+		copy[1][3] = 4.2f;
+		std::cout << "original " << arr[1][3] << "  copy: " << copy[1][3] << std::endl;
+
+
+		std::cout << "\nArray Assign" << std::endl;
+		Array<
+			Array<
+				float
+			>
+		>  bigger(24);
+
+		bigger = arr;
+		std::cout << bigger.size() << std::endl;
+
+		std::cout << "assign " << bigger[1][3] << std::endl;
 
 
 		std::cout << "\nOut of range access: " << std::endl;
