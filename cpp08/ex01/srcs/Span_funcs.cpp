@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:41:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/22 10:31:10 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/22 10:55:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,24 @@ void	Span::addBatch(const size_t count)
 		add = _total_capacity - _used_capacity;
 	for (size_t i = 0; i < add; i++)
 		_add_rand_int();
+	/*
+		c++98 doesn't allow to check for doubles on std::set when inserting
+		range of iterators :(. This is just an ugly loop
+		Ideally:
+
+		vector of rand;
+		std::pair<std::set<int>::iterator, bool> iter = _number.insert(vec.begin(), vec.end())
+		if (iter.second == false)
+			doubled entry
+
+		template:
+
+		template< class InputIt >
+		void insert( InputIt first, InputIt last );
+		https://en.cppreference.com/w/cpp/container/set/insert
+
+		i can't, so i go one by one and the function for rand checks if it is doouble, everytime :(
+	*/
 	if (add != count)
 		throw std::runtime_error ("Span is already at max capacity");
 }
