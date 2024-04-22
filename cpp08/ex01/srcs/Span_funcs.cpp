@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:41:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/18 15:31:27 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/22 10:31:10 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,9 @@ int	Span::_add_rand_int(void)
 		throw std::runtime_error ("Span is already at max capacity");
 	_used_capacity++;
 	num = rand() - RAND_MAX / 2;
-	_numbers.insert(num);
+	std::pair<std::set<int>::iterator, bool> iter = _numbers.insert(num);
+	if (iter.second == false)
+		_doubled_entry = true;
 	return(num);
 }
 
