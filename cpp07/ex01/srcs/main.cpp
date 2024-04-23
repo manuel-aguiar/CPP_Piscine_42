@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:44:33 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/23 13:00:36 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/23 13:01:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int main(void)
 
 	iter(arr, 5, print_cout<int>);
 
-	std::cout << "\nnon template - int function: " << std::endl;
+	std::cout << "\nnon template - matching int function: " << std::endl;
 
 	iter(arr, 5, print_int);
 
