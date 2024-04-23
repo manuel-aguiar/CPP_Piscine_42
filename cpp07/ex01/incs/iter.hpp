@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:44:11 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/23 13:40:36 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/23 15:59:40 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,28 @@ template <class T, class F>
 F& iter(T arr[], size_t len, F* func)
 {
 	std::cout << "function pointer template" << std::endl;
+    for (size_t i = 0; i < len; i++)
+    {
+        (*func)(arr[i]);
+    }
+	return (*func);
+}
+
+template <class T, class F, size_t len>
+F iter(T (&arr)[len], F func)
+{
+	std::cout << "function copy template, len implicitely passed via &arr reference" << std::endl;
+    for (size_t i = 0; i < len; i++)
+    {
+        func(arr[i]);
+    }
+	return (func);
+}
+
+template <class T, class F, size_t len>
+F& iter(T (&arr)[len], F* func)
+{
+	std::cout << "function pointer template, len implicitely passed via &arr reference" << std::endl;
     for (size_t i = 0; i < len; i++)
     {
         (*func)(arr[i]);

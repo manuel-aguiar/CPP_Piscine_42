@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:44:33 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/23 13:43:36 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/23 15:56:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,31 @@ class Functor
 	public:
 		Functor() : _count(0)
 		{
-			std::cout << "Functor default" << std::endl;
+			#ifdef DEBUG_CONSTRUCTOR
+				std::cout << "Functor default" << std::endl;
+			#endif
 		}
 
 		~Functor()
 		{
-			std::cout << "Functor destructor" << std::endl;
+			#ifdef DEBUG_CONSTRUCTOR
+				std::cout << "Functor destructor" << std::endl;
+			#endif
 		}
 
 		Functor(const Functor& copy) : _count(copy._count)
 		{
-			std::cout << "Functor copy" << std::endl;
+			#ifdef DEBUG_CONSTRUCTOR
+				std::cout << "Functor copy" << std::endl;
+			#endif
 			*this = copy;
 		}
 
 		Functor& operator=(const Functor& assign)
 		{
-			std::cout << "Functor assignment" << std::endl;
+			#ifdef DEBUG_CONSTRUCTOR
+				std::cout << "Functor assignment" << std::endl;
+			#endif
 			_count = assign._count;
 			return (*this);
 		}
@@ -150,6 +158,24 @@ int main(void)
 	/*
 		iter(arr, 5, print_string);
 	*/
+
+/*####################################################################*/
+	std::cout << "\niter deduces array size by passing array via reference: " << std::endl;
+
+	Functor<int> deduce = iter(arr, Functor<int>());
+	std::cout << "array count: " << deduce._count << std::endl;
+	std::cout << "arr[] decays to a POINTER ->size is lost, reference to the object"
+	<< "\nallows to get to the internals (sizeof(dereferenced reference))" << std::endl;
+
+/*####################################################################*/
+
+	std::cout << "\niter deduces array size by passing array via reference (function pointer class version): " << std::endl;
+
+	Functor<int> deduce_ptr;
+	iter(arr, &deduce_ptr);
+	std::cout << "array count: " << deduce_ptr._count << std::endl;
+	std::cout << "arr[] decays to a POINTER ->size is lost, reference to the object"
+	<< "\nblablabla same as above)" << std::endl;
 
 }
 
