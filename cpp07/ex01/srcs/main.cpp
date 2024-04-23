@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:44:33 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/23 11:57:12 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/23 13:00:36 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 /*
 	template <class T, class F>
-	void iter(T arr[], size_t len, F func)
+	F iter(T arr[], size_t len, F func)
 	{
 		for (size_t i = 0; i < len; i++)
 		{
 			func(arr[i]);
 		}
+		return (func);
 	}
 
 	F is what is called a "Functor". It is essentially a class that
@@ -28,7 +29,8 @@
 	to templates.
 
 	It is for instance, what std::for_each receives.
-
+	std::for_each returns the function class itself in case the user
+	needs access to variables within the class
 
 	Vs the old prototype using void (*func)(T&), it allows greater flexibility.
 
