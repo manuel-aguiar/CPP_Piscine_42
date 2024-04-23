@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:44:11 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/23 11:41:30 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/23 13:40:36 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,25 @@ void iter(T arr[], size_t len, void(*func)(T&))
 template <class T, class F>
 F iter(T arr[], size_t len, F func)
 {
+	std::cout << "function copy template" << std::endl;
     for (size_t i = 0; i < len; i++)
     {
         func(arr[i]);
     }
 	return (func);
 }
+
+template <class T, class F>
+F& iter(T arr[], size_t len, F* func)
+{
+	std::cout << "function pointer template" << std::endl;
+    for (size_t i = 0; i < len; i++)
+    {
+        (*func)(arr[i]);
+    }
+	return (*func);
+}
+
 
 /*
 	returning the function object itself, as std::for_each does

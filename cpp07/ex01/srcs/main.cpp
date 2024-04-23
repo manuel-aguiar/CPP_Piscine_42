@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:44:33 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/23 13:01:02 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/23 13:43:36 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,32 @@
 */
 
 template<class T>
-class functor
+class Functor
 {
 	public:
-		functor() : _count(0) {}
-		functor(const functor& copy) { _count = copy._count;}
+		Functor() : _count(0)
+		{
+			std::cout << "Functor default" << std::endl;
+		}
+
+		~Functor()
+		{
+			std::cout << "Functor destructor" << std::endl;
+		}
+
+		Functor(const Functor& copy) : _count(copy._count)
+		{
+			std::cout << "Functor copy" << std::endl;
+			*this = copy;
+		}
+
+		Functor& operator=(const Functor& assign)
+		{
+			std::cout << "Functor assignment" << std::endl;
+			_count = assign._count;
+			return (*this);
+		}
+
 		void operator()(T& ref)
 		{
 			std::cout << ref << std::endl;
@@ -67,23 +88,60 @@ void	print_string(const std::string& str)
 	std::cout << str << std::endl;
 }
 
+/*####################################################################*/
+
+/*******************************MAIN***********************************/
+
+/*####################################################################*/
+
+
 int main(void)
 {
 	int arr[5] = {123,123,123,123,123};
 
-	std::cout << "functor class: " << std::endl;
+/*####################################################################*/
+	std::cout << "\nfunctor copy class: " << std::endl;
 
-	functor<int> func = iter(arr, 5, functor<int>());
+	Functor<int> func = iter(arr, 5, Functor<int>());
 	std::cout << "array count: " << func._count << std::endl;
 
 
+/*####################################################################*/
+	std::cout << "\nfunctor pointer class: " << std::endl;
+
+
+	Functor<int> func_ptr;
+	iter(arr, 5, &func_ptr);
+	std::cout << "array count: " << func_ptr._count << std::endl;
+
+/*####################################################################*/
 	std::cout << "\ntemplate function: " << std::endl;
 
 	iter(arr, 5, print_cout<int>);
+	/*
+		interesting, calling the pointer template, compiler deems more fit
+	*/
+/*####################################################################*/
+
+	std::cout << "\ncalling function pointer template with 'NULL': " << std::endl;
+	/*
+		iter(arr, 5, NULL);
+	*/
+	std::cout << "iter(arr, 5, NULL);  -> doesn't compile\n"
+	<< "'In instantiation of ‘F iter(T*, size_t, F) [with T = int; F = long int; size_t = long unsigned int]’:"
+	<< "error: ‘func’ cannot be used as a function'" << std::endl;
+
+
+/*####################################################################*/
 
 	std::cout << "\nnon template - matching int function: " << std::endl;
-
+	/*
+		interesting, calling the pointer template, compiler deems more fit
+	*/
 	iter(arr, 5, print_int);
+
+/*####################################################################*/
+
 
 	std::cout << "\nnon template - non-matching std::string function:\n" << std::endl;
 	std::cout << "iter(arr, 5, print_string);  -> doesn't compile\n"
