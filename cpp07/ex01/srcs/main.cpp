@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:44:33 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/23 11:40:02 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/23 11:57:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,42 @@ class functor
 	inside the functor class and finally returning it
 */
 
+void	print_int(const int &num)
+{
+	std::cout << num << std::endl;
+}
+
+void	print_string(const std::string& str)
+{
+	std::cout << str << std::endl;
+}
+
 int main(void)
 {
-	int arr[5] = {1,2,3,4,5};
+	int arr[5] = {123,123,123,123,123};
+
+	std::cout << "functor class: " << std::endl;
 
 	functor<int> func = iter(arr, 5, functor<int>());
-	std::cout << func._count << std::endl;
+	std::cout << "array count: " << func._count << std::endl;
+
+
+	std::cout << "\ntemplate function: " << std::endl;
+
+	iter(arr, 5, print_cout<int>);
+
+	std::cout << "\nnon template - int function: " << std::endl;
+
+	iter(arr, 5, print_int);
+
+	std::cout << "\nnon template - non-matching std::string function:\n" << std::endl;
+	std::cout << "iter(arr, 5, print_string);  -> doesn't compile\n"
+	<< "'error: invalid initialization of reference of type"
+	<< "‘const std::__cxx11::basic_string<char>&’ from expression of type ‘int’'" << std::endl;
+	/*
+		iter(arr, 5, print_string);
+	*/
+
 }
 
 
