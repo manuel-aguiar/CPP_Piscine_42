@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 15:46:51 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/22 09:30:55 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/23 11:16:32 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 template <typename T> void swap(T& a, T& b)
 {
-    T& temp = a;
+    T temp = a;
     a = b;
     b = temp;
 }
