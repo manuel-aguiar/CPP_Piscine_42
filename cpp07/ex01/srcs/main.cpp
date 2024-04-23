@@ -6,11 +6,68 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:44:33 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/22 15:34:52 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/23 11:40:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
+#include <iostream>
+
+/*
+	template <class T, class F>
+	void iter(T arr[], size_t len, F func)
+	{
+		for (size_t i = 0; i < len; i++)
+		{
+			func(arr[i]);
+		}
+	}
+
+	F is what is called a "Functor". It is essentially a class that
+	overloads the operator () and can be used to pass functions
+	to templates.
+
+	It is for instance, what std::for_each receives.
+
+
+	Vs the old prototype using void (*func)(T&), it allows greater flexibility.
+
+
+
+*/
+
+template<class T>
+class functor
+{
+	public:
+		functor() : _count(0) {}
+		functor(const functor& copy) { _count = copy._count;}
+		void operator()(T& ref)
+		{
+			std::cout << ref << std::endl;
+			_count++;
+		}
+		int _count;
+};
+
+/*
+	I used this in cpp08 to calculate the span, saving the lowest value
+	inside the functor class and finally returning it
+*/
+
+int main(void)
+{
+	int arr[5] = {1,2,3,4,5};
+
+	functor<int> func = iter(arr, 5, functor<int>());
+	std::cout << func._count << std::endl;
+}
+
+
+
+
+/*
+
 
 void    super_specific_std_string_cout(std::string& str)
 {
@@ -51,3 +108,4 @@ int main(void)
 
     return (0);
 }
+*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:44:11 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/22 18:23:47 by mmaria-d         ###   ########.fr       */
+/*   Updated: 2024/04/23 11:41:30 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@
 
 #include <iostream>
 
-template <class T> 
+/*
+original solution
+
+template <class T>
 void iter(T arr[], size_t len, void(*func)(T&))
 {
     for (size_t i = 0; i < len; i++)
@@ -24,8 +27,23 @@ void iter(T arr[], size_t len, void(*func)(T&))
         func(arr[i]);
     }
 }
+*/
 
-template <class T> 
+template <class T, class F>
+F iter(T arr[], size_t len, F func)
+{
+    for (size_t i = 0; i < len; i++)
+    {
+        func(arr[i]);
+    }
+	return (func);
+}
+
+/*
+	returning the function object itself, as std::for_each does
+*/
+
+template <class T>
 void print_arr(T arr[], size_t len)
 {
     for (size_t i = 0; i < len; i++)
@@ -33,13 +51,13 @@ void print_arr(T arr[], size_t len)
     std::cout << std::endl;
 }
 
-template <class T> 
+template <class T>
 void double_val(T& a)
 {
     a = a * 2;
 }
 
-template <class T> 
+template <class T>
 void print_cout(T& a)
 {
     std::cout << a << std::endl;
