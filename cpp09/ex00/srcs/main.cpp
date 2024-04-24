@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:02:27 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/19 10:02:40 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/24 10:53:13 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "BitcoinExchange.hpp"
 
 int main(void)
 {
