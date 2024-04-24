@@ -5,20 +5,36 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/19 10:02:27 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/24 11:03:26 by codespace        ###   ########.fr       */
+/*   Created: 2024/04/24 16:18:32 by codespace         #+#    #+#             */
+/*   Updated: 2024/04/24 16:18:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 #include "BitcoinExchange.hpp"
 
-int main(int ac, char **av)
+#include <iostream>
+#include <ctime>
+#include <map>
+#include <string>
+#include <exception>
+#include <fstream>
+#include <sstream>
+
+
+int main()
 {
-	if (ac != 2)
-	{
-		CERR("Error: could not open file.");
-		return (0);
-	}
-	(void)av;
-    return (0);
+
+
+    try
+    {
+        BitcoinExchange btc;
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    return 0;
 }

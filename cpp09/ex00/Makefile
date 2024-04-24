@@ -6,11 +6,11 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/24 10:50:55 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/24 16:17:59 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		=		mutantstack
+NAME 		=		btc
 
 ##	Compiler and flags
 COMP		=		c++
@@ -31,7 +31,8 @@ INC_FILES		=		BitcoinExchange.hpp
 
 
 SRC_FILES		=		main.cpp			\
-						BitcoinExchange.cpp
+						BitcoinExchange.cpp	\
+						BitcoinExchange_dates.cpp
 
 
 

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:52:57 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/24 11:05:56 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/24 16:16:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ BitcoinExchange::BitcoinExchange()
 	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "BitcoinExchange Constructor called" << std::endl;
 	#endif
+
+	loadDataBase();
+	printDataBase();
 }
 
 BitcoinExchange::~BitcoinExchange()
