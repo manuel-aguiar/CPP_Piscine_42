@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:16:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/24 16:19:04 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/24 16:23:29 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ long    BitcoinExchange::dateToLong(std::string& datestr, const int& line_number
 
     ss >> year >> delim >> month >> delim >> day;
     //std::cout << "year: " << year << ", month : " << month << ", day: " << day << std::endl;
-    if (ss.fail() || ss.peek() != EOF)
+    if (ss.fail())			// unprotected for the stream having characters still;
     {
         throw BitcoinExchange::DataBaseException(line_number,
         "date is not correctly formated.");
@@ -59,7 +59,7 @@ long    BitcoinExchange::dateToLong(std::string& datestr, const int& line_number
     if (!validateDate(timeinfo))
         throw BitcoinExchange::DataBaseException(line_number,
         "date is not a valid calendar date.");
-    return std::difftime(std::mktime(&timeinfo), 0) / (60 * 60 * 24); // Convert to days since epoch
+    return (std::difftime(std::mktime(&timeinfo), 0) / (60 * 60 * 24)); // Convert to days since epoch
 }
 
 void    BitcoinExchange::loadDataBase(void)
@@ -89,7 +89,7 @@ void    BitcoinExchange::loadDataBase(void)
         long datenum = dateToLong(datestr, line_number);
         float   price;
         ss >> price;
-        if (ss.fail() || ss.peek() != EOF)
+        if (ss.fail())				// unprotected for the stream having characters still;
             throw BitcoinExchange::DataBaseException(line_number,
         "price is not correctly formated.");
         _database[datenum] = price;

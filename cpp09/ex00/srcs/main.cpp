@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:18:32 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/24 16:18:49 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/24 16:23:44 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@
 
 int main()
 {
-
-
     try
     {
         BitcoinExchange btc;
