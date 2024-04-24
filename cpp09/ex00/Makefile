@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: manuel <manuel@student.42.fr>              +#+  +:+       +#+         #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/19 09:54:44 by manuel           ###   ########.fr        #
+#    Updated: 2024/04/24 10:50:55 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,11 +26,12 @@ OBJ_PATH	=		objs
 
 ## ALL FILES
 
-INC_FILES		=		
+INC_FILES		=		BitcoinExchange.hpp
 
 
 
-SRC_FILES		=		main.cpp
+SRC_FILES		=		main.cpp			\
+						BitcoinExchange.cpp
 
 
 
