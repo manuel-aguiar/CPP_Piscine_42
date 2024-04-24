@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 08:20:57 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/17 13:49:38 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/24 15:56:34 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,12 +97,23 @@ int main(void)
 	{
 		std::string container("tretas");
 
-		int target = 65;
+
 
 		try
 		{
+
+			/*
+				this won't compile :0 type mismatch between char and int :0
+			*/
+
+			/*
+			int target = 65;
+			(void)target;
 			int res = *easyfind(container, target);
 			std::cout << res << std::endl;
+			*/
+
+
 		}
 		catch(const std::exception& e)
 		{

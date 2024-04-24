@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 08:23:39 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/17 13:52:00 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/24 15:56:54 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,34 @@
 #include <exception>
 
 template <
-	class Container
+    template <typename, typename> class Container,
+    typename Allocator
 >
-typename Container::iterator
-easyfind(Container& container, int value)
+typename Container<int, Allocator>::iterator
+easyfind(Container<int, Allocator>& container, int value)
 {
-	std::cout << "calling easyfind, INTEGER, SEQUENCE containers" << std::endl;
-	typename Container::iterator it = std::find(container.begin(), container.end(), value);
-	if (it == container.end())
-		throw std::runtime_error("Value not found in container");
-    return (it);
+    std::cout << "calling easyfind, INTEGER, SEQUENCE containers" << std::endl;
+    typename Container<int, Allocator>::iterator it = std::find(container.begin(), container.end(), value);
+    if (it == container.end())
+        throw std::runtime_error("Value not found in container");
+    return it;
 }
 
 template <
-	class Container,
-	typename Value
+    template<
+		typename,
+		typename
+	> class C,
+    typename V,
+	typename Allocator
 >
-typename Container::iterator
-easyfind(Container& container, Value& value)
+typename C<V, Allocator>::iterator
+easyfind(C<V, Allocator>& container, const V& value)
 {
-	std::cout << "calling easyfind, GENERIC, SEQUENCE containers" << std::endl;
-	typename Container::iterator it = std::find(container.begin(), container.end(), value);
-	if (it == container.end())
-		throw std::runtime_error("Value not found in container");
+    std::cout << "calling easyfind, GENERIC, SEQUENCE containers" << std::endl;
+    typename C<V, Allocator>::iterator it = std::find(container.begin(), container.end(), value);
+    if (it == container.end())
+        throw std::runtime_error("Value not found in container");
     return (it);
 }
 
