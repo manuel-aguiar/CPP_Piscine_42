@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 16:44:11 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/23 15:59:40 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/24 16:12:26 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,13 @@ void iter(T arr[], size_t len, void(*func)(T&))
 }
 */
 
-template <class T, class F>
+template <
+	class T,
+	class F
+>
 F iter(T arr[], size_t len, F func)
 {
-	std::cout << "function copy template" << std::endl;
+	std::cout << "function template copy" << std::endl;
     for (size_t i = 0; i < len; i++)
     {
         func(arr[i]);
@@ -40,7 +43,26 @@ F iter(T arr[], size_t len, F func)
 	return (func);
 }
 
-template <class T, class F>
+template <
+	class T,
+	template <
+		typename
+	> class F
+>
+F<T> iter(T arr[], size_t len, F<T> func)
+{
+	std::cout << "function template template copy" << std::endl;
+    for (size_t i = 0; i < len; i++)
+    {
+        func(arr[i]);
+    }
+	return (func);
+}
+
+template <
+	class T,
+	class F
+>
 F& iter(T arr[], size_t len, F* func)
 {
 	std::cout << "function pointer template" << std::endl;
@@ -51,7 +73,27 @@ F& iter(T arr[], size_t len, F* func)
 	return (*func);
 }
 
-template <class T, class F, size_t len>
+template <
+	class T,
+	template <
+		typename
+	> class F
+>
+F<T>& iter(T arr[], size_t len, F<T>* func)
+{
+	std::cout << "function template template pointer" << std::endl;
+    for (size_t i = 0; i < len; i++)
+    {
+        (*func)(arr[i]);
+    }
+	return (*func);
+}
+
+template <
+	class T,
+	class F,
+	size_t len
+>
 F iter(T (&arr)[len], F func)
 {
 	std::cout << "function copy template, len implicitely passed via &arr reference" << std::endl;
@@ -62,7 +104,28 @@ F iter(T (&arr)[len], F func)
 	return (func);
 }
 
-template <class T, class F, size_t len>
+template <
+	class T,
+	template <
+		typename
+	> class F,
+	size_t len
+>
+F<T> iter(T (&arr)[len], F<T> func)
+{
+	std::cout << "function template template copy, len implicitely passed via &arr reference" << std::endl;
+    for (size_t i = 0; i < len; i++)
+    {
+        func(arr[i]);
+    }
+	return (func);
+}
+
+template <
+	class T,
+	class F,
+	size_t len
+>
 F& iter(T (&arr)[len], F* func)
 {
 	std::cout << "function pointer template, len implicitely passed via &arr reference" << std::endl;
@@ -73,6 +136,22 @@ F& iter(T (&arr)[len], F* func)
 	return (*func);
 }
 
+template <
+	class T,
+	template <
+		typename
+	> class F,
+	size_t len
+>
+F<T>& iter(T (&arr)[len], F<T>* func)
+{
+	std::cout << "function template template pointer, len implicitely passed via &arr reference" << std::endl;
+    for (size_t i = 0; i < len; i++)
+    {
+        (*func)(arr[i]);
+    }
+	return (*func);
+}
 
 /*
 	returning the function object itself, as std::for_each does
