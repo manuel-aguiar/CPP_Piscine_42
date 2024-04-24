@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:51:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/24 10:53:49 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/24 11:03:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,9 @@ class BitcoinExchange
 		/* data */
 };
 
-BitcoinExchange::BitcoinExchange(/* args */)
-{
-}
-
-BitcoinExchange::~BitcoinExchange()
-{
-}
-
-
-
+/*
+	Display message on STDERR and returns 0.
+*/
+#define CERR(x) std::cerr << (x) << std::endl
 
 #endif
