@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:19:33 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/26 16:41:25 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 16:41:55 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void    BitcoinExchange::readInputFile(char *file_location)
             ss >> quantity;
             if (ss.fail() || ss.peek() != EOF)
                 throw InputFileException("price is not correctly formated.");
-            if (quantity > std::numeric_limits<int>::max())
+            if ((long)quantity > std::numeric_limits<int>::max())
                 throw InputFileException("too large a number");
             if (quantity <= 0)
                 throw InputFileException("not a positive number");
