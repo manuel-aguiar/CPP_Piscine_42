@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:16:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/26 16:38:27 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 16:45:02 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ void    BitcoinExchange::loadDataBase(void)
         throw DataBaseException(line_number,
         "file 'data.csv' is not available in the current directory.");
 
-    
-
     std::string         buffer;
     std::string         datestr;
 
@@ -84,9 +82,15 @@ void    BitcoinExchange::loadDataBase(void)
         long datenum = _dateToLong(datestr, line_number);
         float   price;
         ss >> price;
-        if (ss.fail())				// unprotected for the stream having characters still;
+        if (ss.fail())
             throw DataBaseException(line_number,
-        "price is not correctly formated.");
+                "price is not correctly formated.");
+        if (static_cast<long>(price) > std::numeric_limits<int>::max())
+            throw DataBaseException(line_number,
+                "too large a number");
+        if (price < 0)
+            throw DataBaseException(line_number,
+                "not a non-negative number");
         
         insertDataBase(datenum, price, line_number);
     }
