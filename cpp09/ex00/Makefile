@@ -6,7 +6,7 @@
 #    By: manuel <manuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/26 15:19:27 by manuel           ###   ########.fr        #
+#    Updated: 2024/04/26 17:12:09 by manuel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,7 @@ fclean: clean
 re: fclean all
 
 git:
-	@git add $(INCS) $(SRCS) Makefile cpp09_ex00_notes.txt && git commit -m "commiting" && git push
+	@git add $(INCS) $(SRCS) Makefile cpp09_ex00_notes.txt input.txt && git commit -m "commiting" && git push
 
 run: all
 	@./$(NAME)
