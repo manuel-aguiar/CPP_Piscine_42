@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:51:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/26 16:46:08 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 17:03:42 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,22 +59,9 @@ class BitcoinExchange
 	    class DataBaseException : public std::exception
 	    {
 	        public:
-	            DataBaseException(const size_t whatLine, const std::string& whatError) throw()
-	            {
-	                std::stringstream ss;
-
-	                ss << whatLine;
-	                msg = "Error: database at line "
-	                    + ss.str()
-	                    + ": "
-	                    + whatError;
-	            }
-
-	            ~DataBaseException() throw () {}
-	            const char *what() const throw()
-	            {
-	                return (msg.c_str());
-	            }
+	            DataBaseException(const size_t whatLine, const std::string& whatError) throw();
+	            ~DataBaseException() throw ();
+	            const char *what() const throw();
 	        private:
 	            std::string     msg;
 	    };
@@ -82,19 +69,9 @@ class BitcoinExchange
 	    class InputFileException : public std::exception
 	    {
 	        public:
-			
-	            InputFileException(const std::string& whatError) throw()
-	            {
-	                msg = "Error: " + whatError;
-	            }
-
-	            ~InputFileException() throw () {}
-
-	            const char *what() const throw()
-	            {
-	                return (msg.c_str());
-	            }
-				
+	            InputFileException(const std::string& whatError) throw();
+	            ~InputFileException() throw ();
+	            const char *what() const throw();
 	        private:
 	            std::string     msg;
 	    };
@@ -102,19 +79,9 @@ class BitcoinExchange
 	    class BadInputException : public std::exception
 	    {
 	        public:
-			
-	            BadInputException(const std::string& argument) throw()
-	            {
-	                msg = "Error: bad input => " + argument;
-	            }
-
-	            ~BadInputException() throw () {}
-
-	            const char *what() const throw()
-	            {
-	                return (msg.c_str());
-	            }
-				
+	            BadInputException(const std::string& argument) throw();
+	            ~BadInputException() throw ();
+	            const char *what() const throw();
 	        private:
 	            std::string     msg;
 	    };
