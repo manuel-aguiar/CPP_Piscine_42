@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:16:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/26 14:33:22 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 15:00:00 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool validateDate(tm& timestruct)
     return (true);
 }
 
-long    BitcoinExchange::dateToLong(std::string& datestr, const int& line_number)
+long    BitcoinExchange::dateToLong(const std::string& datestr, const int& line_number)
 {
     int year, month, day;
     char delim;
@@ -106,4 +106,48 @@ void    BitcoinExchange::insertDataBase(const _date_t date, const float price, c
     entry = _database.insert(std::make_pair(date, price));
     if (entry.second == false)
         throw DataBaseException(line_number, "doubled database entry.");
+}
+
+void    BitcoinExchange::readInputFile(char *file_location)
+{
+    std::ifstream infile(file_location);
+    if (!infile.is_open())
+        throw InputFileException("failed to open the file");
+    
+    std::string         buffer;
+    std::string         datestr;
+    int                 line_number = 0;
+    //dump the header;
+    std::getline(infile, buffer);
+
+    while (!infile.eof())
+    {
+        try
+        {
+            std::getline(infile, buffer);
+            if (infile.eof())       //potential mistake, EOF may not be on a newline
+                break ;
+            std::stringstream   ss(buffer);
+            std::getline(ss, datestr, '|');
+            long datenum = dateToLong(datestr, line_number);
+            float   price;
+            ss >> price;
+            if (ss.fail())				// unprotected for the stream having characters still;
+                throw InputFileException("price is not correctly formated.");
+            
+            std::map<_date_t, float>::iterator iter = _database.lower_bound(datenum);
+            if (iter == _database.end())
+                throw InputFileException(" you have a position in Bitcoin... before it existed??");
+            std::cout << datestr << "=> " << price << " = " << price * iter->second << std::endl;
+        }
+        catch (const std::exception& e)
+        {
+            std::cerr << e.what() << std::endl;
+        }
+        
+    }
+
+
+    infile.close();
+        
 }

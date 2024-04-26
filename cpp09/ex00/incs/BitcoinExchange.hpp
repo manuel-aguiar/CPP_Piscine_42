@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:51:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/26 14:19:26 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 14:51:21 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class BitcoinExchange
 		BitcoinExchange& operator=(const BitcoinExchange& assign);
 
 
+		void	readInputFile(char *file_location);
 
 
 	private:
@@ -48,7 +49,7 @@ class BitcoinExchange
 		void		insertDataBase(const _date_t date, const float price, const int& line_number);
 
 		//helper methods
-	    long    dateToLong(std::string& datestr, const int& line_number);
+	    long    dateToLong(const std::string& datestr, const int& line_number);
 
 
 
@@ -71,6 +72,26 @@ class BitcoinExchange
 	            {
 	                return (msg.c_str());
 	            }
+	        private:
+	            std::string     msg;
+	    };
+
+	    class InputFileException : public std::exception
+	    {
+	        public:
+			
+	            InputFileException(const std::string& whatError) throw()
+	            {
+	                msg = "Error: " + whatError;
+	            }
+
+	            ~InputFileException() throw () {}
+
+	            const char *what() const throw()
+	            {
+	                return (msg.c_str());
+	            }
+				
 	        private:
 	            std::string     msg;
 	    };
