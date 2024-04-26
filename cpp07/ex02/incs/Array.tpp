@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 14:51:27 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/22 16:03:03 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/26 10:00:14 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ Array<T>& Array<T>::operator=(const Array<T>& assign)
 template <class T>
 T&	Array<T>::operator[](const size_t index)
 {
-	if (index >= _size || index < 0)
+	if (index >= _size)
 		throw std::out_of_range("Index is out of range");
 	return (_arr[index]);
 }
