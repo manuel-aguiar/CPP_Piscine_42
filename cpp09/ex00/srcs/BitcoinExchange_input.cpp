@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:19:33 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/26 16:18:43 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 16:25:14 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,15 @@ long    BitcoinExchange::_dateToLong(const std::string& datestr)
     std::stringstream ss(datestr);
 
     ss >> year >> delim >> month >> delim >> day;
-    //std::cout << "year: " << year << ", month : " << month << ", day: " << day << std::endl;
     if (ss.fail())			// unprotected for the stream having characters still;
-    {
         throw InputFileException("date is not correctly formated.");
-    }
     std::memset(&timeinfo, 0, sizeof(timeinfo));
-    timeinfo.tm_year = year - 1900; // Years since 1900
-    timeinfo.tm_mon = month - 1;    // Months are 0-based
-    timeinfo.tm_mday = day;         // Day of the month
+    timeinfo.tm_year = year - 1900;
+    timeinfo.tm_mon = month - 1;
+    timeinfo.tm_mday = day;
     if (!_validateDate(timeinfo))
         throw InputFileException("date is not a valid calendar date.");
-    return (std::difftime(std::mktime(&timeinfo), 0) / (60 * 60 * 24)); // Convert to days since epoch
+    return (std::difftime(std::mktime(&timeinfo), 0) / (60 * 60 * 24));
 }
 
 void    BitcoinExchange::readInputFile(char *file_location)
@@ -60,7 +57,8 @@ void    BitcoinExchange::readInputFile(char *file_location)
             if (infile.eof())       //potential mistake, EOF may not be on a newline
                 break ;
             std::stringstream   ss(buffer);
-            std::getline(ss, datestr, '|');
+            if (!std::getline(ss, datestr, '|'))
+                throw BadInputException(buffer);
             long datenum = _dateToLong(datestr);
             float   price;
             ss >> price;

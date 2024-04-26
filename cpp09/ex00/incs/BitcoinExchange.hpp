@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:51:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/26 16:14:10 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 16:23:52 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,26 @@ class BitcoinExchange
 	            }
 
 	            ~InputFileException() throw () {}
+
+	            const char *what() const throw()
+	            {
+	                return (msg.c_str());
+	            }
+				
+	        private:
+	            std::string     msg;
+	    };
+
+	    class BadInputException : public std::exception
+	    {
+	        public:
+			
+	            BadInputException(const std::string& argument) throw()
+	            {
+	                msg = "Error: bad input => " + argument;
+	            }
+
+	            ~BadInputException() throw () {}
 
 	            const char *what() const throw()
 	            {
