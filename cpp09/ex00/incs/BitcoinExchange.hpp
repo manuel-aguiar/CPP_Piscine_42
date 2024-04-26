@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:51:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/26 17:03:42 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 17:04:57 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,6 @@ class BitcoinExchange
 
 /* Display message on STDERR.  */
 #define CERR(x) std::cerr << (x) << std::endl
-
-
-
 
 
 
