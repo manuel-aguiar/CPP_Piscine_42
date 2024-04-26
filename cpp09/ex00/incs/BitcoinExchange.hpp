@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:51:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/26 17:08:48 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 17:10:07 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ class BitcoinExchange
 		void		insertDataBase(const _date_t date, const float price, const int& line_number);
 
 		bool 		_validateDate(tm& timestruct);
-	    long    	_dateToLong(const std::string& datestr, const int& line_number);
-		long    	_dateToLong(const std::string& datestr);
+	    _date_t    	_dateToLong(const std::string& datestr, const int& line_number);
+		_date_t    	_dateToLong(const std::string& datestr);
 		void		_checkInputFileHeader(const std::string& buffer);
 
 	    class DataBaseException : public std::exception

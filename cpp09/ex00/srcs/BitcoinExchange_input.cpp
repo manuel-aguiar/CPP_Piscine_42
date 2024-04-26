@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:19:33 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/26 16:45:28 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 17:11:12 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void    BitcoinExchange::_checkInputFileHeader(const std::string& buffer)
         throw InputFileException("database header must be 'date | value'");
 }
 
-long    BitcoinExchange::_dateToLong(const std::string& datestr)
+BitcoinExchange::_date_t    BitcoinExchange::_dateToLong(const std::string& datestr)
 {
     int year, month, day;
     char delim;
@@ -62,7 +62,7 @@ void    BitcoinExchange::readInputFile(char *file_location)
             if(ss.peek() == EOF)
                 throw BadInputException(buffer);
                 
-            long    datenum = _dateToLong(datestr);
+            _date_t    datenum = _dateToLong(datestr);
             float   quantity;
             ss >> quantity;
 

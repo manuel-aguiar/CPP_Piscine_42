@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:16:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/26 17:07:51 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 17:11:35 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ bool BitcoinExchange::_validateDate(tm& timestruct)
     return (true);
 }
 
-long    BitcoinExchange::_dateToLong(const std::string& datestr, const int& line_number)
+BitcoinExchange::_date_t    BitcoinExchange::_dateToLong(const std::string& datestr, const int& line_number)
 {
     int year, month, day;
     char delim;
