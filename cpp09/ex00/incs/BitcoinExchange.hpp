@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:51:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/24 16:15:57 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/26 14:19:26 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 #include <ctime>
 #include <algorithm>
 
+#include "DataBase.tpp"
+
 class BitcoinExchange
 {
 	public:
@@ -36,10 +38,14 @@ class BitcoinExchange
 
 
 	private:
-	    void        loadDataBase(void);
-	    void        printDataBase(void);
+
 	    typedef long int                _date_t;
 	    std::map<_date_t,float>         _database;
+
+	    void        loadDataBase(void);
+	    void        printDataBase(void);
+
+		void		insertDataBase(const _date_t date, const float price, const int& line_number);
 
 		//helper methods
 	    long    dateToLong(std::string& datestr, const int& line_number);

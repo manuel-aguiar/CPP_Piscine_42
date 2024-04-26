@@ -3,24 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange_dates.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:16:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/24 16:23:29 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/26 14:33:22 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 
 #include "BitcoinExchange.hpp"
-
-bool    isValidDate(const std::string& datestr)
-{
-    (void)datestr;
-    return true;
-}
-
-
 
 
 //   https://stackoverflow.com/questions/36229110/c-month-day-and-year-validation
@@ -57,7 +49,7 @@ long    BitcoinExchange::dateToLong(std::string& datestr, const int& line_number
     timeinfo.tm_mon = month - 1;    // Months are 0-based
     timeinfo.tm_mday = day;         // Day of the month
     if (!validateDate(timeinfo))
-        throw BitcoinExchange::DataBaseException(line_number,
+        throw DataBaseException(line_number,
         "date is not a valid calendar date.");
     return (std::difftime(std::mktime(&timeinfo), 0) / (60 * 60 * 24)); // Convert to days since epoch
 }
@@ -68,7 +60,7 @@ void    BitcoinExchange::loadDataBase(void)
 
     std::ifstream infile("data.csv");
     if (!infile.is_open())
-        throw BitcoinExchange::DataBaseException(line_number,
+        throw DataBaseException(line_number,
         "file 'data.csv' is not available in the current directory.");
 
     std::string         buffer;
@@ -90,9 +82,10 @@ void    BitcoinExchange::loadDataBase(void)
         float   price;
         ss >> price;
         if (ss.fail())				// unprotected for the stream having characters still;
-            throw BitcoinExchange::DataBaseException(line_number,
+            throw DataBaseException(line_number,
         "price is not correctly formated.");
-        _database[datenum] = price;
+        
+        insertDataBase(datenum, price, line_number);
     }
 
 
@@ -107,3 +100,10 @@ void    BitcoinExchange::printDataBase(void)
     }
 }
 
+void    BitcoinExchange::insertDataBase(const _date_t date, const float price, const int& line_number)
+{
+    std::pair<std::map <_date_t, float>::iterator , bool>
+    entry = _database.insert(std::make_pair(date, price));
+    if (entry.second == false)
+        throw DataBaseException(line_number, "doubled database entry.");
+}

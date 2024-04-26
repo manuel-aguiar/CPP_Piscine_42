@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#    By: manuel <manuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/24 16:17:59 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/26 10:52:36 by manuel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ OBJ_PATH	=		objs
 
 ## ALL FILES
 
-INC_FILES		=		BitcoinExchange.hpp
+INC_FILES		=		BitcoinExchange.hpp	\
+						DataBase.tpp
 
 
 
