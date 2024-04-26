@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:16:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/26 16:15:38 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 16:35:14 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,13 @@ void    BitcoinExchange::loadDataBase(void)
     {
         ++line_number;
         std::getline(infile, buffer);
-        if (infile.eof())       //potential mistake, EOF may not be on a newline
+        if (buffer.size() == 0)
             break ;
         std::stringstream   ss(buffer);
         std::getline(ss, datestr, ',');
+        if(ss.peek() == EOF)
+            throw DataBaseException(line_number,
+        "database incomplete input.");
         long datenum = _dateToLong(datestr, line_number);
         float   price;
         ss >> price;

@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:19:33 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/26 16:25:14 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 16:35:52 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,17 @@ void    BitcoinExchange::readInputFile(char *file_location)
         try
         {
             std::getline(infile, buffer);
-            if (infile.eof())       //potential mistake, EOF may not be on a newline
+            if (infile.eof() && buffer.size() == 0)
                 break ;
-            std::stringstream   ss(buffer);
-            if (!std::getline(ss, datestr, '|'))
+            std::istringstream   ss(buffer);
+            std::getline(ss, datestr, '|');
+            if(ss.peek() == EOF)
                 throw BadInputException(buffer);
             long datenum = _dateToLong(datestr);
             float   price;
             ss >> price;
-            if (ss.fail())				// unprotected for the stream having characters still;
+            if (ss.fail() || ss.peek() != EOF)
                 throw InputFileException("price is not correctly formated.");
-            
             std::map<_date_t, float>::iterator iter = _database.lower_bound(datenum);
             if (iter == _database.end())
                 --iter;
