@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:16:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/26 15:00:00 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 15:05:34 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ void    BitcoinExchange::readInputFile(char *file_location)
             
             std::map<_date_t, float>::iterator iter = _database.lower_bound(datenum);
             if (iter == _database.end())
-                throw InputFileException(" you have a position in Bitcoin... before it existed??");
+                --iter;
             std::cout << datestr << "=> " << price << " = " << price * iter->second << std::endl;
         }
         catch (const std::exception& e)
