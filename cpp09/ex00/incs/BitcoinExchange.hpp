@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:51:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/26 16:23:52 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 16:39:45 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #include <sstream>
 #include <ctime>
 #include <algorithm>
-
+#include <limits>
 #include "DataBase.tpp"
 
 class BitcoinExchange

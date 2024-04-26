@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:19:33 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/26 16:35:52 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 16:41:25 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,19 @@ void    BitcoinExchange::readInputFile(char *file_location)
             std::getline(ss, datestr, '|');
             if(ss.peek() == EOF)
                 throw BadInputException(buffer);
-            long datenum = _dateToLong(datestr);
-            float   price;
-            ss >> price;
+            long    datenum = _dateToLong(datestr);
+            float   quantity;
+            ss >> quantity;
             if (ss.fail() || ss.peek() != EOF)
                 throw InputFileException("price is not correctly formated.");
+            if (quantity > std::numeric_limits<int>::max())
+                throw InputFileException("too large a number");
+            if (quantity <= 0)
+                throw InputFileException("not a positive number");
             std::map<_date_t, float>::iterator iter = _database.lower_bound(datenum);
             if (iter == _database.end())
                 --iter;
-            std::cout << datestr << "=> " << price << " = " << price * iter->second << std::endl;
+            std::cout << datestr << "=> " << quantity << " = " << quantity * iter->second << std::endl;
         }
         catch (const std::exception& e)
         {

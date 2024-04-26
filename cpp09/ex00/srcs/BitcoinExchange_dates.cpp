@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:16:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/26 16:35:14 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 16:38:27 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void    BitcoinExchange::loadDataBase(void)
     {
         ++line_number;
         std::getline(infile, buffer);
-        if (buffer.size() == 0)
+        if (infile.eof() && buffer.size() == 0)
             break ;
         std::stringstream   ss(buffer);
         std::getline(ss, datestr, ',');
