@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:16:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/26 15:05:34 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/26 16:15:38 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 //   https://stackoverflow.com/questions/36229110/c-month-day-and-year-validation
 
-bool validateDate(tm& timestruct)
+bool BitcoinExchange::_validateDate(tm& timestruct)
 {
     struct tm copy;
 
@@ -30,7 +30,7 @@ bool validateDate(tm& timestruct)
     return (true);
 }
 
-long    BitcoinExchange::dateToLong(const std::string& datestr, const int& line_number)
+long    BitcoinExchange::_dateToLong(const std::string& datestr, const int& line_number)
 {
     int year, month, day;
     char delim;
@@ -41,14 +41,14 @@ long    BitcoinExchange::dateToLong(const std::string& datestr, const int& line_
     //std::cout << "year: " << year << ", month : " << month << ", day: " << day << std::endl;
     if (ss.fail())			// unprotected for the stream having characters still;
     {
-        throw BitcoinExchange::DataBaseException(line_number,
+        throw DataBaseException(line_number,
         "date is not correctly formated.");
     }
     std::memset(&timeinfo, 0, sizeof(timeinfo));
     timeinfo.tm_year = year - 1900; // Years since 1900
     timeinfo.tm_mon = month - 1;    // Months are 0-based
     timeinfo.tm_mday = day;         // Day of the month
-    if (!validateDate(timeinfo))
+    if (!_validateDate(timeinfo))
         throw DataBaseException(line_number,
         "date is not a valid calendar date.");
     return (std::difftime(std::mktime(&timeinfo), 0) / (60 * 60 * 24)); // Convert to days since epoch
@@ -63,13 +63,13 @@ void    BitcoinExchange::loadDataBase(void)
         throw DataBaseException(line_number,
         "file 'data.csv' is not available in the current directory.");
 
+    
+
     std::string         buffer;
     std::string         datestr;
 
-    //dump the header;
     std::getline(infile, buffer);
     ++line_number;
-
     while (!infile.eof())
     {
         ++line_number;
@@ -78,7 +78,7 @@ void    BitcoinExchange::loadDataBase(void)
             break ;
         std::stringstream   ss(buffer);
         std::getline(ss, datestr, ',');
-        long datenum = dateToLong(datestr, line_number);
+        long datenum = _dateToLong(datestr, line_number);
         float   price;
         ss >> price;
         if (ss.fail())				// unprotected for the stream having characters still;
@@ -106,48 +106,4 @@ void    BitcoinExchange::insertDataBase(const _date_t date, const float price, c
     entry = _database.insert(std::make_pair(date, price));
     if (entry.second == false)
         throw DataBaseException(line_number, "doubled database entry.");
-}
-
-void    BitcoinExchange::readInputFile(char *file_location)
-{
-    std::ifstream infile(file_location);
-    if (!infile.is_open())
-        throw InputFileException("failed to open the file");
-    
-    std::string         buffer;
-    std::string         datestr;
-    int                 line_number = 0;
-    //dump the header;
-    std::getline(infile, buffer);
-
-    while (!infile.eof())
-    {
-        try
-        {
-            std::getline(infile, buffer);
-            if (infile.eof())       //potential mistake, EOF may not be on a newline
-                break ;
-            std::stringstream   ss(buffer);
-            std::getline(ss, datestr, '|');
-            long datenum = dateToLong(datestr, line_number);
-            float   price;
-            ss >> price;
-            if (ss.fail())				// unprotected for the stream having characters still;
-                throw InputFileException("price is not correctly formated.");
-            
-            std::map<_date_t, float>::iterator iter = _database.lower_bound(datenum);
-            if (iter == _database.end())
-                --iter;
-            std::cout << datestr << "=> " << price << " = " << price * iter->second << std::endl;
-        }
-        catch (const std::exception& e)
-        {
-            std::cerr << e.what() << std::endl;
-        }
-        
-    }
-
-
-    infile.close();
-        
 }

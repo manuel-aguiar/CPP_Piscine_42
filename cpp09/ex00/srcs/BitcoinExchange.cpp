@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:52:57 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/24 16:16:14 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/26 16:11:11 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ BitcoinExchange::BitcoinExchange()
 	#endif
 
 	loadDataBase();
-	printDataBase();
+	//printDataBase();
 }
 
 BitcoinExchange::~BitcoinExchange()

@@ -6,7 +6,7 @@
 #    By: manuel <manuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/26 10:52:36 by manuel           ###   ########.fr        #
+#    Updated: 2024/04/26 15:19:27 by manuel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,9 +31,10 @@ INC_FILES		=		BitcoinExchange.hpp	\
 
 
 
-SRC_FILES		=		main.cpp			\
-						BitcoinExchange.cpp	\
-						BitcoinExchange_dates.cpp
+SRC_FILES		=		main.cpp						\
+						BitcoinExchange.cpp				\
+						BitcoinExchange_dates.cpp		\
+						BitcoinExchange_input.cpp
 
 
 
