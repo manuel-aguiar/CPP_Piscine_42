@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:39:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/29 15:04:35 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/29 16:27:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include <set>
 #include <vector>
 #include <limits>
+#include <iterator>
 
 /*
 	Purposefully not a very efficient solution.
@@ -57,7 +58,12 @@ class Span
 		void				addNumber(const int num);
 		void				addBatch(const size_t count);
 		void				addBatch(int start, int end);
+
+		template <typename Iterator>
+		void				addBatch(const Iterator begin, const Iterator end);
+
 		void				print_numbers(void) const;
+
 
 		const std::set<int>&	get_numbers(void) const;
 
@@ -107,6 +113,34 @@ class Span
 
 //setting srand for adding a batch of numbers
 extern int g_rand_seed;
+
+//template function for iterators
+template <typename Iterator>
+void	Span::addBatch(const Iterator begin, const Iterator end)
+{
+	size_t save_size = _numbers.size();
+	int check = std::distance(begin, end);
+	if (check <= 0)
+		throw std::runtime_error ("Negative insertion distance passed to addBatch");
+	size_t add = check;
+	size_t save_add = add;
+	if (_total_capacity - _used_capacity < add)
+		add = _total_capacity - _used_capacity;
+	if (add != save_add)
+	{
+		/*oh boy... std::next c++11 would be helpful*/
+		Iterator new_end = begin;
+		for (size_t i = 0; i < add; ++i)
+			++new_end;
+		_numbers.insert(begin, new_end);
+	}
+	_numbers.insert(begin, end);
+	_used_capacity += add;
+	if (_numbers.size() - save_size != add)
+		_doubled_entry = true;
+	if (add != save_add)
+		throw std::runtime_error ("Span is already at max capacity");
+}
 
 
 #endif

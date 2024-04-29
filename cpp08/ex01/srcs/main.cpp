@@ -6,12 +6,14 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:53:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/29 15:46:54 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/29 16:29:01 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include <iostream>
+#include <vector>
+#include <list>
 
 void    print_int(const int& n)
 {
@@ -46,7 +48,13 @@ int main(void)
 
 	span.addNumber(1);
 	span.addNumber(4);
-	span.addBatch(3, 50000);
+
+	std::vector<int> vec;	//omg with floats results in static cast to int
+	vec.push_back(42);
+	vec.push_back(48);
+	vec.push_back(-1);
+
+	span.addBatch(vec.begin(), vec.end());
 
 	std::cout << "Longest Span is: " << span.longestSpan() << std::endl;
 	std::cout << "Shortest Span is: " << span.shortestSpan() << std::endl;
