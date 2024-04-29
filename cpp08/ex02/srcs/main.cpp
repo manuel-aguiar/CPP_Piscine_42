@@ -5,144 +5,126 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 15:39:25 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/29 14:11:41 by codespace        ###   ########.fr       */
+/*   Created: 2024/04/27 15:08:50 by astein            #+#    #+#             */
+/*   Updated: 2024/04/29 14:13:25 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
-#include <algorithm>
-#include <iostream>
-#include <deque>
-#include <vector>
 #include <list>
-#include <stack>
-#include <ctime>
-#include <cstdlib>
 
-#include "../../ex00/incs/easyfind.hpp"
+// COLORS
+# define CLR_RED "\033[31m"
+# define CLR_GRN "\033[32m"
+# define CLR_YLW "\033[33m"
+# define CLR_BLU "\033[34m"
+# define CLR_ORN "\033[38;5;202m"
+# define CLR_BLD "\033[1m"
+# define CLR_RST "\033[0m"
 
-int	call_srand(void)
+void	title(std::string str, bool newline_before, bool newline_after)
 {
-	std::srand(std::time(0));
-	return (1);
+	if (newline_before)
+		std::cout << std::endl;
+	std::cout << CLR_ORN <<
+		">>> " << str << " <<<" <<
+		CLR_RST << std::endl;
+	if (newline_after)
+		std::cout << std::endl;
 }
 
-int g_rand = call_srand();
-
-template<class T>
-struct print_tester
+void	info(std::string str, std::string clr)
 {
-	void operator()(const T& ref)
-	{
-		std::cout << ref << std::endl;
-	}
-};
+	std::cout <<
+		clr <<
+		" >> " << str <<
+		CLR_RST << std::endl;
+}
 
 
-int main(void)
+int main()
 {
-	std::cout << "**********************************" << std::endl;
-	std::cout << "Mutant Stack, specifiying type\n" << std::endl;
 	{
-		MutantStack<int> tretas;
+		title("START: modified 42 Test", true, false);
+		MutantStack<int>	mstack;
+		std::list<int>		list;
+		mstack.push(5);
+		list.push_back(5);
+		mstack.push(17);
+		list.push_back(17);
+		std::cout << "TOP MINE: " << mstack.top() << std::endl;
+		std::cout << "TOP LIST: " << list.back() << std::endl;
+		mstack.pop();
+		list.pop_back();
+		std::cout << "SIZE MINE: " << mstack.size() << std::endl;
+		std::cout << "SIZE LIST: " << list.size() << std::endl;
+		mstack.push(3);
+		list.push_back(3);
+		mstack.push(5);
+		list.push_back(5);
+		mstack.push(737);
+		list.push_back(737);
+		mstack.push(0);
+		list.push_back(0);
+		MutantStack<int>::iterator it = mstack.begin();
+		std::list<int>::iterator lit = list.begin();
+		MutantStack<int>::iterator ite = mstack.end();
+		std::list<int>::iterator lite = list.end();
+		++it;
+		++lit;
+		--it;
+		--lit;
+		while (it != ite)
+		{
+			std::cout << "MINE: " << *it << std::endl;
+			++it;
+		}
+		while (lit != lite)
+		{
+			std::cout << "LIST: " << *lit << std::endl;
+			++lit;
+		}
+		info ("Try to convert MutantStack to std::stack", CLR_GRN);
+		std::stack<int> s(mstack);
+		title("END: modified 42 Test", false, true);
+		info ("Try to convert MutantStack to std::list", CLR_GRN);
+		std::list<int> l(mstack.begin(), mstack.end());
+		info("Iterating through the list", CLR_GRN);
+		for (std::list<int>::iterator it = l.begin(); it != l.end(); it++)
+			std::cout << *it << std::endl;
 
-		tretas.push(1);
-		tretas.push(2);
-		tretas.push(3);
-		tretas.push(4);
-		tretas.push(5);
+		title("Try reverse iterator incremeting all values", true, false);
+		MutantStack<int>::reverse_iterator rit = mstack.rbegin();
+		MutantStack<int>::reverse_iterator rite = mstack.rend();
+		while (rit != rite)
+		{
+			(*rit)++;
+			std::cout << "MINE: " << *rit << std::endl;
+			++rit;
+		}
 
-		std::cout << "size of stack: " << tretas.size() << ", print: " << std::endl;
-		std::for_each(tretas.begin(), tretas.end(), print_tester<int>());
+		title("Try const iterators...", true, false);
+		info("const_iterator", CLR_GRN);
+		MutantStack<int>::const_iterator cit = mstack.begin();
+		MutantStack<int>::const_iterator cite = mstack.end();
+		while (cit != cite)
+		{
+			// (*cit)++; // Doesn't compile since it's a const_iterator
+			std::cout << "MINE: " << *cit << std::endl;
+			++cit;
+		}
+
+		info("const_reverse_iterator", CLR_GRN);
+		MutantStack<int>::const_reverse_iterator crit = mstack.rbegin();
+		MutantStack<int>::const_reverse_iterator crite = mstack.rend();
+		while (crit != crite)
+		{
+			// (*crit)++; // Doesn't compile since it's a const_iterator
+			std::cout << "MINE: " << *crit << std::endl;
+			++crit;
+		}
+
+
 	}
-
-	std::cout << "**********************************" << std::endl;
-	std::cout << "Mutant Stack, specifiying type and the underlying container as a vector\n" << std::endl;
-	{
-		MutantStack<int, std::vector<int> > tretas;
-
-		tretas.push(3);
-		tretas.push(1);
-		tretas.push(36);
-		tretas.push(43);
-		tretas.push(8);
-
-		std::cout << "print: " << std::endl;
-		std::for_each(tretas.begin(), tretas.end(), print_tester<int>());
-
-		std::cout 	<< "Since vector's iterator are random access, one could use std::sort\n"
-					<< "Would work as well under std::deque, BUT not if we use std::list:\n"
-					<< "	- lists are not contiguous in memory and so, don't support O(1) random access\n"
-					<< "	- Deques have an array of pointers to each block, so they solve random access with\n"
-					<< "	pointer arithmatic. Couple more operations then vector but still constant time" << std::endl;
-
-		std::cout	<< "blablabla time to sort:" << std::endl;
-		std::sort(tretas.begin(), tretas.end());
-		std::for_each(tretas.begin(), tretas.end(), print_tester<int>());
-
-		std::cout << "oh yeah" << std::endl;
-	}
-
-	std::cout << "**********************************" << std::endl;
-	std::cout << "Now, try the same thing with std::list as a base container for std::stack:" << std::endl;
-	std::cout 	<< "Spoiler alert: doesn't compile because std::list iterators are not random access\n"
-				<< "as requested by std::sort\n"
-				<< "Unfortunately, the stack doesn't inherit the std::list::sort() method.. is there a way?\n\n";
-
-	std::cout 	<< "template<\n"
-				<<	"	class T,\n"
-				<<	"	class C\n"
-				<<	">	void MutantStack<T,C>::sort(void)\n"
-				<<	" 	{\n"
-				<<	"		return (std::stack<T,C>::c.sort());\n"
-				<<	" 	}\n";
-	std::cout 	<< "\ntrying to call mutantstack.sort() when the underlying is not a list, would not compile\n"
-				<< "and i can't risk that in evaluation :D but this works"
-				<< std::endl;
-
-	std::cout << "**********************************" << std::endl;
-	std::cout << "Ok let's print the stack backwards\n" << std::endl;
-	{
-		MutantStack<int, std::vector<int> > tretas;
-
-		tretas.push(3);
-		tretas.push(1);
-		tretas.push(36);
-		tretas.push(43);
-		tretas.push(8);
-
-		std::cout << "print forward: " << std::endl;
-		std::for_each(tretas.begin(), tretas.end(), print_tester<int>());
-		std::cout << "print backward: " << std::endl;
-		std::for_each(tretas.rbegin(), tretas.rend(), print_tester<int>());
-
-		std::cout << "oh yeah" << std::endl;
-
-		std::cout 	<< "rbegin() means, the first element of the reversed container\n"
-					<< "so essentially, the last element in the forward container\n"
-					<< "same for rend(), so we essentially print backwards\n"
-					<< "internally, i assume the operator++ decrements the pointer\n"
-					<< "and that is the operator std::for_each needs to move"
-					<< std::endl;
-	}
-
-	std::cout << "**********************************" << std::endl;
-	std::cout << "Let's borrow easyfind from ex00 to see if it works (uses iterators)\n" << std::endl;
-
-	{
-		MutantStack<int> tretas;
-
-		tretas.push(3);
-		tretas.push(1);
-		tretas.push(36);
-		tretas.push(43);
-		tretas.push(8);
-
-		MutantStack<int>::const_iterator iter = easyfind(tretas, 43);
-
-		std::cout << "found it! " << *iter << std::endl;
-	}
-
-	return (0);
+	return 0;
 }
