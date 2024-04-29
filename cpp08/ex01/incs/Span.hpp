@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:39:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/22 10:46:13 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/29 15:04:35 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ class Span
 		size_t 				longestSpan(void) const;
 		void				addNumber(const int num);
 		void				addBatch(const size_t count);
+		void				addBatch(int start, int end);
 		void				print_numbers(void) const;
 
 		const std::set<int>&	get_numbers(void) const;

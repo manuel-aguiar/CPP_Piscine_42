@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:41:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/22 10:55:02 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/29 15:12:16 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	Span::longestSpan() const
 {
 	if (_used_capacity <= 1)
 		throw std::runtime_error("Span doesn't have enough numbers to calculate");
-	return (*--(_numbers.end()) - *(_numbers.begin()));
+	return (*(_numbers.rbegin()) - *(_numbers.begin()));
 }
 
 size_t	Span::shortestSpan() const
@@ -80,6 +80,28 @@ void	Span::addBatch(const size_t count)
 
 		i can't, so i go one by one and the function for rand checks if it is doouble, everytime :(
 	*/
+	if (add != count)
+		throw std::runtime_error ("Span is already at max capacity");
+}
+
+void	Span::addBatch(int start, int end)
+{
+	if (start > end)
+		std::swap(start, end);
+	size_t count = end - start + 1;
+	size_t add = count;
+	if (_total_capacity - _used_capacity < count)
+		add = _total_capacity - _used_capacity;
+
+	std::vector<int> new_nums;
+	new_nums.reserve(add);
+	for (size_t i = 0; i < add; ++i)
+		new_nums.push_back(start + i);
+	if ((*new_nums.rbegin() >= *_numbers.begin() && *new_nums.begin() <= *_numbers.begin())
+	|| (*new_nums.rbegin() >= *_numbers.rbegin() && *new_nums.begin() <= *_numbers.rbegin()))
+		_doubled_entry = true;
+	_numbers.insert(new_nums.begin(), new_nums.end());
+	_used_capacity += add;
 	if (add != count)
 		throw std::runtime_error ("Span is already at max capacity");
 }
