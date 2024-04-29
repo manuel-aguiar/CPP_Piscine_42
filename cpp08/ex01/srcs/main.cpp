@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:53:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/29 16:38:10 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/29 16:40:27 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int main()
 
 int main(void)
 {
-	Span span(1000000);
+	Span span(3);
 
 	span.addNumber(1);
 	span.addNumber(4);
@@ -53,8 +53,20 @@ int main(void)
 	vec.push_back(42);
 	vec.push_back(48);
 	vec.push_back(-1);
+	vec.push_back(-2);
+	vec.push_back(-3);
 
-	span.addBatch(vec.begin(), vec.end());
+	try
+	{
+		span.addBatch(vec.begin(), vec.end());
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+	span.print_numbers();
+
 
 	std::cout << "Longest Span is: " << span.longestSpan() << std::endl;
 	std::cout << "Shortest Span is: " << span.shortestSpan() << std::endl;

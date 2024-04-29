@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:39:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/29 16:37:59 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/29 16:42:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,8 @@ void	Span::addBatch(const Iterator begin, const Iterator end)
 			++new_end;
 		_numbers.insert(begin, new_end);
 	}
-	_numbers.insert(begin, end);
+	else
+		_numbers.insert(begin, end);
 	_used_capacity += add;
 	if (_numbers.size() - save_size != add)
 		_doubled_entry = true;
