@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:39:25 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/29 14:13:30 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/29 14:19:10 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,23 @@ int main(void)
 					<< "internally, i assume the operator++ decrements the pointer\n"
 					<< "and that is the operator std::for_each needs to move"
 					<< std::endl;
+	}
+
+	std::cout << "**********************************" << std::endl;
+	std::cout << "Let's borrow easyfind from ex00 to see if it works (uses iterators)\n" << std::endl;
+
+	{
+		MutantStack<int> tretas;
+
+		tretas.push(3);
+		tretas.push(1);
+		tretas.push(36);
+		tretas.push(43);
+		tretas.push(8);
+
+		MutantStack<int>::const_iterator iter = easyfind(tretas, 43);
+
+		std::cout << "found it! " << *iter << std::endl;
 	}
 
 	std::cout << "**********************************" << std::endl;
