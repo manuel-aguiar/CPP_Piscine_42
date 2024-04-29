@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:39:25 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/29 14:19:10 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/29 14:19:40 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,5 @@ int main(void)
 
 		std::cout << "found it! " << *iter << std::endl;
 	}
-
 	return (0);
 }
