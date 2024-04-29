@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:41:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/29 15:22:38 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/29 15:34:31 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,19 @@ void	Span::addNumber(const int num)
 	_used_capacity++;
 }
 
+/*
+	Two versions of add-batch, random numbers or from-to.
+	save_size variable to measure pre and post insertion.
+	if numbers added is smaller than target, means at least
+	one insertion failed and there is a duplicate entry
+	Faster shortest span calculation, should be zero.
+*/
+
 void	Span::addBatch(const size_t count)
 {
 	size_t add = count;
 	if (_total_capacity - _used_capacity < count)
 		add = _total_capacity - _used_capacity;
-
 	std::vector<int> new_nums;
 	new_nums.reserve(add);
 	for (size_t i = 0; i < add; ++i)
@@ -81,7 +88,6 @@ void	Span::addBatch(int start, int end)
 	size_t add = count;
 	if (_total_capacity - _used_capacity < count)
 		add = _total_capacity - _used_capacity;
-
 	std::vector<int> new_nums;
 	new_nums.reserve(add);
 	for (size_t i = 0; i < add; ++i)
