@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 08:23:39 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/24 16:15:07 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/29 11:21:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,37 @@
 #include <iostream>
 #include <exception>
 
+/*
+	Removed the Allocator, it is deduced by the compiler anyways as std::allocator<int>
+	less verbose
+*/
+
 template <
-    template <typename, typename> class Container,
-    typename Allocator
+    template <
+		typename
+	> class Container
 >
-typename Container<int, Allocator>::iterator
-easyfind(Container<int, Allocator>& container, int value)
+typename Container<int>::iterator
+easyfind(const Container<int>& container, const int value)
 {
-    std::cout << "calling easyfind, INTEGER, SEQUENCE containers" << std::endl;
-    typename Container<int, Allocator>::iterator it = std::find(container.begin(), container.end(), value);
+	#ifdef CALL_TEMPLATE
+    	std::cout << "calling easyfind, INTEGER, SEQUENCE containers" << std::endl;
+	#endif
+    typename Container<int>::iterator it = std::find(container.begin(), container.end(), value);
     if (it == container.end())
         throw std::runtime_error("Value not found in container");
     return it;
 }
+
+/*
+	Here deduction fails unless i pass the full template arguments of the container
+	for the compiler to match
+
+	The compiler will create the allocator for the vector given the sizeof(class V)
+
+	When the type is <int>, the compiler knows the sizeof already and can create
+	the required std::allocator and we can ommit that
+*/
 
 template <
     template<
@@ -43,12 +61,42 @@ template <
 typename C<V, Allocator>::iterator
 easyfind(C<V, Allocator>& container, const V& value)
 {
-    std::cout << "calling easyfind, GENERIC, SEQUENCE containers" << std::endl;
+	#ifdef CALL_TEMPLATE
+    	std::cout << "calling easyfind, GENERIC, SEQUENCE containers" << std::endl;
+	#endif
     typename C<V, Allocator>::iterator it = std::find(container.begin(), container.end(), value);
     if (it == container.end())
         throw std::runtime_error("Value not found in container");
     return (it);
 }
+
+/*
+	Associative template with object types known to the compiler
+	Less verbose template, same principle as the template<int>
+	for the sequencial container
+*/
+
+template <
+	template<
+		typename,
+		typename
+	> class Container
+>
+typename Container<int, int>::iterator
+easyfind(Container<int, int>& container, const int key)
+{
+	#ifdef CALL_TEMPLATE
+		std::cout << "calling easyfind, INTEGER + INTEGER, ASSOCIATIVE containers" << std::endl;
+	#endif
+	typename Container<int, int>::iterator it = container.find(key);
+	if (it == container.end())
+		throw std::runtime_error("Value not found in container");
+    return (it);
+}
+
+/*
+	Associative template without known types to the compiler, require the super verbose stuff
+*/
 
 template <
 	template<
@@ -62,14 +110,20 @@ template <
 	typename Allocator
 >
 typename Container<int, Value, Compare, Allocator>::iterator
-easyfind(Container<int, Value, Compare, Allocator>& container, int key)
+easyfind(Container<int, Value, Compare, Allocator>& container, const int key)
 {
-	std::cout << "calling easyfind, INTEGER, ASSOCIATIVE containers" << std::endl;
+	#ifdef CALL_TEMPLATE
+		std::cout << "calling easyfind, INTEGER + template class, ASSOCIATIVE containers" << std::endl;
+	#endif
 	typename Container<int, Value, Compare, Allocator>::iterator it = container.find(key);
 	if (it == container.end())
 		throw std::runtime_error("Value not found in container");
     return (it);
 }
+
+/*
+	Associative template without known types to the compiler, require the super verbose stuff
+*/
 
 template <
 	template<
@@ -84,10 +138,38 @@ template <
 	typename Allocator
 >
 typename Container<Key, Value, Compare, Allocator>::iterator
-easyfind(Container<Key, Value, Compare, Allocator>& container, Key& key)
+easyfind(Container<Key, Value, Compare, Allocator>& container, const Key& key)
 {
-	std::cout << "calling easyfind, GENERIC, ASSOCIATIVE containers" << std::endl;
+	#ifdef CALL_TEMPLATE
+		std::cout << "calling easyfind, GENERIC, ASSOCIATIVE containers" << std::endl;
+	#endif
 	typename Container<Key, Value, Compare, Allocator>::iterator it = container.find(key);
+	if (it == container.end())
+		throw std::runtime_error("Value not found in container");
+    return (it);
+}
+
+/*
+	Oh no, std::set requires its own template :(
+*/
+
+template <
+	template<
+		typename,
+		typename,
+		typename
+	> class Container,
+	typename Key,
+	typename Compare,
+	typename Allocator
+>
+typename Container<Key, Compare, Allocator>::iterator
+easyfind(Container<Key, Compare, Allocator>& container, const Key& key)
+{
+	#ifdef CALL_TEMPLATE
+		std::cout << "calling easyfind, GENERIC, for std::set" << std::endl;
+	#endif
+	typename Container<Key, Compare, Allocator>::iterator it = container.find(key);
 	if (it == container.end())
 		throw std::runtime_error("Value not found in container");
     return (it);

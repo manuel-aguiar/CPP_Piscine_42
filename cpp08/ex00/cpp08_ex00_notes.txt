@@ -6,9 +6,13 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/17 13:13:26 by codespace         #+#    #+#              #
-#    Updated: 2024/04/17 13:52:13 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/29 08:49:57 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+This is about creating a wrapper template for... the template std::find,
+alright
+
 
 In this exercise one can experiment doing it for associative containers,
 it requires a more verbose approach to the template
