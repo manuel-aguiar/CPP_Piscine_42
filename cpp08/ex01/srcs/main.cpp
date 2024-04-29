@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:53:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/29 15:13:18 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/29 15:23:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int main(void)
 	Span span(1000000);
 
 	span.addNumber(1);
+	span.addNumber(4);
 	span.addBatch(3, 50000);
 
 	std::cout << "Longest Span is: " << span.longestSpan() << std::endl;

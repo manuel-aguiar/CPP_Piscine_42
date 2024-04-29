@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:41:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/29 15:14:37 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/29 15:22:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ void	Span::addBatch(const size_t count)
 	new_nums.reserve(add);
 	for (size_t i = 0; i < add; ++i)
 		new_nums.push_back(rand() - RAND_MAX / 2);
-	if ((*new_nums.rbegin() >= *_numbers.begin() && *new_nums.begin() <= *_numbers.begin())
-	|| (*new_nums.rbegin() >= *_numbers.rbegin() && *new_nums.begin() <= *_numbers.rbegin()))
-		_doubled_entry = true;
+	size_t save_size = _numbers.size();
 	_numbers.insert(new_nums.begin(), new_nums.end());
 	_used_capacity += add;
+	if (_numbers.size() - save_size != add)
+		_doubled_entry = true;
 	if (add != count)
 		throw std::runtime_error ("Span is already at max capacity");
 }
@@ -86,11 +86,11 @@ void	Span::addBatch(int start, int end)
 	new_nums.reserve(add);
 	for (size_t i = 0; i < add; ++i)
 		new_nums.push_back(start + i);
-	if ((*new_nums.rbegin() >= *_numbers.begin() && *new_nums.begin() <= *_numbers.begin())
-	|| (*new_nums.rbegin() >= *_numbers.rbegin() && *new_nums.begin() <= *_numbers.rbegin()))
-		_doubled_entry = true;
+	size_t save_size = _numbers.size();
 	_numbers.insert(new_nums.begin(), new_nums.end());
 	_used_capacity += add;
+	if (_numbers.size() - save_size != add)
+		_doubled_entry = true;
 	if (add != count)
 		throw std::runtime_error ("Span is already at max capacity");
 }
