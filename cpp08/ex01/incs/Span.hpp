@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:39:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/29 16:42:20 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/29 16:46:48 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 
 	Instead of Vector and a call to std::sort everytime you want to calculate the longest
 	span, std::set rebalances (costly) the RB-tree on every insert, keeping it sorted.
-	So .begin() - --.end() will be the longest span.
+	So .rbegin() - .begin() will be the longest span.
 	Iteration using std::for_each
 
 
@@ -56,9 +56,10 @@ class Span
 		size_t				shortestSpan(void) const;
 		size_t 				longestSpan(void) const;
 		void				addNumber(const int num);
+
+		//batch functions, for all tastes :)
 		void				addBatch(const size_t count);
 		void				addBatch(int start, int end);
-
 		template <typename Iterator>
 		void				addBatch(const Iterator begin, const Iterator end);
 
@@ -91,8 +92,6 @@ class Span
 			~PrintElement();
 			PrintElement(const PrintElement& copy);
 			PrintElement& operator=(const PrintElement& assign);
-
-
 
 			void operator()(const int& n) const;
 		};
