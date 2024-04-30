@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:41:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/30 10:14:33 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 16:22:37 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,16 +138,16 @@ void	Span::PrintElement::operator()(const int& n) const
 	std::cout << n << std::endl;
 }
 
-void	Span::GetShortest::operator()(const int& n)
+void	Span::GetShortest::operator()(const long& n)
 {
 	#ifdef DEBUG_PROGRAM
-		std::cout << "before: shortest::operator(), _shortest: " << _shortest << ", _save: " << _save << std::endl;
+		std::cout << "before: shortest::operator(), test: " << n << ", _shortest: " << _shortest << ", _save: " << _save << std::endl;
 	#endif
 
-	_shortest = std::min(n - _save, _shortest);
+	_shortest = std::min(n - _save >= 0 ? n - _save : _shortest, _shortest);
 	_save = n;
 
 	#ifdef DEBUG_PROGRAM
-		std::cout << "after: shortest::operator(), _shortest: " << _shortest << ", _save: " << _save << std::endl;
+		std::cout << "after: shortest::operator(), test: " << n << ", _shortest: " << _shortest << ", _save: " << _save << std::endl;
 	#endif
 }

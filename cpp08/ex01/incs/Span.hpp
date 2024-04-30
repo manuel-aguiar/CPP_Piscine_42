@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:39:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/30 13:38:06 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 16:22:46 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ class Span
 			GetShortest(const GetShortest& copy);
 			GetShortest& operator=(const GetShortest& assign);
 
-			void 		operator()(const int& n);
+			void 		operator()(const long& n);
 			long		_shortest;
 			long		_save;
 		};

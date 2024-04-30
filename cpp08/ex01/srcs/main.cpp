@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:53:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/30 15:54:52 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 16:26:32 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,72 @@ int main(void)
 				std::cout << "Shortest Span is: " << shortest << std::endl;
 				if (longest != shortest)
 					std::cout << "			longest and shortest ARE NOT THE SAME" << std::endl;
+			}
+			catch(const std::exception& e)
+			{
+				std::cerr << e.what() << '\n';
+			}
+		}
+
+		std::cout << "\n*****************************************" << std::endl;
+		std::cout << "Simple 4 number span:" << std::endl;
+		{
+			try
+			{
+				Span span(4);
+				span.addNumber(3);
+				span.addNumber(4);
+				span.addNumber(1);
+				span.addNumber(2);
+				span.print_numbers();
+				long longest = span.longestSpan();
+				long shortest = span.shortestSpan();
+				std::cout << "Longest Span is: " << longest << std::endl;
+				std::cout << "Shortest Span is: " << shortest << std::endl;
+			}
+			catch(const std::exception& e)
+			{
+				std::cerr << e.what() << '\n';
+			}
+		}
+
+		std::cout << "\n*****************************************" << std::endl;
+		std::cout << "Simple 4 number span:" << std::endl;
+		{
+			try
+			{
+				Span span(4);
+				span.addNumber(-3);
+				span.addNumber(-4);
+				span.addNumber(-1);
+				span.addNumber(-2);
+				span.print_numbers();
+				long longest = span.longestSpan();
+				long shortest = span.shortestSpan();
+				std::cout << "Longest Span is: " << longest << std::endl;
+				std::cout << "Shortest Span is: " << shortest << std::endl;
+			}
+			catch(const std::exception& e)
+			{
+				std::cerr << e.what() << '\n';
+			}
+		}
+
+		std::cout << "\n*****************************************" << std::endl;
+		std::cout << "Simple 4 number span:" << std::endl;
+		{
+			try
+			{
+				Span span(4);
+				span.addNumber(-3);
+				span.addNumber(4);
+				span.addNumber(-1);
+				span.addNumber(2);
+				span.print_numbers();
+				long longest = span.longestSpan();
+				long shortest = span.shortestSpan();
+				std::cout << "Longest Span is: " << longest << std::endl;
+				std::cout << "Shortest Span is: " << shortest << std::endl;
 			}
 			catch(const std::exception& e)
 			{
