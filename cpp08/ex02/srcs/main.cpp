@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:39:25 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/30 11:58:53 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 12:45:16 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ class Tester
 			typename std::vector<T>::iterator vector_it = vector.begin();
 			typename std::vector<T>::iterator vector_ite = vector.end();
 
-			std::cout 	<< "Full stack print: " << std::endl;
+			std::cout 	<< "\nFull stack print: " << std::endl;
 			while (ms_it != ms_ite)
 			{
 				std::cout 	<< std::left << std::setw(10) << *ms_it << " | "
@@ -120,6 +120,48 @@ class Tester
 			}
 			if (list_it != list_ite || deque_it != deque_ite || vector_it != vector_ite)
 				std::cout << "Ops sizes don't match..." << std::endl;
+			std::cout 	<< "Full stack end print\n" << std::endl;
+		}
+
+		void	print_stack_reverse(void)
+		{
+			typename MutantStack<T,C>::reverse_iterator ms_it = mutant.rbegin();
+			typename MutantStack<T,C>::reverse_iterator ms_ite = mutant.rend();
+
+			++ms_it;
+			--ms_it;
+
+			typename std::list<T>::reverse_iterator list_it = list.rbegin();
+			typename std::list<T>::reverse_iterator list_ite = list.rend();
+
+			typename std::deque<T>::reverse_iterator deque_it = deque.rbegin();
+			typename std::deque<T>::reverse_iterator deque_ite = deque.rend();
+
+			typename std::vector<T>::reverse_iterator vector_it = vector.rbegin();
+			typename std::vector<T>::reverse_iterator vector_ite = vector.rend();
+
+			std::cout 	<< "\nFull stack reverse print: " << std::endl;
+			while (ms_it != ms_ite)
+			{
+				std::cout 	<< std::left << std::setw(10) << *ms_it << " | "
+							<< std::left << std::setw(10) << *list_it << " | "
+							<< std::left << std::setw(10) << *deque_it << " | "
+							<< std::left << std::setw(10) << *vector_it << " | "
+							<< std::left << std::setw(10) << std::endl;
+
+				++ms_it;
+				++list_it;
+				++deque_it;
+				++vector_it;
+			}
+			if (list_it != list_ite || deque_it != deque_ite || vector_it != vector_ite)
+				std::cout << "Ops sizes don't match..." << std::endl;
+			std::cout 	<< "Full stack reverse print end\n" << std::endl;
+		}
+
+		MutantStack<T,C>&	get_mutant(void)
+		{
+			return (mutant);
 		}
 
 	private:
@@ -139,12 +181,24 @@ int main(void)
 	std::cout << "**********************************" << std::endl;
 	std::cout << "School Main [mutantstack | std::list | std::deque(stack) | std::vector] \n" << std::endl;
 
+/*
+	You can't have a container of const types because containers require them to be move assignable
+
+	chatgpt hack:
+		std::list<std::shared_ptr<const int>> my_list;
+		my_list.push_back(std::make_shared<const int>(5));
+		my_list.push_back(std::make_shared<const int>(10));
+
+*/
+
+
 	{
 		Tester<int> tester;
 
 		tester.push(5);
 		tester.push(17);
 		tester.print_top();
+		tester.print_stack();
 		tester.push(3);
 		tester.push(5);
 		tester.push(737);
@@ -152,12 +206,54 @@ int main(void)
 		tester.print_size();
 		tester.print_top();
 		tester.print_stack();
+
+		std::stack<int> s(tester.get_mutant());
+
 	}
 
+	/*
+		The stack's beginning iterator points to the bottom while rbegin points to the top
+		Makes sense to save space, moving fewer pointers and, in case of a vector stack
+		to avoid all the copying from inserting at the front.
+		So, when iterating through a stack, ideally you should start on rbegin to rend :D
 
-
+		In a way, you can say that visually, the stack grows... downwards...?
+	*/
 
 	std::cout << "**********************************" << std::endl;
+	std::cout << "School Main [mutantstack | std::list | std::deque(stack) | std::vector]" << std::endl;
+	std::cout << "but this time: mutant of std::string, mutant as a vector and reverse_print\n" << std::endl;
+
+/*
+	You can't have a container of const types because containers require them to be move assignable
+
+	chatgpt hack:
+		std::list<std::shared_ptr<const int>> my_list;
+		my_list.push_back(std::make_shared<const int>(5));
+		my_list.push_back(std::make_shared<const int>(10));
+
+*/
+
+
+	{
+		Tester<std::string, std::vector<std::string> > tester;
+
+		tester.push("batatas");
+		tester.push("cenouras");
+		tester.print_top();
+		tester.print_stack_reverse();
+		tester.push("couves");
+		tester.push("cajus");
+		tester.push("trigo");
+		tester.push("azeitonas");
+		tester.print_size();
+		tester.print_top();
+		tester.print_stack_reverse();
+
+		std::stack<std::string, std::vector<std::string> > s(tester.get_mutant());
+	}
+
+	std::cout << "\n**********************************" << std::endl;
 	std::cout << "Mutant Stack, specifiying type\n" << std::endl;
 	{
 		MutantStack<int> tretas;
