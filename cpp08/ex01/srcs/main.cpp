@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:53:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/30 13:40:31 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 14:00:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <set>
 #include <stack>
 #include <list>
+#include <queue>
 #include <limits>
 
 void    print_int(const int& n)
