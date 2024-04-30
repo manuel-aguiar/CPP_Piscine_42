@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/30 13:14:58 by codespace         #+#    #+#              #
-#    Updated: 2024/04/30 13:16:12 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/30 13:35:09 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ STL doesn't protect from everything
 
 This code will result in an exception but compiles and it is perfectly legal
 Iterators carry no information about the calling container,
-~you can pass two valid iterators that match the template types but come
+you can pass two valid iterators that match the template types but come
 from different containers and all hell breaks loose
 
 #include <iostream>

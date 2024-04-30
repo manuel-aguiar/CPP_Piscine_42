@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:53:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/30 13:29:23 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 13:40:31 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -322,6 +322,18 @@ int main(void)
 			span.addBatch(list.begin(), list.end());
 			span.addBatch(set.begin(), set.end());
 			span.addBatch(container);
+
+			/*
+				Iterators are more flexible (associative, sequencial), but more
+				risky because there is no check that the iterators point to elements
+				from the same container (only the same container type)
+
+				Template function for containers requires more arguments for deduction,
+				so we can't have only one for std::set and std::vector
+
+				But, the compiler is able to generate machine code from the same
+				template for vector, list and deque
+			*/
 		}
 		catch(const std::exception& e)
 		{
