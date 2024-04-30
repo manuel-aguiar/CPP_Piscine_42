@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 08:23:39 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/29 11:21:28 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 10:42:13 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ template <
 	typename Allocator
 >
 typename Container<Key, Compare, Allocator>::iterator
-easyfind(Container<Key, Compare, Allocator>& container, const Key& key)
+easyfind(const Container<Key, Compare, Allocator>& container, const Key& key)
 {
 	#ifdef CALL_TEMPLATE
 		std::cout << "calling easyfind, GENERIC, for std::set" << std::endl;
