@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:39:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/30 10:49:59 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 13:28:42 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,13 @@ class Span
 		void				addBatch(int start, int end);
 		template <typename Iterator>
 		void				addBatch(const Iterator& begin, const Iterator& end);
-
+		template <
+			template <
+				typename,
+				typename
+			> class Container,
+			class Alloc
+		> void				addBatch(const Container<int, Alloc>& c);
 		void				print_numbers(void) const;
 
 
@@ -129,6 +135,41 @@ void	Span::addBatch(const Iterator& begin, const Iterator& end)
 	{
 		/*oh boy... std::next c++11 would be helpful*/
 		Iterator new_end = begin;
+		for (size_t i = 0; i < add; ++i)
+			++new_end;
+		_numbers.insert(begin, new_end);
+	}
+	else
+		_numbers.insert(begin, end);
+	_used_capacity += add;
+	if (_numbers.size() - save_size != add)
+		_doubled_entry = true;
+	if (add != save_add)
+		throw std::runtime_error ("Span is already at max capacity");
+}
+
+template <
+	template <
+		typename,
+		typename
+	> class Container,
+	class Alloc
+> void				Span::addBatch(const Container<int, Alloc>& c)
+{
+	size_t save_size = _numbers.size();
+	typename Container<int, Alloc>::const_iterator begin = c.begin();
+	typename Container<int, Alloc>::const_iterator end = c.end();
+	int check = std::distance(begin, end);
+	if (check <= 0)
+		throw std::runtime_error ("Negative insertion distance passed to addBatch");
+	size_t add = check;
+	size_t save_add = add;
+	if (_total_capacity - _used_capacity < add)
+		add = _total_capacity - _used_capacity;
+	if (add != save_add)
+	{
+		/*oh boy... std::next c++11 would be helpful*/
+		typename Container<int, Alloc>::const_iterator new_end = begin;
 		for (size_t i = 0; i < add; ++i)
 			++new_end;
 		_numbers.insert(begin, new_end);

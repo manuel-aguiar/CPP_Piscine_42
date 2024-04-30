@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:53:52 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/30 10:08:32 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 13:29:23 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -256,12 +256,17 @@ int main(void)
 		set.insert(-321321);
 		set.insert(70);
 
+		std::vector<int> container;
+		container.push_back(342);
+		container.push_back(827);
+
 		try
 		{
 			span.addBatch(vec.begin(), vec.end());
 			span.addBatch(deque.begin(), deque.end());
 			span.addBatch(list.begin(), list.end());
 			span.addBatch(set.begin(), set.end());
+			span.addBatch(container);
 
 			Span copy(2);
 
@@ -306,12 +311,17 @@ int main(void)
 		set.insert(-321321);
 		set.insert(70);
 
+		std::vector<int> container;
+		container.push_back(342);
+		container.push_back(827);
+
 		try
 		{
 			span.addBatch(vec.begin(), vec.end());
 			span.addBatch(deque.begin(), deque.end());
 			span.addBatch(list.begin(), list.end());
 			span.addBatch(set.begin(), set.end());
+			span.addBatch(container);
 		}
 		catch(const std::exception& e)
 		{
