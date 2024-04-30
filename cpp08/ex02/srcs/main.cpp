@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:39:25 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/30 12:45:16 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 12:51:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ class Tester
 			std::cout 	<< "Full stack reverse print end\n" << std::endl;
 		}
 
-		MutantStack<T,C>&	get_mutant(void)
+		const MutantStack<T,C>&	get_mutant(void) const
 		{
 			return (mutant);
 		}
@@ -208,6 +208,7 @@ int main(void)
 		tester.print_stack();
 
 		std::stack<int> s(tester.get_mutant());
+		std::cout << "std::stack copy, " << s.top() << ", size: " << s.size() << std::endl;
 
 	}
 
@@ -222,7 +223,7 @@ int main(void)
 
 	std::cout << "**********************************" << std::endl;
 	std::cout << "School Main [mutantstack | std::list | std::deque(stack) | std::vector]" << std::endl;
-	std::cout << "but this time: mutant of std::string, mutant as a vector and reverse_print\n" << std::endl;
+	std::cout << "	but this time: mutant of std::string, mutant as a vector and reverse_print\n" << std::endl;
 
 /*
 	You can't have a container of const types because containers require them to be move assignable
@@ -251,6 +252,7 @@ int main(void)
 		tester.print_stack_reverse();
 
 		std::stack<std::string, std::vector<std::string> > s(tester.get_mutant());
+		std::cout << "std::stack copy, top: " << s.top() << ", size: " << s.size() << std::endl;
 	}
 
 	std::cout << "\n**********************************" << std::endl;
