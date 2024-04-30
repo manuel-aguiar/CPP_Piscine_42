@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 08:20:57 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/30 10:41:31 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 14:06:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,10 @@ class Demo
 
 	private:
 		const int		_number;
+
+		Demo() : _number(0) {}
+		Demo& operator=(const Demo& assign) {(void)assign; return (*this);}
+
 };
 
 std::ostream& operator<<(std::ostream& os, const Demo& demo)
