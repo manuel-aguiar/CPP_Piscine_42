@@ -6,11 +6,11 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/29 10:19:28 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/30 15:12:57 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME 		=		whatever
+NAME 		=		easyfind
 
 ##	Compiler and flags
 COMP		=		c++
