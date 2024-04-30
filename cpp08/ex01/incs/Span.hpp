@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:39:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/30 09:28:13 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 10:13:44 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,7 @@ void	Span::addBatch(const Iterator& begin, const Iterator& end)
 		throw std::runtime_error ("Span is already at max capacity");
 }
 
+#define _INT_MIN std::numeric_limits<int>::min()
+#define _INT_MAX std::numeric_limits<int>::max()
 
 #endif
