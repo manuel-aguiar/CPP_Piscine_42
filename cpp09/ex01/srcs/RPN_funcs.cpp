@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN_funcs.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:58:42 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/19 12:50:46 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/30 14:37:23 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ bool RPN::calculate(void)
 
 RPN::e_type  RPN::deduce_type(const std::string& word)
 {
-    if (word.length() == 1 
+    if (word.length() == 1
     && !std::isdigit(word[0]))
         return (E_OP);
 
@@ -117,6 +117,8 @@ inline bool    RPN::multiplication(const int target)
 
 inline bool    RPN::division(const int target)
 {
+	if (target == 0)
+		throw std::runtime_error("Error: division by zero.");
      _operands.top() /= target;
     #ifdef DEBUG_OPERATORS
         std::cout   << "division:  target " << target

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:00:59 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/19 12:44:55 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/30 14:34:16 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ class RPN
 
     private:
         RPN();
-        
+
         bool        apply_operation(const std::string& op);
         bool        sumation(const int target);
         bool        subtraction(const int target);
         bool        multiplication(const int target);
         bool        division(const int target);
         bool        check_valid_chars(void) const;
-        
+
         typedef enum
         {
             E_NUM,

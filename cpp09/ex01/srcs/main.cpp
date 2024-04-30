@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:02:27 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/19 12:46:09 by manuel           ###   ########.fr       */
+/*   Updated: 2024/04/30 14:37:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ int main(int ac, char **av)
 {
     if (ac != 2)
     {
-        CERR("RPN: wrong number of arguments");
+        CERR("Error: wrong number of arguments");
         return (1);
     }
 
-    // try-catch potential <new> failures from containers
+    // try-catch potential <new> failures, and division by 0
     try
     {
         RPN rpn(av[1]);
         if(!rpn.calculate())
         {
-            CERR("RPN: invalid expression");
+            CERR("Error: invalid expression");
             return (1);
         }
     }
