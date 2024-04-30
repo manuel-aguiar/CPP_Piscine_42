@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:57:42 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/30 10:45:12 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 15:11:06 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ Span::Span(const Span& copy) :
 	#endif
 	if (this == &copy)
 		return ;
-
-
 }
 
 Span&	Span::operator=(const Span& assign)
