@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:39:25 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/29 14:19:40 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 11:58:53 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <stack>
 #include <ctime>
 #include <cstdlib>
+#include <iomanip>
 
 #include "../../ex00/incs/easyfind.hpp"
 
@@ -40,8 +41,122 @@ struct print_tester
 };
 
 
+template <
+	class T,
+	class C = std::deque<T>
+>
+class Tester
+{
+	public:
+		Tester() {}
+		~Tester() {}
+
+		void	push(const T& target)
+		{
+			mutant.push(target);
+			list.push_back(target);
+			deque.push_back(target);
+			vector.push_back(target);
+		}
+
+		void	print_top(void)
+		{
+			std::cout 	<< "Top print: "  << " | "
+						<< std::left << std::setw(10) << mutant.top() << " | "
+						<< std::left << std::setw(10) << *list.rbegin() << " | "
+						<< std::left << std::setw(10) << *deque.rbegin() << " | "
+						<< std::left << std::setw(10) << *vector.rbegin() << " | "
+						<< std::left << std::setw(10) << std::endl;
+		}
+
+		void	pop(void)
+		{
+			mutant.pop();
+			list.pop_back();
+			deque.pop_back();
+			vector.erase(vector.rbegin());
+		}
+
+		void	print_size(void)
+		{
+			std::cout 	<< "Print size: "  << " | "
+						<< std::left << std::setw(10) << mutant.size() << " | "
+						<< std::left << std::setw(10) << list.size() << " | "
+						<< std::left << std::setw(10) << deque.size() << " | "
+						<< std::left << std::setw(10) << vector.size() << " | "
+						<< std::left << std::setw(10) << std::endl;
+		}
+
+		void	print_stack(void)
+		{
+			typename MutantStack<T,C>::iterator ms_it = mutant.begin();
+			typename MutantStack<T,C>::iterator ms_ite = mutant.end();
+
+			++ms_it;
+			--ms_it;
+
+			typename std::list<T>::iterator list_it = list.begin();
+			typename std::list<T>::iterator list_ite = list.end();
+
+			typename std::deque<T>::iterator deque_it = deque.begin();
+			typename std::deque<T>::iterator deque_ite = deque.end();
+
+			typename std::vector<T>::iterator vector_it = vector.begin();
+			typename std::vector<T>::iterator vector_ite = vector.end();
+
+			std::cout 	<< "Full stack print: " << std::endl;
+			while (ms_it != ms_ite)
+			{
+				std::cout 	<< std::left << std::setw(10) << *ms_it << " | "
+							<< std::left << std::setw(10) << *list_it << " | "
+							<< std::left << std::setw(10) << *deque_it << " | "
+							<< std::left << std::setw(10) << *vector_it << " | "
+							<< std::left << std::setw(10) << std::endl;
+
+				++ms_it;
+				++list_it;
+				++deque_it;
+				++vector_it;
+			}
+			if (list_it != list_ite || deque_it != deque_ite || vector_it != vector_ite)
+				std::cout << "Ops sizes don't match..." << std::endl;
+		}
+
+	private:
+		MutantStack<T,C>	mutant;
+		std::list<T>		list;
+		std::deque<T>		deque;
+		std::vector<T>		vector;
+
+		Tester(const Tester& copy) {(void)copy;}
+		Tester& operator=(const Tester& assign) {(void)assign; return (*this);}
+};
+
+
 int main(void)
 {
+
+	std::cout << "**********************************" << std::endl;
+	std::cout << "School Main [mutantstack | std::list | std::deque(stack) | std::vector] \n" << std::endl;
+
+	{
+		Tester<int> tester;
+
+		tester.push(5);
+		tester.push(17);
+		tester.print_top();
+		tester.push(3);
+		tester.push(5);
+		tester.push(737);
+		tester.push(0);
+		tester.print_size();
+		tester.print_top();
+		tester.print_stack();
+	}
+
+
+
+
 	std::cout << "**********************************" << std::endl;
 	std::cout << "Mutant Stack, specifiying type\n" << std::endl;
 	{
@@ -160,5 +275,10 @@ int main(void)
 
 		std::cout << "found it! " << *iter << std::endl;
 	}
+
+
 	return (0);
+
+
+
 }
