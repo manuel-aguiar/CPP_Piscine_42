@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 08:20:57 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/30 14:06:05 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 15:49:03 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,18 +83,27 @@ int main(void)
 		vector.push_back(7);
 		int  target(5);
 
-		std::vector<int>::iterator iter = easyfind(vector, target);
-		std::cout << "address of vector                  : " << &vector << std::endl;
-    	std::cout << "memory address of element in vector: " << &(*iter) << ", value: " << *iter << std::endl;
-		/*
-			&(*iter) -> counter intuitive but an iterator is a class and not a pointer.
-			So you deference it (operator* overload of std::vector::iterator) to get the variable within,
-			and then get the address of it.
+		try
+		{
+			std::vector<int>::iterator iter = easyfind(vector, target);
+			std::cout << "address of vector                  : " << &vector << std::endl;
+			std::cout << "memory address of element in vector: " << &(*iter) << ", value: " << *iter << std::endl;
+			/*
+				&(*iter) -> counter intuitive but an iterator is a class and not a pointer.
+				So you deference it (operator* overload of std::vector::iterator) to get the variable within,
+				and then get the address of it.
 
-			Overloading the operator& of an iterator could mean you don't know in the stack wherre the iterator
-			is (could be useful), hence why the is no overload there (even though you could do it).
-			This way, you can have both, iterator location and variable-pointed-to location
-		*/
+				Overloading the operator& of an iterator could mean you don't know in the stack wherre the iterator
+				is (could be useful), hence why the is no overload there (even though you could do it).
+				This way, you can have both, iterator location and variable-pointed-to location
+			*/
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+
+
 	std::cout << "vector object is on the stack but internally allocates memory on the heap for class members" << std::endl;
 	}
 
