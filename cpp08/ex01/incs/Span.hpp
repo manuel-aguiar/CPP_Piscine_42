@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:39:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/30 10:13:44 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 10:49:59 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ class Span
 
 		const std::set<int>&	get_numbers(void) const;
 
-		int		operator++(int);
-		int		operator++(void);
+		int					operator++(int);
+		int					operator++(void);
 
 	private:
 		Span();
@@ -99,7 +99,6 @@ class Span
 		struct GetShortest
 		{
 			GetShortest();
-			GetShortest(const std::set<int>& set);
 			~GetShortest();
 			GetShortest(const GetShortest& copy);
 			GetShortest& operator=(const GetShortest& assign);

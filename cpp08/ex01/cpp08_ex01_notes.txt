@@ -1,0 +1,48 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    cpp08_ex01_notes.txt                               :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/04/30 13:14:58 by codespace         #+#    #+#              #
+#    Updated: 2024/04/30 13:16:12 by codespace        ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+STL doesn't protect from everything
+
+This code will result in an exception but compiles and it is perfectly legal
+Iterators carry no information about the calling container,
+~you can pass two valid iterators that match the template types but come
+from different containers and all hell breaks loose
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+void    print(int n)
+{
+    std::cout << n << "  ";
+}
+
+int main()
+{
+    std::vector<int> vec1;
+    std::vector<int> vec2;
+
+    vec1.push_back(1);
+    vec1.push_back(2);
+
+    vec2.push_back(3);
+    vec2.push_back(4);
+
+    std::vector<int> comp;
+
+    comp.insert(comp.end(), vec2.begin(), vec1.end());
+
+    std::for_each(comp.begin(), comp.end(), print);
+    std::cout << std::endl;
+    return 0;
+}
+
