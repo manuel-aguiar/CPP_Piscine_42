@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:41:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/29 15:34:31 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 09:25:26 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,22 @@ int	call_srand(void)
 
 int g_rand_seed = call_srand();
 
-size_t	Span::longestSpan() const
+long	Span::longestSpan() const
 {
 	if (_used_capacity <= 1)
 		throw std::runtime_error("Span doesn't have enough numbers to calculate");
-	return (*(_numbers.rbegin()) - *(_numbers.begin()));
+	long res = *(_numbers.rbegin());
+	res -= *(_numbers.begin());
+	return (res);
 }
 
-size_t	Span::shortestSpan() const
+long	Span::shortestSpan() const
 {
 	if (_used_capacity <= 1)
 		throw std::runtime_error("Span doesn't have enough numbers to calculate");
 	if (_doubled_entry)
 		return (0);
+
 	Span::GetShortest shortest =
 	std::for_each(
 		_numbers.begin(),
@@ -137,8 +140,14 @@ void	Span::PrintElement::operator()(const int& n) const
 
 void	Span::GetShortest::operator()(const int& n)
 {
-	//std::cout << "\nbefore   n " << n << " save " << _save << " _shortest " << _shortest << std::endl;
+	#ifdef DEBUG_PROGRAM
+		std::cout << "before: shortest::operator(), _shortest: " << _shortest << ", _save: " << _save << std::endl;
+	#endif
+
 	_shortest = std::min(n - _save, _shortest);
 	_save = n;
-	//std::cout << "after   n " << n << " save " << _save << " _shortest " << _shortest << std::endl;
+
+	#ifdef DEBUG_PROGRAM
+		std::cout << "after: shortest::operator(), _shortest: " << _shortest << ", _save: " << _save << std::endl;
+	#endif
 }

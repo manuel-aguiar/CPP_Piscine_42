@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:57:42 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/18 14:36:35 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 09:19:31 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,8 @@ Span::PrintElement& Span::PrintElement::operator=(const PrintElement& assign)
 }
 
 Span::GetShortest::GetShortest() :
-	_shortest(std::numeric_limits<int>::max()),
-	_save(std::numeric_limits<int>::min())
+	_shortest(std::numeric_limits<long>::max()),
+	_save(std::numeric_limits<long>::min())
 {
 	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "Span::GetShortest Default Constructor Called" << std::endl;

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:39:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/29 16:46:48 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 09:22:42 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ class Span
 		Span(const Span& copy);
 		Span& operator=(const Span& assign);
 
-		size_t				shortestSpan(void) const;
-		size_t 				longestSpan(void) const;
+		long				shortestSpan(void) const;
+		long 				longestSpan(void) const;
 		void				addNumber(const int num);
 
 		//batch functions, for all tastes :)
@@ -99,13 +99,14 @@ class Span
 		struct GetShortest
 		{
 			GetShortest();
+			GetShortest(const std::set<int>& set);
 			~GetShortest();
 			GetShortest(const GetShortest& copy);
 			GetShortest& operator=(const GetShortest& assign);
 
 			void 		operator()(const int& n);
-			size_t		_shortest;
-			size_t		_save;
+			long		_shortest;
+			long		_save;
 		};
 };
 

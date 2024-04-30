@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/18 08:57:06 by codespace        ###   ########.fr        #
+#    Updated: 2024/04/30 09:17:52 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME 		=		span
 COMP		=		c++
 FLAGS		=		-Wall -Wextra -Werror -std=c++98
 FSANITIZE_FLAGS =	 -fsanitize=address -g
-DEBUG_FLAGS	=		-DDEBUG_CONSTRUCTOR
+DEBUG_FLAGS	=		-DDEBUG_PROGRAM -DDEBUG_CONSTRUCTOR
 
 ## FOLDERS
 INC_PATH	=		incs
