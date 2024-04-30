@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:00:59 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/30 14:34:16 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 15:00:36 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 
 # include <iostream>
 # include <stack>
+# include <list>
 # include <cctype>
 # include <sstream>
 # include <cstdlib>
@@ -59,8 +60,8 @@ class RPN
 
         e_type deduce_type(const std::string& word);
 
-        std::string              _arg;
-        std::stack<int>          _operands;
+        std::string              					_arg;
+        std::stack<int, std::list<int> >          	_operands;
 
 };
 
