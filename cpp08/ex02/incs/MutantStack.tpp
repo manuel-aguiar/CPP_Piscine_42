@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:38:48 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/29 13:53:14 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 15:07:10 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ template<
 	if (this == &assign)
 		return (*this);
 	std::stack<T,C>::operator=(assign);
+	return (*this);
 }
 
 /**********************************************/

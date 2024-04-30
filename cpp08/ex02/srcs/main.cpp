@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:39:25 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/30 12:51:05 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 15:09:31 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,6 +268,15 @@ int main(void)
 
 		std::cout << "size of stack: " << tretas.size() << ", print: " << std::endl;
 		std::for_each(tretas.begin(), tretas.end(), print_tester<int>());
+
+		MutantStack<int> cenas;
+		cenas = tretas;
+		std::cout << "	Printing assignment" << std::endl;
+		std::for_each(cenas.begin(), cenas.end(), print_tester<int>());
+
+		MutantStack<int> coisas(cenas);
+		std::cout << "	Printing copy construction" << std::endl;
+		std::for_each(coisas.begin(), coisas.end(), print_tester<int>());
 	}
 
 	std::cout << "**********************************" << std::endl;
@@ -295,6 +304,15 @@ int main(void)
 		std::for_each(tretas.begin(), tretas.end(), print_tester<int>());
 
 		std::cout << "oh yeah" << std::endl;
+
+		MutantStack<int, std::vector<int> > cenas;
+		cenas = tretas;
+		std::cout << "	Printing assignment" << std::endl;
+		std::for_each(cenas.begin(), cenas.end(), print_tester<int>());
+
+		MutantStack<int, std::vector<int> > coisas(cenas);
+		std::cout << "	Printing copy construction" << std::endl;
+		std::for_each(coisas.begin(), coisas.end(), print_tester<int>());
 	}
 
 	std::cout << "**********************************" << std::endl;
