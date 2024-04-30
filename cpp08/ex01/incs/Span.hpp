@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 08:39:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/30 09:22:42 by codespace        ###   ########.fr       */
+/*   Updated: 2024/04/30 09:28:13 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ class Span
 		void				addBatch(const size_t count);
 		void				addBatch(int start, int end);
 		template <typename Iterator>
-		void				addBatch(const Iterator begin, const Iterator end);
+		void				addBatch(const Iterator& begin, const Iterator& end);
 
 		void				print_numbers(void) const;
 
@@ -116,7 +116,7 @@ extern int g_rand_seed;
 
 //template function for iterators
 template <typename Iterator>
-void	Span::addBatch(const Iterator begin, const Iterator end)
+void	Span::addBatch(const Iterator& begin, const Iterator& end)
 {
 	size_t save_size = _numbers.size();
 	int check = std::distance(begin, end);
