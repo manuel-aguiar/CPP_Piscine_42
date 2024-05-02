@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:02:27 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/02 12:45:43 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 15:42:32 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int main(int ac, char **av)
 {
-	MergeInsertComp<std::multiset<unsigned int>,  std::vector<unsigned int> > comp(--ac, ++av);
+	MergeInsertComp<unsigned int, std::list,  std::vector> comp(--ac, ++av);
 
     return (0);
 }
@@ -27,8 +27,6 @@ int main1(void)
 	PmergeMe<std::list<int> > list;
 	PmergeMe<std::multiset<int> > set;
 
-	list.insertContainer(3);
-	set.insertContainer(3);
 	std::cout << list.getName() << std::endl;
 	std::cout << set.getName() << std::endl;
 

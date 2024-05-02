@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 12:56:39 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 15:44:41 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,62 +41,31 @@ static void	print_num(const unsigned int num)
 }
 
 template <
-	class Container
->
-class PmergeMe
+    typename T = int,
+    template <
+        typename,
+        typename
+    > class Container = std::vector,
+    typename Allocator = std::allocator<T>
+> class PmergeMe
 {
 	public:
 		PmergeMe() : _name_container(searchContainerName()) {};
 		~PmergeMe() {};
 
-		void	insertContainer(int n)
-		{
-			_numbers.insert(_numbers.end(), n);
-		}
+		Container<T, Allocator>&				getContainer(void) const {return (_numbers);}
+		Container<std::pair<T,T>, Allocator>&	getPairs(void) const {return (_pairs);}
+		const std::string&						getName(void) const {return (_name_container);}
 
-		Container&				getContainer(void) const
+		void						sort(const std::vector<unsigned int>& unsorted)
 		{
-			return (_numbers);
-		}
-
-
-		const std::string&		getName(void) const
-		{
-			return (_name_container);
-		}
-
-		void					sort(const std::vector<unsigned int>& unsorted)
-		{
-			dumpUnsorted(unsorted, _numbers);
+			dumpUnsorted(unsorted);
 			printNumbers();
 		}
 
-		template <
-			template <
-				typename,
-				typename
-			> class Sequencial,
-			class T,
-			class Alloc
-		>
-		void					dumpUnsorted(const std::vector<unsigned int>& unsorted, Sequencial<T, Alloc>& mine)
+		void					dumpUnsorted(const std::vector<unsigned int>& unsorted)
 		{
-			mine.insert(_numbers.end(), unsorted.begin(), unsorted.end());
-		}
-
-		template <
-			template <
-				typename,
-				typename,
-				typename
-			> class Associative,
-			class T,
-			class Alloc,
-			class Compare
-		>
-		void					dumpUnsorted(const std::vector<unsigned int>& unsorted, Associative<T, Alloc, Compare>& mine)
-		{
-			mine.insert(unsorted.begin(), unsorted.end());
+			_numbers.insert(_numbers.end(), unsorted.begin(), unsorted.end());
 		}
 
 		void					printNumbers(void) const
@@ -107,7 +76,8 @@ class PmergeMe
 		}
 
 	private:
-		Container				_numbers;
+		Container<T, Allocator>					_numbers;
+		Container<std::pair<T,T>, Allocator >	_pairs;
 		const std::string		_name_container;
 
 		const std::string&		searchContainerName(void)

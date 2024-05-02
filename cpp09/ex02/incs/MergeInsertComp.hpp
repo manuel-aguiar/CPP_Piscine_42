@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 12:45:09 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 15:43:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,15 @@
 
 
 template <
-	class First,
-	class Second
+	typename T = int,
+	template <
+		typename,
+		typename
+	> class First = std::vector,
+	template <
+		typename,
+		typename
+	> class Second = std::deque
 > class MergeInsertComp
 {
 	public:
@@ -37,8 +44,6 @@ template <
 			#ifdef DEBUG_CONSTRUCTOR
 				std::cout << "MergeInsertComp Constructor Called" << std::endL;
 			#endif
-			std::cout << "first container is: " << _first.getName() << std::endl;
-			std::cout << "second container is: " << _second.getName() << std::endl;
 			if (!parse(ac, av))
 			{
 				CERR("Error");
@@ -46,7 +51,6 @@ template <
 			}
 			_first.sort(_unsorted);
 			_second.sort(_unsorted);
-			std::cout << "hello world!" << std::endl;
 		};
 		~MergeInsertComp() {};
 
@@ -54,17 +58,15 @@ template <
 
 		size_t								getCount(void) const {return (_count);}
 		const std::vector<unsigned int>&	getUnsorted(void) const {return (_unsorted);}
-		PmergeMe<First>&					getFirst(void) const {return (_first);}
-		PmergeMe<Second>&					getSecond(void) const {return (_second);}
+		PmergeMe<T, First>&					getFirst(void) const {return (_first);}
+		PmergeMe<T, Second>&					getSecond(void) const {return (_second);}
 
 	private:
 		std::vector<unsigned int>	_unsorted;
 		size_t						_count;
 
-
-
-		PmergeMe<First>		_first;
-		PmergeMe<Second>	_second;
+		PmergeMe<T, First>		_first;
+		PmergeMe<T, Second>		_second;
 
 		MergeInsertComp(const MergeInsertComp& copy) {(void)copy;};
 		MergeInsertComp& operator=(const MergeInsertComp& assign) {(void)assign; return (*this);};
@@ -87,10 +89,16 @@ int	is_only_spaces(std::string& word)
 
 
 template <
-	class First,
-	class Second
->
-bool	MergeInsertComp<First, Second>::parse(int ac, char **av)
+	typename T,
+	template <
+		typename,
+		typename
+	> class First,
+	template <
+		typename,
+		typename
+	> class Second
+> bool	MergeInsertComp<T, First, Second>::parse(int ac, char **av)
 {
 	std::string convert;
 	std::string	itoa;
@@ -132,3 +140,82 @@ bool	MergeInsertComp<First, Second>::parse(int ac, char **av)
 
 
 #endif
+
+/*
+
+	template madness........
+
+		#include <iostream>
+		#include <vector>
+		#include <list>
+		#include <deque>
+		#include <set>
+
+
+		template <
+			typename T = int,
+			template <
+				typename,
+				typename
+			> class Container = std::vector,
+			typename Allocator = std::allocator<T>
+		>
+		class ContainerWrapper {
+		public:
+			// Constructor
+			ContainerWrapper() {}
+
+			// Member function to add elements
+			void addElement(const T& element) {
+				container.push_back(element); // Example operation on the container
+			}
+
+			void addPair(const T& first, const T& second)
+			{
+				pairs.push_back(std::make_pair(first, second));
+			}
+
+
+		private:
+			Container<T, Allocator >                   container; // Container with provided traits
+			Container<std::pair<T,T>, Allocator >     pairs;
+		};
+
+
+		template <
+			typename T = int,
+			template <
+				typename,
+				typename
+			> class First = std::vector,
+			template <
+				typename,
+				typename
+			> class Second = std::deque
+		>
+		class Holder
+		{
+		private:
+			ContainerWrapper<T, First> first;
+			ContainerWrapper<T, Second> second;
+		};
+
+
+		int main()
+		{
+			Holder<int, std::vector, std::list> wtf;
+			Holder<int, std::deque, std::list> cenas;
+
+			Holder<std::vector<int>, std::vector, std::vector> crazy;
+
+			Holder<> empty;
+
+			(void)wtf;
+			(void)cenas;
+			(void)crazy;
+			(void)empty;
+			return 0;
+		}
+
+
+*/
