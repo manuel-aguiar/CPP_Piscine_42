@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 09:06:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 12:31:12 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 16:17:27 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 template<
 	typename T
 >
-std::string	getAllContainerName() {
+std::string	getAllContainerNames() {
 	return typeid(T).name();
 }
 
 const std::string	g_type_info[5] =
 {
-	getAllContainerName<std::vector		<unsigned int> >(),
-	getAllContainerName<std::list		<unsigned int> >(),
-	getAllContainerName<std::deque		<unsigned int> >(),
-	getAllContainerName<std::multiset	<unsigned int> >(),
+	getAllContainerNames<std::vector		<unsigned int> >(),
+	getAllContainerNames<std::list			<unsigned int> >(),
+	getAllContainerNames<std::deque			<unsigned int> >(),
+	getAllContainerNames<std::multiset		<unsigned int> >(),
 	"Unnallowed"
 };
 
