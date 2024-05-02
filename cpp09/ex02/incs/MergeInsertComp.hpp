@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 15:53:09 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 16:39:52 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ template <
 > class MergeInsertComp
 {
 	public:
-		MergeInsertComp(int ac, char **av) : _count(ac)
+		MergeInsertComp(int ac, char **av) : _count(ac), _first(g_type_info, g_type_name), _second(g_type_info, g_type_name)
 		{
 			#ifdef DEBUG_CONSTRUCTOR
 				std::cout << "MergeInsertComp Constructor Called" << std::endl;
@@ -65,12 +65,16 @@ template <
 		PmergeMe<T, First>&					getFirst(void) const {return (_first);}
 		PmergeMe<T, Second>&				getSecond(void) const {return (_second);}
 
+		static const std::string	g_type_info[4];
+		static const std::string	g_type_name[4];
+
 	private:
 		std::vector<unsigned int>	_unsorted;
 		size_t						_count;
 
-		PmergeMe<T, First>		_first;
-		PmergeMe<T, Second>		_second;
+		PmergeMe<T, First>					_first;
+		PmergeMe<T, Second>					_second;
+
 
 		MergeInsertComp(const MergeInsertComp& copy)
 		{
@@ -154,6 +158,48 @@ template <
 	return (true);
 }
 
+template<
+	typename T
+>
+std::string	getAllContainerNames() {
+	return typeid(T).name();
+}
+
+template <
+	typename T,
+	template <
+		typename,
+		typename
+	> class First,
+	template <
+		typename,
+		typename
+	> class Second
+> const std::string	MergeInsertComp<T, First, Second>::g_type_info[4] =
+{
+	getAllContainerNames<std::vector		<T> >(),
+	getAllContainerNames<std::list			<T> >(),
+	getAllContainerNames<std::deque			<T> >(),
+	"Unnallowed"
+};
+
+template <
+	typename T,
+	template <
+		typename,
+		typename
+	> class First,
+	template <
+		typename,
+		typename
+	> class Second
+> const std::string	MergeInsertComp<T, First, Second>::g_type_name[4] =
+{
+	"std::vector",
+	"std::list",
+	"std::deque",
+	"Unnallowed"
+};
 
 #endif
 

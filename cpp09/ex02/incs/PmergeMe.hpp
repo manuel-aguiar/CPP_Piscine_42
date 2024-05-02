@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 16:00:28 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 16:41:33 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,17 @@
 #include <deque>
 #include <list>
 
-extern const std::string	g_type_info[5];
-extern const std::string	g_type_name[5];
+template <
+	typename T,
+	template <
+		typename,
+		typename
+	> class First,
+	template <
+		typename,
+		typename
+	> class Second
+> class	MergeInsertComp;
 
 static void	print_num(const unsigned int num)
 {
@@ -44,7 +53,8 @@ template <
 > class PmergeMe
 {
 	public:
-		PmergeMe() : _name_container(searchContainerName())
+		PmergeMe(	const std::string (&g_type_info)[4],
+					const std::string (&g_type_name)[4]) : _g_type_info(g_type_info), _g_type_name(g_type_name), _name_container(searchContainerName())
 		{
 			#ifdef DEBUG_CONSTRUCTOR
 				std::cout << "PmergeMe -" << _name_container << "- Default Constructor Called" << std::endl;
@@ -80,21 +90,26 @@ template <
 		}
 
 	private:
+
+		const std::string						(&_g_type_info)[4];
+		const std::string						(&_g_type_name)[4];
+
 		Container<T, Allocator>					_numbers;
 		Container<std::pair<T,T>, Allocator>	_pairs;
 		const std::string						_name_container;
+
 
 		const std::string&						searchContainerName(void)
 		{
 			int i = 0;
 			std::string myType = typeid(_numbers).name();
-			while (i < 4)
+			while (i < 1)
 			{
-				if (myType == g_type_info[i])
-					return (g_type_name[i]);
+				if (myType == _g_type_info[i])
+					return (_g_type_name[i]);
 				i++;
 			}
-			return (g_type_name[i]);
+			return (_g_type_name[i]);
 		}
 		PmergeMe(const PmergeMe& copy)
 		{
