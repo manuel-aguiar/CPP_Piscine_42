@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   parsing.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/19 10:02:27 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/02 10:42:47 by codespace        ###   ########.fr       */
+/*   Created: 2024/05/02 09:06:12 by codespace         #+#    #+#             */
+/*   Updated: 2024/05/02 10:40:41 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-#include <string>
-
-int main(void)
-{
-	PmergeMe<std::list<int> > list;
-	PmergeMe<std::multiset<int> > set;
-
-	list.insertContainer(3);
-	set.insertContainer(3);
-	std::cout << list.getName() << std::endl;
-	std::cout << set.getName() << std::endl;
-
-    return (0);
+template<typename T>
+std::string	getAllContainerName() {
+	return typeid(T).name();
 }
+
+const std::string	g_type_info[5] =
+{
+	getAllContainerName<std::vector<int> >(),
+	getAllContainerName<std::list<int> >(),
+	getAllContainerName<std::deque<int> >(),
+	getAllContainerName<std::multiset<int> >(),
+	"Unnallowed"
+};
+
+const std::string	g_type_name[5] =
+{
+	"std::vector",
+	"std::list",
+	"std::deque",
+	"std::multiset",
+	"Unnallowed"
+};

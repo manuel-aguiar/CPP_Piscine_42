@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/04/30 15:37:17 by codespace        ###   ########.fr        #
+#    Updated: 2024/05/02 10:16:02 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ INC_FILES		=	PmergeMe.hpp
 
 
 SRC_FILES		=	main.cpp		\
-					PmergeMe.cpp
+					PmergeMe.cpp	\
+					parsing.cpp
 
 
 
