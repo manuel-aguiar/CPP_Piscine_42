@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 15:43:49 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 15:46:52 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@
 # define CERR(x) std::cerr << (x) << std::endl
 # define VALID_CHARS "0123456789 \n\t\v\b"
 
-
 template <
-	typename T = int,
+	typename T = unsigned int,
 	template <
 		typename,
 		typename
@@ -59,7 +58,7 @@ template <
 		size_t								getCount(void) const {return (_count);}
 		const std::vector<unsigned int>&	getUnsorted(void) const {return (_unsorted);}
 		PmergeMe<T, First>&					getFirst(void) const {return (_first);}
-		PmergeMe<T, Second>&					getSecond(void) const {return (_second);}
+		PmergeMe<T, Second>&				getSecond(void) const {return (_second);}
 
 	private:
 		std::vector<unsigned int>	_unsorted;
