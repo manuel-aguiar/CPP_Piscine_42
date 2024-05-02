@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 15:46:52 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 15:53:09 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ template <
 		MergeInsertComp(int ac, char **av) : _count(ac)
 		{
 			#ifdef DEBUG_CONSTRUCTOR
-				std::cout << "MergeInsertComp Constructor Called" << std::endL;
+				std::cout << "MergeInsertComp Constructor Called" << std::endl;
 			#endif
 			if (!parse(ac, av))
 			{
@@ -51,7 +51,12 @@ template <
 			_first.sort(_unsorted);
 			_second.sort(_unsorted);
 		};
-		~MergeInsertComp() {};
+		~MergeInsertComp()
+		{
+			#ifdef DEBUG_CONSTRUCTOR
+				std::cout << "MergeInsertComp Destructor Called" << std::endl;
+			#endif
+		};
 
 		bool	parse(int ac, char **av);
 
@@ -67,8 +72,20 @@ template <
 		PmergeMe<T, First>		_first;
 		PmergeMe<T, Second>		_second;
 
-		MergeInsertComp(const MergeInsertComp& copy) {(void)copy;};
-		MergeInsertComp& operator=(const MergeInsertComp& assign) {(void)assign; return (*this);};
+		MergeInsertComp(const MergeInsertComp& copy)
+		{
+			#ifdef DEBUG_CONSTRUCTOR
+				std::cout << "MergeInsertComp Copy Constructor Called" << std::endl;
+			#endif
+			(void)copy;
+		};
+		MergeInsertComp& operator=(const MergeInsertComp& assign)
+		{
+			#ifdef DEBUG_CONSTRUCTOR
+				std::cout << "MergeInsertComp Assignment Called" << std::endl;
+			#endif
+			(void)assign; return (*this);
+		};
 };
 
 

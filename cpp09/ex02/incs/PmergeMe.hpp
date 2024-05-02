@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 15:44:41 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 15:54:33 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	print_num(const unsigned int num)
 }
 
 template <
-    typename T = int,
+    typename T = unsigned int,
     template <
         typename,
         typename
@@ -50,8 +50,18 @@ template <
 > class PmergeMe
 {
 	public:
-		PmergeMe() : _name_container(searchContainerName()) {};
-		~PmergeMe() {};
+		PmergeMe() : _name_container(searchContainerName())
+		{
+			#ifdef DEBUG_CONSTRUCTOR
+				std::cout << "PmergeMe -" << _name_container << "- Default Constructor Called" << std::endl;
+			#endif
+		};
+		~PmergeMe()
+		{
+			#ifdef DEBUG_CONSTRUCTOR
+				std::cout << "PmergeMe -" << _name_container << "- Destructor Called" << std::endl;
+			#endif
+		};
 
 		Container<T, Allocator>&				getContainer(void) const {return (_numbers);}
 		Container<std::pair<T,T>, Allocator>&	getPairs(void) const {return (_pairs);}
@@ -92,9 +102,21 @@ template <
 			}
 			return (g_type_name[i]);
 		}
-
-		PmergeMe(const PmergeMe& copy) {(void)copy;};
-		PmergeMe& operator=(const PmergeMe& assign) {(void)assign; return (*this);};
+		PmergeMe(const PmergeMe& copy)
+		{
+			#ifdef DEBUG_CONSTRUCTOR
+				std::cout << "PmergeMe -" << _name_container << "- Copy constructor Called" << std::endl;
+			#endif
+			(void)copy;
+		};
+		PmergeMe& operator=(const PmergeMe& assign)
+		{
+			#ifdef DEBUG_CONSTRUCTOR
+				std::cout << "PmergeMe -" << _name_container << "- Assignment Called" << std::endl;
+			#endif
+			(void)assign;
+			return (*this);
+		};
 
 };
 
