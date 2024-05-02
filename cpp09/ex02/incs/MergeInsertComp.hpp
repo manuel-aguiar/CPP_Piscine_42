@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 16:39:52 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 16:43:41 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ template <
 > class MergeInsertComp
 {
 	public:
-		MergeInsertComp(int ac, char **av) : _count(ac), _first(g_type_info, g_type_name), _second(g_type_info, g_type_name)
+		MergeInsertComp(int ac, char **av) :
+			_count(ac),
+			_first(g_type_info, g_type_name),
+			_second(g_type_info, g_type_name)
 		{
 			#ifdef DEBUG_CONSTRUCTOR
 				std::cout << "MergeInsertComp Constructor Called" << std::endl;

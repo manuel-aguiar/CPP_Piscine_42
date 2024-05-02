@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 16:41:33 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 16:43:54 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ template <
 {
 	public:
 		PmergeMe(	const std::string (&g_type_info)[4],
-					const std::string (&g_type_name)[4]) : _g_type_info(g_type_info), _g_type_name(g_type_name), _name_container(searchContainerName())
+					const std::string (&g_type_name)[4]) :
+					_g_type_info(g_type_info),
+					_g_type_name(g_type_name),
+					_name_container(searchContainerName())
 		{
 			#ifdef DEBUG_CONSTRUCTOR
 				std::cout << "PmergeMe -" << _name_container << "- Default Constructor Called" << std::endl;

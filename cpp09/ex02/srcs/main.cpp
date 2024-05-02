@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:02:27 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/02 15:56:29 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 16:42:55 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 #include <string>
 
+/*
+	This.. is... the painkiiii......   super convoluted code.
+	I'm sorry to my evaluator.
+	Most of this is totally useless, all this template stuff
+	Don't do it.
+	I'm doing it because we are in school and this is the time to explore.
+	But don't, please.
+*/
 
 int main(int ac, char **av)
 {
