@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 16:43:54 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 16:45:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ template <
 		{
 			int i = 0;
 			std::string myType = typeid(_numbers).name();
-			while (i < 1)
+			while (i < 3)
 			{
 				if (myType == _g_type_info[i])
 					return (_g_type_name[i]);
