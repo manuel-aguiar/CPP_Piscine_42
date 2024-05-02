@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.cpp                                        :+:      :+:    :+:   */
+/*   globals.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 09:06:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 10:40:41 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 10:45:18 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-template<typename T>
+template<
+	typename T
+>
 std::string	getAllContainerName() {
 	return typeid(T).name();
 }

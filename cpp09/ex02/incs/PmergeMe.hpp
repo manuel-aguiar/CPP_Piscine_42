@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 10:42:32 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 10:46:26 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ template <
 class PmergeMe
 {
 	public:
-		PmergeMe() : _name_container(searchContainerName()) {};
+		PmergeMe() : _name_container(searchContainerName()) {std::cout << "address of static is: " << &some_variable << std::endl;};
 		~PmergeMe() {};
 
 		void	insertContainer(int n)
@@ -77,6 +77,8 @@ class PmergeMe
 			}
 			return (g_type_name[i]);
 		}
+
+		static int some_variable;
 
 		PmergeMe(const PmergeMe& copy) {(void)copy;};
 		PmergeMe& operator=(const PmergeMe& assign) {(void)assign; return (*this);};
