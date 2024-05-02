@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/05/02 10:44:25 by codespace        ###   ########.fr        #
+#    Updated: 2024/05/02 12:04:56 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ OBJ_PATH	=		objs
 
 ## ALL FILES
 
-INC_FILES		=	PmergeMe.hpp
+INC_FILES		=	PmergeMe.hpp		\
+					MergeInsertComp.hpp
 
 
 

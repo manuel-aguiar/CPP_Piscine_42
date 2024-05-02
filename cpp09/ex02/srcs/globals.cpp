@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 09:06:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 10:45:18 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 12:31:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ std::string	getAllContainerName() {
 
 const std::string	g_type_info[5] =
 {
-	getAllContainerName<std::vector<int> >(),
-	getAllContainerName<std::list<int> >(),
-	getAllContainerName<std::deque<int> >(),
-	getAllContainerName<std::multiset<int> >(),
+	getAllContainerName<std::vector		<unsigned int> >(),
+	getAllContainerName<std::list		<unsigned int> >(),
+	getAllContainerName<std::deque		<unsigned int> >(),
+	getAllContainerName<std::multiset	<unsigned int> >(),
 	"Unnallowed"
 };
 

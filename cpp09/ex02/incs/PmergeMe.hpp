@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 10:59:30 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 12:29:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 # define PMERGEME_HPP
 
+#include <algorithm>
 #include <typeinfo>
 #include <iostream>
 #include <set>
@@ -26,7 +27,6 @@
 #include <list>
 
 //associative
-
 //	using only std::multiset which allows doubled keys
 //	std::map/multimap doesn't make sense in this case
 #include <set>
@@ -84,6 +84,7 @@ class PmergeMe
 		PmergeMe& operator=(const PmergeMe& assign) {(void)assign; return (*this);};
 
 };
+
 
 
 #endif
