@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 15:54:33 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 16:00:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,6 @@
 #include <vector>
 #include <deque>
 #include <list>
-
-//associative
-//	using only std::multiset which allows doubled keys
-//	std::map/multimap doesn't make sense in this case
-#include <set>
-
 
 extern const std::string	g_type_info[5];
 extern const std::string	g_type_name[5];
@@ -67,18 +61,18 @@ template <
 		Container<std::pair<T,T>, Allocator>&	getPairs(void) const {return (_pairs);}
 		const std::string&						getName(void) const {return (_name_container);}
 
-		void						sort(const std::vector<unsigned int>& unsorted)
+		void									sort(const std::vector<unsigned int>& unsorted)
 		{
 			dumpUnsorted(unsorted);
 			printNumbers();
 		}
 
-		void					dumpUnsorted(const std::vector<unsigned int>& unsorted)
+		void									dumpUnsorted(const std::vector<unsigned int>& unsorted)
 		{
 			_numbers.insert(_numbers.end(), unsorted.begin(), unsorted.end());
 		}
 
-		void					printNumbers(void) const
+		void									printNumbers(void) const
 		{
 			std::cout << "Container - " << _name_container << " - numbers: ";
 			std::for_each(_numbers.begin(), _numbers.end(), print_num);
@@ -87,10 +81,10 @@ template <
 
 	private:
 		Container<T, Allocator>					_numbers;
-		Container<std::pair<T,T>, Allocator >	_pairs;
-		const std::string		_name_container;
+		Container<std::pair<T,T>, Allocator>	_pairs;
+		const std::string						_name_container;
 
-		const std::string&		searchContainerName(void)
+		const std::string&						searchContainerName(void)
 		{
 			int i = 0;
 			std::string myType = typeid(_numbers).name();
