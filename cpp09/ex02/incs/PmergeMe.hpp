@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 12:29:14 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 12:37:17 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ class PmergeMe
 		const std::string&		getName(void) const
 		{
 			return (_name_container);
+		}
+
+		void					dumpUnsorted(const std::vector<unsigned int> unsorted)
+		{
+			_numbers.insert(_numbers.end, unsorted.begin(), unsorted.end());
 		}
 
 	private:
