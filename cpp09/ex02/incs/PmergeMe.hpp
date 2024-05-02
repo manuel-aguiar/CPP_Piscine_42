@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 12:37:17 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 12:52:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@
 extern const std::string	g_type_info[5];
 extern const std::string	g_type_name[5];
 
+static void	print_num(const unsigned int num)
+{
+	std::cout << num << " ";
+}
+
 template <
 	class Container
 >
@@ -49,11 +54,8 @@ class PmergeMe
 			_numbers.insert(_numbers.end(), n);
 		}
 
-		void	deduce_type(void);
-
 		Container&				getContainer(void) const
 		{
-
 			return (_numbers);
 		}
 
@@ -63,9 +65,45 @@ class PmergeMe
 			return (_name_container);
 		}
 
-		void					dumpUnsorted(const std::vector<unsigned int> unsorted)
+		void					sort(const std::vector<unsigned int>& unsorted)
 		{
-			_numbers.insert(_numbers.end, unsorted.begin(), unsorted.end());
+			dumpUnsorted(unsorted, _numbers);
+			printNumbers();
+		}
+
+		template <
+			template <
+				typename,
+				typename
+			> class Associative,
+			class T,
+			class Alloc
+		>
+		void					dumpUnsorted(const std::vector<unsigned int>& unsorted, Associative<T, Alloc>& mine)
+		{
+			mine.insert(_numbers.end(), unsorted.begin(), unsorted.end());
+		}
+
+		template <
+			template <
+				typename,
+				typename,
+				typename
+			> class Associative,
+			class T,
+			class Alloc,
+			class Compare
+		>
+		void					dumpUnsorted(const std::vector<unsigned int>& unsorted, Associative<T, Alloc, Compare>& mine)
+		{
+			mine.insert(unsorted.begin(), unsorted.end());
+		}
+
+		void					printNumbers(void) const
+		{
+			std::cout << "Container - " << _name_container << " - numbers: ";
+			std::for_each(_numbers.begin(), _numbers.end(), print_num);
+			std::cout << std::endl;
 		}
 
 	private:

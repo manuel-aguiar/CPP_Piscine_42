@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 12:33:01 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 12:45:09 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ template <
 				CERR("Error");
 				return ;
 			}
-
+			_first.sort(_unsorted);
+			_second.sort(_unsorted);
 			std::cout << "hello world!" << std::endl;
 		};
 		~MergeInsertComp() {};
@@ -84,10 +85,6 @@ int	is_only_spaces(std::string& word)
 	return (true);
 }
 
-void	print_num(const int num)
-{
-	std::cout << num << " ";
-}
 
 template <
 	class First,
