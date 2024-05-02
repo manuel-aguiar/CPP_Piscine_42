@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 16:43:41 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 16:48:03 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ template <
 		};
 };
 
-
+// ILLEGAL FUNCTION HERE, MOVE TO .CPP FILE
 int	is_only_spaces(std::string& word)
 {
 	for (std::string::iterator iter = word.begin(); iter != word.end(); ++iter)
