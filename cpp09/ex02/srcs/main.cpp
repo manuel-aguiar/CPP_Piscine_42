@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:02:27 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/02 16:42:55 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/02 16:46:27 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 /*
 	This.. is... the painkiiii......   super convoluted code.
-	I'm sorry to my evaluator.
+	I'm sorry to my evaluators.
 	Most of this is totally useless, all this template stuff
 	Don't do it.
 	I'm doing it because we are in school and this is the time to explore.
