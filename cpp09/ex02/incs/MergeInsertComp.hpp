@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/03 09:55:04 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 09:56:22 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,16 @@ template <
 
 	private:
 
-		static const std::string		g_type_info[4];
-		static const std::string		g_type_name[4];
-		std::vector<unsigned int>		_unsorted;
-		size_t							_count;
+		static const std::string			g_type_info[4];
+		static const std::string			g_type_name[4];
+		std::vector<unsigned int>			_unsorted;
+		size_t								_count;
 
-		PmergeMe<T, First>				_first;
-		PmergeMe<T, Second>				_second;
+		PmergeMe<T, First>					_first;
+		PmergeMe<T, Second>					_second;
 
 		//parsing -> called from the Parameter Constructor
-		bool							parse(int ac, char **av);
+		bool								parse(int ac, char **av);
 
 		//Private default constructor, copy and assignment
 		MergeInsertComp();

@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:34:51 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/03 09:52:47 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 10:00:47 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,20 @@ template <
 		typename
 	> class Second
 > MergeInsertComp<T, First, Second>::MergeInsertComp(int ac, char **av) :
-    _count(ac),
-    _first(g_type_info, g_type_name),
-    _second(g_type_info, g_type_name)
+	_count(ac),
+	_first(g_type_info, g_type_name),
+	_second(g_type_info, g_type_name)
 {
-    #ifdef DEBUG_CONSTRUCTOR
-        std::cout << "MergeInsertComp Parameter Constructor Called" << std::endl;
-    #endif
-    if (!parse(ac, av))
-    {
-        CERR("Error");
-        return ;
-    }
-    _first.sort(_unsorted);
-    _second.sort(_unsorted);
+	#ifdef DEBUG_CONSTRUCTOR
+		std::cout << "MergeInsertComp Parameter Constructor Called" << std::endl;
+	#endif
+	if (!parse(ac, av))
+	{
+		CERR("Error");
+		return ;
+	}
+	_first.sort(_unsorted);
+	_second.sort(_unsorted);
 };
 
 
@@ -68,9 +68,9 @@ template <
 	> class Second
 > MergeInsertComp<T, First, Second>::MergeInsertComp()
 {
-    #ifdef DEBUG_CONSTRUCTOR
-        std::cout << "MergeInsertComp Default Constructor Called" << std::endl;
-    #endif
+	#ifdef DEBUG_CONSTRUCTOR
+		std::cout << "MergeInsertComp Default Constructor Called" << std::endl;
+	#endif
 }
 
 
@@ -88,9 +88,9 @@ template <
 	> class Second
 > MergeInsertComp<T, First, Second>::~MergeInsertComp()
 {
-    #ifdef DEBUG_CONSTRUCTOR
-        std::cout << "MergeInsertComp Destructor Called" << std::endl;
-    #endif
+	#ifdef DEBUG_CONSTRUCTOR
+		std::cout << "MergeInsertComp Destructor Called" << std::endl;
+	#endif
 };
 
 //Copy constructor - private
@@ -107,10 +107,10 @@ template <
 	> class Second
 > MergeInsertComp<T, First, Second>::MergeInsertComp(const MergeInsertComp& copy)
 {
-    #ifdef DEBUG_CONSTRUCTOR
-        std::cout << "MergeInsertComp Copy Constructor Called" << std::endl;
-    #endif
-    (void)copy;
+	#ifdef DEBUG_CONSTRUCTOR
+		std::cout << "MergeInsertComp Copy Constructor Called" << std::endl;
+	#endif
+	(void)copy;
 };
 
 //Assignment operator - private
@@ -127,10 +127,10 @@ template <
 	> class Second
 > MergeInsertComp<T, First, Second>& MergeInsertComp<T, First, Second>::operator=(const MergeInsertComp& assign)
 {
-    #ifdef DEBUG_CONSTRUCTOR
-        std::cout << "MergeInsertComp Assignment Called" << std::endl;
-    #endif
-    (void)assign; return (*this);
+	#ifdef DEBUG_CONSTRUCTOR
+		std::cout << "MergeInsertComp Assignment Called" << std::endl;
+	#endif
+	(void)assign; return (*this);
 };
 
 
@@ -195,6 +195,9 @@ template <
 	std::string convert;
 	std::string	itoa;
 	long		number;
+
+	if (!av)
+		return (false);
 
 	for (int i = 0; i < ac; ++i)
 	{
