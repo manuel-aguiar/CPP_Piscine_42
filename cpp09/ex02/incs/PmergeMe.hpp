@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/03 11:18:38 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:49:01 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@
 #include <deque>
 #include <list>
 
-
+# define CERR(x) std::cerr << (x) << std::endl
+# define VALID_CHARS "0123456789 \n\t\v\b"
 
 template <
     typename T = unsigned int,
@@ -40,8 +41,7 @@ template <
 {
 	public:
 		//Constructor/Destructor
-		PmergeMe(	const std::string (&g_type_info)[4],
-					const std::string (&g_type_name)[4]);
+		PmergeMe(int ac, char **av);
 		~PmergeMe();
 
 		//getters, not verbose, stays here
@@ -51,13 +51,14 @@ template <
 		double									getInsertTime(void) const			{return (_insert_time);}	
 		double									getSortTime(void) const				{return (_sort_time);}									
 
-		void									sort(const std::vector<unsigned int>& unsorted);
+		void									sort(void);
+		bool									parse(void);
 
-
-	private:
-
-		const std::string						(&_g_type_info)[4];
-		const std::string						(&_g_type_name)[4];
+	private:	
+		int										_ac;
+		char**									_av;
+		static const std::string				g_type_info[4];
+		static const std::string				g_type_name[4];
 
 		Container<T, Allocator>					_numbers;
 		Container<std::pair<T,T>, Allocator>	_pairs;
@@ -66,7 +67,9 @@ template <
 		double									_insert_time;
 		double									_sort_time;
 
+
 		const std::string&						deduceContainerName(void);
+		bool									parse(int ac, char **av);
 		void									dumpUnsorted(const std::vector<unsigned int>& unsorted);
 		void									printNumbers(void) const;
 

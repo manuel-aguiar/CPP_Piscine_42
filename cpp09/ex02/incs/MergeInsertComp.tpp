@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:34:51 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/03 11:30:06 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:48:40 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ template <
 	> class Second
 > MergeInsertComp<T, First, Second>::MergeInsertComp(int ac, char **av) :
 	_count(ac),
-	_first(g_type_info, g_type_name),
-	_second(g_type_info, g_type_name)
+	_first(ac, av),
+	_second(ac, av)
 {
 	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "MergeInsertComp Parameter Constructor Called" << std::endl;
@@ -128,50 +128,6 @@ template <
 };
 
 
-//statics to identify the underlying containers called
-template<
-	typename T
->
-std::string	getAllContainerNames() {
-	return typeid(T).name();
-}
-
-template <
-	typename T,
-	template <
-		typename,
-		typename
-	> class First,
-	template <
-		typename,
-		typename
-	> class Second
-> const std::string	MergeInsertComp<T, First, Second>::g_type_info[4] =
-{
-	getAllContainerNames<std::vector		<T> >(),
-	getAllContainerNames<std::list			<T> >(),
-	getAllContainerNames<std::deque			<T> >(),
-	"Unnallowed"
-};
-
-template <
-	typename T,
-	template <
-		typename,
-		typename
-	> class First,
-	template <
-		typename,
-		typename
-	> class Second
-> const std::string	MergeInsertComp<T, First, Second>::g_type_name[4] =
-{
-	"std::vector",
-	"std::list",
-	"std::deque",
-	"Unnallowed"
-};
-
 template <
 	typename T,
 	template <
@@ -184,14 +140,10 @@ template <
 	> class Second
 > void MergeInsertComp<T, First, Second>::run(int ac, char **av)
 {
-	if (!parse(ac, av, _unsorted))
-	{
-		CERR("Error");
-		return ;
-	}
-	_first.sort(_unsorted);
-	_second.sort(_unsorted);
-
+	(void)ac;
+	(void)av;
+	_first.sort();
+	_second.sort();
 
 	#ifdef _ALL_IN
 		std::multiset<T>				_set;
@@ -201,13 +153,18 @@ template <
 		clock_t 						end;
 
 		start = clock();
-		_set.insert(_unsorted.begin(), _unsorted.end());
+		if (!parse(ac, av, _set))
+			throw std::runtime_error("Error");
 		end = clock();
 		_insert_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
 		std::cout << "Time to insert to a multiset: " << _insert_time << std::endl;
 		
 		start = clock();
-		_vec.insert(_vec.end(), _unsorted.begin(), _unsorted.end());
+		if (!parse(ac, av, _vec))
+		{
+			CERR("Error");
+			return ;
+		}
 		std::sort(_vec.begin(), _vec.end());
 		end = clock();
 		_insert_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
