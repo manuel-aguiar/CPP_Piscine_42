@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/03 10:05:29 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 10:07:59 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ template <
 > class PmergeMe
 {
 	public:
+		//Constructor/Destructor
 		PmergeMe(	const std::string (&g_type_info)[4],
 					const std::string (&g_type_name)[4]);
 		~PmergeMe();
@@ -81,19 +82,10 @@ template <
 		Container<std::pair<T,T>, Allocator>	_pairs;
 		const std::string						_name_container;
 
+		const std::string&						deduceContainerName(void);
 
-		const std::string&						searchContainerName(void)
-		{
-			int i = 0;
-			std::string myType = typeid(_numbers).name();
-			while (i < 3)
-			{
-				if (myType == _g_type_info[i])
-					return (_g_type_name[i]);
-				i++;
-			}
-			return (_g_type_name[i]);
-		}
+
+		//Copy and assignment -> private
 		PmergeMe(const PmergeMe& copy);
 		PmergeMe& operator=(const PmergeMe& assign);
 

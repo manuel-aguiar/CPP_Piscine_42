@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:33:42 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/03 10:05:51 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 10:07:29 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ template <
 			const std::string (&g_type_name)[4]) :
 					_g_type_info(g_type_info),
 					_g_type_name(g_type_name),
-					_name_container(searchContainerName())
+					_name_container(deduceContainerName())
 {
     #ifdef DEBUG_CONSTRUCTOR
         std::cout << "PmergeMe -" << _name_container << "- Default Constructor Called" << std::endl;
@@ -78,9 +78,6 @@ template <
 
 
 //Copy Constructor and Assignment - private
-
-
-
 
 template <
     typename T,
@@ -112,6 +109,30 @@ template <
     #endif
     (void)assign;
     return (*this);
+}
+
+
+//deduce container name
+
+template <
+    typename T,
+    template <
+        typename,
+        typename
+    > class Container,
+    typename Allocator
+> 
+const std::string&		PmergeMe<T, Container, Allocator>::deduceContainerName(void)
+{
+    int i = 0;
+    std::string myType = typeid(_numbers).name();
+    while (i < 3)
+    {
+        if (myType == _g_type_info[i])
+            return (_g_type_name[i]);
+        i++;
+    }
+    return (_g_type_name[i]);
 }
 
 #endif
