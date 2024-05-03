@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/03 11:41:34 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:52:10 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,10 @@ template <
 
 		
 		//getters - not verbose, implemented right here
-		size_t								getCount(void) const 		{return (_count);}
 		PmergeMe<T, First>&					getFirst(void) const 		{return (_first);}
 		PmergeMe<T, Second>&				getSecond(void) const 		{return (_second);}
 
 	private:
-
-		size_t								_count;
 
 		PmergeMe<T, First>					_first;
 		PmergeMe<T, Second>					_second;
