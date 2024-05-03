@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:34:51 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/03 09:48:48 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 09:52:47 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # include <cerrno>
 # include <limits>
 # include <cstdio>
+
+//helper functions
+int	is_only_spaces(std::string& word);
 
 //constructor and driver
 template <
@@ -129,5 +132,102 @@ template <
     #endif
     (void)assign; return (*this);
 };
+
+
+//statics to identify the underlying containers called
+template<
+	typename T
+>
+std::string	getAllContainerNames() {
+	return typeid(T).name();
+}
+
+template <
+	typename T,
+	template <
+		typename,
+		typename
+	> class First,
+	template <
+		typename,
+		typename
+	> class Second
+> const std::string	MergeInsertComp<T, First, Second>::g_type_info[4] =
+{
+	getAllContainerNames<std::vector		<T> >(),
+	getAllContainerNames<std::list			<T> >(),
+	getAllContainerNames<std::deque			<T> >(),
+	"Unnallowed"
+};
+
+template <
+	typename T,
+	template <
+		typename,
+		typename
+	> class First,
+	template <
+		typename,
+		typename
+	> class Second
+> const std::string	MergeInsertComp<T, First, Second>::g_type_name[4] =
+{
+	"std::vector",
+	"std::list",
+	"std::deque",
+	"Unnallowed"
+};
+
+
+//number parsing
+template <
+	typename T,
+	template <
+		typename,
+		typename
+	> class First,
+	template <
+		typename,
+		typename
+	> class Second
+> bool	MergeInsertComp<T, First, Second>::parse(int ac, char **av)
+{
+	std::string convert;
+	std::string	itoa;
+	long		number;
+
+	for (int i = 0; i < ac; ++i)
+	{
+		convert = av[i];
+		// check invalid characters or only spaces
+		if (convert.find_first_not_of(VALID_CHARS, 0) != std::string::npos
+		|| is_only_spaces(convert))
+			return (false);
+		std::stringstream ss(convert);
+		while (true)
+		{
+			ss >> itoa;
+
+			//nothing left to extract
+			if (ss.fail()
+			|| is_only_spaces(itoa))
+				break ;
+
+			//convertion and limit check
+			number = std::strtol(itoa.c_str(), NULL, 10);
+			if (errno == ERANGE
+			|| number > std::numeric_limits<unsigned int>::max()
+			|| number <= 0)
+				return (false);
+
+			//dump to unsorted vector
+			_unsorted.push_back(static_cast<unsigned int>(number));
+		}
+	}
+	std::cout << "Before: ";
+	std::for_each(_unsorted.begin(), _unsorted.end(), print_num);
+	std::cout << std::endl;
+	return (true);
+}
 
 #endif

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    cpp09_ex02_notes.txt                               :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#    By: manuel <manuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/02 10:52:52 by codespace         #+#    #+#              #
-#    Updated: 2024/05/02 11:00:43 by codespace        ###   ########.fr        #
+#    Updated: 2024/05/03 09:52:31 by manuel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,3 +49,81 @@ obj3 gets the same as obj1 as the template instatiated is the same (type <int>)
 
 
 **********************************************
+
+Template overkill:
+
+
+		#include <iostream>
+		#include <vector>
+		#include <list>
+		#include <deque>
+		#include <set>
+
+
+		template <
+			typename T = int,
+			template <
+				typename,
+				typename
+			> class Container = std::vector,
+			typename Allocator = std::allocator<T>
+		>
+		class ContainerWrapper {
+		public:
+			// Constructor
+			ContainerWrapper() {}
+
+			// Member function to add elements
+			void addElement(const T& element) {
+				container.push_back(element); // Example operation on the container
+			}
+
+			void addPair(const T& first, const T& second)
+			{
+				pairs.push_back(std::make_pair(first, second));
+			}
+
+
+		private:
+			Container<T, Allocator >                   container; // Container with provided traits
+			Container<std::pair<T,T>, Allocator >     pairs;
+		};
+
+
+		template <
+			typename T = int,
+			template <
+				typename,
+				typename
+			> class First = std::vector,
+			template <
+				typename,
+				typename
+			> class Second = std::deque
+		>
+		class Holder
+		{
+		private:
+			ContainerWrapper<T, First> first;
+			ContainerWrapper<T, Second> second;
+		};
+
+
+		int main()
+		{
+			Holder<int, std::vector, std::list> wtf;
+			Holder<int, std::deque, std::list> cenas;
+
+			Holder<std::vector<int>, std::vector, std::vector> crazy;
+
+			Holder<> empty;
+
+			(void)wtf;
+			(void)cenas;
+			(void)crazy;
+			(void)empty;
+			return 0;
+		}
+
+
+*******************************************
