@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:33:42 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/03 11:54:09 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 12:01:03 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,7 +241,8 @@ void		PmergeMe<T, Container, Allocator>::sort()
     clock_t end;
     
     start = clock();
-    parse();
+    if(!parse())
+        throw std::runtime_error("Error");
     end = clock();
     _insert_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
     start = end;
