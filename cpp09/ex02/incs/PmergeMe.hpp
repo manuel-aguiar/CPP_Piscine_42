@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/03 10:07:59 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 10:35:24 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,8 @@ template <
 		Container<std::pair<T,T>, Allocator>&	getPairs(void) const 				{return (_pairs);}
 		const std::string&						getName(void) const 				{return (_name_container);}
 
-		void									sort(const std::vector<unsigned int>& unsorted)
-		{
-			dumpUnsorted(unsorted);
-			printNumbers();
-		}
+		void									sort(const std::vector<unsigned int>& unsorted);
 
-		void									dumpUnsorted(const std::vector<unsigned int>& unsorted)
-		{
-			_numbers.insert(_numbers.end(), unsorted.begin(), unsorted.end());
-		}
-
-		void									printNumbers(void) const
-		{
-			std::cout << "Container - " << _name_container << " - numbers: ";
-			std::for_each(_numbers.begin(), _numbers.end(), print_num);
-			std::cout << std::endl;
-		}
 
 	private:
 
@@ -83,7 +68,8 @@ template <
 		const std::string						_name_container;
 
 		const std::string&						deduceContainerName(void);
-
+		void									dumpUnsorted(const std::vector<unsigned int>& unsorted);
+		void									printNumbers(void) const;
 
 		//Copy and assignment -> private
 		PmergeMe(const PmergeMe& copy);

@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:33:42 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/03 10:07:29 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 10:34:57 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,50 @@ const std::string&		PmergeMe<T, Container, Allocator>::deduceContainerName(void)
         i++;
     }
     return (_g_type_name[i]);
+}
+
+template <
+    typename T,
+    template <
+        typename,
+        typename
+    > class Container,
+    typename Allocator
+> 
+void		PmergeMe<T, Container, Allocator>::dumpUnsorted(const std::vector<unsigned int>& unsorted)
+{
+    _numbers.insert(_numbers.end(), unsorted.begin(), unsorted.end());
+}
+
+//Sort member function
+template <
+    typename T,
+    template <
+        typename,
+        typename
+    > class Container,
+    typename Allocator
+> 
+void		PmergeMe<T, Container, Allocator>::sort(const std::vector<unsigned int>& unsorted)
+{
+    dumpUnsorted(unsorted);
+    printNumbers();
+}
+
+
+template <
+    typename T,
+    template <
+        typename,
+        typename
+    > class Container,
+    typename Allocator
+> 
+void		PmergeMe<T, Container, Allocator>::printNumbers(void) const
+{
+    std::cout << "Container - " << _name_container << " - numbers: ";
+    std::for_each(_numbers.begin(), _numbers.end(), print_num);
+    std::cout << std::endl;
 }
 
 #endif
