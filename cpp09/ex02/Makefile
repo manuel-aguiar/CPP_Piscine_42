@@ -6,7 +6,7 @@
 #    By: manuel <manuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/05/03 10:31:58 by manuel           ###   ########.fr        #
+#    Updated: 2024/05/03 11:20:33 by manuel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,5 +76,8 @@ debug: re run
 
 fsan: FLAGS += $(FSANITIZE_FLAGS)
 fsan: re run
+
+fun: FLAGS += -D_ALL_IN
+fun: re run
 
 .PHONY: clean fclean re git run debug

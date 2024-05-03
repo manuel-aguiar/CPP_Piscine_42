@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/03 10:47:37 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:18:38 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <typeinfo>
 #include <iostream>
 #include <set>
+#include <ctime>
 
 #include <string>
 
@@ -26,9 +27,6 @@
 #include <deque>
 #include <list>
 
-#ifdef _ALL_IN
-	# include <set>
-#endif
 
 
 template <
@@ -50,6 +48,8 @@ template <
 		Container<T, Allocator>&				getContainer(void) const 			{return (_numbers);}
 		Container<std::pair<T,T>, Allocator>&	getPairs(void) const 				{return (_pairs);}
 		const std::string&						getName(void) const 				{return (_name_container);}
+		double									getInsertTime(void) const			{return (_insert_time);}	
+		double									getSortTime(void) const				{return (_sort_time);}									
 
 		void									sort(const std::vector<unsigned int>& unsorted);
 
@@ -62,6 +62,9 @@ template <
 		Container<T, Allocator>					_numbers;
 		Container<std::pair<T,T>, Allocator>	_pairs;
 		const std::string						_name_container;
+
+		double									_insert_time;
+		double									_sort_time;
 
 		const std::string&						deduceContainerName(void);
 		void									dumpUnsorted(const std::vector<unsigned int>& unsorted);

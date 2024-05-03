@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:33:42 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/03 10:53:13 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:11:51 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <algorithm>
 #include <typeinfo>
 #include <iostream>
-
+#include <ctime>
 #include <string>
 
 //sequence
@@ -161,8 +161,15 @@ template <
 > 
 void		PmergeMe<T, Container, Allocator>::sort(const std::vector<unsigned int>& unsorted)
 {
+    clock_t start;
+    clock_t end;
+    
+    start = clock();
     dumpUnsorted(unsorted);
-    printNumbers();
+    end = clock();
+    _insert_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
+    start = end;
+    std::cout << "Time to insert was: " << _insert_time << std::endl;
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:34:51 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/03 10:30:54 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:30:06 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,7 @@ template <
 	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "MergeInsertComp Parameter Constructor Called" << std::endl;
 	#endif
-	if (!parse(ac, av, _unsorted))
-	{
-		CERR("Error");
-		return ;
-	}
-	_first.sort(_unsorted);
-	_second.sort(_unsorted);
+	run(ac, av);
 };
 
 
@@ -178,6 +172,49 @@ template <
 	"Unnallowed"
 };
 
+template <
+	typename T,
+	template <
+		typename,
+		typename
+	> class First,
+	template <
+		typename,
+		typename
+	> class Second
+> void MergeInsertComp<T, First, Second>::run(int ac, char **av)
+{
+	if (!parse(ac, av, _unsorted))
+	{
+		CERR("Error");
+		return ;
+	}
+	_first.sort(_unsorted);
+	_second.sort(_unsorted);
+
+
+	#ifdef _ALL_IN
+		std::multiset<T>				_set;
+		std::vector<T>					_vec;
+		double							_insert_time;
+		clock_t 						start;
+		clock_t 						end;
+
+		start = clock();
+		_set.insert(_unsorted.begin(), _unsorted.end());
+		end = clock();
+		_insert_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
+		std::cout << "Time to insert to a multiset: " << _insert_time << std::endl;
+		
+		start = clock();
+		_vec.insert(_vec.end(), _unsorted.begin(), _unsorted.end());
+		std::sort(_vec.begin(), _vec.end());
+		end = clock();
+		_insert_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
+		std::cout << "Time to insert and std::sort a vector: " << _insert_time << std::endl;
+	#endif
+}
+
 
 //number parsing
 
@@ -232,9 +269,9 @@ bool	MergeInsertComp<T, First, Second>::parse(int ac, char **av, Inner& containe
 			container.insert(container.end(), static_cast<unsigned int>(number));
 		}
 	}
-	std::cout << "Before: ";
-	std::for_each(_unsorted.begin(), _unsorted.end(), print_num);
-	std::cout << std::endl;
+	//std::cout << "Before: ";
+	//std::for_each(_unsorted.begin(), _unsorted.end(), print_num);
+	//std::cout << std::endl;
 	return (true);
 }
 

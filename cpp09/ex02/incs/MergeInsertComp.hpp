@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/03 10:47:23 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:18:48 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,12 @@ template <
 		template<
 			class Inner
 		> bool								parse(int ac, char **av, Inner& container);
-
+		void								run(int ac, char **av);
+		
 		//Private default constructor, copy and assignment
 		MergeInsertComp();
 		MergeInsertComp(const MergeInsertComp& copy);
 		MergeInsertComp& operator=(const MergeInsertComp& assign);
-
-		#ifdef _ALL_IN
-			std::multiset<T>				_set
-		#endif	
 };
 
 

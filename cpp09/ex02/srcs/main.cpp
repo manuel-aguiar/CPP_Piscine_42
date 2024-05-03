@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:02:27 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/02 16:46:27 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/03 11:26:22 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(int ac, char **av)
 {
 	try
 	{
-		MergeInsertComp<> comp(--ac, ++av);
+		MergeInsertComp<unsigned int, std::deque, std::list> comp(--ac, ++av);
 	}
 	catch(const std::exception& e)
 	{
