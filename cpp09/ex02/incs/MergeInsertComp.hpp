@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/03 10:13:53 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 10:30:58 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,16 @@
 # include <typeinfo>
 # include <iostream>
 
-# include <set>
+
 
 //sequence
 # include <vector>
 # include <deque>
-# include <list>
+
+#ifdef _ALL_IN
+	# include <list>
+	# include <set>
+#endif
 
 # define CERR(x) std::cerr << (x) << std::endl
 # define VALID_CHARS "0123456789 \n\t\v\b"
@@ -63,19 +67,25 @@ template <
 
 		static const std::string			g_type_info[4];
 		static const std::string			g_type_name[4];
-		std::vector<unsigned int>			_unsorted;
+		std::vector<T>						_unsorted;
 		size_t								_count;
 
 		PmergeMe<T, First>					_first;
 		PmergeMe<T, Second>					_second;
 
 		//parsing -> called from the Parameter Constructor
-		bool								parse(int ac, char **av);
+		template<
+			class Inner
+		> bool								parse(int ac, char **av, Inner& container);
 
 		//Private default constructor, copy and assignment
 		MergeInsertComp();
 		MergeInsertComp(const MergeInsertComp& copy);
 		MergeInsertComp& operator=(const MergeInsertComp& assign);
+
+		#ifdef _ALL_IN
+			std::multiset<T>				_set
+		#endif	
 };
 
 

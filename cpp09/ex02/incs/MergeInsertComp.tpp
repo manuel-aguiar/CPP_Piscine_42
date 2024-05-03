@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:34:51 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/03 10:00:47 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 10:30:54 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ template <
 	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "MergeInsertComp Parameter Constructor Called" << std::endl;
 	#endif
-	if (!parse(ac, av))
+	if (!parse(ac, av, _unsorted))
 	{
 		CERR("Error");
 		return ;
@@ -180,6 +180,7 @@ template <
 
 
 //number parsing
+
 template <
 	typename T,
 	template <
@@ -190,7 +191,11 @@ template <
 		typename,
 		typename
 	> class Second
-> bool	MergeInsertComp<T, First, Second>::parse(int ac, char **av)
+>
+template<
+	class Inner
+>
+bool	MergeInsertComp<T, First, Second>::parse(int ac, char **av, Inner& container)
 {
 	std::string convert;
 	std::string	itoa;
@@ -224,7 +229,7 @@ template <
 				return (false);
 
 			//dump to unsorted vector
-			_unsorted.push_back(static_cast<unsigned int>(number));
+			container.insert(container.end(), static_cast<unsigned int>(number));
 		}
 	}
 	std::cout << "Before: ";
