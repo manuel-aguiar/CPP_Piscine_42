@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MergeInsertComp.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 16:48:03 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/03 09:47:16 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 # define MERGEINSERTCOMP_HPP
 
-#include "PmergeMe.hpp"
+# include "PmergeMe.hpp"
 
 # include <algorithm>
 # include <sstream>
@@ -38,78 +38,36 @@ template <
 > class MergeInsertComp
 {
 	public:
-		MergeInsertComp(int ac, char **av) :
-			_count(ac),
-			_first(g_type_info, g_type_name),
-			_second(g_type_info, g_type_name)
-		{
-			#ifdef DEBUG_CONSTRUCTOR
-				std::cout << "MergeInsertComp Constructor Called" << std::endl;
-			#endif
-			if (!parse(ac, av))
-			{
-				CERR("Error");
-				return ;
-			}
-			_first.sort(_unsorted);
-			_second.sort(_unsorted);
-		};
-		~MergeInsertComp()
-		{
-			#ifdef DEBUG_CONSTRUCTOR
-				std::cout << "MergeInsertComp Destructor Called" << std::endl;
-			#endif
-		};
+		MergeInsertComp(int ac, char **av);
+		~MergeInsertComp();
 
-		bool	parse(int ac, char **av);
-
-		size_t								getCount(void) const {return (_count);}
-		const std::vector<unsigned int>&	getUnsorted(void) const {return (_unsorted);}
-		PmergeMe<T, First>&					getFirst(void) const {return (_first);}
-		PmergeMe<T, Second>&				getSecond(void) const {return (_second);}
-
-		static const std::string	g_type_info[4];
-		static const std::string	g_type_name[4];
+		
+		//getters
+		size_t								getCount(void) const 		{return (_count);}
+		const std::vector<unsigned int>&	getUnsorted(void) const 	{return (_unsorted);}
+		PmergeMe<T, First>&					getFirst(void) const 		{return (_first);}
+		PmergeMe<T, Second>&				getSecond(void) const 		{return (_second);}
 
 	private:
-		std::vector<unsigned int>	_unsorted;
-		size_t						_count;
 
-		PmergeMe<T, First>					_first;
-		PmergeMe<T, Second>					_second;
+		static const std::string		g_type_info[4];
+		static const std::string		g_type_name[4];
+		std::vector<unsigned int>		_unsorted;
+		size_t							_count;
 
+		PmergeMe<T, First>				_first;
+		PmergeMe<T, Second>				_second;
 
-		MergeInsertComp(const MergeInsertComp& copy)
-		{
-			#ifdef DEBUG_CONSTRUCTOR
-				std::cout << "MergeInsertComp Copy Constructor Called" << std::endl;
-			#endif
-			(void)copy;
-		};
-		MergeInsertComp& operator=(const MergeInsertComp& assign)
-		{
-			#ifdef DEBUG_CONSTRUCTOR
-				std::cout << "MergeInsertComp Assignment Called" << std::endl;
-			#endif
-			(void)assign; return (*this);
-		};
+		bool							parse(int ac, char **av);
+
+		//Private copy and assignment
+		MergeInsertComp(const MergeInsertComp& copy);
+		MergeInsertComp& operator=(const MergeInsertComp& assign);
 };
 
 // ILLEGAL FUNCTION HERE, MOVE TO .CPP FILE
-int	is_only_spaces(std::string& word)
-{
-	for (std::string::iterator iter = word.begin(); iter != word.end(); ++iter)
-	{
-		if (*iter != '\n'
-		&& *iter != '\t'
-		&& *iter != '\v'
-		&& *iter != ' '
-		&& *iter != '\b')
-			return (false);
-	}
-	return (true);
-}
 
+int	is_only_spaces(std::string& word);
 
 template <
 	typename T,
@@ -203,6 +161,8 @@ template <
 	"std::deque",
 	"Unnallowed"
 };
+
+#include "MergeInsertComp.tpp"
 
 #endif
 
