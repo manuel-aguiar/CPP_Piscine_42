@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:34:51 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/03 09:47:23 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 09:48:48 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ template <
     _second(g_type_info, g_type_name)
 {
     #ifdef DEBUG_CONSTRUCTOR
-        std::cout << "MergeInsertComp Constructor Called" << std::endl;
+        std::cout << "MergeInsertComp Parameter Constructor Called" << std::endl;
     #endif
     if (!parse(ac, av))
     {
@@ -50,6 +50,26 @@ template <
     _first.sort(_unsorted);
     _second.sort(_unsorted);
 };
+
+
+//Default Constructor - private
+template <
+	typename T,
+	template <
+		typename,
+		typename
+	> class First,
+	template <
+		typename,
+		typename
+	> class Second
+> MergeInsertComp<T, First, Second>::MergeInsertComp()
+{
+    #ifdef DEBUG_CONSTRUCTOR
+        std::cout << "MergeInsertComp Default Constructor Called" << std::endl;
+    #endif
+}
+
 
 //Destructor
 

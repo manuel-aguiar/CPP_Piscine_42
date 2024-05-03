@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/03 09:47:16 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 09:48:51 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ template <
 > class MergeInsertComp
 {
 	public:
+		//Constructor / Destructor
 		MergeInsertComp(int ac, char **av);
 		~MergeInsertComp();
 
@@ -61,6 +62,7 @@ template <
 		bool							parse(int ac, char **av);
 
 		//Private copy and assignment
+		MergeInsertComp();
 		MergeInsertComp(const MergeInsertComp& copy);
 		MergeInsertComp& operator=(const MergeInsertComp& assign);
 };
