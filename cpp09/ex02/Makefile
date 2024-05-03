@@ -6,7 +6,7 @@
 #    By: manuel <manuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/05/03 09:36:42 by manuel           ###   ########.fr        #
+#    Updated: 2024/05/03 10:31:58 by manuel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,9 +35,7 @@ INC_FILES		=	PmergeMe.hpp		\
 
 SRC_FILES		=	main.cpp			\
 					PmergeMe.cpp		\
-					MergeInsertComp.cpp	\
-					globals.cpp
-
+					MergeInsertComp.cpp
 
 
 ## PREP
