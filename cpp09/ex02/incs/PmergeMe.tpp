@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:33:42 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/03 10:34:57 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 10:53:13 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include <algorithm>
 #include <typeinfo>
 #include <iostream>
-#include <set>
 
 #include <string>
 
@@ -26,6 +25,9 @@
 #include <deque>
 #include <list>
 
+
+//helper function 
+void	print_num(const unsigned int num);
 
 //inform template about the holder class
 template <

@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/03 10:30:58 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 10:47:23 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@
 //sequence
 # include <vector>
 # include <deque>
+# include <list>
 
 #ifdef _ALL_IN
-	# include <list>
 	# include <set>
 #endif
 

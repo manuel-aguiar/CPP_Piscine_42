@@ -3,11 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:15:25 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/02 10:39:00 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/03 10:46:43 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+void	print_num(const unsigned int num)
+{
+	std::cout << num << " ";
+}

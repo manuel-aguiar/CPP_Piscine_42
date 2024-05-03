@@ -6,7 +6,7 @@
 /*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/03 10:35:24 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/03 10:47:37 by manuel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,10 @@
 #include <deque>
 #include <list>
 
+#ifdef _ALL_IN
+	# include <set>
+#endif
 
-
-
-// ILLEGAL FUNCTION HERE, MOVE TO .CPP FILE
-static void	print_num(const unsigned int num)
-{
-	std::cout << num << " ";
-}
 
 template <
     typename T = unsigned int,
