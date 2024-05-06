@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/06 14:18:27 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/06 15:48:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,18 @@ template <
         typedef typename std::iterator_traits<Iterator>::reference  		reference;
 
 		Iterator&	getIter(void) {return (_group_iter);};
+		Iterator	getRightmost(void)
+		{
+			typename std::iterator_traits<Iterator>::iterator_category category;
+			return (getRightmost(category));
+		}
 		size_t		getSize(void) {return (_group_size);};
 
 		//reference = value_type&
 		reference operator*()
 		{
 			typename std::iterator_traits<Iterator>::iterator_category category;
-			return (dereference_rightmost(category));
+			return (*getRightmost(category));
 		}
 
 		pointer operator->()
@@ -158,6 +163,9 @@ template <
 			return (!operator==(other));
 		}
 
+
+
+
 	private:
 
 		Iterator	_group_iter;
@@ -165,26 +173,7 @@ template <
 
 		GroupIterator() {};
 
-		reference dereference_rightmost(std::random_access_iterator_tag)
-		{
-			return (_group_iter[_group_size - 1]);
-		}
 
-		reference dereference_rightmost(std::bidirectional_iterator_tag)
-		{
-			Iterator iter = _group_iter;
-			for (size_t i = 0; i < _group_size - 1; ++i)
-				iter++;
-			return (*iter);
-		}
-
-		reference dereference_rightmost(std::forward_iterator_tag)
-		{
-			Iterator iter = _group_iter;
-			for (size_t i = 0; i < _group_size - 1; ++i)
-				iter++;
-			return (*iter);
-		}
 
 		GroupIterator& advanceIterator(int n)
 		{
@@ -222,7 +211,80 @@ template <
 				++_group_iter;
 			return (*this);
 		}
+
+		Iterator getRightmost(std::random_access_iterator_tag)
+		{
+			Iterator iter = _group_iter;
+
+			iter += _group_size - 1;
+			return (iter);
+		}
+
+		Iterator getRightmost(std::bidirectional_iterator_tag)
+		{
+			Iterator iter = _group_iter;
+			for (size_t i = 0; i < _group_size - 1; ++i)
+				iter++;
+			return (iter);
+		}
+
+		Iterator getRightmost(std::forward_iterator_tag)
+		{
+			Iterator iter = _group_iter;
+			for (size_t i = 0; i < _group_size - 1; ++i)
+				iter++;
+			return (iter);
+		}
 };
 
+template <
+	typename Iterator
+>
+GroupIterator<Iterator> new_GroupIterator(Iterator it, std::size_t size)
+{
+	GroupIterator<Iterator> newIter(it, size);
+	return (newIter);
+}
+
+template <
+	typename Iterator
+>
+GroupIterator<Iterator> new_GroupIterator(GroupIterator<Iterator> it, std::size_t size)
+{
+	GroupIterator<Iterator> newIter(it.getIter(), size * it.getSize());
+	return (newIter);
+}
+
+template<
+	typename Iterator
+>
+void iter_swap(GroupIterator<Iterator> left, GroupIterator<Iterator> right)
+{
+    std::swap_ranges(left.getIter(), left.getRightmost(), right.getIter());
+}
+
+template<typename Iterator>
+GroupIterator<Iterator> operator+(GroupIterator<Iterator> it, std::size_t size)
+{
+    return it += size;
+}
+
+template<typename Iterator>
+GroupIterator<Iterator> operator+(std::size_t size, GroupIterator<Iterator> it)
+{
+    return it += size;
+}
+
+template<typename Iterator>
+GroupIterator<Iterator> operator-(GroupIterator<Iterator> it, std::size_t size)
+{
+    return it -= size;
+}
+
+template<typename Iterator>
+typename GroupIterator<Iterator>::difference_type operator-(GroupIterator<Iterator>& left, GroupIterator<Iterator>& right)
+{
+    return (left.getIter() - right.getIter()) / left.getSize();
+}
 
 #endif
