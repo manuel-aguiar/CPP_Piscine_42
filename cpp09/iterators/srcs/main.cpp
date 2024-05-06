@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/06 14:03:12 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/06 14:08:47 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,10 @@ int main(void)
     }
 
 	GroupIterator<std::vector<int>::iterator> gvec(vec.begin(), 2);
-	gvec++;
-    std::cout << "Vector iterator: " << *gvec << std::endl; // Should print 2
+    std::cout << "Vector iterator: " << gvec[1] << std::endl; // Should print 2
 
 	GroupIterator<std::list<int>::iterator> glist(list.begin(), 2);
-	glist++;
-	--glist;
-    std::cout << "List iterator: " << *glist << std::endl; // Should print 2
+    std::cout << "List iterator: " << glist[1] << std::endl; // Should print 2
 
 
     return 0;
