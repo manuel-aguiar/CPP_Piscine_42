@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/06 14:08:21 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/06 14:18:27 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,16 @@ template <
 
 			copy.advanceIterator(index, category);
 			return (*copy);
+		}
+
+		bool	operator==(const GroupIterator& other)
+		{
+			return (_group_iter == other._group_iter && _group_size == other._group_size);
+		}
+
+		bool	operator!=(const GroupIterator& other)
+		{
+			return (!operator==(other));
 		}
 
 	private:
