@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/06 09:27:49 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/06 13:20:13 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,14 @@ int main(void)
         vec.push_back(i);
     }
 
-    // Test for list iterator
-    std::list<int>::iterator listIt = list.begin();
-    advanceIterator(listIt, 2);
-    std::cout << "List iterator: " << *listIt << std::endl; // Should print 3
+	GroupIterator<std::vector<int>::iterator> gvec(vec.begin(), 2);
 
-    // Test for vector iterator
-    std::vector<int>::iterator vecIt = vec.begin();
-    advanceIterator(vecIt, 2);
-    std::cout << "Vector iterator: " << *vecIt << std::endl; // Should print 3
+    std::cout << "Vector iterator: " << *gvec << std::endl; // Should print 2
+
+	GroupIterator<std::list<int>::iterator> glist(list.begin(), 2);
+
+    std::cout << "List iterator: " << *glist << std::endl; // Should print 2
+
 
     return 0;
 }
