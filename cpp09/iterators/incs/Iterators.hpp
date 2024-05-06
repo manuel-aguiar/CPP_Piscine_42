@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/06 13:46:33 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/06 14:03:01 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ template <
 		{};
 		~GroupIterator() {};
 		GroupIterator(const GroupIterator& copy) :
-			_group_iter(copy._group_it),
+			_group_iter(copy._group_iter),
 			_group_size(copy._group_size)
 		{}
 		GroupIterator& operator=(const GroupIterator& assign)
@@ -86,7 +86,7 @@ template <
         typedef typename std::iterator_traits<Iterator>::pointer 			pointer;
         typedef typename std::iterator_traits<Iterator>::reference  		reference;
 
-		reference	getIter(void) {return (_group_iter);};
+		Iterator&	getIter(void) {return (_group_iter);};
 		size_t		getSize(void) {return (_group_size);};
 
 		//reference = value_type&
@@ -94,6 +94,37 @@ template <
 		{
 			typename std::iterator_traits<Iterator>::iterator_category category;
 			return (dereference_rightmost(category));
+		}
+
+		pointer operator->()
+		{
+			return (&operator*());
+		}
+
+		GroupIterator&	operator++(void)
+		{
+			typename std::iterator_traits<Iterator>::iterator_category category;
+			return (advanceIterator(1, category));
+		}
+
+		GroupIterator	operator++(int)
+		{
+			GroupIterator temp(*this);
+			++(*this);
+			return (temp);
+		}
+
+		GroupIterator&	operator--(void)
+		{
+			typename std::iterator_traits<Iterator>::iterator_category category;
+			return (advanceIterator(-1, category));
+		}
+
+		GroupIterator	operator--(int)
+		{
+			GroupIterator temp(*this);
+			--(*this);
+			return (temp);
 		}
 
 	private:
@@ -124,6 +155,42 @@ template <
 			return (*iter);
 		}
 
+		GroupIterator& advanceIterator(int n)
+		{
+			typename std::iterator_traits<Iterator>::iterator_category category;
+			return (advanceIterator(n, category));
+		}
+
+		GroupIterator& advanceIterator(int n, std::random_access_iterator_tag)
+		{
+			n *= _group_size;
+			_group_iter += n;
+			return (*this);
+		}
+
+		GroupIterator& advanceIterator(int n, std::bidirectional_iterator_tag)
+		{
+			n *= _group_size;
+			if (n > 0)
+			{
+				while (n--)
+					++_group_iter;
+			}
+			else
+			{
+				while (n++)
+					--_group_iter;
+			}
+			return (*this);
+		}
+
+		GroupIterator& advanceIterator(int n, std::forward_iterator_tag)
+		{
+			n *= _group_size;
+			while (n--)
+				++_group_iter;
+			return (*this);
+		}
 };
 
 
