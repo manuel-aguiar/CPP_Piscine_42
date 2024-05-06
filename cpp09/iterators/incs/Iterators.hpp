@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/06 15:48:20 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/06 16:28:51 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define ITERATORS_HPP
 
 #include <iterator>
+#include <iostream>
 
 template<typename Iterator>
 Iterator& advanceIterator(Iterator& it, int n);
@@ -91,6 +92,11 @@ template <
 		{
 			typename std::iterator_traits<Iterator>::iterator_category category;
 			return (getRightmost(category));
+		}
+		Iterator	getLast(void)
+		{
+			typename std::iterator_traits<Iterator>::iterator_category category;
+			return (++getRightmost(category));
 		}
 		size_t		getSize(void) {return (_group_size);};
 
@@ -260,7 +266,8 @@ template<
 >
 void iter_swap(GroupIterator<Iterator> left, GroupIterator<Iterator> right)
 {
-    std::swap_ranges(left.getIter(), left.getRightmost(), right.getIter());
+	//std::cout << *left.getIter() << " " << *left.getLast() << " " << *right.getIter() << std::endl;
+    std::swap_ranges(left.getIter(), left.getLast(), right.getIter());
 }
 
 template<typename Iterator>

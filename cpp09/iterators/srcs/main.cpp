@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/06 15:50:59 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/06 16:29:35 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,12 @@ void	recursive(GroupIterator begin, GroupIterator end)
 	for (GroupIterator iter(begin); iter != newEnd; iter += 2)
 	{
 		g_comp_count++;
+		//std::cout << "before swap: " << iter[0] << " " << (iter + 1)[0] << std::endl;
 		if (iter[0] > iter[1])
 			iter_swap(iter, iter + 1);
+		//else
+		//	std::cout << "didn't swap" << std::endl;
+		//std::cout << "after swap: " << iter[0] << " " << iter[1] << std::endl;
 	}
 	recursive(
 		new_GroupIterator(begin, 2),
@@ -65,9 +69,6 @@ void	mysort(Iterator begin, Iterator end)
 		new_GroupIterator(begin, 1),
 		new_GroupIterator(end, 1)
 	);
-	for(Iterator iter = begin; iter != end; ++iter)
-		std::cout << *iter << "  ";
-	std::cout << std::endl;
 	std::cout << "Total Comparisons: " << g_comp_count << std::endl;
 }
 
@@ -76,12 +77,16 @@ int main(void)
     std::list<int> list;
     std::vector<int> vec;
 
-	int total = 22;
+	int total = 8;
     for (int i = 1; i <= total; ++i)
 	{
-        list.push_back(total - i);
-        vec.push_back(total - i);
+        list.push_back(total - i + 1);
+        vec.push_back(total - i + 1);
     }
+
+	for (std::list<int>::iterator iter = list.begin(); iter != list.end(); ++iter)
+		std::cout << *iter << "  ";
+	std::cout << std::endl;
 
 	//GroupIterator<std::vector<int>::iterator> gvec(vec.begin(), 3);
     //std::cout << "Vector iterator: " << gvec[0] << std::endl; // Should print 2
@@ -90,7 +95,20 @@ int main(void)
 	//GroupIterator<std::list<int>::iterator> gliste(list.end(), 2);
     ////std::cout << "List iterator: " << std::binary_search(glist, gliste, 1) << std::endl; // Should print 2
 
+
+	std::cout << "\nlist:" << std::endl;
 	mysort<std::list<int>::iterator >(list.begin(), list.end());
+
+	for (std::list<int>::iterator iter = list.begin(); iter != list.end(); ++iter)
+		std::cout << *iter << "  ";
+	std::cout << std::endl;
+
+	std::cout << "\nvector:" << std::endl;
+	mysort<std::vector<int>::iterator >(vec.begin(), vec.end());
+
+	for (std::vector<int>::iterator iter = vec.begin(); iter != vec.end(); ++iter)
+		std::cout << *iter << "  ";
+	std::cout << std::endl;
 	//mysort<std::vector<int>::iterator >(vec.begin(), vec.end());
 
     return 0;
