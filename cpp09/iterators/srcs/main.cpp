@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 11:40:22 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/07 11:41:09 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,10 @@ void	mysort(Container<T, Alloc>& container)
 {
 	g_comp_count = 0;
 
-	typename Container<T, Alloc>::iterator begin = container.begin();
-	typename Container<T, Alloc>::iterator end = container.end();
+	typedef typename Container<T, Alloc>::iterator iterator;
+
+	iterator begin = container.begin();
+	iterator end = container.end();
 
 	recursive(
 		container,
