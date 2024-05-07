@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 16:12:21 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/07 17:18:25 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,12 +196,14 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 	main.push_back(begin);
 	main.push_back(begin.next(1));
 
+	std::cout << "shadow pending:" << std::endl;
 	for (GroupIterator iter(begin + 2); iter != newEnd; iter += 2)
 	{
 		mainChainIterator temp = main.insert(main.end(), iter.next(1));
 		pending.push_back(temp);
+		std::cout << *iter << std::endl;
 	}
-
+	std::cout << std::endl;
 	if (has_straggler)
 	{
 		pending.push_back(main.end());
@@ -247,7 +249,7 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 			break ;
 		std::cout << "distance is " << distance << std::endl;
 
-		GroupIterator 				move_orig 		= current_orig.next(distance * 2);
+		GroupIterator 				move_orig 		= next(current_orig, distance * 2);
 		pendChainIterator 			move_pend 		= next(current_pend, distance);
 
 		do
@@ -255,7 +257,8 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 			move_orig -= 2;
 			--move_pend;
 
-
+			//std::cout << "preping binary search" << std::endl;
+//
 			std::cout 	<< "binary search distance: " << static_cast<size_t>(std::distance(main.begin(), *move_pend))
 						<< " from: " << **main.begin() << " to: " << ***move_pend
 						<<", target is : " << *move_orig << std::endl;
@@ -266,23 +269,32 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 			mainChainIterator copy_begin = main.begin();
 			mainChainIterator copy_end = *move_pend;
 
+			//std::cout << "derefing empty iterator?" << std::endl;
 
-			while (size_t distance = static_cast<size_t>(std::distance(copy_begin, copy_end)) > 2)
+			size_t dist = static_cast<size_t>(std::distance(copy_begin, copy_end));
+
+			//std::cout << "calculating distance " << std::endl;
+			while (dist > 2)
 			{
-				std::cout <<"advancing " << std::endl;
-				mainChainIterator mid = next(copy_begin, distance / 2);
+				//std::cout <<"advancing " << std::endl;
+				mainChainIterator mid = next(copy_begin, dist / 2);
 				g_comp_count++;
-				std::cout << "attempt dereferencing" << std::endl;
+				//std::cout << "attempt dereferencing" << std::endl;
 				if (*move_orig > **mid)
 					copy_begin = next(mid, 1);
 				else
 					copy_end = mid;
-				std::cout << static_cast<size_t>(std::distance(copy_begin, copy_end)) << std::endl;
+				dist = static_cast<size_t>(std::distance(copy_begin, copy_end));
+				std::cout << dist << std::endl;
+				//std::cout << "print distance" << std::endl;
 			}
 
-
+			//std::cout << "hello?" << std::endl;
 
 			main.insert(copy_begin, move_orig);
+
+			//std::cout << "inserted?" << std::endl;
+
 			//binary search let's go
 
 			//insert: mainChainIterator
@@ -291,17 +303,61 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 			//mid:
 		} while (move_pend != current_pend);
 
+		std::cout << "exited?" << std::endl;
 
-
-		move_orig += (distance * 2);
-		move_pend = next(move_pend, distance);
+		current_orig = next(current_orig, distance * 2);
+		current_pend = next(current_pend, distance);
 		i++;
 	}
 	std::cout << "where segfault" << std::endl;
-	if (current_pend != pending.end())
-		std::cout << "there are pending" << std::endl;
-	else
-		std::cout << "no pending left" << std::endl;
+	while (current_pend != pending.end())
+	{
+		mainChainIterator copy_begin = main.begin();
+		mainChainIterator copy_end = *current_pend;
+
+		//std::cout << "derefing empty iterator?" << std::endl;
+
+		size_t dist = static_cast<size_t>(std::distance(copy_begin, copy_end));
+
+		//std::cout << "calculating distance " << std::endl;
+		while (dist > 2)
+		{
+			//std::cout <<"advancing " << std::endl;
+			mainChainIterator mid = next(copy_begin, dist / 2);
+			g_comp_count++;
+			//std::cout << "attempt dereferencing" << std::endl;
+			if (*current_orig > **mid)
+				copy_begin = next(mid, 1);
+			else
+				copy_end = mid;
+			dist = static_cast<size_t>(std::distance(copy_begin, copy_end));
+			std::cout << dist << std::endl;
+			//std::cout << "print distance" << std::endl;
+		}
+
+		//std::cout << "hello?" << std::endl;
+
+		main.insert(copy_begin, current_orig);
+		current_orig += 2;
+		current_pend = next(current_pend, 1);
+	}
+
+	//dump evertyhing where it should be
+
+	typedef typename GroupIterator::value_type					variable_type;
+	typedef typename GroupIterator::iterator_type				iterator_type;
+	typedef Container<variable_type, Alloc>						cache_cenas;
+
+	cache_cenas cache;
+
+	for (mainChainIterator it = main.begin(); it != main.end(); ++it)
+	{
+		iterator_type start = it->getIter();
+		iterator_type finish = start;
+		std::advance(finish, it->getSize());
+		std::copy(start, finish, std::back_inserter(cache));
+	}
+	std::copy(cache.begin(), cache.end(), begin.getIter());
 
 	std::cout << "finished recursion loop"  << std::endl;
 }
