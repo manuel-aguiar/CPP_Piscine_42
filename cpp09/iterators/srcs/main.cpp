@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 17:58:15 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/07 18:04:03 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,7 +287,7 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 				if (*move_orig > **mid)
 				{
 
-					copy_begin = mid;
+					copy_begin = next(mid, 1);
 					std::cout << "	begin = mid, new begin: " << **copy_begin << std::endl;
 				}
 				else
@@ -341,7 +341,7 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 			if (*current_orig > **mid)
 			{
 
-				copy_begin = mid;
+				copy_begin = next(mid, 1);
 				std::cout << "	begin = mid, new begin: " << **copy_begin << std::endl;
 			}
 			else
