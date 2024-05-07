@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 13:23:47 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/07 15:30:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,33 @@ template <
 		typename,
 		typename
 	> class Container,
+	class Alloc,
+	typename GroupIterator
+> typename Container<GroupIterator, Alloc>::iterator
+binary_search_count(typename Container<GroupIterator, Alloc>::iterator begin,
+					typename Container<GroupIterator, Alloc>::iterator end,
+					GroupIterator& value)
+{
+	typedef typename Container<GroupIterator, Alloc>::iterator iterator;
+
+	while (static_cast<size_t>(std::distance(begin, end)) != 1)
+	{
+		iterator mid = next(begin, static_cast<size_t>(std::distance(begin, end) / 2));
+		g_comp_count++;
+		if (*value > **mid)
+			begin = mid;
+		else
+			end = mid;
+	}
+	return (begin);
+}
+
+
+template <
+	template <
+		typename,
+		typename
+	> class Container,
 	class T,
 	class Alloc,
 	typename GroupIterator
@@ -153,81 +180,99 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 	);
 
 	//typedef for main chain and its iterator
-	typedef Container<GroupIterator, Alloc>                     mainChainContainer;
-	typedef typename mainChainContainer::iterator				mainChainIterator;
+	typedef Container<GroupIterator, Alloc>                     		mainChainContainer;
+	typedef typename mainChainContainer::iterator						mainChainIterator;
 
-	//typedef for pending chain and its iterator
-	typedef Container<mainChainIterator, Alloc>					pendingChainContainer;
-	typedef typename pendingChainContainer::iterator 			pendingChainIterator;
+	typedef Container<mainChainIterator, Alloc>							pendChainContainer;
+	typedef typename pendChainContainer::iterator						pendChainIterator;
 
 
+	//separating main and pending
 	mainChainContainer											main;
-	pendingChainContainer										pending;
+	pendChainContainer											pending;
 
 	main.push_back(begin);
 	main.push_back(begin.next(1));
 
 	for (GroupIterator iter(begin + 2); iter != newEnd; iter += 2)
 	{
-		mainChainIterator tmp = main.insert(main.end(), iter.next(1));
-		pending.push_back(tmp);
+		mainChainIterator temp = main.insert(main.end(), iter.next(1));
+		pending.push_back(temp);
 	}
 
 	if (has_straggler)
+	{
 		pending.push_back(main.end());
+		std::cout << "has straggler" << std::endl;
+		/*
+			if it has a straggler, binary search for the last element must be done
+			against the full main chain (until the "end");
+		*/
+	}
+	else
+		std::cout << "no straggler" << std::endl;
 
 
+	std::cout << "Printing FullChain (size " << static_cast<size_t>(std::distance(begin, newEnd)) << "): " << std::endl;
+	for (GroupIterator iter(begin); iter != newEnd; ++iter)
+		std::cout << std::left << std::setw(2) << *iter << "  ";
+	std::cout << std::endl;
 
-	std::cout << "Printing mainChain: " << std::endl;
+
+	std::cout << "Printing mainChain (size " << main.size() << "): " << std::endl;
 	for (mainChainIterator iter = main.begin(); iter != main.end(); ++iter)
 		std::cout << std::left << std::setw(2) << **iter << "  ";
 	std::cout << std::endl;
 
-	std::cout << "Printing pendingChain: " << std::endl;
-	for (pendingChainIterator iter = pending.begin(); iter != pending.end(); ++iter)
-		std::cout << std::left << std::setw(2) << ***iter << "  ";
-	std::cout << std::endl;
 
-	GroupIterator 						main_first(begin + 2);
-	pendingChainIterator 				pend_first(pending.begin());
+	//pend chain doesn't store any values, just keeps track of the position to perform binary search
+
+
+	//std::cout << "Printing pendingChain (size " << pending.size() << "): " << std::endl;
+	//for (pendChainIterator iter = pending.begin(); iter != pending.end(); ++iter)
+	//	std::cout << std::left << std::setw(2) << **iter << "  ";
+	//std::cout << std::endl;
+
+	GroupIterator 						current_orig = begin + 2;
+	pendChainIterator  					current_pend = pending.begin();
 
 	int i = 0;
 	while (true)
 	{
 		size_t distance = jacobsthal_diff[i];
 
-		if (distance > static_cast<size_t>(std::distance(pend_first, pending.end())))
+		if (distance > static_cast<size_t>(std::distance(current_pend, pending.end())))
 			break ;
 		std::cout << "distance is " << distance << std::endl;
 
-		GroupIterator 			main_last 		= main_first.next(distance * 2);
-		pendingChainIterator	pend_last 		= next(pend_first, distance);
+		GroupIterator 				move_orig 		= current_orig.next(distance * 2);
+		pendChainIterator 			move_pend 		= next(move_pend, distance);
 
 		do
 		{
-
-			--pend_last;
-			--main_last;
-			--main_last;
+			move_orig -= 2;
+			--move_pend;
 
 
-			std::cout 	<< "binary search distance: " << static_cast<size_t>(std::distance(main.begin(), *pend_last))
-						<< " from: " << **main.begin() << " to: " << ***pend_last
-						<<", target is : " << *main_last << std::endl;
+			std::cout 	<< "binary search distance: " << static_cast<size_t>(std::distance(main.begin(), *move_pend))
+						<< " from: " << **main.begin() << " to: " << ***move_pend
+						<<", target is : " << *move_orig << std::endl;
 
+			mainChainIterator position = binary_search_count(main.begin(), *move_pend, move_orig);
+			main.insert(position, move_orig);
 			//binary search let's go
 
 			//insert: mainChainIterator
 			//start: mainChainIterator = main.begin();
 			//end: mainChainIterator = *pend_last
 			//mid:
-		} while (pend_first != pend_last);
+		} while (move_pend != current_pend);
 
-		main_first += (distance * 2);
-		pend_first = next(pend_first, distance);
+		move_orig += (distance * 2);
+		move_pend = next(move_pend, distance);
 		i++;
 	}
-	if(pend_first != pending.end())
+	if (current_pend != pending.end())
 		std::cout << "there are pending" << std::endl;
 	else
 		std::cout << "no pending left" << std::endl;
