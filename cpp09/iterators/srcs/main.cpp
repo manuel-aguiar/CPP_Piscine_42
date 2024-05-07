@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 10:51:41 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/07 11:39:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,24 +87,35 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 		new_GroupIterator(newEnd, 2)
 	);
 
+	//typedef for main chain and its iterator
+	typedef Container<GroupIterator, Alloc>                     mainChainContainer;
+	typedef typename mainChainContainer::iterator				mainChainIterator;
+
+	//typedef for pending chain and its iterator
+	typedef Container<mainChainIterator, Alloc>					pendingChainContainer;
+	typedef typename pendingChainContainer::iterator 			pendingChainIterator;
 
 
+	mainChainContainer											main;
+	pendingChainContainer										pending;
 
-	Container<GroupIterator, Alloc> 										mainChain;
-	Container<typename Container<GroupIterator, Alloc>::iterator, Alloc>	pending;
-
-	mainChain.push_back(begin);
-	mainChain.push_back(begin.next(1));
+	main.push_back(begin);
+	main.push_back(begin.next(1));
 
 	for (GroupIterator iter(begin + 2); iter != newEnd; iter += 2)
 	{
-		typename Container<GroupIterator, Alloc>::iterator tmp = mainChain.insert(mainChain.end(), iter.next(1));
+		typename Container<GroupIterator, Alloc>::iterator tmp = main.insert(main.end(), iter.next(1));
 		pending.push_back(tmp);
 	}
 
 	if (has_straggler)
-		pending.push_back(mainChain.end());
+		pending.push_back(main.end());
 
+	GroupIterator 						main_it(begin + 2);
+	pendingChainIterator 				pend_it = pending.begin();
+
+	(void)main_it;
+	(void)pend_it;
 }
 
 template <
