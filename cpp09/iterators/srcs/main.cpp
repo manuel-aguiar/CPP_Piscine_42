@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 18:05:47 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/07 18:24:50 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 		return ;
 
 	bool	has_straggler = size % 2;
-	GroupIterator newEnd = (has_straggler) ? --end : end;
+	GroupIterator newEnd = (has_straggler) ? prev(end, 1) : end;
 	//print_elements(begin, newEnd);
 	for (GroupIterator iter(begin); iter != newEnd; iter += 2)
 	{
@@ -262,7 +262,7 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 			//std::cout << "preping binary search" << std::endl;
 //
 			std::cout 	<< "binary search distance: " << static_cast<size_t>(std::distance(main.begin(), *move_pend))
-						<< " from: " << **main.begin() << " to: " << ***move_pend
+						<< " from: " << **main.begin() << " to: " << (*move_pend == main.end() ? 123123123 : ***move_pend)
 						<<", target is : " << *move_orig << std::endl;
 
 			//<Container<GroupIterator, Alloc>, Alloc, GroupIterator >
@@ -281,7 +281,7 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 				//std::cout <<"advancing " << std::endl;
 				mainChainIterator mid = next(copy_begin, dist / 2);
 				g_comp_count++;
-				std::cout 	<< "begin: " << **copy_begin << ", end: " << **copy_end
+				std::cout 	<< "begin: " << **copy_begin << ", end: " << (copy_end == main.end() ? 123123123 : **copy_end)
 						<< ", original: " << *move_orig << ", mid: " << **mid << std::endl;
 				//std::cout << "attempt dereferencing" << std::endl;
 				if (*move_orig > **mid)
@@ -318,8 +318,10 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 
 		current_orig = next(current_orig, distance * 2);
 		current_pend = next(current_pend, distance);
+		std::cout << "hey " << std::endl;
 		i++;
 	}
+	std::cout << "check pending" << std::endl;
 	while (current_pend != pending.end())
 	{
 		std::cout << "pending has elements" << std::endl;
@@ -332,12 +334,13 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 		//std::cout << "calculating distance " << std::endl;
 		while (dist > 1)
 		{
-			//std::cout <<"advancing " << std::endl;
+			//std::cout <<"advancing, distance:  " <<dist << std::endl;
 			mainChainIterator mid = next(copy_begin, dist / 2);
 			g_comp_count++;
-			//std::cout << "attempt dereferencing" << std::endl;
-			std::cout 	<< "begin: " << **copy_begin << ", end: " << **copy_end
+			//std::cout << "attempt dereferencing " << *current_orig << std::endl;
+			std::cout 	<< "begin: " << **copy_begin << ", end: " << (copy_end == main.end() ? 123123123 : **copy_end)
 						<< ", original: " << *current_orig << ", mid: " << **mid << std::endl;
+			//std::cout << "dereference successfull" << std::endl;
 			if (*current_orig > **mid)
 			{
 
@@ -415,7 +418,7 @@ int main(void)
     std::list<int> list;
     std::vector<int> vec;
 
-	int total = 15;
+	int total = 9;
     for (int i = 1; i <= total; ++i)
 	{
         list.push_back(total - i + 1);
