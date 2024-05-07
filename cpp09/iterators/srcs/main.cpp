@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 10:31:44 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/07 10:51:41 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <list>
 #include <iostream>
 #include <algorithm>
+#include <iomanip>
 
 int g_comp_count = 0;
 
@@ -33,13 +34,18 @@ const size_t jacobsthal_diff[] = {
 };
 
 
+void	print_number(int &num)
+{
+	std::cout << std::left << std::setw(2) << num << "  ";
+}
+
 template <
 	typename GroupIterator
 > void print_elements(GroupIterator begin, GroupIterator end)
 {
 	for	(GroupIterator iter(begin); begin != end; ++iter)
 	{
-		std::cout << *iter << " ";
+		std::cout << *iter << "  ";
 	}
 	std::cout << std::endl;
 }
@@ -72,13 +78,33 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 		//	std::cout << "didn't swap" << std::endl;
 		//std::cout << "after swap: " << iter[0] << " " << iter[1] << std::endl;
 	}
+	std::for_each(container.begin(), container.end(), print_number);
+	std::cout << std::endl;
+
 	recursive(
 		container,
 		new_GroupIterator(begin, 2),
 		new_GroupIterator(newEnd, 2)
 	);
-	Container<int, Alloc> cenas;
-	(void)cenas;
+
+
+
+
+	Container<GroupIterator, Alloc> 										mainChain;
+	Container<typename Container<GroupIterator, Alloc>::iterator, Alloc>	pending;
+
+	mainChain.push_back(begin);
+	mainChain.push_back(begin.next(1));
+
+	for (GroupIterator iter(begin + 2); iter != newEnd; iter += 2)
+	{
+		typename Container<GroupIterator, Alloc>::iterator tmp = mainChain.insert(mainChain.end(), iter.next(1));
+		pending.push_back(tmp);
+	}
+
+	if (has_straggler)
+		pending.push_back(mainChain.end());
+
 }
 
 template <
@@ -109,15 +135,14 @@ int main(void)
     std::list<int> list;
     std::vector<int> vec;
 
-	int total = 8;
+	int total = 15;
     for (int i = 1; i <= total; ++i)
 	{
         list.push_back(total - i + 1);
         vec.push_back(total - i + 1);
     }
 
-	for (std::list<int>::iterator iter = list.begin(); iter != list.end(); ++iter)
-		std::cout << *iter << "  ";
+	std::for_each(list.begin(), list.end(), print_number);
 	std::cout << std::endl;
 
 	//GroupIterator<std::vector<int>::iterator> gvec(vec.begin(), 3);
@@ -131,10 +156,10 @@ int main(void)
 	std::cout << "\nlist:" << std::endl;
 	mysort(list);
 
-	for (std::list<int>::iterator iter = list.begin(); iter != list.end(); ++iter)
-		std::cout << *iter << "  ";
+	std::for_each(list.begin(), list.end(), print_number);
 	std::cout << std::endl;
 
+/*
 	std::cout << "\nvector:" << std::endl;
 	mysort(vec);
 
@@ -142,7 +167,7 @@ int main(void)
 		std::cout << *iter << "  ";
 	std::cout << std::endl;
 	//mysort<std::vector<int>::iterator >(vec.begin(), vec.end());
-
+*/
     return 0;
 }
 
