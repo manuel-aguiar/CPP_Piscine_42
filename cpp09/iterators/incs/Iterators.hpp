@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 10:23:14 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/07 12:42:17 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,15 +159,12 @@ template <
 			return (*copy);
 		}
 
-		bool	operator==(const GroupIterator& other)
-		{
-			return (_group_iter == other._group_iter && _group_size == other._group_size);
-		}
-
-		bool	operator!=(const GroupIterator& other)
-		{
-			return (!operator==(other));
-		}
+		bool	operator==(const GroupIterator& other)	{return (_group_iter == other._group_iter);}
+		bool	operator!=(const GroupIterator& other)	{return (!operator==(other));}
+		bool	operator>(const GroupIterator& other)	{return (_group_iter > other._group_iter);}
+		bool	operator>=(const GroupIterator& other)	{return (_group_iter >= other._group_iter);}
+		bool	operator<(const GroupIterator& other)	{return (_group_iter < other._group_iter);}
+		bool	operator<=(const GroupIterator& other)	{return (_group_iter <= other._group_iter);}
 
 		GroupIterator	next(int index)
 		{

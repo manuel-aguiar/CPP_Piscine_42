@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 12:17:56 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/07 13:19:02 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,18 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 	if (has_straggler)
 		pending.push_back(main.end());
 
+
+
+	std::cout << "Printing mainChain: " << std::endl;
+	for (mainChainIterator iter = main.begin(); iter != main.end(); ++iter)
+		std::cout << std::left << std::setw(2) << **iter << "  ";
+	std::cout << std::endl;
+
+	std::cout << "Printing pendingChain: " << std::endl;
+	for (pendingChainIterator iter = pending.begin(); iter != pending.end(); ++iter)
+		std::cout << std::left << std::setw(2) << ***iter << "  ";
+	std::cout << std::endl;
+
 	GroupIterator 						main_first(begin + 2);
 	pendingChainIterator 				pend_first(pending.begin());
 
@@ -188,23 +200,38 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 			break ;
 		std::cout << "distance is " << distance << std::endl;
 
-		GroupIterator 			main_last 		= next(main_first, distance * 2);
+		GroupIterator 			main_last 		= main_first.next(distance * 2);
 		pendingChainIterator	pend_last 		= next(pend_first, distance);
 
-		--pend_last;
-		main_last = prev(main_last, 2);
-
-		while (pend_last != pend_first)
+		do
 		{
-			std::cout << "main last: " << main_last[0] << std::endl;
-
 
 			--pend_last;
-			main_last = prev(main_last, 2);
-		}
+			--main_last;
+			--main_last;
 
+
+			std::cout 	<< "binary search distance: " << static_cast<size_t>(std::distance(main.begin(), *pend_first))
+						<< " from: " << **main.begin() << " to: " << ***pend_first
+						<<", target is : " << *main_last << std::endl;
+
+			//binary search let's go
+
+			//insert: mainChainIterator
+			//start: mainChainIterator = main.begin();
+			//end: mainChainIterator = *pend_last
+			//mid:
+		} while (pend_first != pend_last);
+
+		main_first += (distance * 2);
+		pend_first = next(pend_first, distance);
 		i++;
 	}
+	if(pend_first != pending.end())
+		std::cout << "there are pending" << std::endl;
+	else
+		std::cout << "no pending left" << std::endl;
+
 	std::cout << "finished recursion loop"  << std::endl;
 }
 
@@ -238,7 +265,7 @@ int main(void)
     std::list<int> list;
     std::vector<int> vec;
 
-	int total = 15;
+	int total = 32;
     for (int i = 1; i <= total; ++i)
 	{
         list.push_back(total - i + 1);
