@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/06 16:28:51 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/07 10:23:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,8 +169,21 @@ template <
 			return (!operator==(other));
 		}
 
+		GroupIterator	next(int index)
+		{
+			typename std::iterator_traits<Iterator>::iterator_category category;
+			GroupIterator copy(*this);
+			copy.advanceIterator(index, category);
+			return (copy);
+		}
 
-
+		GroupIterator	prev(int index)
+		{
+			typename std::iterator_traits<Iterator>::iterator_category category;
+			GroupIterator copy(*this);
+			copy.advanceIterator(-index, category);
+			return (copy);
+		}
 
 	private:
 
