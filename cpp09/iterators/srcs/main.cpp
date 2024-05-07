@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 13:19:02 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/07 13:23:47 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,8 +211,8 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 			--main_last;
 
 
-			std::cout 	<< "binary search distance: " << static_cast<size_t>(std::distance(main.begin(), *pend_first))
-						<< " from: " << **main.begin() << " to: " << ***pend_first
+			std::cout 	<< "binary search distance: " << static_cast<size_t>(std::distance(main.begin(), *pend_last))
+						<< " from: " << **main.begin() << " to: " << ***pend_last
 						<<", target is : " << *main_last << std::endl;
 
 			//binary search let's go
