@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 17:49:23 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/07 17:58:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -279,8 +279,6 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 			while (dist > 1)
 			{
 				//std::cout <<"advancing " << std::endl;
-				std::cout 	<< "begin: " << **copy_begin << ", end: " << **copy_end
-						<< ", original: " << *move_orig << std::endl;
 				mainChainIterator mid = next(copy_begin, dist / 2);
 				g_comp_count++;
 				std::cout 	<< "begin: " << **copy_begin << ", end: " << **copy_end
@@ -288,13 +286,14 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 				//std::cout << "attempt dereferencing" << std::endl;
 				if (*move_orig > **mid)
 				{
-					std::cout << "	begin = mid + 1" << std::endl;
-					copy_begin = next(mid, 1);
+
+					copy_begin = mid;
+					std::cout << "	begin = mid, new begin: " << **copy_begin << std::endl;
 				}
 				else
 				{
-					std::cout << "	begin = mid + 1" << std::endl;
 					copy_end = mid;
+					std::cout << "	end = mid, new end: " << **copy_end << std::endl;
 				}
 				dist = static_cast<size_t>(std::distance(copy_begin, copy_end));
 				std::cout << dist << std::endl;
@@ -303,7 +302,7 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 
 			//std::cout << "hello?" << std::endl;
 
-			main.insert(copy_begin, move_orig);
+			main.insert(copy_end, move_orig);
 
 			//std::cout << "inserted?" << std::endl;
 
@@ -341,13 +340,14 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 						<< ", original: " << *current_orig << ", mid: " << **mid << std::endl;
 			if (*current_orig > **mid)
 			{
-				std::cout << "	begin = mid + 1" << std::endl;
-				copy_begin = next(mid, 1);
+
+				copy_begin = mid;
+				std::cout << "	begin = mid, new begin: " << **copy_begin << std::endl;
 			}
 			else
 			{
-				std::cout << "	begin = mid + 1" << std::endl;
 				copy_end = mid;
+				std::cout << "	end = mid, new end: " << **copy_end << std::endl;
 			}
 
 			dist = static_cast<size_t>(std::distance(copy_begin, copy_end));
@@ -357,7 +357,7 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 
 		//std::cout << "hello?" << std::endl;
 
-		main.insert(copy_begin, current_orig);
+		main.insert(copy_end, current_orig);
 		current_orig += 2;
 		current_pend = next(current_pend, 1);
 	}
