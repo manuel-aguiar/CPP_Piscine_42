@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 18:24:50 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/07 18:47:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -262,7 +262,7 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 			//std::cout << "preping binary search" << std::endl;
 //
 			std::cout 	<< "binary search distance: " << static_cast<size_t>(std::distance(main.begin(), *move_pend))
-						<< " from: " << **main.begin() << " to: " << (*move_pend == main.end() ? 123123123 : ***move_pend)
+						<< " from: " << **main.begin() << " to: " << (*move_pend == main.end() ? 123123123123123UL : ***move_pend)
 						<<", target is : " << *move_orig << std::endl;
 
 			//<Container<GroupIterator, Alloc>, Alloc, GroupIterator >
@@ -276,12 +276,12 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 			size_t dist = static_cast<size_t>(std::distance(copy_begin, copy_end));
 
 			//std::cout << "calculating distance " << std::endl;
-			while (dist > 1)
+			while (dist)
 			{
 				//std::cout <<"advancing " << std::endl;
 				mainChainIterator mid = next(copy_begin, dist / 2);
 				g_comp_count++;
-				std::cout 	<< "begin: " << **copy_begin << ", end: " << (copy_end == main.end() ? 123123123 : **copy_end)
+				std::cout 	<< "begin: " << **copy_begin << ", end: " << (copy_end == main.end() ? 123123123123123UL : **copy_end)
 						<< ", original: " << *move_orig << ", mid: " << **mid << std::endl;
 				//std::cout << "attempt dereferencing" << std::endl;
 				if (*move_orig > **mid)
@@ -332,13 +332,13 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 
 		size_t dist = static_cast<size_t>(std::distance(copy_begin, copy_end));
 		//std::cout << "calculating distance " << std::endl;
-		while (dist > 1)
+		while (dist)
 		{
 			//std::cout <<"advancing, distance:  " <<dist << std::endl;
 			mainChainIterator mid = next(copy_begin, dist / 2);
 			g_comp_count++;
 			//std::cout << "attempt dereferencing " << *current_orig << std::endl;
-			std::cout 	<< "begin: " << **copy_begin << ", end: " << (copy_end == main.end() ? 123123123 : **copy_end)
+			std::cout 	<< "begin: " << **copy_begin << ", end: " << (copy_end == main.end() ? 123123123123123UL : **copy_end)
 						<< ", original: " << *current_orig << ", mid: " << **mid << std::endl;
 			//std::cout << "dereference successfull" << std::endl;
 			if (*current_orig > **mid)
@@ -418,7 +418,7 @@ int main(void)
     std::list<int> list;
     std::vector<int> vec;
 
-	int total = 9;
+	int total = 13;
     for (int i = 1; i <= total; ++i)
 	{
         list.push_back(total - i + 1);
