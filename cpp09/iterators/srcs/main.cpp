@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 15:30:15 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/07 16:12:21 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,12 +120,12 @@ template <
 		typename,
 		typename
 	> class Container,
-	class Alloc,
-	typename GroupIterator
+	typename GroupIterator,
+	class Alloc
 > typename Container<GroupIterator, Alloc>::iterator
 binary_search_count(typename Container<GroupIterator, Alloc>::iterator begin,
 					typename Container<GroupIterator, Alloc>::iterator end,
-					GroupIterator& value)
+					GroupIterator value)
 {
 	typedef typename Container<GroupIterator, Alloc>::iterator iterator;
 
@@ -170,14 +170,16 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 		//	std::cout << "didn't swap" << std::endl;
 		//std::cout << "after swap: " << iter[0] << " " << iter[1] << std::endl;
 	}
-	std::for_each(container.begin(), container.end(), print_number);
-	std::cout << std::endl;
+
 
 	recursive(
 		container,
 		new_GroupIterator(begin, 2),
 		new_GroupIterator(newEnd, 2)
 	);
+
+	std::for_each(container.begin(), container.end(), print_number);
+	std::cout << std::endl;
 
 	//typedef for main chain and its iterator
 	typedef Container<GroupIterator, Alloc>                     		mainChainContainer;
@@ -188,8 +190,8 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 
 
 	//separating main and pending
-	mainChainContainer											main;
-	pendChainContainer											pending;
+	mainChainContainer													main;
+	pendChainContainer													pending;
 
 	main.push_back(begin);
 	main.push_back(begin.next(1));
@@ -246,7 +248,7 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 		std::cout << "distance is " << distance << std::endl;
 
 		GroupIterator 				move_orig 		= current_orig.next(distance * 2);
-		pendChainIterator 			move_pend 		= next(move_pend, distance);
+		pendChainIterator 			move_pend 		= next(current_pend, distance);
 
 		do
 		{
@@ -258,8 +260,29 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 						<< " from: " << **main.begin() << " to: " << ***move_pend
 						<<", target is : " << *move_orig << std::endl;
 
-			mainChainIterator position = binary_search_count(main.begin(), *move_pend, move_orig);
-			main.insert(position, move_orig);
+			//<Container<GroupIterator, Alloc>, Alloc, GroupIterator >
+			//mainChainIterator position = binary_search_count<mainChainContainer, GroupIterator, Alloc>(main.begin(), *move_pend, move_orig);
+
+			mainChainIterator copy_begin = main.begin();
+			mainChainIterator copy_end = *move_pend;
+
+
+			while (size_t distance = static_cast<size_t>(std::distance(copy_begin, copy_end)) > 2)
+			{
+				std::cout <<"advancing " << std::endl;
+				mainChainIterator mid = next(copy_begin, distance / 2);
+				g_comp_count++;
+				std::cout << "attempt dereferencing" << std::endl;
+				if (*move_orig > **mid)
+					copy_begin = next(mid, 1);
+				else
+					copy_end = mid;
+				std::cout << static_cast<size_t>(std::distance(copy_begin, copy_end)) << std::endl;
+			}
+
+
+
+			main.insert(copy_begin, move_orig);
 			//binary search let's go
 
 			//insert: mainChainIterator
@@ -268,10 +291,13 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 			//mid:
 		} while (move_pend != current_pend);
 
+
+
 		move_orig += (distance * 2);
 		move_pend = next(move_pend, distance);
 		i++;
 	}
+	std::cout << "where segfault" << std::endl;
 	if (current_pend != pending.end())
 		std::cout << "there are pending" << std::endl;
 	else
