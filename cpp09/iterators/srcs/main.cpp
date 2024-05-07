@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 11:41:09 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/07 12:17:56 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,71 @@ const size_t jacobsthal_diff[] = {
 1537228672809129216u, 3074457345618258432u, 6148914691236516864u
 };
 
+template <
+	typename Iterator
+>
+Iterator	next(Iterator& iter, int index)
+{
+	typename std::iterator_traits<Iterator>::iterator_category category;
+	Iterator copy = advanceeee(iter, index, category);
+	return (copy);
+}
+
+template <
+	typename Iterator
+>
+Iterator	prev(Iterator& iter, int index)
+{
+	typename std::iterator_traits<Iterator>::iterator_category category;
+	Iterator copy = advanceeee(iter, -index, category);
+	return (copy);
+}
+
+template <
+	typename Iterator
+>
+Iterator& advanceeee(Iterator& iter, int n)
+{
+	typename std::iterator_traits<Iterator>::iterator_category category;
+	return (advanceeee(iter, n, category));
+}
+
+template <
+	typename Iterator
+>
+Iterator& advanceeee(Iterator& iter, int n, std::random_access_iterator_tag)
+{
+	iter += n;
+	return (*iter);
+}
+
+template <
+	typename Iterator
+>
+Iterator& advanceeee(Iterator& iter, int n, std::bidirectional_iterator_tag)
+{
+	if (n > 0)
+	{
+		while (n--)
+			++iter;
+	}
+	else
+	{
+		while (n++)
+			--iter;
+	}
+	return (iter);
+}
+
+template <
+	typename Iterator
+>
+Iterator& advanceeee(Iterator& iter, int n, std::forward_iterator_tag)
+{
+	while (n--)
+		++iter;
+	return (iter);
+}
 
 void	print_number(int &num)
 {
@@ -111,11 +176,36 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 	if (has_straggler)
 		pending.push_back(main.end());
 
-	GroupIterator 						main_it(begin + 2);
-	pendingChainIterator 				pend_it(pending.begin());
+	GroupIterator 						main_first(begin + 2);
+	pendingChainIterator 				pend_first(pending.begin());
 
-	(void)main_it;
-	(void)pend_it;
+	int i = 0;
+	while (true)
+	{
+		size_t distance = jacobsthal_diff[i];
+
+		if (distance > static_cast<size_t>(std::distance(pend_first, pending.end())))
+			break ;
+		std::cout << "distance is " << distance << std::endl;
+
+		GroupIterator 			main_last 		= next(main_first, distance * 2);
+		pendingChainIterator	pend_last 		= next(pend_first, distance);
+
+		--pend_last;
+		main_last = prev(main_last, 2);
+
+		while (pend_last != pend_first)
+		{
+			std::cout << "main last: " << main_last[0] << std::endl;
+
+
+			--pend_last;
+			main_last = prev(main_last, 2);
+		}
+
+		i++;
+	}
+	std::cout << "finished recursion loop"  << std::endl;
 }
 
 template <
