@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 11:39:37 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/07 11:40:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 
 	for (GroupIterator iter(begin + 2); iter != newEnd; iter += 2)
 	{
-		typename Container<GroupIterator, Alloc>::iterator tmp = main.insert(main.end(), iter.next(1));
+		mainChainIterator tmp = main.insert(main.end(), iter.next(1));
 		pending.push_back(tmp);
 	}
 
