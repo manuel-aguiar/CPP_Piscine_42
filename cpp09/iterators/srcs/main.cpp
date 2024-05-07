@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 11:39:02 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/07 11:39:37 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	recursive(Container<T, Alloc>& container, GroupIterator begin, GroupIterato
 		pending.push_back(main.end());
 
 	GroupIterator 						main_it(begin + 2);
-	pendingChainIterator 				pend_it = pending.begin();
+	pendingChainIterator 				pend_it(pending.begin());
 
 	(void)main_it;
 	(void)pend_it;
