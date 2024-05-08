@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 18:01:45 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 18:05:37 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,22 @@ template <
 	std::cout << std::endl;
 }
 
+#include <ctime>
+
 int main(void)
 {
+	srand(std::time(0));
     std::list<int> list;
     std::vector<int> vec;
 
-	int total = 9;
+	int total = 8;
     for (int i = 1; i <= total; ++i)
 	{
         //list.push_back((total - i + 1) * (i % 2 ? -1 : 1));
         //vec.push_back((total - i + 1) * (i % 2 ? -1 : 1));
-        list.push_back((total - i + 1));
-        vec.push_back((total - i + 1));
+		int num = (int)((rand() / (float)RAND_MAX) * 100);
+        list.push_back(num);
+        vec.push_back(num);
     }
 
 	std::for_each(list.begin(), list.end(), print_num);
