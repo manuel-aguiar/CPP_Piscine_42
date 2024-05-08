@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Iterators.hpp                                      :+:      :+:    :+:   */
+/*   GroupIterator.tpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/06 09:26:51 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 12:42:17 by codespace        ###   ########.fr       */
+/*   Created: 2024/05/08 10:57:20 by codespace         #+#    #+#             */
+/*   Updated: 2024/05/08 11:28:59 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITERATORS_HPP
+#ifndef GROUPITERATOR_TPP
 
-# define ITERATORS_HPP
+# define GROUPITERATOR_TPP
 
 #include <iterator>
 #include <iostream>
@@ -303,5 +303,8 @@ typename GroupIterator<Iterator>::difference_type operator-(GroupIterator<Iterat
 {
     return (left.getIter() - right.getIter()) / left.getSize();
 }
+
+
+
 
 #endif
