@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 14:47:48 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 16:18:17 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include "QuickSort.hpp"
 #include <vector>
 #include <list>
+#include <deque>
 #include <iostream>
 #include <algorithm>
 #include <iomanip>
@@ -39,10 +40,10 @@ template <
 
 int main(void)
 {
-    std::list<int> list;
+    std::deque<int> list;
     std::vector<int> vec;
 
-	int total = 133;
+	int total = 13;
     for (int i = 1; i <= total; ++i)
 	{
         list.push_back((total - i + 1) * (i % 2 ? -1 : 1));
@@ -55,12 +56,18 @@ int main(void)
 	std::cout << std::endl;
 
 	std::cout << "\nlist:" << std::endl;
-	size_t count = FordJohnsonSort(list);
-
-	std::cout << "Total Comparisons: " << count << std::endl;
+	{
+		size_t count = FordJohnsonSort(list);
+		std::cout << "Total Comparisons: " << count << std::endl;
+	}
 
 	std::for_each(list.begin(), list.end(), print_num);
 	std::cout << std::endl;
+
+	{
+		size_t count = FordJohnsonSort(vec);
+		std::cout << "Total Comparisons: " << count << std::endl;
+	}
 
     return 0;
 }
