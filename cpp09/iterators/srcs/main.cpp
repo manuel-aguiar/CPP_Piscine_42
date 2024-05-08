@@ -6,12 +6,12 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 11:07:07 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 11:08:51 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "GroupIterator.tpp"
-#include "Iterator_funcs.tpp"
+#include "IterFuncs.tpp"
 #include <vector>
 #include <list>
 #include <iostream>
