@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:25:10 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 17:52:12 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 18:26:17 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,7 +212,7 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 	{
 		int distance = jacobsthal_diff[i];
 
-		if (distance > static_cast<int>(std::distance(current_pend, pending.end())))
+		if (distance >= static_cast<int>(std::distance(current_pend, pending.end())))
 			break ;
 		std::cout << "distance is " << distance << " vs pending list: " << static_cast<int>(std::abs(std::distance(current_pend, pending.end()))) << std::endl;
 

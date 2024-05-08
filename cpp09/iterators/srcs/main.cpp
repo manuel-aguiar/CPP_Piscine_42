@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 18:23:51 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 18:29:59 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,11 @@ bool	is_sorted(Container<T, Alloc>& container)
 int main(void)
 {
 	srand(std::time(0));
+	std::deque<int> deque;
     std::list<int> list;
     std::vector<int> vec;
 
-	int total = 133;
+	int total = 9;
     for (int i = 1; i <= total; ++i)
 	{
         //list.push_back((total - i + 1) * (i % 2 ? -1 : 1));
@@ -79,6 +80,7 @@ int main(void)
 		int num = (int)((rand() / (float)RAND_MAX) * 1000);
         list.push_back(num);
         vec.push_back(num);
+		deque.push_back(num);
     }
 
 	std::for_each(list.begin(), list.end(), print_num);
@@ -97,6 +99,12 @@ int main(void)
 		size_t count = FordJohnsonSort(vec);
 		std::cout << "Total Comparisons: " << count << std::endl;
 	}
+
+	{
+		size_t count = FordJohnsonSort(deque);
+		std::cout << "Total Comparisons: " << count << std::endl;
+	}
+
 	if (is_sorted(list))
 		std::cout << "OK list" << std::endl;
 	else
@@ -106,6 +114,11 @@ int main(void)
 		std::cout << "OK vector" << std::endl;
 	else
 		std::cout << "NOT OK vector" << std::endl;
+
+	if (is_sorted(deque))
+		std::cout << "OK deque" << std::endl;
+	else
+		std::cout << "NOT OK deque" << std::endl;
     return 0;
 }
 
