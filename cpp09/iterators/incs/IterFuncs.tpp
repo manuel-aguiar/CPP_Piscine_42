@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:05:46 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 11:08:53 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 11:24:01 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 # define ITERFUNCS_TPP
 
 #include <iterator>
-
-
 
 template <
 	typename Iterator
