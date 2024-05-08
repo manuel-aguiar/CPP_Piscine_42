@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FordJohnson.tpp                                    :+:      :+:    :+:   */
+/*   FordJohnsonSort.tpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:25:10 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 11:35:00 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 11:39:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@
 # include <algorithm>
 # include <iomanip>
 
+/* FordJohnson sort (merge-insertion), returns the total number of comparisons */
+template <
+	template <
+		typename,
+		typename
+	> class Container,
+	class T,
+	class Alloc
+>
+size_t	FordJohnsonSort(Container<T, Alloc>& container);
 
 /*
 0, 1, 1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461, 10923, 21845, 43691
