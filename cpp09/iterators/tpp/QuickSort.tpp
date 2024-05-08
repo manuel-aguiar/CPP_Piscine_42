@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:28:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 11:28:57 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 12:16:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,14 @@
 
 # define QUICKSORT_TPP
 
+template <
+	template <
+		typename,
+		typename
+	> class Container,
+	class T,
+	class Alloc
+>
+size_t	QuickSort(Container<T, Alloc>& container);
 
 #endif
