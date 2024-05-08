@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:05:46 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 12:05:38 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 13:24:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,12 @@
 template <
 	typename Iterator
 >
-Iterator	next(Iterator& iter, int index)
-{
-	typename std::iterator_traits<Iterator>::iterator_category category;
-	Iterator copy(iter);
-	copy = advanceeee(copy, index, category);
-	return (copy);
-}
+Iterator	next(Iterator& iter, int index);
 
 template <
 	typename Iterator
 >
-Iterator	prev(Iterator& iter, int index)
-{
-	typename std::iterator_traits<Iterator>::iterator_category category;
-	Iterator copy(iter);
-	copy = advanceeee(copy, -index, category);
-	return (copy);
-}
+Iterator	prev(Iterator& iter, int index);
 
 template <
 	typename Iterator
@@ -84,6 +72,27 @@ static Iterator& advanceeee(Iterator& iter, int n, std::forward_iterator_tag)
 	return (iter);
 }
 
+template <
+	typename Iterator
+>
+Iterator	next(Iterator& iter, int index)
+{
+	typename std::iterator_traits<Iterator>::iterator_category category;
+	Iterator copy(iter);
+	copy = advanceeee(copy, index, category);
+	return (copy);
+}
+
+template <
+	typename Iterator
+>
+Iterator	prev(Iterator& iter, int index)
+{
+	typename std::iterator_traits<Iterator>::iterator_category category;
+	Iterator copy(iter);
+	copy = advanceeee(copy, -index, category);
+	return (copy);
+}
 
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:25:10 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 12:13:27 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 13:09:37 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 # define FORDJOHNSON_TPP
 
-# include "GroupIterator.tpp"
+# include "GroupIterator.hpp"
 # include "IterFuncs.hpp"
 
 # include <algorithm>

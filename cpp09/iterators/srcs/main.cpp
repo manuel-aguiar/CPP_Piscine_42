@@ -6,11 +6,14 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 12:26:43 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 13:11:26 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+//#include "GroupIterator.hpp"
+//#include "IterFuncs.hpp"
 #include "FordJohnsonSort.hpp"
+#include "QuickSort.hpp"
 #include <vector>
 #include <list>
 #include <iostream>
@@ -50,7 +53,7 @@ int main(void)
 	std::cout << std::endl;
 
 	std::cout << "\nlist:" << std::endl;
-	size_t count = FordJohnsonSort(list);
+	size_t count = QuickSort(list);
 
 	std::cout << "Total Comparisons: " << count << std::endl;
 

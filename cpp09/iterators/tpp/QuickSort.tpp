@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:28:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 12:30:43 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 13:22:44 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,54 +29,67 @@ template <
 >
 size_t	QuickSort(Container<T, Alloc>& container);
 
-
-
-
-
-static void	swap(int *a, int *b)
+template <
+	class T
+>
+static bool qs_compare(T& a, T& b, size_t& g_comp_count)
 {
-	int	temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
+	g_comp_count++;
+	return (a == b);
 }
 
-static int	partition(int arr[], int low, int high, int (*cmp)(int, int))
+template <
+	template <
+		typename,
+		typename
+	> class Container,
+	class T,
+	class Alloc
+>
+typename Container<T, Alloc>::iterator	qs_partition(typename Container<T, Alloc>::iterator low,
+													typename Container<T, Alloc>::iterator high,
+													size_t& g_comp_count)
 {
-	int	pivot;
-	int	i;
-	int	j;
+	T										pivot;
+	typename Container<T, Alloc>::iterator	i;
+	typename Container<T, Alloc>::iterator	j;
 
-	pivot = arr[low];
-	i = low - 1;
-	j = high + 1;
+	pivot = *low;
+	i = next(low, -1);
+	j = next(high, 1);
 	while (1)
 	{
 		i++;
-		while (cmp(pivot, arr[i]))
+		while (qs_compare(pivot, *i, g_comp_count))
 			i++;
 		j--;
-		while (cmp(arr[j], pivot))
+		while (qs_compare(*j, pivot, g_comp_count))
 			j--;
-		if (i >= j)
+		if (std::distance(i, j) <= 0)
 			return (j);
-		swap(&arr[i], &arr[j]);
+		std::swap(*i, *j);
 	}
 }
 
-static void	qs_recursion(int *arr, int low, int high, int (*cmp)(int, int))
+template <
+	template <
+		typename,
+		typename
+	> class Container,
+	class T,
+	class Alloc
+>
+static void	qs_recursion(typename Container<T, Alloc>::iterator low,
+						typename Container<T, Alloc>::iterator high,
+						size_t& g_comp_count)
 {
-	int	randpivot;
-	int	part;
+	typename Container<T, Alloc>::iterator	part;
 
-	if (low < high)
+	if (std::distance(low, high) > 0)
 	{
-		randpivot = low;
-		swap(&arr[low], &arr[randpivot]);
-		part = partition(arr, low, high, cmp);
-		qs_recursion(arr, low, part, cmp);
-		qs_recursion(arr, part + 1, high, cmp);
+		part = qs_partition<Container, T, Alloc>(low, high, g_comp_count);
+		qs_recursion<Container, T, Alloc>(low, part, g_comp_count);
+		qs_recursion<Container, T, Alloc>(next(part, 1), high, g_comp_count);
 	}
 }
 
@@ -90,8 +103,20 @@ template <
 >
 size_t	QuickSort(Container<T, Alloc>& container)
 {
-	qs_recursion(arr, 0, size - 1, cmp);
-	return (arr);
+	size_t g_comp_count = 0;
+
+	typedef typename Container<T, Alloc>::iterator iterator;
+
+	iterator begin = container.begin();
+	iterator end = container.end();
+
+	qs_recursion<Container, T, Alloc>(
+		begin,
+		end,
+		g_comp_count
+	);
+
+	return (g_comp_count);
 }
 
 
