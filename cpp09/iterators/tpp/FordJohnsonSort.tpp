@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:25:10 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 16:18:48 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 16:26:04 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,11 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 
 	//typedef for main chain and its iterator
 	typedef std::list<GroupIterator, Alloc>                     		mainChainContainer;
+		//have to use a list here..... OG author also did, because insertion will
+		//invalidate the saved iterators if they belong to a vector
+		//elements move physically in memory + risk of realloc
+
+
 	typedef typename mainChainContainer::iterator						mainChainIterator;
 
 	typedef Container<mainChainIterator, Alloc>							pendChainContainer;
