@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:25:10 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 18:26:17 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 18:32:13 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,6 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 	//separating main and pending
 	mainChainContainer													main;
 	pendChainContainer													pending;
-	mainChainContainer													merged;
 
 	main.push_back(begin);
 	main.push_back(begin.next(1));
@@ -201,7 +200,6 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 	//	std::cout << std::left << std::setw(2) << **iter << "  ";
 	//std::cout << std::endl;
 
-	merged = main;
 	GroupIterator 						current_orig = begin + 2;
 	pendChainIterator  					current_pend = pending.begin();
 
@@ -236,7 +234,7 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 			//<Container<GroupIterator, Alloc>, Alloc, GroupIterator >
 			//mainChainIterator position = binary_search_count<mainChainContainer, GroupIterator, Alloc>(main.begin(), *move_pend, move_orig);
 
-			mainChainIterator copy_begin = merged.begin();
+			mainChainIterator copy_begin = main.begin();
 			//mainChainIterator copy_end = merged.end();
 			//std::cout << "MOVE PEND: " << *move_pend << std::endl;
 			mainChainIterator copy_end = next(copy_begin, *move_pend + insertion_counter);
@@ -283,12 +281,12 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 
 			//std::cout << "hello? inserting" << *move_orig << " at " << **copy_end << std::endl;
 
-			merged.insert(copy_end, move_orig);
+			main.insert(copy_end, move_orig);
 
 			insertion_counter++;
 
-			std::cout << "Printing Merged (size " << merged.size() << "): " << std::endl;
-			for (mainChainIterator iter = merged.begin(); iter != merged.end(); ++iter)
+			std::cout << "Printing Merged (size " << main.size() << "): " << std::endl;
+			for (mainChainIterator iter = main.begin(); iter != main.end(); ++iter)
 				std::cout << std::left << std::setw(2) << **iter << "  ";
 			std::cout << std::endl;
 
@@ -317,7 +315,7 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 	{
 
 		//std::cout << "pending has elements" << std::endl;
-		mainChainIterator copy_begin = merged.begin();
+		mainChainIterator copy_begin = main.begin();
 		mainChainIterator copy_end = next(copy_begin, *current_pend + insertion_counter);
 		//mainChainIterator copy_end = next(merged.begin(), *current_pend + insertion_counter);
 
@@ -360,7 +358,7 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 
 		//std::cout << "hello?" << std::endl;
 
-		merged.insert(copy_end, current_orig);
+		main.insert(copy_end, current_orig);
 
 		insertion_counter++;
 
@@ -376,7 +374,7 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 
 	cache_cenas cache;
 
-	for (mainChainIterator it = merged.begin(); it != merged.end(); ++it)
+	for (mainChainIterator it = main.begin(); it != main.end(); ++it)
 	{
 		iterator_type start = it->getIter();
 		iterator_type finish = start;

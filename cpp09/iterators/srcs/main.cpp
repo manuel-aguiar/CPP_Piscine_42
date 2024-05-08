@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 18:29:59 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 18:33:36 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,7 @@ bool	is_sorted(Container<T, Alloc>& container)
 
 	for(iter begin = container.begin(); begin != rbegin; ++begin)
 	{
-		iter following(begin);
-		following++;
-		if (*following < *begin)
+		if (*next(begin, 1) < *begin)
 			return (false);
 	}
 	return (true);
@@ -72,7 +70,7 @@ int main(void)
     std::list<int> list;
     std::vector<int> vec;
 
-	int total = 9;
+	int total = 47;
     for (int i = 1; i <= total; ++i)
 	{
         //list.push_back((total - i + 1) * (i % 2 ? -1 : 1));
