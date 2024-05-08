@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 18:05:37 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 18:23:51 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,43 @@ template <
 
 #include <ctime>
 
+template <
+	template <
+		typename,
+		typename
+	> class Container,
+	class T,
+	class Alloc
+>
+bool	is_sorted(Container<T, Alloc>& container)
+{
+	typedef typename Container<T, Alloc>::iterator iter;
+
+	iter rbegin = --(container.end());
+
+	for(iter begin = container.begin(); begin != rbegin; ++begin)
+	{
+		iter following(begin);
+		following++;
+		if (*following < *begin)
+			return (false);
+	}
+	return (true);
+
+};
+
 int main(void)
 {
 	srand(std::time(0));
     std::list<int> list;
     std::vector<int> vec;
 
-	int total = 8;
+	int total = 133;
     for (int i = 1; i <= total; ++i)
 	{
         //list.push_back((total - i + 1) * (i % 2 ? -1 : 1));
         //vec.push_back((total - i + 1) * (i % 2 ? -1 : 1));
-		int num = (int)((rand() / (float)RAND_MAX) * 100);
+		int num = (int)((rand() / (float)RAND_MAX) * 1000);
         list.push_back(num);
         vec.push_back(num);
     }
@@ -72,7 +97,15 @@ int main(void)
 		size_t count = FordJohnsonSort(vec);
 		std::cout << "Total Comparisons: " << count << std::endl;
 	}
+	if (is_sorted(list))
+		std::cout << "OK list" << std::endl;
+	else
+		std::cout << "NOT OK list" << std::endl;
 
+	if (is_sorted(vec))
+		std::cout << "OK vector" << std::endl;
+	else
+		std::cout << "NOT OK vector" << std::endl;
     return 0;
 }
 
