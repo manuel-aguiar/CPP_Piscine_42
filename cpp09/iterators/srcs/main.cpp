@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 17:59:40 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 18:01:45 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ int main(void)
 	int total = 9;
     for (int i = 1; i <= total; ++i)
 	{
-        list.push_back((total - i + 1) * (i % 2 ? -1 : 1));
-        vec.push_back((total - i + 1) * (i % 2 ? -1 : 1));
-        //list.push_back((total - i + 1));
-        //vec.push_back((total - i + 1));
+        //list.push_back((total - i + 1) * (i % 2 ? -1 : 1));
+        //vec.push_back((total - i + 1) * (i % 2 ? -1 : 1));
+        list.push_back((total - i + 1));
+        vec.push_back((total - i + 1));
     }
 
 	std::for_each(list.begin(), list.end(), print_num);
