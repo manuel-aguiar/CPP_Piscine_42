@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/05/06 09:26:01 by codespace        ###   ########.fr        #
+#    Updated: 2024/05/08 11:06:19 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ OBJ_PATH	=		objs
 
 ## ALL FILES
 
-INC_FILES		=	Iterators.hpp
+INC_FILES		=	GroupIterator.tpp		\
+					Iterator_funcs.tpp
 
 
 

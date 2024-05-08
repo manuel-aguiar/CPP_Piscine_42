@@ -6,11 +6,12 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/07 18:54:10 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 11:07:07 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Iterators.hpp"
+#include "GroupIterator.tpp"
+#include "Iterator_funcs.tpp"
 #include <vector>
 #include <list>
 #include <iostream>
@@ -39,73 +40,6 @@ const size_t jacobsthal_diff[] = {
 1537228672809129216u, 3074457345618258432u, 6148914691236516864u
 };
 
-template <
-	typename Iterator
->
-Iterator	next(Iterator& iter, int index)
-{
-	typename std::iterator_traits<Iterator>::iterator_category category;
-	Iterator copy(iter);
-	copy = advanceeee(copy, index, category);
-	return (copy);
-}
-
-template <
-	typename Iterator
->
-Iterator	prev(Iterator& iter, int index)
-{
-	typename std::iterator_traits<Iterator>::iterator_category category;
-	Iterator copy(iter);
-	copy = advanceeee(copy, -index, category);
-	return (copy);
-}
-
-template <
-	typename Iterator
->
-Iterator& advanceeee(Iterator& iter, int n)
-{
-	typename std::iterator_traits<Iterator>::iterator_category category;
-	return (advanceeee(iter, n, category));
-}
-
-template <
-	typename Iterator
->
-Iterator& advanceeee(Iterator& iter, int n, std::random_access_iterator_tag)
-{
-	iter += n;
-	return (*iter);
-}
-
-template <
-	typename Iterator
->
-Iterator& advanceeee(Iterator& iter, int n, std::bidirectional_iterator_tag)
-{
-	if (n > 0)
-	{
-		while (n--)
-			++iter;
-	}
-	else
-	{
-		while (n++)
-			--iter;
-	}
-	return (iter);
-}
-
-template <
-	typename Iterator
->
-Iterator& advanceeee(Iterator& iter, int n, std::forward_iterator_tag)
-{
-	while (n--)
-		++iter;
-	return (iter);
-}
 
 void	print_number(int &num)
 {
@@ -427,8 +361,8 @@ int main(void)
 	int total = 13;
     for (int i = 1; i <= total; ++i)
 	{
-        list.push_back(total - i + 1);
-        vec.push_back(total - i + 1);
+        list.push_back((total - i + 1) * (i % 2 ? -1 : 1));
+        vec.push_back((total - i + 1) * (i % 2 ? -1 : 1));
     }
 
 	std::for_each(list.begin(), list.end(), print_number);
