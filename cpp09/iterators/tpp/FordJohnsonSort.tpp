@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:25:10 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 16:26:04 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 17:52:12 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,21 +136,26 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 	std::cout << std::endl;
 
 	//typedef for main chain and its iterator
-	typedef std::list<GroupIterator, Alloc>                     		mainChainContainer;
+
+
+	//typedef std::list<GroupIterator, Alloc>                     		mainChainContainer;
+
+	typedef Container<GroupIterator, Alloc>                     		mainChainContainer;
+
 		//have to use a list here..... OG author also did, because insertion will
 		//invalidate the saved iterators if they belong to a vector
 		//elements move physically in memory + risk of realloc
 
-
 	typedef typename mainChainContainer::iterator						mainChainIterator;
 
-	typedef Container<mainChainIterator, Alloc>							pendChainContainer;
+	typedef Container<int, Alloc>									pendChainContainer;
 	typedef typename pendChainContainer::iterator						pendChainIterator;
 
 
 	//separating main and pending
 	mainChainContainer													main;
 	pendChainContainer													pending;
+	mainChainContainer													merged;
 
 	main.push_back(begin);
 	main.push_back(begin.next(1));
@@ -159,13 +164,13 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 	for (GroupIterator iter(begin + 2); iter != newEnd; iter += 2)
 	{
 		mainChainIterator temp = main.insert(main.end(), iter.next(1));
-		pending.push_back(temp);
+		pending.push_back(static_cast<int>(std::distance(main.begin(), temp)));
 		std::cout << *iter << std::endl;
 	}
 	std::cout << std::endl;
 	if (has_straggler)
 	{
-		pending.push_back(main.end());
+		pending.push_back(static_cast<int>(std::distance(main.begin(),main.end())));
 		std::cout << "has straggler" << std::endl;
 		/*
 			if it has a straggler, binary search for the last element must be done
@@ -196,8 +201,11 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 	//	std::cout << std::left << std::setw(2) << **iter << "  ";
 	//std::cout << std::endl;
 
+	merged = main;
 	GroupIterator 						current_orig = begin + 2;
 	pendChainIterator  					current_pend = pending.begin();
+
+	int insertion_counter = 0;
 
 	int i = 0;
 	while (true)
@@ -228,8 +236,10 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 			//<Container<GroupIterator, Alloc>, Alloc, GroupIterator >
 			//mainChainIterator position = binary_search_count<mainChainContainer, GroupIterator, Alloc>(main.begin(), *move_pend, move_orig);
 
-			mainChainIterator copy_begin = main.begin();
-			mainChainIterator copy_end = *move_pend;
+			mainChainIterator copy_begin = merged.begin();
+			//mainChainIterator copy_end = merged.end();
+			//std::cout << "MOVE PEND: " << *move_pend << std::endl;
+			mainChainIterator copy_end = next(copy_begin, *move_pend + insertion_counter);
 
 			//std::cout << "derefing empty iterator?" << std::endl;
 
@@ -273,10 +283,12 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 
 			//std::cout << "hello? inserting" << *move_orig << " at " << **copy_end << std::endl;
 
-			main.insert(copy_end, move_orig);
+			merged.insert(copy_end, move_orig);
 
-			std::cout << "Printing mainChain (size " << main.size() << "): " << std::endl;
-			for (mainChainIterator iter = main.begin(); iter != main.end(); ++iter)
+			insertion_counter++;
+
+			std::cout << "Printing Merged (size " << merged.size() << "): " << std::endl;
+			for (mainChainIterator iter = merged.begin(); iter != merged.end(); ++iter)
 				std::cout << std::left << std::setw(2) << **iter << "  ";
 			std::cout << std::endl;
 
@@ -305,8 +317,9 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 	{
 
 		//std::cout << "pending has elements" << std::endl;
-		mainChainIterator copy_begin = main.begin();
-		mainChainIterator copy_end = *current_pend;
+		mainChainIterator copy_begin = merged.begin();
+		mainChainIterator copy_end = next(copy_begin, *current_pend + insertion_counter);
+		//mainChainIterator copy_end = next(merged.begin(), *current_pend + insertion_counter);
 
 
 		//std::cout << "derefing empty iterator?" << std::endl;
@@ -347,7 +360,10 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 
 		//std::cout << "hello?" << std::endl;
 
-		main.insert(copy_end, current_orig);
+		merged.insert(copy_end, current_orig);
+
+		insertion_counter++;
+
 		current_orig += 2;
 		current_pend = next(current_pend, 1);
 	}
@@ -360,7 +376,7 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 
 	cache_cenas cache;
 
-	for (mainChainIterator it = main.begin(); it != main.end(); ++it)
+	for (mainChainIterator it = merged.begin(); it != merged.end(); ++it)
 	{
 		iterator_type start = it->getIter();
 		iterator_type finish = start;

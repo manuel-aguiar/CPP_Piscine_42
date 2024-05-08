@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 16:26:48 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 17:53:11 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ template <
 
 int main(void)
 {
-    std::deque<int> list;
+    std::list<int> list;
     std::vector<int> vec;
 
-	int total = 13;
+	int total = 100;
     for (int i = 1; i <= total; ++i)
 	{
         list.push_back((total - i + 1) * (i % 2 ? -1 : 1));
