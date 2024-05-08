@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/05/08 11:28:35 by codespace        ###   ########.fr        #
+#    Updated: 2024/05/08 11:37:33 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ OBJ_PATH	=		objs
 
 INC_FILES		=	GroupIterator.tpp		\
 					IterFuncs.tpp			\
-					FordJohnson.tpp			\
+					FordJohnsonSort.tpp		\
 					QuickSort.tpp
 
 SRC_FILES		=	main.cpp
