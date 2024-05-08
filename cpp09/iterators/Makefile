@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/05/08 12:14:09 by codespace        ###   ########.fr        #
+#    Updated: 2024/05/08 14:00:37 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME 		=		iterators
 
 ##	Compiler and flags
 COMP		=		c++
-FLAGS		=		-Wall -Wextra -Werror -std=c++98
+FLAGS		=		-Wall -Wextra -Werror -std=c++98 -g
 FSANITIZE_FLAGS =	 -fsanitize=address -g
 DEBUG_FLAGS	=		-DDEBUG_CONSTRUCTOR -DOPERATORS
 

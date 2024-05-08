@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:05:46 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 13:24:39 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 14:18:27 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ template <
 static Iterator& advanceeee(Iterator& iter, int n, std::random_access_iterator_tag)
 {
 	iter += n;
-	return (*iter);
+	return (iter);
 }
 
 template <
