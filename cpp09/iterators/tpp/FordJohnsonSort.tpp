@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:25:10 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 18:32:13 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/08 18:36:17 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 
 	typedef typename mainChainContainer::iterator						mainChainIterator;
 
-	typedef Container<int, Alloc>									pendChainContainer;
+	typedef Container<int, Alloc>										pendChainContainer;
 	typedef typename pendChainContainer::iterator						pendChainIterator;
 
 
