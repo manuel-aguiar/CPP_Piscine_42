@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 11:50:05 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 13:03:09 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,25 @@ template <
 			std::multiset<T>											_set;
 			std::vector<T>												_vec;
 			std::list<T>												_list;
-			std::list<T>												_deque;
-			template <
-				class Inner
-			>
-			bool														parse(int ac, char **av, Inner& container);
+			std::deque<T>												_deque;
+
 			bool														parse(int ac, char **av);
 		#endif
 
 		//parsing -> called from the Parameter Constructor
+		void															run(int ac, char **av);
 
+		First<T, Allocator>												_dummy;
 
+		template <
+			class Inner
+		>
+		bool															parse(int ac, char **av, Inner& container);
 
-
-		void								run(int ac, char **av);
+		template <
+			class Inner
+		>
+		void															printNumbers(Inner& container);
 
 		//Private default constructor, copy and assignment
 		MergeInsertComp();

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:33:42 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 11:30:00 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 13:05:57 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -339,13 +339,6 @@ void		PmergeMe<T, Container, SortingFunction, Allocator>::sort()
 	_comp_count = _sorting_function(_numbers);
 	end = clock();
 	_sort_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
-
-	std::cout 	<< "Container: " << _name_container
-				<< " is sorted? "<< (is_sorted(_numbers) ? "YES" : "NO")
-				<< " (Total Comparisons: " << _comp_count << ")" << std::endl;
-    std::cout << "	Time to insert was: " << _insert_time << std::endl;
-	std::cout << "	Time to sort was: " << _sort_time << std::endl;
-	std::cout << "	Total processing time was: " << _insert_time + _sort_time << std::endl;
 }
 
 
@@ -365,11 +358,37 @@ template <
 	> class SortingFunction,
 	class Allocator
 >
-void		PmergeMe<T, Container, SortingFunction, Allocator>::printNumbers(void) const
+void		PmergeMe<T, Container, SortingFunction, Allocator>::printNumbers(void)
 {
-    std::cout << "Container - " << _name_container << " - numbers: ";
+    std::cout << "Container - " << _name_container << " - numbers: " << std::endl;
     std::for_each(_numbers.begin(), _numbers.end(), print_num);
-    std::cout << std::endl;
+    std::cout << "\n" << std::endl;
+}
+
+template <
+    typename T,
+    template <
+        typename,
+        typename
+    > class Container,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction,
+	class Allocator
+>
+void		PmergeMe<T, Container, SortingFunction, Allocator>::printStats(void)
+{
+	std::cout 	<< "Container: " << _name_container
+				<< " is sorted? "<< ((is_sorted(_numbers) && _numbers.size() == static_cast<size_t>(_ac)) ? "YES" : "NO")
+				<< " (Total Comparisons: " << _comp_count << ")" << std::endl;
+    std::cout << "	Time to insert was: " << _insert_time << std::endl;
+	std::cout << "	Time to sort was: " << _sort_time << std::endl;
+	std::cout << "	Total processing time was: " << _insert_time + _sort_time << "\n" << std::endl;
 }
 
 template <

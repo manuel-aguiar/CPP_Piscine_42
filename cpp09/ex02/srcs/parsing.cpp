@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 09:06:12 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 08:47:16 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 12:51:43 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,9 @@ bool is_only_spaces(const std::string& word)
 			return (false);
 	}
 	return (true);
+}
+
+void	print_num(const unsigned int num)
+{
+	std::cout << num << " ";
 }

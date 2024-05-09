@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:34:51 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 12:02:26 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 13:05:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,8 +198,17 @@ void	MergeInsertComp<T, First, Second, SortingFunction, Allocator>::run(int ac, 
 {
 	(void)ac;
 	(void)av;
+	if (!parse(ac, av, _dummy) || _dummy.size() == 0)
+		throw std::runtime_error("Error");
+	std::cout << "Original numbers: " << std::endl;
+	printNumbers(_dummy);
 	_first.sort();
 	_second.sort();
+	_first.printNumbers();
+	_second.printNumbers();
+	_first.printStats();
+	_second.printStats();
+
 
 	#ifdef _ALL_IN
 		double							_insert_time;
@@ -224,7 +233,7 @@ void	MergeInsertComp<T, First, Second, SortingFunction, Allocator>::run(int ac, 
 		_insert_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
 		std::cout << "Time to std::sort a vector:        " << _insert_time << std::endl;
 
-/*
+
 		start = clock();
 		if (!parse(ac, av, _deque))
 			throw std::runtime_error("Error");
@@ -232,7 +241,7 @@ void	MergeInsertComp<T, First, Second, SortingFunction, Allocator>::run(int ac, 
 		end = clock();
 		_insert_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
 		std::cout << "Time to std::sort a deque:         " << _insert_time << std::endl;
-*/
+
 		start = clock();
 		if (!parse(ac, av, _list))
 			throw std::runtime_error("Error");
@@ -246,76 +255,106 @@ void	MergeInsertComp<T, First, Second, SortingFunction, Allocator>::run(int ac, 
 
 //number parsing
 
+template <
+	typename T,
+	template <
+		typename,
+		typename
+	> class First,
+	template <
+		typename,
+		typename
+	> class Second,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction,
+	class Allocator
+>
+template <
+	class Inner
+>
+bool	MergeInsertComp<T, First, Second, SortingFunction, Allocator>::parse(int ac, char **av, Inner& container)
+{
+	std::string convert;
+	std::string	itoa;
+	long		number;
+
+	if (!av)
+		return (false);
+
+	for (int i = 0; i < ac; ++i)
+	{
+		convert = av[i];
+		// check invalid characters or only spaces
+		if (convert.find_first_not_of(VALID_CHARS, 0) != std::string::npos
+		|| is_only_spaces(convert))
+			return (false);
+		std::stringstream ss(convert);
+		while (true)
+		{
+			ss >> itoa;
+
+			//nothing left to extract
+			if (ss.fail()
+			|| is_only_spaces(itoa))
+				break ;
+
+			//convertion and limit check
+			number = std::strtol(itoa.c_str(), NULL, 10);
+			if (errno == ERANGE
+			|| number > std::numeric_limits<unsigned int>::max()
+			|| number <= 0)
+				return (false);
+
+			//dump to unsorted vector
+			int res =  static_cast<unsigned int>(number);
+
+			container.push_back(res);
+		}
+	}
+	//std::cout << "Before: ";
+	//std::for_each(_unsorted.begin(), _unsorted.end(), print_num);
+	//std::cout << std::endl;
+	return (true);
+}
+
+template <
+	typename T,
+	template <
+		typename,
+		typename
+	> class First,
+	template <
+		typename,
+		typename
+	> class Second,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction,
+	class Allocator
+>
+template <
+	class Inner
+>
+void	MergeInsertComp<T, First, Second, SortingFunction, Allocator>::printNumbers(Inner& container)
+{
+    std::for_each(container.begin(), container.end(), print_num);
+    std::cout << "\n" << std::endl;
+}
 
 #ifdef _ALL_IN
 
-	template <
-		typename T,
-		template <
-			typename,
-			typename
-		> class First,
-		template <
-			typename,
-			typename
-		> class Second,
-		template <
-			template <
-				typename,
-				typename
-			> typename,
-			class,
-			class
-		> class SortingFunction,
-		class Allocator
-	>
-	template <
-		class Inner
-	>
-	bool	MergeInsertComp<T, First, Second, SortingFunction, Allocator>::parse(int ac, char **av, Inner& container)
-	{
-		std::string convert;
-		std::string	itoa;
-		long		number;
 
-		if (!av)
-			return (false);
-
-		for (int i = 0; i < ac; ++i)
-		{
-			convert = av[i];
-			// check invalid characters or only spaces
-			if (convert.find_first_not_of(VALID_CHARS, 0) != std::string::npos
-			|| is_only_spaces(convert))
-				return (false);
-			std::stringstream ss(convert);
-			while (true)
-			{
-				ss >> itoa;
-
-				//nothing left to extract
-				if (ss.fail()
-				|| is_only_spaces(itoa))
-					break ;
-
-				//convertion and limit check
-				number = std::strtol(itoa.c_str(), NULL, 10);
-				if (errno == ERANGE
-				|| number > std::numeric_limits<unsigned int>::max()
-				|| number <= 0)
-					return (false);
-
-				//dump to unsorted vector
-				int res =  static_cast<unsigned int>(number);
-
-				container.push_back(res);
-			}
-		}
-		//std::cout << "Before: ";
-		//std::for_each(_unsorted.begin(), _unsorted.end(), print_num);
-		//std::cout << std::endl;
-		return (true);
-	}
 
 	template <
 		typename T,

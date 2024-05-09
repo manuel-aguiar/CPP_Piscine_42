@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 11:19:07 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 12:49:46 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ template <
 		double										getSortTime(void) const				{return (_sort_time);}
 
 		void										sort();
-		bool										parse(void);
+
+		void										printStats(void);
+		void										printNumbers(void);
 
 	private:
 		int											_ac;
@@ -78,13 +80,11 @@ template <
 
 		size_t										_comp_count;
 
+		bool										parse(void);
 		bool										is_sorted(Container<T, Allocator>& container);
 		const std::string&							deduceContainerName(void);
-		bool										parse(int ac, char **av);
-		void										dumpUnsorted(const std::vector<unsigned int>& unsorted);
-		void										printNumbers(void) const;
 
-		//Copy and assignment -> private
+
 		PmergeMe(const PmergeMe& copy);
 		PmergeMe& operator=(const PmergeMe& assign);
 
