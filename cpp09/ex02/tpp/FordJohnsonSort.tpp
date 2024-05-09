@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:25:10 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 14:01:42 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 14:12:51 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,10 +122,15 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 	mainChainContainer													main;
 	pendChainContainer													pending;
 
+	//second element is main chain, first is obviously lower given previous sorting
+	//so, dump the first two elements
 	main.push_back(begin);
 	main.push_back(begin.next(1));
 
 	//separating to main_chain, pending saves the relative position (re-alloc risk for vectors + iterator invalidation)
+	//OG implementation used a std::list here to save iterators -> list iterators don't get invalidated
+	//with insertions and deletions :)
+
 	for (GroupIterator iter(begin + 2); iter != newEnd; iter += 2)
 	{
 		mainChainIterator temp = main.insert(main.end(), iter.next(1));
@@ -181,6 +186,7 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 		i++;
 	}
 
+	//empty the pending that were not placed before because jacobsthal numbers deemed inefficient
 	while (current_pend != pending.end())
 	{
 		mainChainIterator copy_begin = main.begin();

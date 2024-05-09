@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:34:51 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 13:12:39 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 14:11:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,8 +196,6 @@ template <
 >
 void	MergeInsertComp<T, First, Second, SortingFunction, Allocator>::run(int ac, char **av)
 {
-	(void)ac;
-	(void)av;
 	if (!parse(ac, av, _dummy) || _dummy.size() == 0)
 		throw std::runtime_error("Error");
 	std::cout << "Original numbers: ("  << _dummy.size() << " candidates)" << std::endl;
