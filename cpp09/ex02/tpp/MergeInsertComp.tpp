@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:34:51 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 09:48:19 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 09:52:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,8 @@ template <
 {
 	(void)ac;
 	(void)av;
-	_first.sort(FordJohnson<First, T, std::allocator<T> >());
-	_second.sort(FordJohnson<Second, T, std::allocator<T> >());
+	_first.sort(FordJohnson<First, T, class >());
+	_second.sort(FordJohnson<Second, T, class >());
 
 	#ifdef _ALL_IN
 		std::multiset<T>				_set;
