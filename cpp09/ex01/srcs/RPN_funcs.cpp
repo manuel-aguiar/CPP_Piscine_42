@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:58:42 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 15:25:00 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 15:32:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ bool RPN::calculate(void)
 	if (_operands.size() != 1)
 		return (false);
 
-	//blabla print double if is double, otherwise print as int
+	//blabla print double if double, otherwise print int
 	int num = static_cast<int>(_operands.top());
 	if (_operands.top() == static_cast<double>(num))
 		std::cout << num << std::endl;

@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/05/09 15:18:45 by codespace        ###   ########.fr        #
+#    Updated: 2024/05/09 15:40:29 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,9 @@ clean:
 fclean: clean
 	@if [ -e "$(NAME)" ]; then \
 	 rm $(NAME); \
+    fi
+	@if [ -e "test_RPN_output.txt" ]; then \
+	 rm "test_RPN_output.txt"; \
     fi
 
 re: fclean all
