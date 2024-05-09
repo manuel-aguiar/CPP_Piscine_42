@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 14:43:52 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 15:10:18 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(int ac, char **av)
 {
 	try
 	{
-		MergeInsertComp<int, std::vector, std::deque, FordJohnsonFunctor> comp(--ac, ++av);
+		MergeInsertComp<int, std::deque, std::list, FordJohnsonFunctor> comp(--ac, ++av);
 	}
 	catch(const std::exception& e)
 	{
