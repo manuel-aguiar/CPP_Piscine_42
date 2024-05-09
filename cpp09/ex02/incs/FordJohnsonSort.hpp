@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:58:59 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 09:46:20 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 10:26:59 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ template <
 	class T,
 	class Alloc
 >
-class FordJohnson
+class FordJohnsonFunctor
 {
 	public:
-		FordJohnson() {};
-		~FordJohnson() {};
-		FordJohnson(const FordJohnson& copy) {(void)copy;};
-		FordJohnson& operator=(const FordJohnson& assign) {(void)assign; return(*this);};
+		FordJohnsonFunctor() {};
+		~FordJohnsonFunctor() {};
+		FordJohnsonFunctor(const FordJohnsonFunctor& copy) {(void)copy;};
+		FordJohnsonFunctor& operator=(const FordJohnsonFunctor& assign) {(void)assign; return(*this);};
 
 		size_t operator()(Container<T, Alloc>& container)
 			{return (FordJohnsonSort(container));}
