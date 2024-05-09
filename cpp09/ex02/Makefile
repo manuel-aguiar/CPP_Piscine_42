@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/05/09 13:27:31 by codespace        ###   ########.fr        #
+#    Updated: 2024/05/09 15:38:14 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,14 +30,12 @@ OBJ_PATH	=		objs
 INC_FILES 		=	GroupIterator.hpp		\
 					IterFuncs.hpp			\
 					FordJohnsonSort.hpp		\
-					QuickSort.hpp			\
 					MergeInsertComp.hpp		\
 					PmergeMe.hpp
 
 TPP_FILES		=	GroupIterator.tpp		\
 					IterFuncs.tpp			\
 					FordJohnsonSort.tpp		\
-					QuickSort.tpp			\
 					MergeInsertComp.tpp		\
 					PmergeMe.tpp
 
