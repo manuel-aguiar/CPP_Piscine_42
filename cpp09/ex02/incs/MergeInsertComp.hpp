@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 11:12:06 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 11:18:48 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,13 @@ template <
 
 
 		//getters - not verbose, implemented right here
-		PmergeMe<T, First, Allocator, SortingFunction>&					getFirst(void) const 		{return (_first);}
-		PmergeMe<T, Second, Allocator, SortingFunction>&				getSecond(void) const 		{return (_second);}
+		PmergeMe<T, First, SortingFunction, Allocator>&					getFirst(void) const 		{return (_first);}
+		PmergeMe<T, Second, SortingFunction, Allocator>&				getSecond(void) const 		{return (_second);}
 
 	private:
 
-		PmergeMe<T, First, Allocator, SortingFunction>					_first;
-		PmergeMe<T, Second, Allocator, SortingFunction>					_second;
+		PmergeMe<T, First, SortingFunction, Allocator>					_first;
+		PmergeMe<T, Second, SortingFunction, Allocator>					_second;
 
 		//parsing -> called from the Parameter Constructor
 		/*template<
