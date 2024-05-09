@@ -6,13 +6,15 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 10:14:46 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 10:52:58 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PMERGEME_HPP
 
 # define PMERGEME_HPP
+
+#include "FordJohnsonSort.hpp"
 
 #include <algorithm>
 #include <typeinfo>
@@ -36,7 +38,15 @@ template <
         typename,
         typename
     > class Container = std::vector,
-    typename Allocator = std::allocator<T>
+    typename Allocator = std::allocator<T>,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction = FordJohnsonFunctor
 > class PmergeMe
 {
 	public:
@@ -45,43 +55,34 @@ template <
 		~PmergeMe();
 
 		//getters, not verbose, stays here
-		Container<T, Allocator>&				getContainer(void) const 			{return (_numbers);}
-		const std::string&						getName(void) const 				{return (_name_container);}
-		double									getInsertTime(void) const			{return (_insert_time);}
-		double									getSortTime(void) const				{return (_sort_time);}
+		Container<T, Allocator>&					getContainer(void) const 			{return (_numbers);}
+		const std::string&							getName(void) const 				{return (_name_container);}
+		double										getInsertTime(void) const			{return (_insert_time);}
+		double										getSortTime(void) const				{return (_sort_time);}
 
-		template <
-			template <
-				template <
-					typename,
-					typename
-				> class,
-				class,
-				class
-			> class SortingFunction
-		>
-		void									sort(SortingFunction<Container, T, Allocator> sort);
-		bool									parse(void);
+		void										sort();
+		bool										parse(void);
 
 	private:
-		int										_ac;
-		char**									_av;
-		static const std::string				g_type_info[4];
-		static const std::string				g_type_name[4];
+		int											_ac;
+		char**										_av;
+		static const std::string					g_type_info[4];
+		static const std::string					g_type_name[4];
 
-		Container<T, Allocator>					_numbers;
-		const std::string						_name_container;
+		Container<T, Allocator>						_numbers;
+		SortingFunction<Container, T, Allocator>	_sorting_function;
+		const std::string							_name_container;
 
-		double									_insert_time;
-		double									_sort_time;
+		double										_insert_time;
+		double										_sort_time;
 
-		size_t									_comp_count;
+		size_t										_comp_count;
 
-		bool									is_sorted(Container<T, Allocator>& container);
-		const std::string&						deduceContainerName(void);
-		bool									parse(int ac, char **av);
-		void									dumpUnsorted(const std::vector<unsigned int>& unsorted);
-		void									printNumbers(void) const;
+		bool										is_sorted(Container<T, Allocator>& container);
+		const std::string&							deduceContainerName(void);
+		bool										parse(int ac, char **av);
+		void										dumpUnsorted(const std::vector<unsigned int>& unsorted);
+		void										printNumbers(void) const;
 
 		//Copy and assignment -> private
 		PmergeMe(const PmergeMe& copy);

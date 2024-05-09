@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:33:42 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 10:22:17 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 10:52:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,17 @@ template <
         typename,
         typename
     > class Container,
-    typename Allocator
-> PmergeMe<T, Container, Allocator>::PmergeMe(int ac, char **av) :
+    typename Allocator,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction
+>
+PmergeMe<T, Container, Allocator, SortingFunction>::PmergeMe(int ac, char **av) :
         _ac(ac),
         _av(av),
 		_name_container(deduceContainerName()),
@@ -72,8 +81,17 @@ template <
         typename,
         typename
     > class Container,
-    typename Allocator
-> PmergeMe<T, Container, Allocator>::~PmergeMe()
+    typename Allocator,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction
+>
+PmergeMe<T, Container, Allocator, SortingFunction>::~PmergeMe()
 {
     #ifdef DEBUG_CONSTRUCTOR
         std::cout << "PmergeMe -" << _name_container << "- Destructor Called" << std::endl;
@@ -89,8 +107,17 @@ template <
         typename,
         typename
     > class Container,
-    typename Allocator
-> PmergeMe<T, Container, Allocator>::PmergeMe(const PmergeMe& copy)
+    typename Allocator,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction
+>
+PmergeMe<T, Container, Allocator, SortingFunction>::PmergeMe(const PmergeMe& copy)
 {
     #ifdef DEBUG_CONSTRUCTOR
         std::cout << "PmergeMe -" << _name_container << "- Copy constructor Called" << std::endl;
@@ -105,8 +132,18 @@ template <
         typename,
         typename
     > class Container,
-    typename Allocator
-> PmergeMe<T, Container, Allocator>& PmergeMe<T, Container, Allocator>::operator=(const PmergeMe& assign)
+    typename Allocator,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction
+>
+PmergeMe<T, Container, Allocator, SortingFunction>&
+PmergeMe<T, Container, Allocator, SortingFunction>::operator=(const PmergeMe& assign)
 {
     #ifdef DEBUG_CONSTRUCTOR
         std::cout << "PmergeMe -" << _name_container << "- Assignment Called" << std::endl;
@@ -116,21 +153,23 @@ template <
 }
 
 //statics to identify the underlying containers called
-template<
-	typename T
->
-std::string	getAllContainerNames() {
-	return typeid(T).name();
-}
-
 template <
     typename T,
     template <
         typename,
         typename
     > class Container,
-    typename Allocator
-> const std::string	PmergeMe<T, Container, Allocator>::g_type_info[4] =
+    typename Allocator,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction
+>
+const std::string		PmergeMe<T, Container, Allocator, SortingFunction>::g_type_info[4] =
 {
 	getAllContainerNames<std::vector		<T> >(),
 	getAllContainerNames<std::list			<T> >(),
@@ -144,8 +183,17 @@ template <
         typename,
         typename
     > class Container,
-    typename Allocator
-> const std::string	PmergeMe<T, Container, Allocator>::g_type_name[4] =
+    typename Allocator,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction
+>
+const std::string		PmergeMe<T, Container, Allocator, SortingFunction>::g_type_name[4] =
 {
 	"std::vector",
 	"std::list",
@@ -161,9 +209,17 @@ template <
         typename,
         typename
     > class Container,
-    typename Allocator
+    typename Allocator,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction
 >
-const std::string&		PmergeMe<T, Container, Allocator>::deduceContainerName(void)
+const std::string&	PmergeMe<T, Container, Allocator, SortingFunction>::deduceContainerName(void)
 {
     int i = 0;
     std::string myType = typeid(_numbers).name();
@@ -182,9 +238,17 @@ template <
         typename,
         typename
     > class Container,
-    typename Allocator
+    typename Allocator,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction
 >
-bool	PmergeMe<T, Container, Allocator>::parse(void)
+bool		PmergeMe<T, Container, Allocator, SortingFunction>::parse(void)
 {
 	std::string convert;
 	std::string	itoa;
@@ -235,19 +299,17 @@ template <
         typename,
         typename
     > class Container,
-    typename Allocator
+    typename Allocator,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction
 >
-template <
-    template <
-        template <
-            typename,
-            typename
-        > class,
-        class,
-        class
-    > class SortingFunction
->
-void		PmergeMe<T, Container, Allocator>::sort(SortingFunction<Container, T, Allocator> sort)
+void		PmergeMe<T, Container, Allocator, SortingFunction>::sort()
 {
     clock_t start;
     clock_t end;
@@ -258,7 +320,7 @@ void		PmergeMe<T, Container, Allocator>::sort(SortingFunction<Container, T, Allo
     end = clock();
     _insert_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
     start = end;
-	_comp_count = sort(_numbers);
+	_comp_count = _sorting_function(_numbers);
 	end = clock();
 	_sort_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
 
@@ -275,9 +337,17 @@ template <
         typename,
         typename
     > class Container,
-    typename Allocator
+    typename Allocator,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction
 >
-void		PmergeMe<T, Container, Allocator>::printNumbers(void) const
+void		PmergeMe<T, Container, Allocator, SortingFunction>::printNumbers(void) const
 {
     std::cout << "Container - " << _name_container << " - numbers: ";
     std::for_each(_numbers.begin(), _numbers.end(), print_num);
@@ -290,9 +360,17 @@ template <
         typename,
         typename
     > class Container,
-    typename Allocator
+    typename Allocator,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction
 >
-bool		PmergeMe<T, Container, Allocator>::is_sorted(Container<T, Allocator>& container)
+bool		PmergeMe<T, Container, Allocator, SortingFunction>::is_sorted(Container<T, Allocator>& container)
 {
 	typedef typename Container<T, Allocator>::iterator iter;
 
