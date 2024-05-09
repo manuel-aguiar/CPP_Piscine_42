@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:25:10 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/08 18:36:17 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 08:27:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,8 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 		g_comp_count
 	);
 
-	std::for_each(container.begin(), container.end(), print_number<T>);
-	std::cout << std::endl;
+	//std::for_each(container.begin(), container.end(), print_number<T>);
+	//std::cout << std::endl;
 
 	//typedef for main chain and its iterator
 
@@ -159,37 +159,37 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 	main.push_back(begin);
 	main.push_back(begin.next(1));
 
-	std::cout << "shadow pending:" << std::endl;
+	//std::cout << "shadow pending:" << std::endl;
 	for (GroupIterator iter(begin + 2); iter != newEnd; iter += 2)
 	{
 		mainChainIterator temp = main.insert(main.end(), iter.next(1));
 		pending.push_back(static_cast<int>(std::distance(main.begin(), temp)));
-		std::cout << *iter << std::endl;
+		//std::cout << *iter << std::endl;
 	}
-	std::cout << std::endl;
+	//std::cout << std::endl;
 	if (has_straggler)
 	{
 		pending.push_back(static_cast<int>(std::distance(main.begin(),main.end())));
-		std::cout << "has straggler" << std::endl;
+		//std::cout << "has straggler" << std::endl;
 		/*
 			if it has a straggler, binary search for the last element must be done
 			against the full main chain (until the "end");
 		*/
 	}
-	else
-		std::cout << "no straggler" << std::endl;
+	//else
+	//	std::cout << "no straggler" << std::endl;
 
 
-	std::cout << "Printing FullChain (size " << static_cast<size_t>(std::distance(begin, newEnd)) << "): " << std::endl;
-	for (GroupIterator iter(begin); iter != newEnd; ++iter)
-		std::cout << std::left << std::setw(2) << *iter << "  ";
-	std::cout << std::endl;
+	//std::cout << "Printing FullChain (size " << static_cast<size_t>(std::distance(begin, newEnd)) << "): " << std::endl;
+	//for (GroupIterator iter(begin); iter != newEnd; ++iter)
+	//	std::cout << std::left << std::setw(2) << *iter << "  ";
+	//std::cout << std::endl;
 
 
-	std::cout << "Printing mainChain (size " << main.size() << "): " << std::endl;
-	for (mainChainIterator iter = main.begin(); iter != main.end(); ++iter)
-		std::cout << std::left << std::setw(2) << **iter << "  ";
-	std::cout << std::endl;
+	//std::cout << "Printing mainChain (size " << main.size() << "): " << std::endl;
+	//for (mainChainIterator iter = main.begin(); iter != main.end(); ++iter)
+	//	std::cout << std::left << std::setw(2) << **iter << "  ";
+	//std::cout << std::endl;
 
 
 	//pend chain doesn't store any values, just keeps track of the position to perform binary search
@@ -212,7 +212,7 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 
 		if (distance >= static_cast<int>(std::distance(current_pend, pending.end())))
 			break ;
-		std::cout << "distance is " << distance << " vs pending list: " << static_cast<int>(std::abs(std::distance(current_pend, pending.end()))) << std::endl;
+		//std::cout << "distance is " << distance << " vs pending list: " << static_cast<int>(std::abs(std::distance(current_pend, pending.end()))) << std::endl;
 
 		GroupIterator 				move_orig 		= next(current_orig, distance * 2);
 		pendChainIterator 			move_pend 		= next(current_pend, distance);
@@ -242,8 +242,8 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 			//std::cout << "derefing empty iterator?" << std::endl;
 
 			int dist = static_cast<int>(std::distance(copy_begin, copy_end));
-			std::cout << "distance from copy begin to copy end: " << dist << " copy_begin : "
-						<<  **copy_begin << "copy_end : " <<  **copy_end<< " target: " << *move_orig << std::endl;
+			//std::cout << "distance from copy begin to copy end: " << dist << " copy_begin : "
+			//			<<  **copy_begin << "copy_end : " <<  **copy_end<< " target: " << *move_orig << std::endl;
 			//std::cout << "calculating distance " << std::endl;
 			while (dist)
 			{
@@ -285,10 +285,10 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 
 			insertion_counter++;
 
-			std::cout << "Printing Merged (size " << main.size() << "): " << std::endl;
-			for (mainChainIterator iter = main.begin(); iter != main.end(); ++iter)
-				std::cout << std::left << std::setw(2) << **iter << "  ";
-			std::cout << std::endl;
+			//std::cout << "Printing Merged (size " << main.size() << "): " << std::endl;
+			//for (mainChainIterator iter = main.begin(); iter != main.end(); ++iter)
+			//	std::cout << std::left << std::setw(2) << **iter << "  ";
+			//std::cout << std::endl;
 
 			//std::cout << "inserted?" << std::endl;
 
@@ -352,7 +352,7 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 			}
 
 			dist = static_cast<int>(std::distance(copy_begin, copy_end));
-			std::cout << dist << std::endl;
+			//std::cout << dist << std::endl;
 			//std::cout << "print distance" << std::endl;
 		}
 
@@ -383,10 +383,10 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 	}
 	std::copy(cache.begin(), cache.end(), begin.getIter());
 
-	std::for_each(container.begin(), container.end(), print_number<T>);
-	std::cout << std::endl;
+	//std::for_each(container.begin(), container.end(), print_number<T>);
+	//std::cout << std::endl;
 
-	std::cout << "finished recursion loop"  << std::endl;
+	//std::cout << "finished recursion loop"  << std::endl;
 }
 
 template <
