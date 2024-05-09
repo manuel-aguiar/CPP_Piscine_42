@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MergeInsertComp.tpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:34:51 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 14:11:22 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 18:35:57 by mmaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
+		> class,
 		class,
 		class
 	> class SortingFunction,
@@ -73,7 +73,7 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
+		> class,
 		class,
 		class
 	> class SortingFunction,
@@ -102,7 +102,7 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
+		> class,
 		class,
 		class
 	> class SortingFunction,
@@ -130,7 +130,7 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
+		> class,
 		class,
 		class
 	> class SortingFunction,
@@ -159,7 +159,7 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
+		> class,
 		class,
 		class
 	> class SortingFunction,
@@ -188,7 +188,7 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
+		> class,
 		class,
 		class
 	> class SortingFunction,
@@ -267,7 +267,7 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
+		> class,
 		class,
 		class
 	> class SortingFunction,
@@ -335,7 +335,7 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
+		> class,
 		class,
 		class
 	> class SortingFunction,
@@ -368,7 +368,7 @@ void	MergeInsertComp<T, First, Second, SortingFunction, Allocator>::printNumbers
 			template <
 				typename,
 				typename
-			> typename,
+			> class,
 			class,
 			class
 		> class SortingFunction,

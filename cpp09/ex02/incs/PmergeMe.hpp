@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 15:11:05 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 18:30:28 by mmaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@
 template <
     typename T = unsigned int,
     template <
-        typename,
-        typename
+        class,
+        class
     > class Container = std::vector,
 	template <
 		template <
-			typename,
-			typename
-		> typename,
+			class,
+			class
+		> class,
 		class,
 		class
 	> class SortingFunction = FordJohnsonFunctor,

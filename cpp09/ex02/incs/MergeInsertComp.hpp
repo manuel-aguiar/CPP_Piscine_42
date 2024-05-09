@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MergeInsertComp.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 13:21:23 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 18:35:04 by mmaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
+		> class,
 		class,
 		class
 	> class SortingFunction = FordJohnsonFunctor,

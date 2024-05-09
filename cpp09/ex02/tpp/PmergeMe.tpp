@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.tpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:33:42 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 13:21:40 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 18:34:20 by mmaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
-		class,
-		class
+		> class,
+		typename,
+		typename
 	> class SortingFunction,
 	class Allocator
 > class MergeInsertComp;
@@ -67,9 +67,9 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
-		class,
-		class
+		> class,
+		typename,
+		typename
 	> class SortingFunction,
 	class Allocator
 >
@@ -95,9 +95,9 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
-		class,
-		class
+		> class,
+		typename,
+		typename
 	> class SortingFunction,
 	class Allocator
 >
@@ -121,9 +121,9 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
-		class,
-		class
+		> class,
+		typename,
+		typename
 	> class SortingFunction,
 	class Allocator
 >
@@ -146,9 +146,9 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
-		class,
-		class
+		> class,
+		typename,
+		typename
 	> class SortingFunction,
 	class Allocator
 >
@@ -180,9 +180,9 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
-		class,
-		class
+		> class,
+		typename,
+		typename
 	> class SortingFunction,
 	class Allocator
 >
@@ -204,9 +204,9 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
-		class,
-		class
+		> class,
+		typename,
+		typename
 	> class SortingFunction,
 	class Allocator
 >
@@ -230,9 +230,9 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
-		class,
-		class
+		> class,
+		typename,
+		typename
 	> class SortingFunction,
 	class Allocator
 >
@@ -259,9 +259,9 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
-		class,
-		class
+		> class,
+		typename,
+		typename
 	> class SortingFunction,
 	class Allocator
 >
@@ -320,9 +320,9 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
-		class,
-		class
+		> class,
+		typename,
+		typename
 	> class SortingFunction,
 	class Allocator
 >
@@ -353,9 +353,9 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
-		class,
-		class
+		> class,
+		typename,
+		typename
 	> class SortingFunction,
 	class Allocator
 >
@@ -376,9 +376,9 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
-		class,
-		class
+		> class,
+		typename,
+		typename
 	> class SortingFunction,
 	class Allocator
 >
@@ -402,9 +402,9 @@ template <
 		template <
 			typename,
 			typename
-		> typename,
-		class,
-		class
+		> class,
+		typename,
+		typename
 	> class SortingFunction,
 	class Allocator
 >
