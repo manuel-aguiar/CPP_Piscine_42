@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange_dates.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 16:16:55 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/26 17:11:35 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/09 16:24:57 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ bool BitcoinExchange::_validateDate(tm& timestruct)
     return (true);
 }
 
+bool	BitcoinExchange::_validate_date_chars(const std::string& datestr)
+{
+	(void)datestr;
+	return true;
+}
+
 BitcoinExchange::_date_t    BitcoinExchange::_dateToLong(const std::string& datestr, const int& line_number)
 {
     int year, month, day;
@@ -37,9 +43,17 @@ BitcoinExchange::_date_t    BitcoinExchange::_dateToLong(const std::string& date
     struct tm timeinfo;
     std::stringstream ss(datestr);
 
+	delim = 0;
     ss >> year >> delim >> month >> delim >> day;
     if (ss.fail())			// unprotected for the stream having characters still;
     {
+        throw DataBaseException(line_number,
+        "date is not correctly formated.");
+    }
+	delim = 0;
+	ss >> delim;
+	if (delim != 0)
+	{
         throw DataBaseException(line_number,
         "date is not correctly formated.");
     }
@@ -90,7 +104,7 @@ void    BitcoinExchange::loadDataBase(void)
         if (price < 0)
             throw DataBaseException(line_number,
                 "not a non-negative number");
-        
+
         insertDataBase(datenum, price, line_number);
     }
 

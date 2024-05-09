@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:51:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 15:41:18 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 16:15:41 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@
 #include <ctime>
 #include <algorithm>
 #include <limits>
+#include <iomanip>
+
+
 
 class BitcoinExchange
 {
@@ -45,6 +48,7 @@ class BitcoinExchange
 		void		insertDataBase(const _date_t date, const float price, const int& line_number);
 
 		bool 		_validateDate(tm& timestruct);
+		bool		_validate_date_chars(const std::string& datestr);
 	    _date_t    	_dateToLong(const std::string& datestr, const int& line_number);
 		_date_t    	_dateToLong(const std::string& datestr);
 		void		_checkInputFileHeader(const std::string& buffer);
