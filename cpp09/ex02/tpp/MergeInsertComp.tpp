@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:34:51 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 10:26:39 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 11:12:23 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,17 @@ template <
 	template <
 		typename,
 		typename
-	> class Second
-> MergeInsertComp<T, First, Second>::MergeInsertComp(int ac, char **av) :
+	> class Second,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction,
+	class Allocator
+>  MergeInsertComp<T, First, Second, SortingFunction, Allocator>::MergeInsertComp(int ac, char **av) :
 	_first(ac, av),
 	_second(ac, av)
 {
@@ -59,8 +68,17 @@ template <
 	template <
 		typename,
 		typename
-	> class Second
-> MergeInsertComp<T, First, Second>::MergeInsertComp()
+	> class Second,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction,
+	class Allocator
+>  MergeInsertComp<T, First, Second, SortingFunction, Allocator>::MergeInsertComp()
 {
 	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "MergeInsertComp Default Constructor Called" << std::endl;
@@ -79,8 +97,17 @@ template <
 	template <
 		typename,
 		typename
-	> class Second
-> MergeInsertComp<T, First, Second>::~MergeInsertComp()
+	> class Second,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction,
+	class Allocator
+>  MergeInsertComp<T, First, Second, SortingFunction, Allocator>::~MergeInsertComp()
 {
 	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "MergeInsertComp Destructor Called" << std::endl;
@@ -98,8 +125,17 @@ template <
 	template <
 		typename,
 		typename
-	> class Second
-> MergeInsertComp<T, First, Second>::MergeInsertComp(const MergeInsertComp& copy)
+	> class Second,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction,
+	class Allocator
+>  MergeInsertComp<T, First, Second, SortingFunction, Allocator>::MergeInsertComp(const MergeInsertComp& copy)
 {
 	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "MergeInsertComp Copy Constructor Called" << std::endl;
@@ -118,8 +154,18 @@ template <
 	template <
 		typename,
 		typename
-	> class Second
-> MergeInsertComp<T, First, Second>& MergeInsertComp<T, First, Second>::operator=(const MergeInsertComp& assign)
+	> class Second,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction,
+	class Allocator
+>  MergeInsertComp<T, First, Second, SortingFunction, Allocator>&
+MergeInsertComp<T, First, Second, SortingFunction, Allocator>::operator=(const MergeInsertComp& assign)
 {
 	#ifdef DEBUG_CONSTRUCTOR
 		std::cout << "MergeInsertComp Assignment Called" << std::endl;
@@ -137,13 +183,23 @@ template <
 	template <
 		typename,
 		typename
-	> class Second
-> void MergeInsertComp<T, First, Second>::run(int ac, char **av)
+	> class Second,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction,
+	class Allocator
+>
+void	MergeInsertComp<T, First, Second, SortingFunction, Allocator>::run(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
-	_first.sort(FordJohnsonFunctor<First, T, std::allocator<T> >());
-	_second.sort(FordJohnsonFunctor<Second, T, std::allocator<T> >());
+	_first.sort();
+	_second.sort();
 
 	#ifdef _ALL_IN
 		std::multiset<T>				_set;

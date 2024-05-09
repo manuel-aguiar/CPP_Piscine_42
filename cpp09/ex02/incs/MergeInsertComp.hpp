@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 09:55:24 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 11:12:06 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,16 @@ template <
 	template <
 		typename,
 		typename
-	> class Second = std::deque
+	> class Second = std::deque,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction = FordJohnsonFunctor,
+	class Allocator = std::allocator<T>
 > class MergeInsertComp
 {
 	public:
@@ -56,13 +65,13 @@ template <
 
 
 		//getters - not verbose, implemented right here
-		PmergeMe<T, First>&					getFirst(void) const 		{return (_first);}
-		PmergeMe<T, Second>&				getSecond(void) const 		{return (_second);}
+		PmergeMe<T, First, Allocator, SortingFunction>&					getFirst(void) const 		{return (_first);}
+		PmergeMe<T, Second, Allocator, SortingFunction>&				getSecond(void) const 		{return (_second);}
 
 	private:
 
-		PmergeMe<T, First>					_first;
-		PmergeMe<T, Second>					_second;
+		PmergeMe<T, First, Allocator, SortingFunction>					_first;
+		PmergeMe<T, Second, Allocator, SortingFunction>					_second;
 
 		//parsing -> called from the Parameter Constructor
 		/*template<
