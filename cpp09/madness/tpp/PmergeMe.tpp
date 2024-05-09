@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:33:42 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 10:52:05 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 11:09:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,17 @@ template <
 	template <
 		typename,
 		typename
-	> class Second
-> class	MergeInsertComp;
+	> class Second,
+	template <
+		template <
+			typename,
+			typename
+		> typename,
+		class,
+		class
+	> class SortingFunction,
+	class Allocator
+> class MergeInsertComp;
 
 
 // Constructor
@@ -150,6 +159,13 @@ PmergeMe<T, Container, Allocator, SortingFunction>::operator=(const PmergeMe& as
     #endif
     (void)assign;
     return (*this);
+}
+
+template<
+	typename T
+>
+std::string	getAllContainerNames() {
+	return typeid(T).name();
 }
 
 //statics to identify the underlying containers called
