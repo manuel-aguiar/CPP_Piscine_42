@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 12:14:47 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 10:25:56 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 11:24:30 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ class QuickSortFunctor
 		QuickSortFunctor& operator=(const QuickSortFunctor& assign) {(void)assign; return(*this);};
 
 		size_t operator()(Container<T, Alloc>& container)
-			{return (QuickSortFunctorSort(container));}
+			{return (QuickSort(container));}
 };
 
 #include "../tpp/QuickSort.tpp"
