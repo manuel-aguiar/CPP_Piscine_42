@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 08:40:11 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 09:47:56 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ bool	is_sorted(Container<T, Alloc>& container)
 
 };
 
-int main(void)
+int main1(void)
 {
 	srand(std::time(0));
 	std::deque<int> deque;
@@ -134,7 +134,7 @@ int main(void)
 		But don't, please.
 	*/
 
-int main1(int ac, char **av)
+int main(int ac, char **av)
 {
 	try
 	{
