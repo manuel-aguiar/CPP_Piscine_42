@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 11:18:48 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 11:50:05 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,22 @@ template <
 		PmergeMe<T, First, SortingFunction, Allocator>					_first;
 		PmergeMe<T, Second, SortingFunction, Allocator>					_second;
 
+		#ifdef _ALL_IN
+			std::multiset<T>											_set;
+			std::vector<T>												_vec;
+			std::list<T>												_list;
+			std::list<T>												_deque;
+			template <
+				class Inner
+			>
+			bool														parse(int ac, char **av, Inner& container);
+			bool														parse(int ac, char **av);
+		#endif
+
 		//parsing -> called from the Parameter Constructor
-		/*template<
-			class Inner
-		> bool								parse(int ac, char **av, Inner& container);*/
+
+
+
 
 		void								run(int ac, char **av);
 
