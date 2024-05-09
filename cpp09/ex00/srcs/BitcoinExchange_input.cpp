@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:19:33 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 16:28:20 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 16:28:51 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,5 @@ void    BitcoinExchange::readInputFile(char *file_location)
 
 	}
 
-
 	infile.close();
-
 }
