@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:33:42 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 11:22:17 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 11:30:00 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -340,7 +340,9 @@ void		PmergeMe<T, Container, SortingFunction, Allocator>::sort()
 	end = clock();
 	_sort_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
 
-	std::cout << "Container: " << _name_container << " is sorted? "<< (is_sorted(_numbers) ? "YES" : "NO") <<  std::endl;
+	std::cout 	<< "Container: " << _name_container
+				<< " is sorted? "<< (is_sorted(_numbers) ? "YES" : "NO")
+				<< " (Total Comparisons: " << _comp_count << ")" << std::endl;
     std::cout << "	Time to insert was: " << _insert_time << std::endl;
 	std::cout << "	Time to sort was: " << _sort_time << std::endl;
 	std::cout << "	Total processing time was: " << _insert_time + _sort_time << std::endl;
