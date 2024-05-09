@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.tpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:33:42 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/03 12:01:03 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/09 08:48:21 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@
 #include <list>
 
 
-//helper function 
+//helper function
 void	print_num(const unsigned int num);
-int	    is_only_spaces(std::string& word);
+bool is_only_spaces(const std::string& word);
 
 //inform template about the holder class
 template <
@@ -161,7 +161,7 @@ template <
         typename
     > class Container,
     typename Allocator
-> 
+>
 const std::string&		PmergeMe<T, Container, Allocator>::deduceContainerName(void)
 {
     int i = 0;
@@ -182,7 +182,7 @@ template <
         typename
     > class Container,
     typename Allocator
-> 
+>
 bool	PmergeMe<T, Container, Allocator>::parse(void)
 {
 	std::string convert;
@@ -234,12 +234,12 @@ template <
         typename
     > class Container,
     typename Allocator
-> 
+>
 void		PmergeMe<T, Container, Allocator>::sort()
 {
     clock_t start;
     clock_t end;
-    
+
     start = clock();
     if(!parse())
         throw std::runtime_error("Error");
@@ -257,7 +257,7 @@ template <
         typename
     > class Container,
     typename Allocator
-> 
+>
 void		PmergeMe<T, Container, Allocator>::printNumbers(void) const
 {
     std::cout << "Container - " << _name_container << " - numbers: ";
