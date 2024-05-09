@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:19:33 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 16:26:18 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 16:28:20 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void    BitcoinExchange::readInputFile(char *file_location)
 			std::map<_date_t, float>::iterator iter = _database.lower_bound(datenum);
 			if (iter == _database.end())
 				--iter;
-			std::cout << datestr << "=> " << quantity << " = " << std::fixed << std::setprecision(2) << quantity * iter->second << std::endl;
+			std::cout << datestr << "=> " << quantity << " = " << quantity * iter->second << std::endl;
 		}
 		catch (const std::exception& e)
 		{
