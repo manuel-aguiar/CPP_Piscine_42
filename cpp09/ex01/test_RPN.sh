@@ -6,6 +6,7 @@ program="RPN"
 #test inputs
 inputs=(
 	" "
+	"-3 4 +"
 	" 1 0 /"
     "3"
     "+7 7 +"
