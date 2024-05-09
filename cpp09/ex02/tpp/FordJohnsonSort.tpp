@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:25:10 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 13:47:37 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 14:01:42 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,22 @@ template <
 > typename Container<GroupIterator, Alloc>::iterator
 binary_search_count(typename Container<GroupIterator, Alloc>::iterator begin,
 					typename Container<GroupIterator, Alloc>::iterator end,
-					GroupIterator value, size_t& g_comp_count)
+					GroupIterator& value, size_t& g_comp_count)
 {
 	typedef typename Container<GroupIterator, Alloc>::iterator iterator;
 
-	while (static_cast<size_t>(std::distance(begin, end)) != 1)
+	int dist = static_cast<int>(std::distance(begin, end));
+	while (dist)
 	{
-		iterator mid = next(begin, static_cast<size_t>(std::distance(begin, end) / 2));
+		iterator mid = next(begin, dist / 2);
 		g_comp_count++;
 		if (*value > **mid)
-			begin = mid;
+			begin = next(mid, 1);
 		else
 			end = mid;
+		dist = static_cast<int>(std::distance(begin, end));
 	}
-	return (begin);
+	return (end);
 }
 
 template <
@@ -161,21 +163,15 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 			mainChainIterator copy_begin = main.begin();
 			mainChainIterator copy_end = next(copy_begin, *move_pend + insertion_counter);
 
+			mainChainIterator insertion_place =
+			binary_search_count<Container, GroupIterator, Alloc>(
+				copy_begin,
+				copy_end,
+				move_orig,
+				g_comp_count
+			);
 
-			// iterative binary search
-			int dist = static_cast<int>(std::distance(copy_begin, copy_end));
-			while (dist)
-			{
-				mainChainIterator mid = next(copy_begin, dist / 2);
-				g_comp_count++;
-
-				if (*move_orig > **mid)
-					copy_begin = next(mid, 1);
-				else
-					copy_end = mid;
-				dist = static_cast<int>(std::abs(std::distance(copy_begin, copy_end)));
-			}
-			main.insert(copy_end, move_orig);
+			main.insert(insertion_place, move_orig);
 			insertion_counter++;
 		} while (move_pend != current_pend);
 
@@ -190,20 +186,14 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 		mainChainIterator copy_begin = main.begin();
 		mainChainIterator copy_end = next(copy_begin, *current_pend + insertion_counter);
 
-		//iterative binary search
-		int dist = static_cast<int>(std::distance(copy_begin, copy_end));
-		while (dist)
-		{
-			mainChainIterator mid = next(copy_begin, dist / 2);
-			g_comp_count++;
-			if (*current_orig > **mid)
-				copy_begin = next(mid, 1);
-			else
-				copy_end = mid;
-			dist = static_cast<int>(std::distance(copy_begin, copy_end));
-		}
-
-		main.insert(copy_end, current_orig);
+		mainChainIterator insertion_place =
+		binary_search_count<Container, GroupIterator, Alloc>(
+			copy_begin,
+			copy_end,
+			current_orig,
+			g_comp_count
+		);
+		main.insert(insertion_place, current_orig);
 		insertion_counter++;
 
 		current_orig += 2;
@@ -214,23 +204,23 @@ static void	_recursive(Container<T, Alloc>& container, GroupIterator begin, Grou
 
 	typedef typename GroupIterator::value_type					variable_type;
 	typedef typename GroupIterator::iterator_type				iterator_type;
-	typedef Container<variable_type, Alloc>						cache_cenas;
+	typedef Container<variable_type, Alloc>						unpackedGroupIterators;
 
-	cache_cenas cache;
+	unpackedGroupIterators unpacked;
 
+	//copy all the elements associated with each single iterator, in order
+	// to an "unpacked" container
 	for (mainChainIterator it = main.begin(); it != main.end(); ++it)
 	{
 		iterator_type start = it->getIter();
 		iterator_type finish = start;
 		std::advance(finish, it->getSize());
-		std::copy(start, finish, std::back_inserter(cache));
+		std::copy(start, finish, std::back_inserter(unpacked));
 	}
-	std::copy(cache.begin(), cache.end(), begin.getIter());
 
-	//std::for_each(container.begin(), container.end(), print_number<T>);
-	//std::cout << std::endl;
+	//dump unpack container to original container
+	std::copy(unpacked.begin(), unpacked.end(), begin.getIter());
 
-	//std::cout << "finished recursion loop"  << std::endl;
 }
 
 template <
