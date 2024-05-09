@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 08:28:00 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 08:29:57 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int main(void)
     std::list<int> list;
     std::vector<int> vec;
 
-	int total = 50001;
+	int total = 2001;
     for (int i = 1; i <= total; ++i)
 	{
         //list.push_back((total - i + 1) * (i % 2 ? -1 : 1));
