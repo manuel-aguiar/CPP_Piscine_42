@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:33:42 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 08:48:21 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 09:40:58 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ template <
 > PmergeMe<T, Container, Allocator>::PmergeMe(int ac, char **av) :
         _ac(ac),
         _av(av),
-		_name_container(deduceContainerName())
+		_name_container(deduceContainerName()),
+		_comp_count(0)
 {
     #ifdef DEBUG_CONSTRUCTOR
         std::cout << "PmergeMe -" << _name_container << "- Default Constructor Called" << std::endl;
@@ -226,7 +227,8 @@ bool	PmergeMe<T, Container, Allocator>::parse(void)
 	return (true);
 }
 
-//Sort member function
+//Sort member function, that takes a functor
+
 template <
     typename T,
     template <
@@ -235,7 +237,17 @@ template <
     > class Container,
     typename Allocator
 >
-void		PmergeMe<T, Container, Allocator>::sort()
+template <
+    template <
+        template <
+            typename,
+            typename
+        > class,
+        class,
+        class
+    > class SortingFunction
+>
+void		PmergeMe<T, Container, Allocator>::sort(SortingFunction<Container, T, Allocator> sort)
 {
     clock_t start;
     clock_t end;
@@ -246,7 +258,12 @@ void		PmergeMe<T, Container, Allocator>::sort()
     end = clock();
     _insert_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
     start = end;
+	_comp_count = sort(_numbers);
+	end = clock();
+	_sort_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
     std::cout << "Time to insert was: " << _insert_time << std::endl;
+	std::cout << "Time to sort was: " << _sort_time << std::endl;
+	std::cout << "Total processing time was: " << _insert_time + _sort_time << std::endl;
 }
 
 

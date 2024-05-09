@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 08:42:33 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 09:41:34 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,17 @@ template <
 		double									getInsertTime(void) const			{return (_insert_time);}
 		double									getSortTime(void) const				{return (_sort_time);}
 
-		void									sort(void);
+		template <
+			template <
+				template <
+					typename,
+					typename
+				> class,
+				class,
+				class
+			> class SortingFunction
+		>
+		void									sort(SortingFunction<Container, T, Allocator> sort);
 		bool									parse(void);
 
 	private:
@@ -65,6 +75,7 @@ template <
 		double									_insert_time;
 		double									_sort_time;
 
+		size_t									_comp_count;
 
 		const std::string&						deduceContainerName(void);
 		bool									parse(int ac, char **av);

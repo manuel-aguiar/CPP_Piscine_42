@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 08:42:38 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 09:04:27 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 # define MERGEINSERTCOMP_HPP
 
+# include "FordJohnsonSort.hpp"
 # include "PmergeMe.hpp"
 
 # include <string>

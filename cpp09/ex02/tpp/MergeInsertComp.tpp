@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:34:51 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 08:38:17 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 09:44:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define MERGEINSERTCOMP_TPP
 
+# include "FordJohnsonSort.hpp"
 # include "PmergeMe.hpp"
 
 # include <algorithm>
@@ -141,8 +142,8 @@ template <
 {
 	(void)ac;
 	(void)av;
-	_first.sort();
-	_second.sort();
+	_first.sort(FordJohnson<First>());
+	_second.sort(FordJohnson<Second>());
 
 	#ifdef _ALL_IN
 		std::multiset<T>				_set;
