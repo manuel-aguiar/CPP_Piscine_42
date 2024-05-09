@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 10:00:59 by manuel            #+#    #+#             */
-/*   Updated: 2024/04/30 15:00:36 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 15:26:43 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ class RPN
     private:
         RPN();
 
-        bool        apply_operation(const std::string& op);
-        bool        sumation(const int target);
-        bool        subtraction(const int target);
-        bool        multiplication(const int target);
-        bool        division(const int target);
-        bool        check_valid_chars(void) const;
+        bool        apply_operation		(const std::string& op);
+        bool        sumation			(const double target);
+        bool        subtraction			(const double target);
+        bool        multiplication		(const double target);
+        bool        division			(const double target);
+        bool        check_valid_chars	(void) const;
 
         typedef enum
         {
@@ -61,12 +61,12 @@ class RPN
         e_type deduce_type(const std::string& word);
 
         std::string              					_arg;
-        std::stack<int, std::list<int> >          	_operands;
+        std::stack<double, std::list<double> >        _operands;
 
 };
 
 
 
-# define CERR(x) std::cout << x << std::endl
+# define CERR(x) std::cerr << x << std::endl
 
 #endif

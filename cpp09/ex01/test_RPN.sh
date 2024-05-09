@@ -6,6 +6,7 @@ program="RPN"
 #test inputs
 inputs=(
 	" "
+	" 1 0 /"
     "3"
     "+7 7 +"
     "-7 7 +"
@@ -18,6 +19,10 @@ inputs=(
     "3   5   +    /     -"
     " 3 4 +"
     "3 4 +"
+	"1 2 /"
+	"123123123123123 123123123123123123 +"
+	"1f 2 /"
+	" 1 200 /"
 )
 
 #remove previous outfile if it exists
@@ -27,6 +32,6 @@ rm -f $out_file
 for input in "${inputs[@]}"
 do
 	echo -e "input is: \"$input\""  >> $out_file
-    ./$program "$input" >> $out_file
+    ./$program "$input" >> $out_file 2>&1
 	echo -e  >> $out_file
 done
