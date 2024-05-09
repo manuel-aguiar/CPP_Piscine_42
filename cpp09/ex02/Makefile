@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/05/09 15:38:14 by codespace        ###   ########.fr        #
+#    Updated: 2024/05/09 15:39:25 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ fclean: clean
 re: fclean all
 
 git:
-	@git add $(INCS) $(SRCS) $(TPPS) srcs/legacy.cpp Makefile && git commit -m "commiting" && git push
+	@git add $(INCS) $(SRCS) $(TPPS) Makefile && git commit -m "commiting" && git push
 
 run: all
 	@./$(NAME)
