@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 11:25:10 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 09:18:09 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 13:19:57 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 # include <algorithm>
 # include <iomanip>
-# include <list>
 
 /* FordJohnson sort (merge-insertion), returns the total number of comparisons */
 template <

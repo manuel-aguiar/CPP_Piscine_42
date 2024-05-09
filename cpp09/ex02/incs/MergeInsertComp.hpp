@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 13:13:22 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 13:21:23 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@
 # include <typeinfo>
 # include <iostream>
 
-
-
-//sequence
 # include <vector>
 # include <deque>
 # include <list>

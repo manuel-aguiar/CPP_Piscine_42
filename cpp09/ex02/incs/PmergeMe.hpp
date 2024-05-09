@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 12:49:46 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 13:20:30 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,14 @@
 #include <algorithm>
 #include <typeinfo>
 #include <iostream>
-#include <set>
 #include <ctime>
 
 #include <string>
 
+# include <vector>
+# include <deque>
+
 //sequence
-#include <vector>
-#include <deque>
-#include <list>
 
 # define CERR(x) std::cerr << (x) << std::endl
 # define VALID_CHARS "0123456789 \n\t\v\b"
