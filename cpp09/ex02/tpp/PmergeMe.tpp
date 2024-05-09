@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:33:42 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 13:05:57 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 13:11:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -360,7 +360,7 @@ template <
 >
 void		PmergeMe<T, Container, SortingFunction, Allocator>::printNumbers(void)
 {
-    std::cout << "Container - " << _name_container << " - numbers: " << std::endl;
+    std::cout << "Container - " << _name_container << " - numbers (" << _numbers.size() << " candidates):" << std::endl;
     std::for_each(_numbers.begin(), _numbers.end(), print_num);
     std::cout << "\n" << std::endl;
 }
@@ -385,7 +385,7 @@ void		PmergeMe<T, Container, SortingFunction, Allocator>::printStats(void)
 {
 	std::cout 	<< "Container: " << _name_container
 				<< " is sorted? "<< ((is_sorted(_numbers) && _numbers.size() == static_cast<size_t>(_ac)) ? "YES" : "NO")
-				<< " (Total Comparisons: " << _comp_count << ")" << std::endl;
+				<< " (Total Comparisons: " << _comp_count << " for " << _numbers.size() << " candidates)" << std::endl;
     std::cout << "	Time to insert was: " << _insert_time << std::endl;
 	std::cout << "	Time to sort was: " << _sort_time << std::endl;
 	std::cout << "	Total processing time was: " << _insert_time + _sort_time << "\n" << std::endl;

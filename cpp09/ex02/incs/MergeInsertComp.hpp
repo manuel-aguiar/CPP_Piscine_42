@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 13:03:09 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 13:13:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ template <
 			bool														parse(int ac, char **av);
 		#endif
 
-		//parsing -> called from the Parameter Constructor
+		//run all -> called from the Parameter Constructor
 		void															run(int ac, char **av);
 
 		First<T, Allocator>												_dummy;

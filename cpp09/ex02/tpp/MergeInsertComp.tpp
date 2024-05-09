@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:34:51 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 13:05:39 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 13:12:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,7 +200,7 @@ void	MergeInsertComp<T, First, Second, SortingFunction, Allocator>::run(int ac, 
 	(void)av;
 	if (!parse(ac, av, _dummy) || _dummy.size() == 0)
 		throw std::runtime_error("Error");
-	std::cout << "Original numbers: " << std::endl;
+	std::cout << "Original numbers: ("  << _dummy.size() << " candidates)" << std::endl;
 	printNumbers(_dummy);
 	_first.sort();
 	_second.sort();
@@ -224,6 +224,13 @@ void	MergeInsertComp<T, First, Second, SortingFunction, Allocator>::run(int ac, 
 		_insert_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
 		std::cout << "Time to insert to a multiset:      " << _insert_time << std::endl;
 
+		start = clock();
+		if (!parse(ac, av, _list))
+			throw std::runtime_error("Error");
+		_list.sort();
+		end = clock();
+		_insert_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
+		std::cout << "Time to list.sort():               " << _insert_time << std::endl;
 
 		start = clock();
 		if (!parse(ac, av, _vec))
@@ -242,13 +249,6 @@ void	MergeInsertComp<T, First, Second, SortingFunction, Allocator>::run(int ac, 
 		_insert_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
 		std::cout << "Time to std::sort a deque:         " << _insert_time << std::endl;
 
-		start = clock();
-		if (!parse(ac, av, _list))
-			throw std::runtime_error("Error");
-		_list.sort();
-		end = clock();
-		_insert_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
-		std::cout << "Time to list.sort():               " << _insert_time << std::endl;
 	#endif
 }
 
