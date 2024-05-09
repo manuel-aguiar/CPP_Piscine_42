@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 10:51:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/04/26 17:10:07 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/09 15:41:18 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 #include <ctime>
 #include <algorithm>
 #include <limits>
-#include "DataBase.tpp"
 
 class BitcoinExchange
 {
