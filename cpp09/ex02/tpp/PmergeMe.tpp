@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:33:42 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/09 09:49:36 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 10:22:17 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,7 +253,7 @@ void		PmergeMe<T, Container, Allocator>::sort(SortingFunction<Container, T, Allo
     clock_t end;
 
     start = clock();
-    if(!parse())
+    if(!parse() || _numbers.size() == 0)
         throw std::runtime_error("Error");
     end = clock();
     _insert_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
@@ -261,7 +261,8 @@ void		PmergeMe<T, Container, Allocator>::sort(SortingFunction<Container, T, Allo
 	_comp_count = sort(_numbers);
 	end = clock();
 	_sort_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
-	std::cout << "Container: " << _name_container << std::endl;
+
+	std::cout << "Container: " << _name_container << " is sorted? "<< (is_sorted(_numbers) ? "YES" : "NO") <<  std::endl;
     std::cout << "	Time to insert was: " << _insert_time << std::endl;
 	std::cout << "	Time to sort was: " << _sort_time << std::endl;
 	std::cout << "	Total processing time was: " << _insert_time + _sort_time << std::endl;
@@ -282,5 +283,28 @@ void		PmergeMe<T, Container, Allocator>::printNumbers(void) const
     std::for_each(_numbers.begin(), _numbers.end(), print_num);
     std::cout << std::endl;
 }
+
+template <
+    typename T,
+    template <
+        typename,
+        typename
+    > class Container,
+    typename Allocator
+>
+bool		PmergeMe<T, Container, Allocator>::is_sorted(Container<T, Allocator>& container)
+{
+	typedef typename Container<T, Allocator>::iterator iter;
+
+	iter rbegin = --(container.end());
+
+	for(iter begin = container.begin(); begin != rbegin; ++begin)
+	{
+		if (*next(begin, 1) < *begin)
+			return (false);
+	}
+	return (true);
+
+};
 
 #endif

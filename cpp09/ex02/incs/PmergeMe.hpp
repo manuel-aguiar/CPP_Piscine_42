@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 09:41:34 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 10:14:46 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ template <
 
 		size_t									_comp_count;
 
+		bool									is_sorted(Container<T, Allocator>& container);
 		const std::string&						deduceContainerName(void);
 		bool									parse(int ac, char **av);
 		void									dumpUnsorted(const std::vector<unsigned int>& unsorted);
