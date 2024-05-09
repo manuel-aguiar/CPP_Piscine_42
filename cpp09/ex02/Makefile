@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/12 16:42:30 by codespace         #+#    #+#              #
-#    Updated: 2024/05/09 08:34:49 by codespace        ###   ########.fr        #
+#    Updated: 2024/05/09 08:43:23 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,31 +14,41 @@ NAME 		=		PmergeMe
 
 ##	Compiler and flags
 COMP		=		c++
-FLAGS		=		-Wall -Wextra -Werror -std=c++98
+FLAGS		=		-Wall -Wextra -Werror -std=c++98 -g
 FSANITIZE_FLAGS =	 -fsanitize=address -g
 DEBUG_FLAGS	=		-DDEBUG_CONSTRUCTOR -DOPERATORS
 
 ## FOLDERS
 INC_PATH	=		incs
+TPP_PATH	=		tpp
 SRC_PATH	=		srcs
 OBJ_PATH	=		objs
 
 
 ## ALL FILES
 
-INC_FILES		=	PmergeMe.hpp		\
-					PmergeMe.tpp		\
-					MergeInsertComp.hpp	\
-					MergeInsertComp.tpp
+INC_FILES 		=	GroupIterator.hpp		\
+					IterFuncs.hpp			\
+					FordJohnsonSort.hpp		\
+					QuickSort.hpp			\
+					MergeInsertComp.hpp		\
+					PmergeMe.hpp
+
+TPP_FILES		=	GroupIterator.tpp		\
+					IterFuncs.tpp			\
+					FordJohnsonSort.tpp		\
+					QuickSort.tpp			\
+					MergeInsertComp.tpp		\
+					PmergeMe.tpp
 
 
-
-SRC_FILES		=	main.cpp			\
-					PmergeMe.cpp
+SRC_FILES		=	main.cpp				\
+					parsing.cpp
 
 
 ## PREP
 INCS		:=		$(addprefix $(INC_PATH)/,$(INC_FILES))
+TPPS		:=		$(addprefix $(TPP_PATH)/,$(TPP_FILES))
 SRCS		:=		$(addprefix $(SRC_PATH)/,$(SRC_FILES))
 OBJS 		=		$(patsubst $(SRC_PATH)/%.cpp,$(OBJ_PATH)/%.o,$(SRCS))
 
@@ -48,7 +58,7 @@ $(NAME): $(OBJS)
 	$(COMP) $(FLAGS) $(OBJS) -I$(INC_PATH) -o $(NAME)
 	@echo Program $(NAME) ready!!
 
-$(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp $(INCS)
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.cpp $(INCS) $(TPPS)
 	mkdir -p $(dir $@)
 	$(COMP) $(FLAGS) -I$(INC_PATH) -c $< -o $@
 
@@ -65,7 +75,7 @@ fclean: clean
 re: fclean all
 
 git:
-	@git add $(INCS) $(SRCS) Makefile cpp09_ex02_notes.txt && git commit -m "commiting" && git push
+	@git add $(INCS) $(SRCS) $(TPPS) Makefile && git commit -m "commiting" && git push
 
 run: all
 	@./$(NAME)

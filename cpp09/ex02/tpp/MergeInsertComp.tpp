@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MergeInsertComp.tpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:34:51 by manuel            #+#    #+#             */
-/*   Updated: 2024/05/03 11:52:00 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/09 08:38:17 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ template <
 		end = clock();
 		_insert_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
 		std::cout << "Time to insert to a multiset: " << _insert_time << std::endl;
-		
+
 		start = clock();
 		if (!parse(ac, av, _vec))
 		{
@@ -174,6 +174,8 @@ template <
 
 //number parsing
 
+
+/*
 template <
 	typename T,
 	template <
@@ -230,5 +232,7 @@ bool	MergeInsertComp<T, First, Second>::parse(int ac, char **av, Inner& containe
 	//std::cout << std::endl;
 	return (true);
 }
+
+*/
 
 #endif

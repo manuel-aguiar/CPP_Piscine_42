@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MergeInsertComp.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:00:35 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/03 11:53:26 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/09 08:42:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ template <
 		MergeInsertComp(int ac, char **av);
 		~MergeInsertComp();
 
-		
+
 		//getters - not verbose, implemented right here
-		//PmergeMe<T, First>&					getFirst(void) const 		{return (_first);}
-		//PmergeMe<T, Second>&				getSecond(void) const 		{return (_second);}
+		PmergeMe<T, First>&					getFirst(void) const 		{return (_first);}
+		PmergeMe<T, Second>&				getSecond(void) const 		{return (_second);}
 
 	private:
 
@@ -64,11 +64,12 @@ template <
 		PmergeMe<T, Second>					_second;
 
 		//parsing -> called from the Parameter Constructor
-		template<
+		/*template<
 			class Inner
-		> bool								parse(int ac, char **av, Inner& container);
+		> bool								parse(int ac, char **av, Inner& container);*/
+
 		void								run(int ac, char **av);
-		
+
 		//Private default constructor, copy and assignment
 		MergeInsertComp();
 		MergeInsertComp(const MergeInsertComp& copy);
@@ -76,6 +77,6 @@ template <
 };
 
 
-#include "MergeInsertComp.tpp"
+#include "../tpp/MergeInsertComp.tpp"
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: manuel <manuel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:14:45 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/03 12:00:44 by manuel           ###   ########.fr       */
+/*   Updated: 2024/05/09 08:42:33 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,22 +46,20 @@ template <
 
 		//getters, not verbose, stays here
 		Container<T, Allocator>&				getContainer(void) const 			{return (_numbers);}
-		Container<std::pair<T,T>, Allocator>&	getPairs(void) const 				{return (_pairs);}
 		const std::string&						getName(void) const 				{return (_name_container);}
-		double									getInsertTime(void) const			{return (_insert_time);}	
-		double									getSortTime(void) const				{return (_sort_time);}									
+		double									getInsertTime(void) const			{return (_insert_time);}
+		double									getSortTime(void) const				{return (_sort_time);}
 
 		void									sort(void);
 		bool									parse(void);
 
-	private:	
+	private:
 		int										_ac;
 		char**									_av;
 		static const std::string				g_type_info[4];
 		static const std::string				g_type_name[4];
 
 		Container<T, Allocator>					_numbers;
-		Container<std::pair<T,T>, Allocator>	_pairs;
 		const std::string						_name_container;
 
 		double									_insert_time;
@@ -79,6 +77,6 @@ template <
 
 };
 
-#include "PmergeMe.tpp"
+#include "../tpp/PmergeMe.tpp"
 
 #endif
