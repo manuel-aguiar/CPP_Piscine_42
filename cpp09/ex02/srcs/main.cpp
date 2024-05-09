@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 09:26:15 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/09 09:47:56 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/09 09:53:19 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int main(int ac, char **av)
 {
 	try
 	{
-		MergeInsertComp<unsigned int, std::deque, std::list> comp(--ac, ++av);
+		MergeInsertComp<unsigned int, std::vector, std::deque> comp(--ac, ++av);
 	}
 	catch(const std::exception& e)
 	{
