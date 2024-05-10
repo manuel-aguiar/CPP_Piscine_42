@@ -84,7 +84,7 @@ void    BitcoinExchange::readInputFile(char *file_location)
 			if (dummy != 0)
 				throw InputFileException("quantity is not correctly formated");
 			std::map<_date_t, float>::iterator iter = _database.lower_bound(datenum);
-			if (iter == _database.end())
+			if (iter == _database.end() || (datenum == iter->first))
 				--iter;
 			std::cout << datestr << "=> " << quantity << " = " << quantity * iter->second << std::endl;
 		}
